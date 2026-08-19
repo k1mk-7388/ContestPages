@@ -1,69 +1,15 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
+<html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WW Digi 2026 Station Plan</title>
-<style>
-body{margin:0;font:15px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;
-  background:#faf9f7;color:#191713}
-@media (prefers-color-scheme: dark){
-  body:not([data-x]){background:#14130f;color:#eeeadf}
-  .card{background:#1d1b16!important;border-color:#3a372e!important}
-  .who,.src,.card p{color:#b6b0a1!important}
-}
-.cwrap{max-width:880px;margin:0 auto;padding:34px 22px 60px}
-h1{font-size:28px;font-weight:650;letter-spacing:-.02em;margin:0 0 6px;
-  text-wrap:balance}
-h2{font-size:18px;font-weight:650;margin:34px 0 8px}
-.who{color:#4d483f;margin:0 0 26px;font-size:14px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:14px}
-.card{display:block;border:1px solid #d8d4cc;border-radius:8px;
-  background:#f1efeb;padding:14px 16px;text-decoration:none;color:inherit}
-.card b{font-size:16px}
-.card p{margin:6px 0 0;font-size:13px;color:#4d483f}
-ul{padding-left:20px}
-li{margin:6px 0}
-.src{font-size:12.5px;color:#4d483f}
-</style>
-</head>
-<body>
-<div class="cwrap">
-<h1>WW Digi DX Contest 2026 — Station Plan</h1>
-<p class="who">K1SFA @ K1TTT (FN32) · multi-multi · 12:00Z 29 August –
-11:59Z 30 August 2026</p>
-
-<div class="cards"><a class="card" href="operating-sheets.html"><b>Operating Sheets</b><p>One page per band station: hourly activity, beam headings, and the rare multipliers open and populated each hour.</p></a><a class="card" href="mult-plan.html"><b>Multiplier Plan</b><p>Six years of K1SFA logs: which grid fields were worked, on which band, at which hour.</p></a><a class="card" href="band-plan-fields.html"><b>Band Plan — Grid Fields</b><p>When each grid field opens and closes on each band, projected onto the contest night from the terminator-relative spot sweep.</p></a><a class="card" href="band-plan-zones.html"><b>Band Plan — CQ Zones</b><p>The same projection at CQ-zone granularity, for the big picture.</p></a></div>
-
-<h2>How this was built</h2>
-<p>Three datasets, none sufficient alone, merged on the contest clock:</p>
+<title>K1SFA @ K1TTT Contest Pages</title>
+<style>body{margin:0;font:16px/1.6 system-ui,sans-serif;background:#faf9f7;
+color:#191713}@media (prefers-color-scheme: dark){body{background:#14130f;
+color:#eeeadf}}.w{max-width:640px;margin:0 auto;padding:48px 22px}
+h1{font-size:24px;font-weight:650;letter-spacing:-.01em}
+a{color:inherit}li{margin:8px 0}</style></head><body><div class="w">
+<h1>K1SFA @ K1TTT — Contest Planning Pages</h1>
 <ul>
-<li><b>All 10,328 public WW Digi logs, 2019–2025</b> — both sides of every
-QSO, so log authors prove who enters this contest from where, and the
-stations they worked reveal the participants who never submitted. Hourly
-patterns use 2023–25 only: the solar-minimum years shaped the high bands too
-differently (hourly-shape correlation 0.3–0.5 on 40/15/10m) to pool.</li>
-<li><b>84 days of the K1TTT spot archive</b> (269M rows), reduced to
-terminator-relative opening/closing edges per grid field and band, weighted
-by solar rotation (a spot counts exp(−age/27.28 d)), then projected onto the
-actual contest night — which is how a summer archive can describe a night
-after it ends.</li>
-<li><b>An August-only re-sweep</b> at the contest's forecast solar flux
-(SWPC: F10.7 ≈ 110 for the weekend vs the archive's 132 mean): 15m holds its
-shape at ~60% depth; 10m contracts to W-North-America + South America.</li>
+<li><a href="WWDigi2026/">WW Digi DX Contest 2026</a> — station plan:
+operating sheets, multiplier plan, band plans</li>
 </ul>
-<p>Standing decisions baked into every page: FP and GO carry heavy beacon
-traffic but only 3 contest participants each in seven years — planned around,
-not for; GN (29 participants) and HP (23) are the bankable thin multipliers;
-grid fields are assigned to CQ zones from the WAZ map with boundary fields
-settled by where their spots actually originate.</p>
-
-<h2>Sources</h2>
-<p class="src">ww-digi.com public logs · PSKReporter spot archive at K1TTT ·
-NOAA SWPC daily solar indices and 27-day outlook · CQ WAZ zone boundaries
-(cqzones.geojson, ClubLog Antarctic meridians) · K1SFA contest logs
-2019–2025. Generated 2026-08-19.</p>
-</div>
-</body>
-</html>
+</div></body></html>
