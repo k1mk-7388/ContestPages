@@ -35,7 +35,7 @@ and the linear toggle swaps the log for v/vmax (the drawn windows span
 ~4 dex, so linear shows only where the volume is).
 The raw day/night swing is real: 15m Europe runs 50–60× between its
 afternoon peak and 03Z. The night shading is the solar terminator for the contest
-date (29–30 Aug). Auroral ovals are the nominal Kp≈2 extent (66–74°
+date (29–30 Aug), with the sun at the subsolar point. Auroral ovals are the nominal Kp≈2 extent (66–74°
 geomagnetic).</p>
 <canvas id="stage" width="1400" height="1400"></canvas>
 <div class="bar">
@@ -243,6 +243,19 @@ function shadeNight(f){
     g.beginPath(); g.arc(CX,CY,R,0,7); trace();
     g.fill('evenodd');
   }
+  // the sun: a marker at the subsolar point, always on the day side
+  const[sx,sy]=proj(DECL,lonss);
+  g.save();
+  g.strokeStyle='rgba(200,140,0,.9)'; g.lineWidth=1.6;
+  for(let i=0;i<8;i++){
+    const a=i*Math.PI/4;
+    g.beginPath(); g.moveTo(sx+9*Math.cos(a),sy+9*Math.sin(a));
+    g.lineTo(sx+13*Math.cos(a),sy+13*Math.sin(a)); g.stroke();
+  }
+  g.beginPath(); g.arc(sx,sy,6,0,7);
+  g.fillStyle='#f6c453'; g.fill();
+  g.strokeStyle='rgba(180,110,0,.95)'; g.lineWidth=1.4; g.stroke();
+  g.restore();
   g.restore();
 }
 function draw(f){
