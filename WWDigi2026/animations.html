@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WW Digi 2026 Band Animations</title>
+<style>
+.pubnav{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;
+  padding:8px 20px;font:12px/1.4 system-ui,sans-serif;
+  border-bottom:1px solid rgba(128,128,128,.35)}
+.pubnav a{color:inherit;opacity:.75;text-decoration:none}
+.pubnav a:hover{opacity:1;text-decoration:underline}
+.pubnav .here{font-weight:700;opacity:1}
+.pubnav .brand{font-weight:700;margin-right:8px}
+@media print{.pubnav{display:none}}
+
+body{margin:0;font:15px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:#faf9f7;color:#191713}
+@media (prefers-color-scheme: dark){
+  body:not([data-x]){background:#14130f;color:#eeeadf}
+  .card{background:#1d1b16!important;border-color:#3a372e!important}
+  .who,.src,.card p{color:#b6b0a1!important}
+}
+.cwrap{max-width:880px;margin:0 auto;padding:34px 22px 60px}
+h1{font-size:28px;font-weight:650;letter-spacing:-.02em;margin:0 0 6px;
+  text-wrap:balance}
+h2{font-size:18px;font-weight:650;margin:34px 0 8px}
+.who{color:#4d483f;margin:0 0 26px;font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:14px}
+.card{display:block;border:1px solid #d8d4cc;border-radius:8px;
+  background:#f1efeb;padding:14px 16px;text-decoration:none;color:inherit}
+.card b{font-size:16px}
+.card p{margin:6px 0 0;font-size:13px;color:#4d483f}
+ul{padding-left:20px}
+li{margin:6px 0}
+.src{font-size:12.5px;color:#4d483f}
+</style>
+</head>
+<body>
+<nav class="pubnav"><span class="brand">K1SFA @ K1TTT</span><a href="index.html">WW Digi 2026 Plan</a> · <a href="operating-sheets.html">Operating Sheets</a> · <a href="mult-plan.html">Multiplier Plan</a> · <a href="band-plan-fields.html">Band Plan — Grid Fields</a> · <a href="band-plan-zones.html">Band Plan — CQ Zones</a> · <span class="here">Band Animations</span></nav><div class="cwrap">
+<h1>Band Animations</h1>
+<p class="who">One page per band: a 24-hour loop of activity by grid square on an azimuthal-equidistant map centered on K1TTT (FN32LL).</p>
+<div class="cards"><a class="card" href="polar-160m.html"><b>160m</b><p>0.9 MB self-contained page</p></a><a class="card" href="polar-80m.html"><b>80m</b><p>3.3 MB self-contained page</p></a><a class="card" href="polar-40m.html"><b>40m</b><p>6.2 MB self-contained page</p></a><a class="card" href="polar-20m.html"><b>20m</b><p>8.2 MB self-contained page</p></a><a class="card" href="polar-15m.html"><b>15m</b><p>7.6 MB self-contained page</p></a><a class="card" href="polar-10m.html"><b>10m</b><p>4.2 MB self-contained page</p></a></div>
+<h2>Reading the map</h2>
+<p>Bearing reads straight off the map (north up); distance is radial, with the dashed orange rings marking the WW Digi point steps (one point per started 3000&nbsp;km). A rolling 30-minute window slides one minute per frame, 1440 frames looping the day from 1200Z to 1200Z — the contest clock. Night is shaded for the contest date, auroral ovals are the nominal Kp≈2 extent, and dot size and opacity are linear in log spot count. Append <code>#f=N</code> to a page URL to open it paused N minutes after 1200Z.</p>
+</div>
+</body>
+</html>
