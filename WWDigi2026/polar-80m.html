@@ -30,7 +30,7 @@ The 30-minute window slides 1 minute per frame, 1440 frames looping the
 day from 1200Z to 1200Z (the contest clock); the clock shows the
 window's center; dot radius and opacity follow log spot
 count (normalized to the day's busiest square) raised to the contrast
-exponent &gamma; — default 2, slider below; &gamma;=1 is the bare log,
+exponent &gamma; — default 3, slider below; &gamma;=1 is the bare log,
 and the linear toggle swaps the log for v/vmax (the drawn windows span
 ~4 dex, so linear shows only where the volume is).
 The raw day/night swing is real: 15m Europe runs 50–60× between its
@@ -46,7 +46,7 @@ geomagnetic).</p>
   <input type="range" id="speed" min="5" max="60" value="24" style="width:110px">
   <span class="lbl" id="fps"></span>
   <span class="lbl">contrast &gamma;</span>
-  <input type="range" id="gam" min="10" max="40" value="20" style="width:110px">
+  <input type="range" id="gam" min="10" max="40" value="30" style="width:110px">
   <span class="lbl" id="gaml"></span>
   <label class="lbl"><input type="checkbox" id="lin"> linear</label>
 </div>
@@ -198,7 +198,7 @@ for(const q in GRIDS){
   WS[q]=w;
 }
 const LM=Math.log1p(vmax);
-let frame=0, playing=true, fps=24, acc=0, last=0, GAM=2, LIN=false;
+let frame=0, playing=true, fps=24, acc=0, last=0, GAM=3, LIN=false;
 const scrub=document.getElementById('scrub'), clock=document.getElementById('clock');
 // Solar terminator for the contest date (29-30 Aug, declination +9.2deg),
 // at the window's central time. The night side is the great circle 90deg
