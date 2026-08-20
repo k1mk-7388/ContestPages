@@ -122,10 +122,13 @@ const b=bg.getContext('2d');
   b.textAlign='center'; b.textBaseline='middle';
   for(let k=1;k<=6;k++){
     const r=3000*k/20015*R;
-    b.save(); b.strokeStyle='rgba(185,105,10,.45)'; b.setLineDash([2,6]);
-    b.lineWidth=1; b.beginPath(); b.arc(CX,CY,r,0,7); b.stroke(); b.restore();
-    b.fillStyle='rgba(165,90,0,.8)';
-    b.fillText((k+1)+' pts', CX, CY-r-9);
+    b.save(); b.strokeStyle='rgba(185,105,10,.65)'; b.setLineDash([7,5]);
+    b.lineWidth=1.5; b.beginPath(); b.arc(CX,CY,r,0,7); b.stroke(); b.restore();
+    b.save(); b.font='700 14px system-ui,sans-serif';
+    b.strokeStyle='rgba(255,255,255,.9)'; b.lineWidth=3.5; b.lineJoin='round';
+    b.strokeText((k+1)+' pts', CX, CY-r-10);
+    b.fillStyle='rgba(150,80,0,.95)';
+    b.fillText((k+1)+' pts', CX, CY-r-10); b.restore();
   }
   // the bearing ring: a solid black rim with ticks every 10 degrees and
   // labels every 30
