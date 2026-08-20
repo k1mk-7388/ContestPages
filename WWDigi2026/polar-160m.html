@@ -30,7 +30,9 @@ The 30-minute window slides 1 minute per frame, 1440 frames looping the
 day from 1200Z to 1200Z (the contest clock); the clock shows the
 window's center; dot radius and opacity follow log spot
 count (normalized to the day's busiest square) raised to the contrast
-exponent &gamma; — default 2, slider below; &gamma;=1 is the bare log.
+exponent &gamma; — default 2, slider below; &gamma;=1 is the bare log,
+and the linear toggle swaps the log for v/vmax (the drawn windows span
+~4 dex, so linear shows only where the volume is).
 The raw day/night swing is real: 15m Europe runs 50–60× between its
 afternoon peak and 03Z. The night shading is the solar terminator for the contest
 date (29–30 Aug). Auroral ovals are the nominal Kp≈2 extent (66–74°
@@ -46,6 +48,7 @@ geomagnetic).</p>
   <span class="lbl">contrast &gamma;</span>
   <input type="range" id="gam" min="10" max="40" value="20" style="width:110px">
   <span class="lbl" id="gaml"></span>
+  <label class="lbl"><input type="checkbox" id="lin"> linear</label>
 </div>
 </div>
 <script>
@@ -195,7 +198,7 @@ for(const q in GRIDS){
   WS[q]=w;
 }
 const LM=Math.log1p(vmax);
-let frame=0, playing=true, fps=24, acc=0, last=0, GAM=2;
+let frame=0, playing=true, fps=24, acc=0, last=0, GAM=2, LIN=false;
 const scrub=document.getElementById('scrub'), clock=document.getElementById('clock');
 // Solar terminator for the contest date (29-30 Aug, declination +9.2deg),
 // at the window's central time. The night side is the great circle 90deg
@@ -250,7 +253,7 @@ function draw(f){
   for(const q in GRIDS){
     const v=WS[q][m];
     if(!v)continue;
-    const t=Math.pow(Math.log1p(v)/LM,GAM),
+    const t=Math.pow(LIN?v/vmax:Math.log1p(v)/LM,GAM),
           [lat,lon]=centers[q], [x,y]=proj(lat,lon);
     const r=2.5+t*13;
     const gr=g.createRadialGradient(x,y,0,x,y,r);
@@ -283,8 +286,14 @@ const gam=document.getElementById('gam'),
 gam.oninput=e=>{GAM=+e.target.value/10; gaml.textContent=GAM.toFixed(1);
   if(!playing)draw(frame);};
 gaml.textContent=GAM.toFixed(1);
+document.getElementById('lin').onchange=e=>{LIN=e.target.checked;
+  if(!playing)draw(frame);};
 const hf=location.hash.match(/f=(\d+)/);
 if(hf){frame=Math.min(NB-1,+hf[1]); playing=false;
   document.getElementById('play').textContent='Play';}
+if(/\blin\b/.test(location.hash)){LIN=true;
+  document.getElementById('lin').checked=true;}
+const hg=location.hash.match(/g=(\d+)/);
+if(hg){GAM=+hg[1]/10; gam.value=hg[1]; gaml.textContent=GAM.toFixed(1);}
 draw(frame); requestAnimationFrame(tick);
 </script>
