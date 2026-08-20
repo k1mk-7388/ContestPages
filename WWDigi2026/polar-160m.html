@@ -28,8 +28,9 @@ K1TTT (FN32LL): bearing reads straight off the map, distance is radial,
 and the dashed orange rings are the WW Digi point steps (3000&nbsp;km).
 The 30-minute window slides 1 minute per frame, 1440 frames looping the
 day from 1200Z to 1200Z (the contest clock); the clock shows the
-window's center; dot radius and opacity follow log spot
-count (normalized to the day's busiest square) raised to the contrast
+window's center. Each active square is drawn at its true
+2°×1° footprint and colored on a heat ramp by log spot count
+(normalized to the day's busiest square) raised to the contrast
 exponent &gamma; — default 2.5, slider below; &gamma;=1 is the bare log,
 and the linear toggle swaps the log for v/vmax (the drawn windows span
 ~4 dex, so linear shows only where the volume is).
@@ -67,10 +68,21 @@ function proj(lat,lon){
   const r=d/Math.PI*R;
   return [CX+r*Math.sin(az), CY-r*Math.cos(az)]; // north up, east right
 }
-function gridCenter(q){
-  const lon=(q.charCodeAt(0)-65)*20-180+(+q[2])*2+1;
-  const lat=(q.charCodeAt(1)-65)*10-90+(+q[3])+0.5;
-  return [lat,lon];
+function cellPath(q){
+  // the square's true 2x1-degree footprint, lon edges subdivided so the
+  // parallels curve; built once as a Path2D per square
+  const lo=(q.charCodeAt(0)-65)*20-180+(+q[2])*2;
+  const la=(q.charCodeAt(1)-65)*10-90+(+q[3]);
+  const P=[[la,lo],[la,lo+1],[la,lo+2],[la+1,lo+2],[la+1,lo+1],[la+1,lo]];
+  const p=new Path2D();
+  P.forEach(([lat,lon],i)=>{const[x,y]=proj(lat,lon); i?p.lineTo(x,y):p.moveTo(x,y);});
+  p.closePath(); return p;
+}
+function ramp(t){
+  let r,gg,bb;
+  if(t<0.5){const u=t*2; r=255-20*u; gg=225-115*u; bb=140-110*u;}
+  else{const u=(t-0.5)*2; r=235-85*u; gg=110-100*u; bb=30-20*u;}
+  return `rgba(${r|0},${gg|0},${bb|0},${0.45+0.5*t})`;
 }
 // ---- static background, drawn once ----
 const bg=document.createElement('canvas'); bg.width=bg.height=W;
@@ -180,6 +192,18 @@ const b=bg.getContext('2d');
     if(Math.hypot(x-CX,y-CY)>0.93*R)continue;   // antipode smear zone
     b.fillText(String.fromCharCode(65+f1)+String.fromCharCode(65+f2),x,y);
   }
+  // color legend, bottom-left corner outside the map circle
+  b.save();
+  for(let i=0;i<=140;i++){
+    b.fillStyle=ramp(i/140); b.fillRect(34+i,W-56,1,14);
+  }
+  b.strokeStyle='rgba(60,70,85,.8)'; b.lineWidth=1;
+  b.strokeRect(33.5,W-56.5,142,15);
+  b.fillStyle='rgba(55,65,80,.95)'; b.font='12px system-ui,sans-serif';
+  b.textAlign='left'; b.fillText('few', 34, W-66);
+  b.textAlign='right'; b.fillText('busiest', 175, W-66);
+  b.textAlign='center';
+  b.restore();
   // home
   const[hx,hy]=proj(42.48,-73.04);
   b.strokeStyle='#c22318'; b.lineWidth=1.8;
@@ -191,10 +215,10 @@ const b=bg.getContext('2d');
 function dec(s){const b=atob(s), n=b.length>>1, a=new Uint16Array(n);
   for(let i=0;i<n;i++)a[i]=b.charCodeAt(2*i)|(b.charCodeAt(2*i+1)<<8);
   return a;}
-const centers={}, WS={};
+const CELL={}, WS={};
 let vmax=1;
 for(const q in GRIDS){
-  centers[q]=gridCenter(q);
+  CELL[q]=cellPath(q);
   const h=dec(GRIDS[q]), w=new Float32Array(NB);
   let s=0; for(let i=0;i<WIN;i++)s+=h[i];
   for(let i=0;i<NB;i++){w[i]=s; if(s>vmax)vmax=s; s+=h[(i+WIN)%NB]-h[i];}
@@ -269,13 +293,8 @@ function draw(f){
   for(const q in GRIDS){
     const v=WS[q][m];
     if(!v)continue;
-    const t=Math.pow(LIN?v/vmax:Math.log1p(v)/LM,GAM),
-          [lat,lon]=centers[q], [x,y]=proj(lat,lon);
-    const r=2.5+t*13;
-    const gr=g.createRadialGradient(x,y,0,x,y,r);
-    gr.addColorStop(0,`rgba(215,70,15,${0.35+0.55*t})`);
-    gr.addColorStop(1,'rgba(215,70,15,0)');
-    g.fillStyle=gr; g.beginPath(); g.arc(x,y,r,0,7); g.fill();
+    const t=Math.pow(LIN?v/vmax:Math.log1p(v)/LM,GAM);
+    g.fillStyle=ramp(t); g.fill(CELL[q]);
   }
   g.restore();
   const mc=(m+15)%1440;                        // center of the 30-min window
