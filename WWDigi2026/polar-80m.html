@@ -35,8 +35,9 @@ exponent &gamma; — default 2.5, slider below; &gamma;=1 is the bare log,
 and the linear toggle swaps the log for v/vmax (the drawn windows span
 ~4 dex, so linear shows only where the volume is).
 The raw day/night swing is real: 15m Europe runs 50–60× between its
-afternoon peak and 03Z. The night shading is the solar terminator for the contest
-date (29–30 Aug), with the sun at the subsolar point. Auroral ovals are the nominal Kp≈2 extent (66–74°
+afternoon peak and 03Z. Shading is drawn for the contest date (29–30 Aug): a light
+band from sunset to the end of nautical twilight (sun 12° down), full
+night beyond, with the sun at the subsolar point. Auroral ovals are the nominal Kp≈2 extent (66–74°
 geomagnetic).</p>
 <canvas id="stage" width="1400" height="1400"></canvas>
 <div class="bar">
@@ -49,7 +50,8 @@ geomagnetic).</p>
   <span class="lbl">contrast</span>
   <input type="range" id="gam" min="10" max="40" value="25" style="width:110px">
   <span class="lbl" id="gaml"></span>
-  <label class="lbl"><input type="checkbox" id="lin"> linear</label>
+  <span class="lbl"><label><input type="radio" name="scale" id="sclog" checked> log</label>
+  <label><input type="radio" name="scale" id="sclin"> linear</label></span>
 </div>
 </div>
 <script>
@@ -234,42 +236,54 @@ const scrub=document.getElementById('scrub'), clock=document.getElementById('clo
 const DECL=9.2;
 function shadeNight(f){
   const h=((f+15)%1440)/60, lonss=(12-h)*15, p1=DECL*RAD, l1=lonss*RAD;
-  function tp(az){
-    const sl=Math.cos(p1)*Math.cos(az);
-    const lat=Math.asin(sl);
-    const lon=l1+Math.atan2(Math.sin(az)*Math.cos(p1),-Math.sin(p1)*sl);
-    return proj(lat/RAD,lon/RAD);
-  }
-  // Adaptive sampling. Around local sunrise/sunset the terminator passes the
-  // map antipode, where a fixed 1-degree step sweeps a huge azimuth range on
-  // screen and draws chords. Segments bisect until they are short in pixels,
-  // which bounds the azimuth change per segment exactly where it matters; the
-  // depth cap stops the recursion where the curve genuinely hugs the rim.
-  const pts=[];
-  function seg(a0,P0,a1,P1,d){
-    if(d>=11||Math.hypot(P1[0]-P0[0],P1[1]-P0[1])<6){pts.push(P1);return;}
-    const am=(a0+a1)/2, Pm=tp(am);
-    seg(a0,P0,am,Pm,d+1); seg(am,Pm,a1,P1,d+1);
-  }
-  let P0=tp(0); pts.push(P0);
-  for(let i=1;i<=180;i++){
-    const a1=i/180*2*Math.PI, P1=tp(a1);
-    seg((i-1)/180*2*Math.PI,P0,a1,P1,0); P0=P1;
-  }
-  function trace(){g.moveTo(pts[0][0],pts[0][1]);
-    for(let i=1;i<pts.length;i++)g.lineTo(pts[i][0],pts[i][1]);
-    g.closePath();}
-  g.beginPath(); trace();
   const[ax,ay]=proj(-DECL,lonss+180);          // antisolar point = mid-night
-  g.save();
-  g.fillStyle='rgba(15,25,60,.30)';
-  g.strokeStyle='rgba(150,100,10,.55)'; g.lineWidth=1.2;
-  if(g.isPointInPath(ax,ay)){ g.fill(); g.stroke(); }
-  else{
-    g.stroke();
-    g.beginPath(); g.arc(CX,CY,R,0,7); trace();
-    g.fill('evenodd');
+  // A ring of constant sun elevation is a small circle at colatitude
+  // 90+e from the subsolar point. Adaptive sampling as before: segments
+  // bisect until short in pixels, so the curve stays smooth through the
+  // map antipode around local sunrise/sunset.
+  function ring(colat){
+    const cd=Math.cos(colat*RAD), sd=Math.sin(colat*RAD);
+    function tp(az){
+      const sl=Math.sin(p1)*cd+Math.cos(p1)*sd*Math.cos(az);
+      const lat=Math.asin(sl);
+      const lon=l1+Math.atan2(Math.sin(az)*sd*Math.cos(p1),cd-Math.sin(p1)*sl);
+      return proj(lat/RAD,lon/RAD);
+    }
+    const pts=[];
+    function seg(a0,P0,a1,P1,d){
+      if(d>=11||Math.hypot(P1[0]-P0[0],P1[1]-P0[1])<6){pts.push(P1);return;}
+      const am=(a0+a1)/2, Pm=tp(am);
+      seg(a0,P0,am,Pm,d+1); seg(am,Pm,a1,P1,d+1);
+    }
+    let P0=tp(0); pts.push(P0);
+    for(let i=1;i<=180;i++){
+      const a1=i/180*2*Math.PI, P1=tp(a1);
+      seg((i-1)/180*2*Math.PI,P0,a1,P1,0); P0=P1;
+    }
+    return pts;
   }
+  // Fill the side of the ring holding the antisolar point (sun below -e).
+  function shade(colat,fill,stroke,dash){
+    const pts=ring(colat);
+    const trace=()=>{g.moveTo(pts[0][0],pts[0][1]);
+      for(let i=1;i<pts.length;i++)g.lineTo(pts[i][0],pts[i][1]);
+      g.closePath();};
+    g.save();
+    g.beginPath(); trace();
+    g.fillStyle=fill; g.strokeStyle=stroke; g.lineWidth=1.2;
+    if(dash)g.setLineDash(dash);
+    if(g.isPointInPath(ax,ay)){ g.fill(); g.stroke(); }
+    else{
+      g.stroke();
+      g.beginPath(); g.arc(CX,CY,R,0,7); trace();
+      g.fill('evenodd');
+    }
+    g.restore();
+  }
+  // twilight band: sunset to the end of nautical twilight (sun 12 deg
+  // down), then full night beyond -- the shades stack
+  shade(90,'rgba(15,25,60,.14)','rgba(150,100,10,.55)');
+  shade(102,'rgba(15,25,60,.22)','rgba(120,90,20,.45)',[5,4]);
   // the sun: a marker at the subsolar point, always on the day side
   const[sx,sy]=proj(DECL,lonss);
   g.save();
@@ -282,7 +296,6 @@ function shadeNight(f){
   g.beginPath(); g.arc(sx,sy,6,0,7);
   g.fillStyle='#f6c453'; g.fill();
   g.strokeStyle='rgba(180,110,0,.95)'; g.lineWidth=1.4; g.stroke();
-  g.restore();
   g.restore();
 }
 function draw(f){
@@ -321,13 +334,13 @@ const gam=document.getElementById('gam'),
 gam.oninput=e=>{GAM=+e.target.value/10; gaml.textContent=GAM.toFixed(1);
   if(!playing)draw(frame);};
 gaml.textContent=GAM.toFixed(1);
-document.getElementById('lin').onchange=e=>{LIN=e.target.checked;
-  if(!playing)draw(frame);};
+const sclin=document.getElementById('sclin');
+for(const el of document.getElementsByName('scale'))
+  el.onchange=()=>{LIN=sclin.checked; if(!playing)draw(frame);};
 const hf=location.hash.match(/f=(\d+)/);
 if(hf){frame=Math.min(NB-1,+hf[1]); playing=false;
   document.getElementById('play').textContent='Play';}
-if(/\blin\b/.test(location.hash)){LIN=true;
-  document.getElementById('lin').checked=true;}
+if(/\blin\b/.test(location.hash)){LIN=true; sclin.checked=true;}
 const hg=location.hash.match(/g=(\d+)/);
 if(hg){GAM=+hg[1]/10; gam.value=hg[1]; gaml.textContent=GAM.toFixed(1);}
 draw(frame); requestAnimationFrame(tick);
