@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CQ WW RTTY 2026 Propagation</title>
+<style>
+.pubnav{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;
+  padding:8px 20px;font:12px/1.4 system-ui,sans-serif;
+  border-bottom:1px solid rgba(128,128,128,.35)}
+.pubnav a{color:inherit;opacity:.75;text-decoration:none}
+.pubnav a:hover{opacity:1;text-decoration:underline}
+.pubnav .here{font-weight:700;opacity:1}
+.pubnav .brand{font-weight:700;margin-right:8px}
+@media print{.pubnav{display:none}}
+
+body{margin:0;font:15px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:#faf9f7;color:#191713}
+@media (prefers-color-scheme: dark){
+  body:not([data-x]){background:#14130f;color:#eeeadf}
+  .card{background:#1d1b16!important;border-color:#3a372e!important}
+  .who,.src,.card p{color:#b6b0a1!important}
+}
+.cwrap{max-width:880px;margin:0 auto;padding:34px 22px 60px}
+h1{font-size:28px;font-weight:650;letter-spacing:-.02em;margin:0 0 6px;
+  text-wrap:balance}
+h2{font-size:18px;font-weight:650;margin:34px 0 8px}
+.who{color:#4d483f;margin:0 0 26px;font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:14px}
+.card{display:block;border:1px solid #d8d4cc;border-radius:8px;
+  background:#f1efeb;padding:14px 16px;text-decoration:none;color:inherit}
+.card b{font-size:16px}
+.card p{margin:6px 0 0;font-size:13px;color:#4d483f}
+ul{padding-left:20px}
+li{margin:6px 0}
+.src{font-size:12.5px;color:#4d483f}
+</style>
+</head>
+<body>
+<nav class="pubnav"><span class="brand">K1SFA @ K1TTT</span><a href="index.html">CQ WW RTTY 2026</a> · <a href="band-plan-zones.html">Band Plan — CQ Zones</a> · <a href="band-plan-fields.html">Band Plan — Grid Fields</a> · <a href="animations.html">Band Animations</a></nav><div class="cwrap">
+<h1>CQ WW RTTY DX Contest 2026 — Propagation Prediction</h1>
+<p class="who">K1SFA @ K1TTT (FN32LL) · 0000Z 26 September – 2359Z 27
+September 2026 · 48 hours</p>
+
+<div class="cards"><a class="card" href="band-plan-zones.html"><b>Band Plan — CQ Zones</b><p>When each band opens and closes to every CQ zone, projected onto the contest weekend. Zones are multipliers, so this is the primary chart.</p></a><a class="card" href="band-plan-fields.html"><b>Band Plan — Grid Fields</b><p>The same projection at grid-field granularity — finer geography than the zone view, though fields are not multipliers in this contest.</p></a><a class="card" href="animations.html"><b>Band Animations</b><p>Six 24-hour great-circle maps, one per band, with the contest-date terminator and auroral ovals.</p></a></div>
+
+<h2>How this was built</h2>
+<p>The same terminator-relative method the WW Digi plan used, retargeted to
+this contest's clock, bands and scoring:</p>
+<ul>
+<li><b>An 84-day archive of spots to/from FN32&nbsp;±&nbsp;1 grid square</b>
+(211M rows, 18 June – 9 September), reduced to opening and closing edges per
+CQ zone and band measured <em>as offsets from the terminator that bounds each
+path</em>, weighted by solar rotation (a spot counts exp(−age/27.28 d)), then
+resolved against the real sunrise and sunset of the contest weekend. That
+indirection is what lets a summer archive describe an equinox night.</li>
+<li><b>52,536 public CQ WW RTTY logs, 2009–2025</b> — 21.5 million QSO lines,
+both sides of every contact. This contest states its multipliers in the
+exchange (CQ zone from both stations, state or province from any W/VE end), so
+the multiplier census is read off the logs rather than inferred: 40 zones, 63
+W/VE QTH multipliers and 312 countries, each with the bands and hours it
+actually appears on.</li>
+<li><b>Six great-circle animations</b>, one per band, centred on FN32LL:
+bearing reads straight off the map, distance is radial, and a 30-minute window
+slides one minute per frame through the day.</li>
+</ul>
+
+<h2>What the season and the sun are doing</h2>
+<p>Two things separate this weekend from the August contest, and they pull in
+opposite directions.</p>
+<p><b>The equinox helps.</b> 26 September is four days past the September
+equinox: day and night are near-equal at every latitude, the terminator runs
+nearly north–south, and the solar declination is −1.1° against +9.2° in late
+August. Equinox conditions classically favour the high bands and
+trans-equatorial paths.</p>
+<p><b>The flux and the field do not.</b> SWPC's 27-day outlook (issued 7
+September) puts the weekend at F10.7 = 100–105 with <b>Ap 18 and Kp 5 on
+Saturday, Ap 15 and Kp 4 on Sunday</b> — a disturbed weekend at low flux.
+Measured flux has been very steady near 110 for a fortnight against the sweep
+archive's 128 mean, so the openings drawn here are, if anything, generous on
+the high bands. A Kp-5 Saturday matters more in this contest than in most:
+polar and high-latitude zones are multipliers, and they are the first paths an
+auroral absorption event takes away. The auroral ovals on the animations are
+drawn at the nominal Kp≈2 extent, so read them as optimistic.</p>
+<p><b>No historical weekend is a clean analogue.</b> Contest-weekend flux over
+the log archive ran 67–87 in the solar-minimum years (2018–2021) and 141–196
+near maximum (2022–2025). 2026 at ~105 falls in the gap — except for
+<b>2013, which ran at F10.7 104.5</b>, within half a point of the forecast.
+If you want one year's logs to reason from, that is the one.</p>
+
+<h2>Reading the charts</h2>
+<p>The axis runs 0000Z to 0000Z — the contest clock, and a 48-hour contest
+repeats the same diurnal cycle twice, so one day is drawn. Scores under each
+zone are CQ WW's continent rule: 3 points off-continent, 2 within North
+America, 1 domestic. Multipliers are counted <em>per band</em>, which is why
+the per-band view is the one that matters: the same zone is a fresh multiplier
+on each of the five bands.</p>
+<p class="src">Caveat, stated on every chart: the sweep window drifts one way
+through the season, from 15 h 17 m of daylight down to 12 h 46 m, and the
+contest night runs 11 h 58 m — 48 minutes shorter than the shortest day in the
+window. The terminator-relative construction is what carries the offsets
+across that gap, and the Carrington weighting leans the sample toward its
+recent end, but this is an extrapolation rather than an interpolation.</p>
+
+<h2>Sources</h2>
+<p class="src">cqwwrtty.com public logs and rules · PSKReporter spot archive at
+K1TTT · NOAA SWPC 27-day outlook and daily solar indices · CQ WAZ zone
+boundaries (cqzones.geojson) · Natural Earth 110m admin-0. Generated
+2026-09-09.</p>
+</div>
+</body>
+</html>
