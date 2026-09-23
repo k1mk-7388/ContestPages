@@ -251,7 +251,7 @@ function draw() {
   yt2.textContent = ym === "qso" ? "10m QSOs logged" : "10m share of all QSOs";
   svg.appendChild(yt2);
 
-  // points, labelled
+  // points, labeled
   for (const d of D) {
     const cx = X(xv(d)), cy = Y(yv(d));
     const ap = apvalue(d);
