@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JARL WW RTTY 2026 Propagation & Plan</title>
+<style>
+.pubnav{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;
+  padding:8px 20px;font:12px/1.4 system-ui,sans-serif;
+  border-bottom:1px solid rgba(128,128,128,.35)}
+.pubnav a{color:inherit;opacity:.75;text-decoration:none}
+.pubnav a:hover{opacity:1;text-decoration:underline}
+.pubnav .here{font-weight:700;opacity:1}
+.pubnav .brand{font-weight:700;margin-right:8px}
+@media print{.pubnav{display:none}}
+
+body{margin:0;font:15px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:#faf9f7;color:#191713}
+@media (prefers-color-scheme: dark){
+  body:not([data-x]){background:#14130f;color:#eeeadf}
+  .card{background:#1d1b16!important;border-color:#3a372e!important}
+  .who,.src,.card p{color:#b6b0a1!important}
+}
+.cwrap{max-width:880px;margin:0 auto;padding:34px 22px 60px}
+h1{font-size:28px;font-weight:650;letter-spacing:-.02em;margin:0 0 6px;
+  text-wrap:balance}
+h2{font-size:18px;font-weight:650;margin:34px 0 8px}
+.who{color:#4d483f;margin:0 0 26px;font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:14px}
+.card{display:block;border:1px solid #d8d4cc;border-radius:8px;
+  background:#f1efeb;padding:14px 16px;text-decoration:none;color:inherit}
+.card b{font-size:16px}
+.card p{margin:6px 0 0;font-size:13px;color:#4d483f}
+ul{padding-left:20px}
+li{margin:6px 0}
+.src{font-size:12.5px;color:#4d483f}
+
+.tbl{border-collapse:collapse;margin:12px 0 4px;font-size:14px;
+  font-variant-numeric:tabular-nums}
+.tbl th,.tbl td{padding:5px 13px 5px 0;text-align:left;
+  border-bottom:1px solid #e2e1dc;white-space:nowrap}
+.tbl th{font-weight:600;color:#4d483f}
+.tbl td.r,.tbl th.r{text-align:right}
+.tbl tr.hi td{font-weight:650}
+@media (prefers-color-scheme: dark){
+  body:not([data-x]) .tbl th,body:not([data-x]) .tbl td{
+    border-bottom-color:#302f2c}
+  body:not([data-x]) .tbl th{color:#b6b0a1}
+}
+</style>
+</head>
+<body>
+<nav class="pubnav"><span class="brand">K1SFA @ K1TTT</span><a href="index.html">JARL WW RTTY 2026</a> · <a href="band-plan-zones.html">Band Plan — CQ Zones</a> · <a href="animations.html">Band Animations</a></nav><div class="cwrap">
+<h1>JARL WW RTTY Contest 2026 — Propagation &amp; Plan</h1>
+<p class="who">K1SFA @ K1TTT (FN32LL) · 0000Z 17 October – 2400Z 18 October
+2026 · 48 hours</p>
+
+<div class="cards"><a class="card" href="band-plan-zones.html"><b>Band Plan — CQ Zones</b><p>When each band opens and closes to every CQ zone, projected onto the contest weekend, with QSO points under each. Zones are a guide to where the multipliers are, not the multipliers themselves.</p></a><a class="card" href="animations.html"><b>Band Animations</b><p>Five 24-hour great-circle maps, one per contest band, with CQ zone outlines as a guide to entity geography.</p></a></div>
+
+<h2>New sponsor, same contest</h2>
+<p>This event ran as the <b>JARTS WW RTTY Contest</b> through 2025 and is
+JARL-sponsored from 2026. Same contest, same weekend, same rules — every
+historical log on this page says <code>CONTEST: JARTS-WW-RTTY</code> in its
+Cabrillo header, and that continuity is what makes four years of our own data
+usable for a first JARL running.</p>
+<p>That the scoring is genuinely unchanged is <b>tested, not assumed</b>:
+scoring the 2022–2025 logs under the 2026 JARL rules reproduces N1MM's own
+claimed score to within <b>0.5%</b> in the best year and 1.7% in the worst.
+Had the rules moved with the sponsor, that check would have failed.</p>
+
+<h2>How the score is built</h2>
+<p>RTTY (Baudot) on 3.5/7/14/21/28 MHz, each station workable once per band.
+The exchange is <b>RST plus your age</b> — average age for multi-op, and
+<code>01</code>, <code>00</code> or <code>99</code> are all acceptable.</p>
+<ul>
+<li><b>Points:</b> 3 to a different continent, 2 to the same one — including
+the same entity. There is <em>no</em> domestic discount, so a W-to-W contact
+is worth 2, not the 1 that CQ WW pays.</li>
+<li><b>Multipliers, per band:</b> every DXCC entity <em>excluding</em>
+JA/W/VE/VK mainland, <b>plus</b> every call area of JA/W/VE/VK by prefix
+digit. So W0–W9, VE1–9, JA1–0 and the VK areas are all multipliers, and a
+domestic run is a multiplier hunt.</li>
+<li><b>Score = total points × total multipliers.</b> The rule reads "(Total
+QSO points for each band) x (Total multipliers … in each band)", which is
+easy to misread as a per-band product. It is not: "per band" governs the
+<em>counting</em> — a station counts once on each band, an entity counts once
+on each band — and then the grand totals multiply. Reading it the other way
+came out 4.46× too small against the logs, which is how it was settled.</li>
+</ul>
+
+<h2>A multiplier is worth about four QSOs — and that changes the bands</h2>
+<p>In an average year this station logs about <b>4,272 points and 362
+multipliers</b>, so one more multiplier adds roughly <b>4,272 points</b> of
+score while one more QSO adds about 1,000. A multiplier is worth <b>4.3
+QSOs</b>.</p>
+<p>Because score is a product, a QSO's real value is
+<code>M·(its points) + P·(its chance of being a new multiplier)</code>. Run
+that over four years of our own logs and the bands separate sharply:</p>
+<table class="tbl"><tr><th>band</th><th class="r">QSOs</th><th class="r">share of points</th><th class="r">share of mults</th><th class="r">mults per 100 QSOs</th><th class="r">score per QSO</th><th class="r">vs 15m</th></tr><tr class="hi"><td>80m</td><td class="r">299</td><td class="r">5%</td><td class="r">10%</td><td class="r">47.8</td><td class="r">2,991</td><td class="r">1.58×</td></tr><tr><td>40m</td><td class="r">1,240</td><td class="r">20%</td><td class="r">19%</td><td class="r">21.6</td><td class="r">1,897</td><td class="r">1.00×</td></tr><tr><td>20m</td><td class="r">1,648</td><td class="r">27%</td><td class="r">24%</td><td class="r">21.1</td><td class="r">1,899</td><td class="r">1.00×</td></tr><tr><td>15m</td><td class="r">1,751</td><td class="r">29%</td><td class="r">25%</td><td class="r">20.5</td><td class="r">1,890</td><td class="r">1.00×</td></tr><tr><td>10m</td><td class="r">1,247</td><td class="r">21%</td><td class="r">23%</td><td class="r">26.5</td><td class="r">2,155</td><td class="r">1.14×</td></tr></table><p class="src">This station's own logs, 2022–2025 pooled and deduplicated per band. The bold row is the most score-dense band per QSO.</p>
+<p><b>80m is the most score-dense band per QSO, at 1.58× a 15m QSO, and 68%
+of that value is multiplier rather than points.</b> It produces only 5% of
+the points but 10% of the multipliers: you work few stations there, and
+nearly half of them are a fresh entity or call area. 10m is second at
+1.14×. 40m, 20m and 15m are interchangeable on this measure — within 1% of
+each other.</p>
+<p class="src">This is the exact inverse of Makrothen two weeks ago, where
+80m was marginal because distance was the score and 80m's reach from FN32 is
+short. Here reach barely matters and novelty does.</p>
+
+<h2>Where the multipliers come from</h2>
+<p>Four years pooled: <b>1,042 DXCC entity multipliers (72%)</b> against
+<b>406 JA/W/VE/VK call-area multipliers (28%)</b>. The call areas are a
+smaller pool — at most ten W, nine VE, ten JA and a handful of VK per band —
+but they are also the ones most reliably available, since the domestic path
+is open when nothing else is.</p>
+<table class="tbl"><tr><th>band</th><th class="r">entity mults</th><th class="r">call-area mults</th><th class="r">total</th><th class="r">call-area share</th></tr><tr><td>80m</td><td class="r">99</td><td class="r">44</td><td class="r">143</td><td class="r">31%</td></tr><tr><td>40m</td><td class="r">195</td><td class="r">73</td><td class="r">268</td><td class="r">27%</td></tr><tr><td>20m</td><td class="r">252</td><td class="r">96</td><td class="r">348</td><td class="r">28%</td></tr><tr><td>15m</td><td class="r">261</td><td class="r">98</td><td class="r">359</td><td class="r">27%</td></tr><tr><td>10m</td><td class="r">235</td><td class="r">95</td><td class="r">330</td><td class="r">29%</td></tr></table>
+
+<h2>What this station has done before</h2>
+<table class="tbl"><tr><th>year</th><th class="r">QSOs</th><th class="r">points</th><th class="r">mults</th><th class="r">claimed score</th><th class="r">model vs claimed</th></tr><tr><td>2022</td><td class="r">1,479</td><td class="r">4,109</td><td class="r">373</td><td class="r">1,516,221</td><td class="r">+1.1%</td></tr><tr><td>2023</td><td class="r">1,592</td><td class="r">4,321</td><td class="r">351</td><td class="r">1,508,029</td><td class="r">+0.6%</td></tr><tr class="hi"><td>2024</td><td class="r">1,569</td><td class="r">4,428</td><td class="r">367</td><td class="r">1,616,220</td><td class="r">+0.5%</td></tr><tr><td>2025</td><td class="r">1,545</td><td class="r">4,232</td><td class="r">357</td><td class="r">1,485,432</td><td class="r">+1.7%</td></tr></table><p class="src">Claimed scores are N1MM's own, from the JARTS-era Cabrillo headers. The last column is this page's reconstruction under the 2026 JARL rules.</p>
+<p class="src">Remarkably flat: four years inside 1.49M–1.62M on 1,480–1,590
+QSOs. The spread is multipliers, not rate.</p>
+
+<h2>How this was built</h2>
+<ul>
+<li><b>An 83-day archive of spots to/from FN32&nbsp;±&nbsp;1 grid
+square</b> (111M spots, 22 Jul – 13 Oct 2026), reduced to opening and closing edges per CQ zone and
+band as offsets from the terminator that bounds each path, then resolved
+against the contest weekend's own sunrise and sunset.</li>
+<li><b>This station's own four logs, 2022–2025</b> — 6,185 deduplicated QSOs,
+with entity and call area resolved through the project's own
+<code>callsign_lookup</code> rather than hand-rolled prefix parsing.</li>
+</ul>
+<p><b>One limitation, stated plainly.</b> The band plan groups openings by
+<b>CQ zone</b>, but JARL's multipliers are DXCC entities and call areas, which
+are finer — zone 14 alone holds a dozen entities. The chart tells you when a
+region opens; how many multipliers live there is a separate question it does
+not answer. Entity-level grouping would need a different sweep than the
+covering indexes support, and four days before the contest was not the moment
+to attempt it.</p>
+<p class="src">Caveat, stated on the chart: the offsets come from 22 Jul – 13 Oct 2026; the window drifts one way through the season, 14 h 48 m of daylight down to 11 h 10 m. The target night runs 10 h 59 m, 0 h 11 m shorter than the shortest day in it. That is why the edges are measured against the terminator rather than in UTC — only the offsets carry across that gap, and the Carrington weighting already leans the sample toward the window’s recent end. This is an
+extrapolation rather than an interpolation.</p>
+
+<h2>Sources</h2>
+<p class="src">JARL WW RTTY rules (jarl.org) · this station's own Cabrillo
+logs 2022–2025 · PSKReporter spot archive at K1TTT · cty.dat via
+callsign_lookup. Generated 2026-10-13.</p>
+</div>
+</body>
+</html>
