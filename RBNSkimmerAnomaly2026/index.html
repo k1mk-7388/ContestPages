@@ -116,7 +116,8 @@ a{color:var(--accent)}
   <em>calling</em> it — on 42 to 50 percent of the spots where their output
   could be checked, against a 4.8 percent median across all receivers. All
   eight run the same skimmer program, and every receiver in the field that
-  runs it is one of the eight.</p>
+  runs it is one of the eight. The same effect is present in their CW output
+  at about a fifth the strength.</p>
   <p class="meta">10–11 October 2026 · 195,068 RTTY spots · prepared by K1MK</p>
 
   <div class="claim">
@@ -382,7 +383,74 @@ a{color:var(--accent)}
   treating a decode at a frequency as the station holding it — is an easy one
   to make.</p>
 
-  <h2>8 · Why the CT1BOH flags pass these spots</h2>
+
+  <h2>8 · The same effect in CW, about a fifth as strong</h2>
+  <p>These receivers post CW as well as RTTY — 3,246 to 14,298 CW spots each
+  over this weekend — so the same test can ask how far the defect reaches. It
+  reaches CW. Every one of the eight is elevated, and the excess appeared
+  between the two weekends exactly as it did in RTTY, while the controls did
+  not move.</p>
+
+  <div class="scroll">
+    <table>
+      <tr><th>CW stream</th><th>UberSDR group, median</th><th>range</th>
+        <th>controls, median</th><th>range</th><th>ratio</th></tr>
+      <tr><td>CQ WW weekend, 26–27 Sep</td><td class="n">4.6%</td>
+        <td class="n">3.2–6.9%</td><td class="n">3.7%</td>
+        <td class="n">3.3–4.9%</td><td class="n">1.2×</td></tr>
+      <tr><td>Makrothen weekend, 10–11 Oct</td><td class="n">8.8%</td>
+        <td class="n">6.6–12.2%</td><td class="n">3.8%</td>
+        <td class="n">3.5–5.0%</td><td class="n"><strong>2.3×</strong></td></tr>
+    </table>
+  </div>
+
+  <p>All eight sit above the <em>highest</em> control, on 2,696 to 10,965
+  judged CW spots each — <code>K3FEF</code>'s 12.2 percent against a 3.8
+  percent control median is some twenty-seven standard errors out, so the
+  elevation is not sampling noise. The controls' own rate moved by 0.1 points
+  between weekends.</p>
+  <p>For scale, in the same two weekends the RTTY rate for these receivers went
+  from 0.9× the field median to 9.2×. CW went from 1.2× to 2.3×. The effect is
+  real in CW and roughly a fifth as pronounced.</p>
+
+  <h3>Not an artifact of the frequency bin</h3>
+  <p>CW callers often offset a few hundred hertz to be heard, which could place
+  a caller outside the runner's own 0.1 kHz bin and hide it from this test —
+  the obvious reason a genuine CW problem might look mild. Re-running at ±0.2
+  and ±0.5 kHz tolerance rules that out. Widening the bin raises everyone's
+  rate, because it also lumps genuinely separate stations together, but it
+  <em>shrinks</em> the gap rather than opening it: the UberSDR-to-control ratio
+  falls from 2.3× to 1.9× to 1.4×. There are no hidden offset callers to find,
+  and the narrow bin is the more discriminating measurement. On the CQ WW
+  weekend the ratio is 1.2×, 1.0× and 0.9× at the three widths — no excess at
+  any of them.</p>
+
+  <h3>What CW does not show</h3>
+  <p>Two things that hold in RTTY fail here, and both matter.</p>
+  <ul>
+    <li><strong>The partition does not hold.</strong> In RTTY the eight
+    occupied the entire top of the field and nothing else exceeded 21.5
+    percent. In CW they do not lead: <code>OH2BBT</code> at 52.1 percent,
+    <code>OK2RZ</code> at 51.2, <code>K5KHK</code> at 34.0 and
+    <code>OK4YL</code> at 30.5 are all worse, and none of them runs
+    <code>UberSDR Skimmer</code>. CW has its own unrelated bad actors —
+    <code>K5KHK</code> was also 41.1 percent on the earlier weekend — and the
+    UberSDR group is merely elevated within a noisier field rather than
+    defining its top.</li>
+    <li><strong>The real-call test stops discriminating.</strong> In RTTY, 90
+    to 97 percent of the group's disputed calls were confirmed by four or more
+    other receivers against 80 to 91 percent for controls. In CW both sit at 77
+    to 89 percent. Everyone's CW misses are mostly real callers, so that test
+    no longer separates the groups — it only confirms the mechanism is caller
+    confusion in both.</li>
+  </ul>
+  <p>The useful consequence is for localizing the fault: because CW is affected
+  too, this is not purely a broken RTTY decoder. Something shared across modes
+  changed. But the amplitudes differ by roughly fivefold, so a single shared
+  cause and two separate ones fit the data equally well, and this report cannot
+  choose between them.</p>
+
+  <h2>9 · Why the CT1BOH flags pass these spots</h2>
   <p>AR-Cluster's <code>SKIMVALID</code> is documented as being assigned "by
   looking back to see if there are two more spots of the same call, on the same
   frequency (± 0.3 kHz)". A caller inside a pile-up satisfies that by
@@ -395,7 +463,7 @@ a{color:var(--accent)}
   the spotted station is the one <em>holding</em> the frequency, which is the
   only question that distinguishes a caller from a runner.</p>
 
-  <h2>9 · Scope and limits</h2>
+  <h2>10 · Scope and limits</h2>
   <ul>
     <li><strong>Five operators, eight instances.</strong> Rich K1RA runs
     <code>K1RA</code>, <code>K1RA-4</code> and <code>KW4VA</code>; Nathan
@@ -450,6 +518,8 @@ a{color:var(--accent)}
       <tr><td class="call">qc_rbn_mode_split.py</td><td>Per-day RTTY/CW counts — separates "absent" from "no RTTY"</td></tr>
       <tr><td class="call">qc_rbn_cosite_test.py</td><td>Instance overlap and band coverage, against unrelated pairs</td></tr>
       <tr><td class="call">qc_rbn_software_clusters.py</td><td>Joins PSK Reporter's software table against measured rates</td></tr>
+      <tr><td class="call">qc_rbn_cw_probe.py</td><td>The same test on the CW stream, both weekends</td></tr>
+      <tr><td class="call">qc_rbn_cw_mechanism.py</td><td>CW across three bin widths, and whether the calls are real</td></tr>
     </table>
   </div>
 
