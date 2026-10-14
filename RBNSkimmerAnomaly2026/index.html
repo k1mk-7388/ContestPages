@@ -117,7 +117,8 @@ a{color:var(--accent)}
   could be checked, against a 4.8 percent median across all receivers. All
   eight run the same skimmer program, and every receiver in the field that
   runs it is one of the eight. The same effect is present in their CW output
-  at about a fifth the strength.</p>
+  at about a fifth the strength, and because CW is spotted every day it
+  dates each node's change to a staggered 2–6 October.</p>
   <p class="meta">10–11 October 2026 · 195,068 RTTY spots · prepared by K1MK</p>
 
   <div class="claim">
@@ -425,6 +426,106 @@ a{color:var(--accent)}
   weekend the ratio is 1.2×, 1.0× and 0.9× at the three widths — no excess at
   any of them.</p>
 
+
+  <h3>Dating the change, node by node</h3>
+  <p>RBN carries CW every day, so unlike RTTY it can date the change. Eighteen
+  days were measured — 12 September for a baseline, then 26 September through
+  11 October — with each node compared to the <em>same day's</em> control
+  median, so that a busy contest Saturday (3 October carried 947,000 CW spots
+  against roughly 350,000 on a weekday) cannot be mistaken for a change in one
+  receiver. The controls held between 3.2 and 4.6 percent across the whole
+  window with no trend.</p>
+  <p>Each node's own series was then split at the point that best separates it,
+  weighting every day by its judged-spot count because a rate from 300 spots is
+  far noisier than one from 11,000. There is no single changeover date. Four
+  nodes transition cleanly, on four different days:</p>
+
+  <div class="scroll">
+    <table>
+      <tr><th>Node</th><th>Operator</th><th>Transition</th><th>Before</th>
+        <th>After</th><th>Welch t</th><th>Separation</th></tr>
+      <tr><td class="call">KC2DAC</td><td>&mdash;</td>
+        <td><strong>2 → 3 Oct</strong></td><td class="n">−0.5</td>
+        <td class="n">+4.1</td><td class="n">7.7</td><td>clean</td></tr>
+      <tr><td class="call">MM9PSY</td><td>Nathan M9PSY</td>
+        <td><strong>3 → 4 Oct</strong></td><td class="n">+0.4</td>
+        <td class="n">+4.8</td><td class="n">8.1</td><td>clean</td></tr>
+      <tr><td class="call">K1RA-4</td><td>Rich K1RA</td>
+        <td><strong>5 → 6 Oct</strong></td><td class="n">+1.0</td>
+        <td class="n">+7.4</td><td class="n">11.0</td><td>clean</td></tr>
+      <tr><td class="call">MM0ZBH</td><td>&mdash;</td>
+        <td><strong>5 → 6 Oct</strong></td><td class="n">+1.6</td>
+        <td class="n">+7.4</td><td class="n">9.3</td><td>clean</td></tr>
+      <tr><td class="call">K1RA</td><td>Rich K1RA</td>
+        <td colspan="5">not datable — no reliable clean period; under 1,000
+        judged CW spots a day before 4 Oct, elevated on every day after</td></tr>
+      <tr><td class="call">K3FEF</td><td>&mdash;</td>
+        <td colspan="5">not datable — first clears the floor on 3 Oct already
+        at +10.9, never observed clean</td></tr>
+      <tr><td class="call">M9PSY</td><td>Nathan M9PSY</td>
+        <td colspan="5">no step detected — around +3.5 throughout 3–9 Oct</td></tr>
+      <tr><td class="call">M9PSY-2</td><td>Nathan M9PSY</td>
+        <td colspan="5">not datable — zero CW spots on the 14 earlier days,
+        arrived 9 Oct already elevated</td></tr>
+      <tr><td class="call">KW4VA</td><td>Rich K1RA</td>
+        <td colspan="5">not datable — zero CW spots on the 15 earlier days,
+        arrived 10 Oct already elevated</td></tr>
+    </table>
+  </div>
+
+  <figure>
+    <div class="legend">
+      <span class="key"><span class="sw" style="background:var(--flag)"></span>one line per UberSDR Skimmer node</span>
+      <span class="key"><span class="sw" style="background:var(--accent)"></span>control median (the zero line)</span>
+      <span class="key" style="color:var(--ink-3)">shaded · 2–6 Oct, when the datable transitions fall</span>
+    </div>
+    <svg id="c3" role="img" aria-label="Daily CW mis-attribution excess over the control median for each UberSDR Skimmer node from 26 September to 11 October. Nodes sit near zero early in the window and step up on different days between 2 and 6 October, holding between 3 and 13 points above the controls afterward."></svg>
+    <figcaption>Each node's daily CW rate minus that day's control median, in
+    percentage points. Gaps are days with under 100 judged spots. The steps do
+    not line up: KC2DAC moves on 3 October, MM9PSY on the 4th, K1RA-4 and
+    MM0ZBH on the 6th, while K3FEF is already elevated when it first appears.</figcaption>
+  </figure>
+
+  <p>The two sharpest transitions are the best evidence for a released build
+  rather than individual tinkering: <code>K1RA-4</code> and
+  <code>MM0ZBH</code> both step between 5 and 6 October, from +1.0 and +1.6
+  points to +7.4 each, on eleven clean days before and six elevated days
+  after, with no overlap between the two segments. They belong to
+  <em>different</em> operators.</p>
+  <p>But the four datable transitions span five days, and that spread carries
+  its own information — it is what adoption of a new version looks like as
+  operators update at their own pace, rather than a single flag flipping
+  everywhere. The four undatable nodes fit the same shape: two of them
+  (<code>M9PSY-2</code>, <code>KW4VA</code>) were off the air entirely for the
+  fortnight before they appeared, and came up already affected, which is what a
+  node started on an already-updated install would do.</p>
+
+  <div class="correction">
+    <p><strong>This corrects something earlier in this report.</strong>
+    Section 1 argues that five of the eight instances belong to two operators,
+    so the number of independent events is five rather than eight. The dating
+    shows that instances under one operator did <em>not</em> change together:
+    Rich K1RA's <code>K1RA-4</code> steps on 5–6 October while his
+    <code>KW4VA</code> first appears on 10 October, and Nathan M9PSY's
+    <code>MM9PSY</code> steps on 3–4 October while his <code>M9PSY</code> shows
+    no step and his <code>M9PSY-2</code> arrives on the 9th. The rollout is
+    per-instance, not per-operator, so the true number of independent events
+    lies somewhere between five and eight, not at five.</p>
+  </div>
+
+  <div class="note">
+    <p><strong>Binary search was the wrong instrument, and the record is kept
+    here deliberately.</strong> Bisecting the group median converged on 2–3
+    October after four archive days. That boundary is an artifact: the median
+    covers whichever nodes clear the judged floor each day, and
+    <code>K3FEF</code> and <code>M9PSY</code> first appear on 3 October already
+    elevated, which moves the median without any node changing — two of the
+    four continuing nodes actually went <em>down</em> that day. Bisection also
+    assumes one monotonic step, and there is none. The per-node scan of all
+    eighteen days answered the question instead, for twelve extra archive days
+    and about 41 MB.</p>
+  </div>
+
   <h3>What CW does not show</h3>
   <p>Two things that hold in RTTY fail here, and both matter.</p>
   <ul>
@@ -520,6 +621,8 @@ a{color:var(--accent)}
       <tr><td class="call">qc_rbn_software_clusters.py</td><td>Joins PSK Reporter's software table against measured rates</td></tr>
       <tr><td class="call">qc_rbn_cw_probe.py</td><td>The same test on the CW stream, both weekends</td></tr>
       <tr><td class="call">qc_rbn_cw_mechanism.py</td><td>CW across three bin widths, and whether the calls are real</td></tr>
+      <tr><td class="call">qc_rbn_cw_timeline.py</td><td>Per-node daily CW excess across the whole window</td></tr>
+      <tr><td class="call">qc_rbn_cw_changepoint.py</td><td>Weighted changepoint search — each node's own transition date</td></tr>
     </table>
   </div>
 
@@ -630,6 +733,83 @@ a{color:var(--accent)}
     'font-size':12,'font-weight':600,'font-family':'var(--font-body)'})),'reference');
   txt(s2.appendChild(el('text',{x:L2+pw+10,y:yv(4)+20,fill:'var(--ink-3)',
     'font-size':10.5,'font-family':'var(--font-data)'})),'falls to 2–3%');
+
+  // ---- Chart 3: per-node daily excess over the control median -------------
+  var D3 = ['9/26','9/27','9/28','9/29','9/30','10/1','10/2','10/3',
+            '10/4','10/5','10/6','10/7','10/8','10/9','10/10','10/11'];
+  var N3 = [
+    {c:'KC2DAC', v:[-0.6,-0.4,-0.8,-0.1,-0.4,-0.3,0.0,4.4,null,null,null,null,null,2.8,2.4,5.1]},
+    {c:'K1RA',   v:[5.7,2.1,null,null,null,null,null,null,8.4,8.1,6.7,8.8,7.6,10.4,6.1,2.6]},
+    {c:'K1RA-4', v:[0.8,1.1,0.4,1.2,1.8,1.6,1.9,1.4,0.3,0.3,8.5,7.6,7.9,9.7,5.6,6.7]},
+    {c:'K3FEF',  v:[null,null,null,null,null,null,null,10.3,9.7,11.0,11.8,10.6,11.1,13.1,7.6,9.2]},
+    {c:'KW4VA',  v:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,4.2,2.8]},
+    {c:'M9PSY',  v:[null,null,null,null,null,null,null,5.0,1.8,null,3.0,2.7,3.4,3.3,null,null]},
+    {c:'M9PSY-2',v:[null,null,null,null,null,null,null,null,null,null,null,null,null,1.4,3.2,2.3]},
+    {c:'MM0ZBH', v:[0.7,0.9,2.0,1.9,2.5,3.1,3.1,1.4,1.2,2.2,9.4,7.2,8.1,8.5,4.8,6.5]},
+    {c:'MM9PSY', v:[-0.4,-0.3,-0.2,0.0,0.3,0.4,0.0,2.1,3.0,7.0,6.0,4.8,5.8,4.5,5.4,3.6]}
+  ];
+  var W3=680, H3=340, L3=46, R3=96, T3=22, B3=52;
+  var pw3=W3-L3-R3, ph3=H3-T3-B3, yLo=-2, yHi=14;
+  var x3 = function(i){ return L3 + (i/(D3.length-1))*pw3; };
+  var y3 = function(v){ return T3 + ph3 - ((v-yLo)/(yHi-yLo))*ph3; };
+  var old3 = document.getElementById('c3');
+  if (old3) {
+    var s3 = el('svg',{viewBox:'0 0 '+W3+' '+H3, role:'img', id:'c3'});
+    s3.setAttribute('aria-label', old3.getAttribute('aria-label'));
+    old3.replaceWith(s3);
+    // band covering 10/2 (i=6) .. 10/6 (i=10), where the datable steps fall
+    s3.appendChild(el('rect',{x:x3(6),y:T3,width:x3(10)-x3(6),height:ph3,
+      fill:'var(--ink-3)','fill-opacity':.09}));
+    txt(s3.appendChild(el('text',{x:(x3(6)+x3(10))/2,y:T3-8,
+      'text-anchor':'middle',fill:'var(--ink-3)','font-size':10,
+      'font-family':'var(--font-data)'})),'2\u20136 Oct');
+    [-2,0,2,4,6,8,10,12,14].forEach(function(g){
+      var zero = (g===0);
+      s3.appendChild(el('line',{x1:L3,x2:L3+pw3,y1:y3(g),y2:y3(g),
+        stroke:zero?'var(--accent)':'var(--grid)','stroke-width':zero?1.5:1,
+        'stroke-dasharray':zero?'4 3':''}));
+      txt(s3.appendChild(el('text',{x:L3-8,y:y3(g)+4,'text-anchor':'end',
+        fill:'var(--ink-3)','font-size':10.5,
+        'font-family':'var(--font-data)'})), (g>0?'+':'')+g);
+    });
+    D3.forEach(function(d,i){
+      if (i%2) return;
+      txt(s3.appendChild(el('text',{x:x3(i),y:H3-B3+20,'text-anchor':'middle',
+        fill:'var(--ink-3)','font-size':10,
+        'font-family':'var(--font-data)'})), d);
+    });
+    txt(s3.appendChild(el('text',{x:L3+pw3/2,y:H3-8,'text-anchor':'middle',
+      fill:'var(--ink-3)','font-size':11,
+      'font-family':'var(--font-body)'})),
+      'points above the same day\u2019s control median, CW');
+    N3.forEach(function(n){
+      var g = s3.appendChild(el('g',{}));
+      txt(g.appendChild(el('title',{})), n.c);
+      var run = [];
+      var flush = function(){
+        if (run.length > 1) {
+          g.appendChild(el('polyline',{points:run.join(' '),fill:'none',
+            stroke:'var(--flag)','stroke-width':2,'stroke-linejoin':'round',
+            'stroke-opacity':.68}));
+        }
+        run = [];
+      };
+      n.v.forEach(function(v,i){
+        if (v === null) { flush(); return; }
+        run.push(x3(i)+','+y3(v));
+        g.appendChild(el('circle',{cx:x3(i),cy:y3(v),r:2.4,
+          fill:'var(--flag)','fill-opacity':.85}));
+      });
+      flush();
+      var last = -1;
+      n.v.forEach(function(v,i){ if (v !== null) last = i; });
+      if (last >= D3.length-2) {
+        txt(s3.appendChild(el('text',{x:x3(last)+7,y:y3(n.v[last])+3.5,
+          fill:'var(--ink-2)','font-size':10,
+          'font-family':'var(--font-data)'})), n.c);
+      }
+    });
+  }
 })();
 </script>
 
