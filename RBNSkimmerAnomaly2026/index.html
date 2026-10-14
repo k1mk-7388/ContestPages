@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Makrothen Skimmer Anomaly</title>
+<meta name="description" content="Eight RBN skimmer instances, all running one skimmer program, reported pile-up callers instead of the station holding the frequency during Makrothen RTTY 2026.">
+<meta name="author" content="K1MK">
+<meta property="og:title" content="Makrothen Skimmer Anomaly">
+<meta property="og:description" content="Eight RBN skimmer instances, all running one skimmer program, reported pile-up callers instead of the station holding the frequency during Makrothen RTTY 2026.">
+<meta property="og:type" content="article">
+<style>
+/* Equivalent of the reset the Artifact runtime supplies, so this page renders
+   identically when served standalone. */
+:root{color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;font:14px system-ui,-apple-system,sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single measure-limited column for prose; tables and charts break out
+   to full width inside their own scroll containers. */
+:root{
+  --bg:#f7f8f9; --panel:#ffffff; --ink:#14181c; --ink-2:#4a5560; --ink-3:#7c8793;
+  --rule:#dde2e7; --grid:#e9edf1; --accent:#2a78d6; --flag:#eb6834;
+  --warn-bg:#fdf3ee; --note-bg:#eef4fb;
+  --font-display:'Archivo',system-ui,-apple-system,sans-serif;
+  --font-body:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  --font-data:'IBM Plex Mono',ui-monospace,'SFMono-Regular',monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#101417; --panel:#171c20; --ink:#eef1f4; --ink-2:#b4bfc9; --ink-3:#8793a0;
+    --rule:#2a3237; --grid:#232b30; --accent:#3987e5; --flag:#d95926;
+    --warn-bg:#241a14; --note-bg:#15202c; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101417; --panel:#171c20; --ink:#eef1f4; --ink-2:#b4bfc9; --ink-3:#8793a0;
+  --rule:#2a3237; --grid:#232b30; --accent:#3987e5; --flag:#d95926;
+  --warn-bg:#241a14; --note-bg:#15202c; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);
+  font-size:15px;line-height:1.62;margin:0}
+.wrap{max-width:900px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:40px 72px}
+.col{max-width:65ch}
+h1{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,5vw,40px);
+  line-height:1.1;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance}
+h2{font-family:var(--font-display);font-weight:600;font-size:21px;line-height:1.25;
+  margin:48px 0 10px;text-wrap:balance;letter-spacing:-.01em}
+h3{font-family:var(--font-display);font-weight:600;font-size:16px;margin:30px 0 6px}
+p{margin:0 0 14px}
+.standfirst{font-size:17px;color:var(--ink-2);margin-bottom:22px}
+.meta{font-family:var(--font-data);font-size:12px;color:var(--ink-3);
+  text-transform:uppercase;letter-spacing:.07em;margin:0 0 28px;
+  padding-bottom:18px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--font-data);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+code,.num{font-family:var(--font-data);font-size:.92em}
+strong{font-weight:600}
+.claim{background:var(--panel);border:1px solid var(--rule);border-left:3px solid var(--accent);
+  border-radius:4px;padding:18px 20px;margin:0 0 34px}
+.claim p:last-child{margin-bottom:0}
+.correction{background:var(--warn-bg);border:1px solid var(--rule);
+  border-left:3px solid var(--flag);border-radius:4px;padding:16px 18px;margin:22px 0}
+.correction p:last-child{margin-bottom:0}
+.note{background:var(--note-bg);border:1px solid var(--rule);border-radius:4px;
+  padding:14px 16px;margin:20px 0;font-size:14px;color:var(--ink-2)}
+.note p:last-child{margin-bottom:0}
+.scroll{overflow-x:auto;margin:18px 0;border:1px solid var(--rule);border-radius:4px;
+  background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;
+  font-variant-numeric:tabular-nums;min-width:min-content}
+th,td{padding:8px 14px;text-align:left;white-space:nowrap;
+  border-bottom:1px solid var(--rule)}
+tr:last-child td{border-bottom:none}
+th{font-family:var(--font-data);font-size:11px;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--ink-3);font-weight:500;
+  background:var(--bg);position:sticky;top:0}
+td.n{text-align:right;font-family:var(--font-data)}
+td.call{font-family:var(--font-data);font-weight:500}
+tr.flagged td.call{color:var(--flag)}
+figure{margin:24px 0}
+figcaption{font-size:13px;color:var(--ink-3);margin-top:8px;max-width:62ch}
+svg{display:block;width:100%;height:auto;max-width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink-2);
+  margin:0 0 10px;align-items:center}
+.key{display:inline-flex;align-items:center;gap:6px}
+.sw{width:11px;height:11px;border-radius:2px;flex:none}
+ul{padding-left:20px;margin:0 0 14px}
+li{margin-bottom:7px}
+.foot{margin-top:52px;padding-top:20px;border-top:1px solid var(--rule);
+  font-size:13px;color:var(--ink-3)}
+a{color:var(--accent)}
+@media (max-width:420px){
+  th,td{padding:7px 10px}
+  .wrap{padding-block:28px 56px}
+}
+</style>
+
+<div class="wrap">
+<div class="col">
+  <p class="eyebrow">Reverse Beacon Network · data quality</p>
+  <h1>Eight receivers that reported the caller, not the runner</h1>
+  <p class="standfirst">On the Makrothen RTTY weekend, eight RBN skimmers
+  reported the station <em>answering</em> a CQ at the frequency of the station
+  <em>calling</em> it — on 42 to 50 percent of the spots where their output
+  could be checked, against a 4.8 percent median across all receivers. All
+  eight run the same skimmer program, and every receiver in the field that
+  runs it is one of the eight.</p>
+  <p class="meta">10–11 October 2026 · 195,068 RTTY spots · prepared by K1MK</p>
+
+  <div class="claim">
+    <p><strong>The callsigns are correct.</strong> Between 90 and 97 percent of
+    the disputed calls are independently confirmed by four or more other
+    receivers, and every one is a well-formed callsign. These receivers decode
+    accurately.</p>
+    <p><strong>What is wrong is the frequency's meaning.</strong> A spot says
+    "this station is workable here". During a pile-up that is true of the runner
+    and false of everyone calling it. These eight receivers report the callers.</p>
+    <p><strong>It is new, and it arrived with RTTY itself.</strong> Two of
+    the eight were measured two weeks earlier in CQ WW RTTY at 5.4 percent on
+    roughly 32,000 checkable spots each. Three more were on the air that
+    weekend producing 3,872 to 18,625 CW spots and <strong>not one RTTY
+    spot</strong>. Their CW decoders were working; RTTY published nothing.</p>
+    <p><strong>And it is five operators, not eight receivers.</strong> Rich
+    K1RA runs three of the eight instances and Nathan M9PSY runs two, so the
+    number of independent changes behind this is five.</p>
+    <p><strong>The common factor is the software, and it partitions the field
+    exactly.</strong> PSK Reporter lists nine stations running
+    <code>UberSDR Skimmer</code>. Eight produced measurable RTTY on this
+    weekend, and those eight are precisely the eight receivers above. No
+    receiver running anything else exceeds 21.5 percent, and no control runs
+    it.</p>
+  </div>
+
+  <h2>How a spot is judged</h2>
+  <p>Group every RTTY spot by band, frequency to 0.1 kHz, and a five-minute
+  slot. Within each cell, the callsign that the most <em>distinct</em> receivers
+  report is taken as the station holding the frequency. Where at least four
+  receivers back that callsign, the cell is decided, and any spot in it naming a
+  different station is counted as mis-attributed.</p>
+  <p>On this weekend 15,245 cells reached that threshold. Rates below are
+  expressed over <em>judged</em> spots — those landing in a decided cell — not
+  over a receiver's total output.</p>
+
+  <div class="correction">
+    <p><strong>The denominator decides the answer, so it is stated everywhere.</strong>
+    Dividing instead by total spots understates any receiver that rarely lands in
+    a decided cell. In CQ WW RTTY, VU2OY-9 reads 5.6 percent that way
+    (581 of 10,423) and 85.8 percent over judged spots (581 of 677). Judged is
+    the right denominator for deciding whether to trust a receiver, but it rests
+    on a thin slice when a receiver is seldom judged — VU2OY-9 is judged on 6
+    percent of its own output. Neither figure is meaningful without the count
+    beside it.</p>
+  </div>
+</div>
+
+  <h2>1 · The split is not a gradient</h2>
+  <figure>
+    <div class="legend">
+      <span class="key"><span class="sw" style="background:var(--flag)"></span>out of line (8)</span>
+      <span class="key"><span class="sw" style="background:var(--accent)"></span>reference receivers (7)</span>
+      <span class="key" style="color:var(--ink-3)">dashed · 4.8% median of all 38 ranked</span>
+    </div>
+    <svg id="c1" role="img" aria-label="Mis-attribution rate by receiver: eight receivers between 41.6 and 50.2 percent, then a gap, then seven between 3.9 and 9.0 percent"></svg>
+    <figcaption>Mis-attribution rate over judged spots, Makrothen weekend. The
+    eight flagged receivers occupy 41.6–50.2%; the next receiver down sits at
+    9.0%. Nothing falls in between.</figcaption>
+  </figure>
+
+<div class="col">
+  <p>A faulty decoder would be expected to spread across a range. These do not.
+  Eight receivers sit between 41.6 and 50.2 percent, the ninth-worst at 9.0
+  percent, and the bulk of the field near 4 percent. <code>MM9PSY</code> and
+  <code>M9PSY-2</code> differ by 2 points, as do <code>K1RA</code> and
+  <code>K1RA-4</code>, and that resemblance understates the real
+  grouping. <strong>Five of the eight instances belong to two
+  operators:</strong> <code>K1RA</code>, <code>K1RA-4</code> and
+  <code>KW4VA</code> are all run by Rich K1RA, and <code>MM9PSY</code> and
+  <code>M9PSY-2</code> are both run by Nathan M9PSY. The eight instances are
+  therefore five operators — <code>KC2DAC</code>, <code>K3FEF</code>,
+  <code>MM0ZBH</code>, and those two — which is the count that matters,
+  because a decoder is configured per operator and not per callsign.</p>
+  <p>They need not be co-sited, and the spot data says they probably are not:
+  on identical band coverage the two K1RA instances overlap on only 23.4% of
+  frequency-and-moment keys and the two M9PSY instances on 38.8%, against
+  0.8–19.5% for fifteen unrelated pairs the same weekend. Two receivers at
+  different locations genuinely hear different things. What binds them is the
+  operator, not the antenna — so the right reading of "eight at once" is
+  <em>five operators changed something</em>, with one of them taking three
+  instances with him.</p>
+</div>
+
+  <div class="scroll">
+    <table>
+      <tr><th>Receiver</th><th>Same operator</th><th>Rate</th>
+        <th>Mis-attributed</th><th>Judged</th>
+        <th>Total spots</th><th>CQ WW weekend, 26–27 Sep</th></tr>
+      <tr class="flagged"><td class="call">KC2DAC</td><td>&mdash;</td><td class="n">50.2%</td><td class="n">1,078</td><td class="n">2,148</td><td class="n">2,756</td><td>on air, <strong>0 RTTY</strong> / 3,872 CW</td></tr>
+      <tr class="flagged"><td class="call">K1RA</td><td><strong>Rich K1RA</strong></td><td class="n">47.7%</td><td class="n">1,484</td><td class="n">3,111</td><td class="n">5,883</td><td><strong>5.4%</strong> on 31,981 judged</td></tr>
+      <tr class="flagged"><td class="call">MM9PSY</td><td><strong>Nathan M9PSY</strong></td><td class="n">45.7%</td><td class="n">3,333</td><td class="n">7,292</td><td class="n">10,391</td><td>on air, <strong>0 RTTY</strong> / 14,034 CW</td></tr>
+      <tr class="flagged"><td class="call">K1RA-4</td><td><strong>Rich K1RA</strong></td><td class="n">44.9%</td><td class="n">2,690</td><td class="n">5,992</td><td class="n">8,681</td><td><strong>5.4%</strong> on 31,964 judged</td></tr>
+      <tr class="flagged"><td class="call">K3FEF</td><td>&mdash;</td><td class="n">43.8%</td><td class="n">4,112</td><td class="n">9,397</td><td class="n">13,255</td><td>absent, no spots at all</td></tr>
+      <tr class="flagged"><td class="call">M9PSY-2</td><td><strong>Nathan M9PSY</strong></td><td class="n">43.7%</td><td class="n">2,931</td><td class="n">6,707</td><td class="n">9,337</td><td>absent, no spots at all</td></tr>
+      <tr class="flagged"><td class="call">KW4VA</td><td><strong>Rich K1RA</strong></td><td class="n">41.9%</td><td class="n">603</td><td class="n">1,438</td><td class="n">5,097</td><td>absent, no spots at all</td></tr>
+      <tr class="flagged"><td class="call">MM0ZBH</td><td>&mdash;</td><td class="n">41.6%</td><td class="n">3,725</td><td class="n">8,965</td><td class="n">13,877</td><td>on air, <strong>0 RTTY</strong> / 18,625 CW</td></tr>
+      <tr><td class="call">SZ1A</td><td>&mdash;</td><td class="n">9.0%</td><td class="n">76</td><td class="n">842</td><td class="n">2,223</td><td>sample too small</td></tr>
+      <tr><td class="call">RN4WA</td><td>&mdash;</td><td class="n">6.0%</td><td class="n">160</td><td class="n">2,668</td><td class="n">4,944</td><td>7.1%</td></tr>
+      <tr><td class="call">AA4PA</td><td>&mdash;</td><td class="n">5.3%</td><td class="n">182</td><td class="n">3,462</td><td class="n">5,301</td><td>5.8%</td></tr>
+      <tr><td class="call">HB9EMP</td><td>&mdash;</td><td class="n">5.0%</td><td class="n">165</td><td class="n">3,279</td><td class="n">4,621</td><td>6.2%</td></tr>
+      <tr><td class="call">OE9GHV</td><td>&mdash;</td><td class="n">4.9%</td><td class="n">343</td><td class="n">6,936</td><td class="n">9,723</td><td>5.7%</td></tr>
+      <tr><td class="call">S50ARX</td><td>&mdash;</td><td class="n">4.3%</td><td class="n">258</td><td class="n">6,017</td><td class="n">8,032</td><td>6.1%</td></tr>
+      <tr><td class="call">K9LC</td><td>&mdash;</td><td class="n">3.9%</td><td class="n">151</td><td class="n">3,896</td><td class="n">4,698</td><td>4.7%</td></tr>
+    </table>
+  </div>
+
+<div class="col">
+  <h2>2 · It is not one loud station</h2>
+  <p>3V8LL, Tunisia, drew the weekend's largest pile-ups and was the first case
+  noticed. It is not the cause. The eight receivers mis-attribute on <strong>68
+  to 74 percent of every runner they hear</strong>, against 25 to 34 percent for
+  the reference receivers, and no single runner accounts for more than 4 to 9
+  percent of any one receiver's errors. The behavior follows the receiver, not
+  the station.</p>
+
+  <h2>3 · It does not worsen with the pile-up</h2>
+  <p>This is the result that rules out a decoder simply being swamped. If a
+  crowded frequency were overwhelming these receivers, the rate should climb as
+  the crowd grows. It does not move. The reference receivers, meanwhile, get
+  steadily <em>better</em> as more receivers agree.</p>
+</div>
+
+  <figure>
+    <div class="legend">
+      <span class="key"><span class="sw" style="background:var(--flag)"></span>out of line</span>
+      <span class="key"><span class="sw" style="background:var(--accent)"></span>reference</span>
+    </div>
+    <svg id="c2" role="img" aria-label="Mis-attribution rate against the number of receivers backing the consensus: the eight flagged receivers stay between 35 and 54 percent at every crowd size, while reference receivers fall from about 5-12 percent to 2-3 percent"></svg>
+    <figcaption>Rate against how many distinct receivers back the frequency's
+    consensus — a proxy for how crowded the frequency is. One line per receiver.
+    Buckets with fewer than 25 judged spots are omitted.</figcaption>
+  </figure>
+
+<div class="col">
+  <h2>4 · On identical input, they disagree and the others do not</h2>
+  <p>This removes propagation, antenna and geography from the comparison. The
+  cells below are the same band, the same 0.1 kHz, the same five-minute slot:
+  both receivers had the same signals available at the same moment.</p>
+</div>
+
+  <div class="scroll">
+    <table>
+      <tr><th>Receiver</th><th>Shared cells with OE9GHV</th><th>Receiver wrong</th>
+        <th>OE9GHV wrong</th><th>Both wrong</th></tr>
+      <tr class="flagged"><td class="call">KC2DAC</td><td class="n">397</td><td class="n">43%</td><td class="n">6%</td><td class="n">12</td></tr>
+      <tr class="flagged"><td class="call">K1RA</td><td class="n">647</td><td class="n">41%</td><td class="n">5%</td><td class="n">8</td></tr>
+      <tr class="flagged"><td class="call">K1RA-4</td><td class="n">1,234</td><td class="n">38%</td><td class="n">5%</td><td class="n">18</td></tr>
+      <tr class="flagged"><td class="call">K3FEF</td><td class="n">2,121</td><td class="n">37%</td><td class="n">4%</td><td class="n">30</td></tr>
+      <tr class="flagged"><td class="call">MM9PSY</td><td class="n">2,481</td><td class="n">33%</td><td class="n">4%</td><td class="n">44</td></tr>
+      <tr class="flagged"><td class="call">KW4VA</td><td class="n">317</td><td class="n">33%</td><td class="n">5%</td><td class="n">3</td></tr>
+      <tr class="flagged"><td class="call">M9PSY-2</td><td class="n">2,476</td><td class="n">30%</td><td class="n">4%</td><td class="n">42</td></tr>
+      <tr class="flagged"><td class="call">MM0ZBH</td><td class="n">2,691</td><td class="n">30%</td><td class="n">4%</td><td class="n">45</td></tr>
+    </table>
+  </div>
+
+<div class="col">
+  <p>"Both wrong" stays in the tens throughout. They are not failing on the
+  same difficult cells; they fail where the reference receiver succeeds.</p>
+
+  <h2>5 · The mechanism, in one run</h2>
+  <p>3V8LL held 21100.1 kHz on 15 m and was reported there by 31 distinct
+  receivers over the session. Inside that window, at the same frequency to
+  0.1 kHz, these callers appear — each reported by six different receivers
+  within a few seconds, then gone:</p>
+</div>
+
+  <div class="scroll">
+    <table>
+      <tr><th>Caller</th><th>First spot (UTC)</th><th>Spots</th>
+        <th>Distinct receivers</th><th>Span</th></tr>
+      <tr><td class="call">GM5WXA</td><td class="n">16:06:59</td><td class="n">6</td><td class="n">6</td><td class="n">19 s</td></tr>
+      <tr><td class="call">AI9T</td><td class="n">16:10:28</td><td class="n">6</td><td class="n">6</td><td class="n">8 s</td></tr>
+      <tr><td class="call">TF4CU</td><td class="n">16:19:12</td><td class="n">6</td><td class="n">6</td><td class="n">18 s</td></tr>
+      <tr><td class="call">DJ1OJ</td><td class="n">16:24:26</td><td class="n">6</td><td class="n">6</td><td class="n">14 s</td></tr>
+      <tr><td class="call">KO4XB</td><td class="n">16:25:41</td><td class="n">6</td><td class="n">6</td><td class="n">7 s</td></tr>
+      <tr><td class="call">DL9NEI</td><td class="n">16:27:30</td><td class="n">6</td><td class="n">6</td><td class="n">13 s</td></tr>
+    </table>
+  </div>
+
+<div class="col">
+  <p>Spots equal receivers, inside a span shorter than one exchange: a single
+  transmission heard widely. That is what a caller looks like. A runner looks
+  like 3V8LL — many receivers, sustained over the whole session.</p>
+
+  <h2>6 · What it is not</h2>
+  <h3>Not a frequency calibration error</h3>
+  <p>An offset readout would drop a receiver's spots into the wrong frequency
+  bin, where the consensus names a different station, producing this signature
+  with nothing wrong at the decoder. Comparing each receiver's reported
+  frequency for the same station, band and slot against the median of the
+  others, every ranked receiver — flagged and reference alike — returns a median
+  offset of <strong>0.000 kHz</strong>. The flagged receivers do show 3.4 to
+  7.0 kHz of scatter against the reference receivers' 1.4 to 2.2, which is what
+  decoding a different signal looks like rather than a shifted dial.</p>
+
+  <h3>Not separable by signal strength</h3>
+  <p>SNR carries no usable information here. Spots matching the consensus have a
+  median of 24 dB over 111,448 observations; those that do not, 25 dB over
+  24,064. An SNR floor makes matters slightly worse up to 30 dB and only reduces
+  the caller share at 40 dB, where it also discards 88 percent of correct
+  spots.</p>
+
+  <h3>Not visible in the archive's other fields</h3>
+  <p>The RBN daily archive has carried a stable 13 columns since 2016 and holds
+  no validity or quality flag. Of the three quality-adjacent fields, two are
+  inert for RTTY: <code>speed</code> is a constant 45 baud, and <code>mode</code>
+  reads <code>CQ</code> on 117,504 of 117,521 RTTY spots on 10 October, because
+  the aggregator tags RTTY that way regardless of what was sent.</p>
+
+
+  <h2>7 · The common factor is one skimmer program</h2>
+  <p>PSK Reporter publishes the decoder software each reporting station used
+  over the preceding seven days, a window that covers this contest. Joining
+  that list against the measured rates answers the question the spot data
+  cannot: these receivers have one thing in common, and it is not geography,
+  antennas, or an operator.</p>
+  <p>Nine stations are listed as running <code>UberSDR Skimmer</code>. Eight
+  of them produced enough RTTY this weekend to be judged, and those eight are
+  exactly the eight receivers in section 1. The ninth,
+  <code>M9PSY</code>, is Nathan's third callsign and posted no RTTY. The
+  partition holds in both directions:</p>
+  <ul>
+    <li><strong>No false negatives.</strong> Every judged
+    <code>UberSDR Skimmer</code> station is in the 41.6–50.2 percent group;
+    the group's median is 44.3 percent.</li>
+    <li><strong>No false positives.</strong> Every ranked receiver above 30
+    percent runs <code>UberSDR Skimmer</code>. The worst receiver on any other
+    software is 21.5 percent, and the controls run unrelated programs —
+    <code>CW reporter</code>, <code>CWSL_DIGI</code>, and VE3NEA's own
+    <code>RTTY Skimmer Server v.1.3.0.432</code>.</li>
+  </ul>
+  <p>UberSDR is an open-source, web-based HF SDR platform built on ka9q-radio
+  (<a href="https://ubersdr.org">ubersdr.org</a>). Its published skimming
+  support is aimed at FT4, FT8 and WSPR, plus a driver for VE3NEA's Skim
+  Server; a dedicated RTTY skimmer is not part of its documented feature set,
+  which is consistent with RTTY decoding being recent. This report does not
+  identify which part of the program is responsible. What the data supports is
+  narrower and sufficient: the behavior tracks the program, not the site, the
+  antenna, or the operator.</p>
+
+  <div class="note">
+    <p><strong>What this does not establish.</strong> The software list covers
+    only the last seven days, so it describes what these stations run now, not
+    what they ran during CQ WW RTTY three weeks earlier. It therefore cannot
+    show whether <code>K1RA</code> and <code>K1RA-4</code> — clean at 5.4
+    percent then — changed programs, changed versions, or changed a setting.
+    The version string for <code>UberSDR Skimmer</code> is not published in
+    that table either, so the eight cannot be confirmed to share one build.</p>
+  </div>
+
+  <h3>A second, milder cluster</h3>
+  <p>The same join explains the weaker outliers, which had looked unrelated.
+  Four stations run <code>Meridian v0.1.25</code>, and all four read above the
+  field median — <code>LB9KJ-1</code> at 17.1 percent this weekend and 13.2
+  percent in CQ WW, <code>VU24DX-1</code> at 19.4 and 9.0,
+  <code>VU2CPL-88</code> at 8.3 in CQ WW, and <code>VU2OY-9</code>, CQ WW's
+  own 85.8 percent outlier. That is a different pattern from the
+  <code>UberSDR Skimmer</code> group: persistently elevated across both
+  weekends rather than suddenly broken in one. It is worth reporting because
+  it was the cluster the denominator correction surfaced, and because two
+  programs showing the same class of error suggests the underlying mistake —
+  treating a decode at a frequency as the station holding it — is an easy one
+  to make.</p>
+
+  <h2>8 · Why the CT1BOH flags pass these spots</h2>
+  <p>AR-Cluster's <code>SKIMVALID</code> is documented as being assigned "by
+  looking back to see if there are two more spots of the same call, on the same
+  frequency (± 0.3 kHz)". A caller inside a pile-up satisfies that by
+  construction — the table in section 5 shows six receivers reporting one
+  caller at one frequency within seconds. The spot is classified Valid, and
+  correctly so: the callsign is real and it did transmit there.</p>
+  <p><code>SKIMCQ</code> cannot separate them either, being a flag for the
+  literal string "CQ" in the comment field, which RTTY spots carry
+  indiscriminately. Both flags behave exactly as specified. Neither asks whether
+  the spotted station is the one <em>holding</em> the frequency, which is the
+  only question that distinguishes a caller from a runner.</p>
+
+  <h2>9 · Scope and limits</h2>
+  <ul>
+    <li><strong>Five operators, eight instances.</strong> Rich K1RA runs
+    <code>K1RA</code>, <code>K1RA-4</code> and <code>KW4VA</code>; Nathan
+    M9PSY runs <code>MM9PSY</code> and <code>M9PSY-2</code>. Ownership comes
+    from K1MK, not from the spot data, which cannot show it. It lowers the
+    number of independent events from eight to five and raises the weight of
+    each: three of Rich's instances behaving alike is one decision, not
+    three.</li>
+    <li><strong>"Absent" and "no RTTY" are different facts</strong>, and an
+    RTTY-only spot count cannot tell them apart. Of the six not measurable in
+    CQ WW RTTY, three (<code>KC2DAC</code>, <code>MM9PSY</code>,
+    <code>MM0ZBH</code>) were in fact on the air spotting CW and published
+    zero RTTY; only <code>K3FEF</code>, <code>M9PSY-2</code> and
+    <code>KW4VA</code> were absent entirely. An earlier draft of this report
+    called all six "not on air", which was wrong and understated the
+    case.</li>
+    <li><strong>K1RA is the clearest evidence of a change</strong>, measured at
+    5.4 percent on ~32,000 judged spots in CQ WW and 45–48 percent two weeks
+    later. The change cannot be dated more precisely: RTTY is contest-driven,
+    there is almost none between those weekends, and Makrothen is the next RTTY
+    contest after CQ WW, so there is no intermediate weekend to bisect.</li>
+    <li><strong>CQ WW RTTY was not free of this.</strong> VU2OY-9 reached 85.8
+    percent there, on 677 judged spots, with CN3A at 24.7 and OK4ZW at 21.2.
+    What distinguishes Makrothen is not that a receiver went wrong but that
+    <em>eight did at once, each on a large sample</em>: at a 1,000-judged floor
+    CQ WW's worst is 15.0 percent, 2.6× its median, while Makrothen still shows
+    six receivers at 43–50 percent.</li>
+    <li><strong>The weekends differ in size</strong> — 1,427,716 RTTY spots
+    against 195,068 — so only the per-receiver comparison carries weight, never
+    the aggregate difference between contests.</li>
+    <li><strong>The common factor is established; the defect is not.</strong>
+    Shared software explains which receivers misbehave, and the measurements
+    in sections 2–6 constrain what kind of fault it is: flat in pile-up size,
+    spread across nearly every runner, correct callsigns at correct
+    frequencies. What the defect actually is, and which version introduced it,
+    needs someone with the source — this report is intended to hand them a
+    reproducible target.</li>
+  </ul>
+
+  <h2>Reproducing this</h2>
+  <p>Every figure comes from the RBN daily archives for 2026-10-10, 2026-10-11,
+  2026-09-26 and 2026-09-27, read directly. The analysis is five scripts, each
+  reporting one of the tests above:</p>
+  <div class="scroll">
+    <table>
+      <tr><th>Script</th><th>What it establishes</th></tr>
+      <tr><td class="call">qc_rbn_caller_skimmers.py</td><td>Per-receiver rate ranking, with the calibration control</td></tr>
+      <tr><td class="call">qc_rbn_skimmer_profile.py</td><td>Concentration, pile-up dependence, head-to-head</td></tr>
+      <tr><td class="call">qc_rbn_skimmer_realcalls.py</td><td>Whether the disputed calls are real stations</td></tr>
+      <tr><td class="call">qc_rbn_skimmer_crosscontest.py</td><td>Same receivers across both weekends</td></tr>
+      <tr><td class="call">qc_rbn_denominator_matters.py</td><td>Both denominators at three sample floors</td></tr>
+      <tr><td class="call">qc_rbn_mode_split.py</td><td>Per-day RTTY/CW counts — separates "absent" from "no RTTY"</td></tr>
+      <tr><td class="call">qc_rbn_cosite_test.py</td><td>Instance overlap and band coverage, against unrelated pairs</td></tr>
+      <tr><td class="call">qc_rbn_software_clusters.py</td><td>Joins PSK Reporter's software table against measured rates</td></tr>
+    </table>
+  </div>
+
+  <p class="foot">Prepared by K1MK · K1SFA @ K1TTT · analysis of Reverse Beacon
+  Network archives, 14 October 2026. Rates over judged spots throughout;
+  consensus requires four distinct receivers in a band / 0.1 kHz / five-minute
+  cell.</p>
+</div>
+</div>
+
+<script>
+(function(){
+  var R = [
+    {c:'KC2DAC', r:50.2, f:1},{c:'K1RA', r:47.7, f:1},{c:'MM9PSY', r:45.7, f:1},
+    {c:'K1RA-4', r:44.9, f:1},{c:'K3FEF', r:43.8, f:1},{c:'M9PSY-2', r:43.7, f:1},
+    {c:'KW4VA', r:41.9, f:1},{c:'MM0ZBH', r:41.6, f:1},
+    {c:'SZ1A', r:9.0, f:0},{c:'RN4WA', r:6.0, f:0},{c:'AA4PA', r:5.3, f:0},
+    {c:'HB9EMP', r:5.0, f:0},{c:'OE9GHV', r:4.9, f:0},{c:'S50ARX', r:4.3, f:0},
+    {c:'K9LC', r:3.9, f:0}
+  ];
+  var MEDIAN = 4.8;
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function txt(e,s){e.appendChild(document.createTextNode(s));return e;}
+
+  // ---- Chart 1: sorted bars, rate by receiver -------------------------------
+  var L=86, Rp=46, T=26, rowH=23, barH=13, W=640;
+  var H = T + R.length*rowH + 34;
+  var maxX = 55, plotW = W - L - Rp;
+  var x = function(v){ return L + (v/maxX)*plotW; };
+  var s1 = el('svg',{viewBox:'0 0 '+W+' '+H, role:'img', id:'c1'});
+  var old1 = document.getElementById('c1');
+  s1.setAttribute('aria-label', old1.getAttribute('aria-label'));
+  old1.replaceWith(s1);
+  [0,10,20,30,40,50].forEach(function(g){
+    s1.appendChild(el('line',{x1:x(g),x2:x(g),y1:T-6,y2:T+R.length*rowH-6,
+      stroke:'var(--grid)','stroke-width':1}));
+    txt(s1.appendChild(el('text',{x:x(g),y:T+R.length*rowH+12,'text-anchor':'middle',
+      fill:'var(--ink-3)','font-size':11,'font-family':'var(--font-data)'})), g+'%');
+  });
+  s1.appendChild(el('line',{x1:x(MEDIAN),x2:x(MEDIAN),y1:T-14,y2:T+R.length*rowH-6,
+    stroke:'var(--ink-3)','stroke-width':1,'stroke-dasharray':'3 3'}));
+  txt(s1.appendChild(el('text',{x:x(MEDIAN)+5,y:T-6,fill:'var(--ink-3)','font-size':10,
+    'font-family':'var(--font-data)'})),'median 4.8%');
+  R.forEach(function(d,i){
+    var y = T + i*rowH, col = d.f ? 'var(--flag)' : 'var(--accent)';
+    var g = s1.appendChild(el('g',{}));
+    txt(g.appendChild(el('title',{})), d.c+': '+d.r.toFixed(1)+'% of judged spots');
+    txt(g.appendChild(el('text',{x:L-9,y:y+barH-3,'text-anchor':'end',fill:'var(--ink-2)',
+      'font-size':11.5,'font-family':'var(--font-data)'})), d.c);
+    g.appendChild(el('rect',{x:L,y:y,width:Math.max(1,x(d.r)-L),height:barH,
+      fill:col,rx:3}));
+    txt(g.appendChild(el('text',{x:x(d.r)+6,y:y+barH-3,fill:'var(--ink-2)',
+      'font-size':11,'font-family':'var(--font-data)'})), d.r.toFixed(1)+'%');
+  });
+
+  // ---- Chart 2: rate vs crowd size -----------------------------------------
+  var BUCK=['4-5','6-8','9-12','13+'];
+  var C = [
+    {c:'KC2DAC',f:1,v:[54,50,48,49]},{c:'MM9PSY',f:1,v:[47,42,47,49]},
+    {c:'M9PSY-2',f:1,v:[48,39,42,47]},{c:'K3FEF',f:1,v:[45,43,43,44]},
+    {c:'K1RA-4',f:1,v:[47,45,43,44]},{c:'MM0ZBH',f:1,v:[44,38,41,44]},
+    {c:'K1RA',f:1,v:[50,46,45,52]},{c:'KW4VA',f:1,v:[45,42,41,35]},
+    {c:'OE9GHV',f:0,v:[6,4,5,3]},{c:'HB9EMP',f:0,v:[5,5,5,3]},
+    {c:'S50ARX',f:0,v:[5,5,4,3]},{c:'AA4PA',f:0,v:[10,5,4,3]},
+    {c:'RN4WA',f:0,v:[8,6,4,3]},{c:'K9LC',f:0,v:[6,4,3,2]},
+    {c:'SZ1A',f:0,v:[12,9,7,3]}
+  ];
+  var W2=640, H2=300, L2=52, R2=124, T2=18, B2=44;
+  var pw = W2-L2-R2, ph = H2-T2-B2, maxY=60;
+  var xb = function(i){ return L2 + (i/(BUCK.length-1))*pw; };
+  var yv = function(v){ return T2 + ph - (v/maxY)*ph; };
+  var s2 = el('svg',{viewBox:'0 0 '+W2+' '+H2,role:'img'});
+  var old2 = document.getElementById('c2');
+  s2.setAttribute('id','c2');
+  s2.setAttribute('aria-label', old2.getAttribute('aria-label'));
+  old2.replaceWith(s2);
+  [0,10,20,30,40,50,60].forEach(function(g){
+    s2.appendChild(el('line',{x1:L2,x2:L2+pw,y1:yv(g),y2:yv(g),
+      stroke:'var(--grid)','stroke-width':1}));
+    txt(s2.appendChild(el('text',{x:L2-9,y:yv(g)+4,'text-anchor':'end',
+      fill:'var(--ink-3)','font-size':11,'font-family':'var(--font-data)'})), g+'%');
+  });
+  BUCK.forEach(function(b,i){
+    txt(s2.appendChild(el('text',{x:xb(i),y:H2-B2+22,'text-anchor':'middle',
+      fill:'var(--ink-3)','font-size':11,'font-family':'var(--font-data)'})), b);
+  });
+  txt(s2.appendChild(el('text',{x:L2+pw/2,y:H2-6,'text-anchor':'middle',
+    fill:'var(--ink-3)','font-size':11,'font-family':'var(--font-body)'})),
+    'distinct receivers backing the frequency consensus');
+  C.forEach(function(d){
+    var col = d.f ? 'var(--flag)' : 'var(--accent)';
+    var pts = d.v.map(function(v,i){ return xb(i)+','+yv(v); }).join(' ');
+    var g = s2.appendChild(el('g',{}));
+    txt(g.appendChild(el('title',{})), d.c+': '+d.v.join('% → ')+'%');
+    g.appendChild(el('polyline',{points:pts,fill:'none',stroke:col,
+      'stroke-width':2,'stroke-linejoin':'round','stroke-opacity':.72}));
+    d.v.forEach(function(v,i){
+      g.appendChild(el('circle',{cx:xb(i),cy:yv(v),r:3,fill:col}));
+    });
+  });
+  // direct labels at the right edge, one per group
+  txt(s2.appendChild(el('text',{x:L2+pw+10,y:yv(45)+4,fill:'var(--flag)',
+    'font-size':12,'font-weight':600,'font-family':'var(--font-body)'})),'out of line');
+  txt(s2.appendChild(el('text',{x:L2+pw+10,y:yv(45)+20,fill:'var(--ink-3)',
+    'font-size':10.5,'font-family':'var(--font-data)'})),'35–54%, flat');
+  txt(s2.appendChild(el('text',{x:L2+pw+10,y:yv(4)+4,fill:'var(--accent)',
+    'font-size':12,'font-weight':600,'font-family':'var(--font-body)'})),'reference');
+  txt(s2.appendChild(el('text',{x:L2+pw+10,y:yv(4)+20,fill:'var(--ink-3)',
+    'font-size':10.5,'font-family':'var(--font-data)'})),'falls to 2–3%');
+})();
+</script>
+
+</body>
+</html>
