@@ -118,7 +118,8 @@ a{color:var(--accent)}
   eight run the same skimmer program, and every receiver in the field that
   runs it is one of the eight. The same effect is present in their CW output
   at about a fifth the strength, and because CW is spotted every day it
-  dates each node's change to a staggered 2–6 October.</p>
+  dates each node's change to a staggered 2–6 October and confirms the
+  behavior was still running on 13 October.</p>
   <p class="meta">10–11 October 2026 · 195,068 RTTY spots · prepared by K1MK</p>
 
   <div class="claim">
@@ -551,7 +552,98 @@ a{color:var(--accent)}
   cause and two separate ones fit the data equally well, and this report cannot
   choose between them.</p>
 
-  <h2>9 · Why the CT1BOH flags pass these spots</h2>
+
+  <h2>9 · Still happening, and what it costs to exclude them</h2>
+  <p>The defect has not been fixed. Measured through 13 October — the latest
+  complete archive day — every one of the eight nodes with recent CW traffic is
+  still elevated, and none has returned to its own baseline. The controls sat
+  at 3.8 percent across the same days, as they have throughout.</p>
+
+  <div class="scroll">
+    <table>
+      <tr><th>Node</th><th>Own baseline</th><th>11–13 Oct</th>
+        <th>Judged CW spots</th><th>Status</th></tr>
+      <tr><td class="call">K3FEF</td><td class="n">never clean</td>
+        <td class="n">+12.6</td><td class="n">13,423</td><td>still elevated</td></tr>
+      <tr><td class="call">MM0ZBH</td><td class="n">+1.7</td>
+        <td class="n">+8.6</td><td class="n">13,330</td><td>still elevated</td></tr>
+      <tr><td class="call">K1RA-4</td><td class="n">+1.1</td>
+        <td class="n">+8.6</td><td class="n">10,202</td><td>still elevated</td></tr>
+      <tr><td class="call">MM9PSY</td><td class="n">−0.1</td>
+        <td class="n">+5.4</td><td class="n">13,361</td><td>still elevated</td></tr>
+      <tr><td class="call">KC2DAC</td><td class="n">−0.5</td>
+        <td class="n">+4.5</td><td class="n">5,295</td><td>still elevated</td></tr>
+      <tr><td class="call">M9PSY-2</td><td class="n">never clean</td>
+        <td class="n">+4.2</td><td class="n">10,580</td><td>still elevated</td></tr>
+      <tr><td class="call">KW4VA</td><td class="n">never clean</td>
+        <td class="n">+2.8</td><td class="n">911</td><td>elevated, one day only</td></tr>
+      <tr><td class="call">K1RA</td><td class="n">+3.0</td>
+        <td class="n">+2.6</td><td class="n">925</td><td>elevated, one day only</td></tr>
+      <tr><td class="call">M9PSY</td><td class="n">never clean</td>
+        <td class="n">—</td><td class="n">0</td><td>no recent CW traffic</td></tr>
+    </table>
+  </div>
+
+  <h3>The cost is much smaller than the spot count suggests</h3>
+  <p>On the Makrothen weekend these nine nodes produced 69,277 of 195,068 RTTY
+  spots, so excluding them discards <strong>35.5 percent of the stream</strong>
+  — the figure that makes a blacklist look expensive. It is misleading, because
+  most of what is discarded is either duplicated elsewhere or was never useful.</p>
+  <p>494 stations were reported <em>only</em> by these nine all weekend, a
+  quarter of the 1,991 stations seen. But <strong>456 of those 494 — 92.3
+  percent — never held a frequency anywhere</strong>, by the same four-skimmer
+  consensus test: they were callers inside somebody else's pile-up, and a spot
+  naming them was never workable. The genuine exclusive loss is <strong>38
+  running stations, 5.5 percent of the 686 that ran</strong>. Of the spots that
+  survive the exclusion, 97.8 percent name a station that ran somewhere.</p>
+
+  <h3>Multiplier risk for this weekend: two entities</h3>
+  <p>JARL WW RTTY counts DXCC entities plus the call areas of W, VE, JA and VK,
+  per band, so the question is not whether a station disappears but whether a
+  <em>multiplier</em> does. Re-running the Makrothen weekend without these nine:</p>
+  <ul>
+    <li><strong>No W or VE call area is lost on any band.</strong> All 15 areas
+    visible from runners stay visible on 80, 40, 20, 15 and 10 m. The 38
+    exclusive runners include 21 W/VE stations spread over W1–W5, W7, W9, W0
+    and VE3, and every one of those areas is covered by another runner.</li>
+    <li><strong>Two DXCC entities are lost:</strong> DU (Philippines) on 40 m
+    through <code>DU4WL</code>, and GU (Guernsey) on 15 m through
+    <code>GU0UVH</code>. 72 of the 74 entities visible from runners survive.</li>
+  </ul>
+  <p>So the trade is roughly 20,000 misleading spots removed against two rare
+  entity multipliers that would need finding by tuning instead. On that balance
+  the exclusion is worth taking for an assisted entry, and the recommendation
+  here is to apply it to all nine — including <code>M9PSY</code>, which has no
+  recent CW traffic to measure but runs the same program as the other eight.</p>
+
+  <div class="note">
+    <p><strong>These figures come from Makrothen, not from JARL.</strong>
+    Makrothen is the closest available RTTY proxy — same nodes, same software
+    state, four days earlier — but it is a distance contest worked in every
+    direction, while JARL is Japan-centred with a different mix of who is
+    audible and worth seeing. The structure of the finding should carry over;
+    the exact counts will not.</p>
+  </div>
+
+  <h3>Filter line</h3>
+  <p>For AR-Cluster 6.6, the exclusion placed inside the skimmer branch so that
+  self-spots under <code>call={MYCALL}</code> still survive. <code>Spotter</code>
+  appears to match exactly, so each instance is listed separately —
+  <code>M9PSY</code>, <code>M9PSY-2</code> and <code>MM9PSY</code> are three
+  different tokens.</p>
+  <div class="scroll">
+    <pre style="margin:0;padding:14px 16px;font-family:var(--font-data);
+      font-size:12px;line-height:1.7;white-space:pre;color:var(--ink)">dx filter band=[80,40,20,15,10] AND (call={MYCALL} OR NOT skimmer AND (unique&gt;1 OR MASTER)
+  OR (skimCQ AND (skimValid OR skimQSY)
+      AND NOT Spotter=[KC2DAC,K1RA,K1RA-4,K3FEF,KW4VA,M9PSY,M9PSY-2,MM9PSY,MM0ZBH]))
+  AND (comment=[*RTTY*,*JART*] OR NOT comment=[*CW*,*SSB*,*LSB*,*USB*,*FT8*,*FT4*,*MSHV*,
+      *F&amp;H*,*ROS*,*JT*,*PSK*,*VARAC*,*DIPLO*,*DME*,*OTA*,*FF*,*CCC*,*BEACON*,*NCDXF*])</pre>
+  </div>
+  <p>Verify it on the node with <code>HELP FILTER</code> before the contest —
+  if it is rejected for length, the same exclusion can go in a DX Filter
+  Macro.</p>
+
+  <h2>10 · Why the CT1BOH flags pass these spots</h2>
   <p>AR-Cluster's <code>SKIMVALID</code> is documented as being assigned "by
   looking back to see if there are two more spots of the same call, on the same
   frequency (± 0.3 kHz)". A caller inside a pile-up satisfies that by
@@ -564,7 +656,7 @@ a{color:var(--accent)}
   the spotted station is the one <em>holding</em> the frequency, which is the
   only question that distinguishes a caller from a runner.</p>
 
-  <h2>10 · Scope and limits</h2>
+  <h2>11 · Scope and limits</h2>
   <ul>
     <li><strong>Five operators, eight instances.</strong> Rich K1RA runs
     <code>K1RA</code>, <code>K1RA-4</code> and <code>KW4VA</code>; Nathan
@@ -623,6 +715,9 @@ a{color:var(--accent)}
       <tr><td class="call">qc_rbn_cw_mechanism.py</td><td>CW across three bin widths, and whether the calls are real</td></tr>
       <tr><td class="call">qc_rbn_cw_timeline.py</td><td>Per-node daily CW excess across the whole window</td></tr>
       <tr><td class="call">qc_rbn_cw_changepoint.py</td><td>Weighted changepoint search — each node's own transition date</td></tr>
+      <tr><td class="call">qc_rbn_cw_current.py</td><td>Whether each node is still elevated, to the latest archive day</td></tr>
+      <tr><td class="call">qc_rbn_blacklist_cost.py</td><td>What an exclusion removes, and what only these nodes reported</td></tr>
+      <tr><td class="call">qc_rbn_jarl_mult_risk.py</td><td>Call-area and DXCC-entity multipliers an exclusion would cost</td></tr>
     </table>
   </div>
 
