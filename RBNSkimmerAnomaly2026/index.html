@@ -629,24 +629,6 @@ a{color:var(--accent)}
     exact counts not to.</p>
   </div>
 
-  <h3>Filter line</h3>
-  <p>For AR-Cluster 6.6, the exclusion placed inside the skimmer branch so that
-  self-spots under <code>call={MYCALL}</code> still survive. <code>Spotter</code>
-  appears to match exactly, so each instance is listed separately —
-  <code>M9PSY</code>, <code>M9PSY-2</code> and <code>MM9PSY</code> are three
-  different tokens.</p>
-  <div class="scroll">
-    <pre style="margin:0;padding:14px 16px;font-family:var(--font-data);
-      font-size:12px;line-height:1.7;white-space:pre;color:var(--ink)">dx filter band=[80,40,20,15,10] AND (call={MYCALL} OR NOT skimmer AND (unique&gt;1 OR MASTER)
-  OR (skimCQ AND (skimValid OR skimQSY)
-      AND NOT Spotter=[KC2DAC,K1RA,K1RA-4,K3FEF,KW4VA,M9PSY,M9PSY-2,MM9PSY,MM0ZBH]))
-  AND (comment=[*RTTY*,*JART*] OR NOT comment=[*CW*,*SSB*,*LSB*,*USB*,*FT8*,*FT4*,*MSHV*,
-      *F&amp;H*,*ROS*,*JT*,*PSK*,*VARAC*,*DIPLO*,*DME*,*OTA*,*FF*,*CCC*,*BEACON*,*NCDXF*])</pre>
-  </div>
-  <p>Verify it on the node with <code>HELP FILTER</code> before the contest —
-  if it is rejected for length, the same exclusion can go in a DX Filter
-  Macro.</p>
-
   <h2>10 · Why the CT1BOH flags pass these spots</h2>
   <p>AR-Cluster's <code>SKIMVALID</code> is documented as being assigned "by
   looking back to see if there are two more spots of the same call, on the same
