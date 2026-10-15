@@ -134,8 +134,8 @@ a{color:var(--accent)}
   <p class="meta">10–11 October 2026 · 195,068 RTTY spots · CW checked to 14 Oct · prepared by K1MK</p>
 
   <h2>Where this started</h2>
-  <p>Nothing about this investigation began with a rate. It began with a
-  bandmap that looked wrong.</p>
+  <p>Nothing about the investigation reported here began with a rate. It
+  began with an N1MM bandmap that looked wrong.</p>
   <p>Below is ten minutes of 40 m RTTY, on the evening of 10 October. The
   spots have already been through an operator's own cluster filter and a
   check for mis-decoded callsigns, so nothing here is raw noise.</p>
@@ -214,7 +214,7 @@ a{color:var(--accent)}
 <line x1="1" x2="351" y1="782" y2="782" stroke="#8fa3c4"/>
 <text x="7" y="797.0" font-size="9.5" font-family="var(--font-data)" fill="#8fa3c4">19 entries after filtering &#183; simulated from RBN archive &#183; v2.3</text>
 </svg></div>
-    <figcaption><strong>Figure 1.</strong> Simulated from the RBN archive in the layout of N1MM's own bandmap, not a screenshot.</figcaption>
+    <figcaption><strong>Figure 1.</strong> Simulated from the RBN archive in the layout of N1MM's bandmap window, not a screenshot.</figcaption>
   </figure>
 
 <div class="col">
@@ -545,7 +545,7 @@ a{color:var(--accent)}
     that table either, so the eight cannot be confirmed to share one build.</p>
   </div>
 
-  <h3>A second cluster, and a different mechanism</h3>
+  <h3>A second grouping, and a different mechanism</h3>
   <p>The same join surfaced four stations running <code>Meridian v0.1.25</code>
   — <code>LB9KJ-1</code>, <code>VU24DX-1</code>, <code>VU2CPL-88</code> and
   <code>VU2OY-9</code> — all reading above the field median. An earlier
@@ -582,6 +582,26 @@ a{color:var(--accent)}
   while falling to 2.1 percent over Makrothen. <code>OK2PMU</code>'s excess,
   by contrast, is 45 percent garbles. Neither was examined in this report
   before he pointed at them.</p>
+  <p>What distinguishes <code>KM3T-5</code> is therefore callers, not
+  mis-copies: only 13 percent of its off-consensus spots are garbles, among
+  the lowest fractions in the field. Local conditions are a candidate
+  explanation — the station is in south-eastern New Hampshire, and a major
+  early-season nor'easter crossed the region over the CQ WW weekend, which
+  would raise the noise floor. That could produce callers rather than garbles
+  if a marginal runner fails to decode while a louder caller succeeds.</p>
+  <div class="note">
+    <p><strong>The archive cannot test that, and its apparent answer should
+    not be trusted.</strong> <code>KM3T-5</code> reported a median 27 dB over
+    the CQ WW weekend against a 22 dB field median — the highest of its
+    north-eastern peers, and above its own 23 dB over Makrothen. Taken at face
+    value that is the opposite of a raised noise floor, but it is weak
+    evidence in both directions. A skimmer measures SNR against its own noise
+    floor, so a uniform rise is largely invisible in the reported figure; and
+    only signals that decode are spotted at all, so raising the floor removes
+    the weak ones from the data and biases the surviving distribution upward.
+    Settling this needs the station's own noise records, not the spot
+    archive.</p>
+  </div>
 
 
   <h2>8 · The same effect in CW, roughly a quarter as strong</h2>
@@ -1003,7 +1023,7 @@ a{color:var(--accent)}
   counts: the frequency offset behind <code>VU2OY-9</code>, and the
   garble-versus-caller distinction in section 6.</p>
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v3.1. Rates over judged spots throughout;
+  Network archives, 15 October 2026. Report v3.2. Rates over judged spots throughout;
   consensus requires four distinct skimmers in one band / 0.1 kHz / five-minute run frequency
   cell.</p>
 </div>
