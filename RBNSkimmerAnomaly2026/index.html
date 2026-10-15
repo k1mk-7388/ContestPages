@@ -246,7 +246,15 @@ a{color:var(--accent)}
   Within each cell, the callsign that the most <em>distinct</em> skimmers
   report is taken as the station holding the frequency. Where at least four
   skimmers back that callsign, the run frequency cell is decided, and any spot in it naming a
-  different station is counted as mis-attributed.</p>
+  different station is counted as <strong>off-consensus</strong>.</p>
+  <p>Off-consensus is a measurement, not a verdict. A spot can be off-consensus
+  for several unrelated reasons — a mis-decoded callsign, a station answering
+  rather than running, a receiver whose frequency readout is offset, a
+  frequency changing hands inside the slot — and section 6 separates them.
+  Every skimmer in the field produces some: the controls run at 1.9 to 4.1
+  percent. The word <strong>mis-attribution</strong> is reserved here for the
+  one mechanism this report is about — a correctly decoded callsign reported
+  as though it held a frequency it was only answering on.</p>
   <p>On this weekend 15,245 run frequency cells reached that threshold. Rates below are
   expressed over <em>judged</em> spots — those landing in a decided run frequency cell — not
   over a skimmer's total output.</p>
@@ -270,8 +278,8 @@ a{color:var(--accent)}
       <span class="key"><span class="sw" style="background:var(--accent)"></span>reference skimmers (7)</span>
       <span class="key" style="color:var(--ink-3)">dashed · 4.8% median of all 38 ranked</span>
     </div>
-    <svg id="c1" role="img" aria-label="Mis-attribution rate by skimmer: eight skimmers between 41.6 and 50.2 percent, then a gap, then seven between 3.9 and 9.0 percent"></svg>
-    <figcaption><strong>Figure 2.</strong> Mis-attribution rate over judged spots, Makrothen weekend. The
+    <svg id="c1" role="img" aria-label="Off-consensus rate by skimmer: eight skimmers between 41.6 and 50.2 percent, then a gap, then seven between 3.9 and 9.0 percent"></svg>
+    <figcaption><strong>Figure 2.</strong> Off-consensus rate over judged spots, Makrothen weekend. The
     eight flagged skimmers occupy 41.6–50.2%; the next skimmer down sits at
     9.0%. Nothing falls in between.</figcaption>
   </figure>
@@ -301,9 +309,9 @@ a{color:var(--accent)}
 
   <div class="scroll">
     <table>
-      <caption><strong>Table 1.</strong> Mis-attribution rate by skimmer, both weekends.</caption>
+      <caption><strong>Table 1.</strong> Off-consensus rate by skimmer, both weekends.</caption>
       <tr><th>Skimmer</th><th>Same operator</th><th>Rate</th>
-        <th>Mis-attributed</th><th>Judged</th>
+        <th>Off-consensus</th><th>Judged</th>
         <th>Total spots</th><th>CQ WW weekend, 26–27 Sep</th></tr>
       <tr class="flagged"><td class="call">KC2DAC</td><td>&mdash;</td><td class="n">50.2%</td><td class="n">1,078</td><td class="n">2,148</td><td class="n">2,756</td><td>on air, <strong>0 RTTY</strong> / 3,872 CW</td></tr>
       <tr class="flagged"><td class="call">K1RA</td><td><strong>Andy K1RA</strong></td><td class="n">47.7%</td><td class="n">1,484</td><td class="n">3,111</td><td class="n">5,883</td><td><strong>5.4%</strong> on 31,981 judged</td></tr>
@@ -326,7 +334,7 @@ a{color:var(--accent)}
 <div class="col">
   <h2>2 · It is not one loud station</h2>
   <p>3V8LL, Tunisia, drew the weekend's largest pile-ups and was the first case
-  noticed. It is not the cause. The eight skimmers mis-attribute on <strong>68
+  noticed. It is not the cause. The eight skimmers go off-consensus on <strong>68
   to 74 percent of every runner they hear</strong>, against 25 to 34 percent for
   the reference skimmers, and no single runner accounts for more than 4 to 9
   percent of any one skimmer's errors. The behavior follows the skimmer, not
@@ -344,7 +352,7 @@ a{color:var(--accent)}
       <span class="key"><span class="sw" style="background:var(--flag)"></span>anomalous</span>
       <span class="key"><span class="sw" style="background:var(--accent)"></span>reference</span>
     </div>
-    <svg id="c2" role="img" aria-label="Mis-attribution rate against the number of skimmers backing the consensus: the eight flagged skimmers stay between 35 and 54 percent at every crowd size, while reference skimmers fall from about 5-12 percent to 2-3 percent"></svg>
+    <svg id="c2" role="img" aria-label="Off-consensus rate against the number of skimmers backing the consensus: the eight flagged skimmers stay between 35 and 54 percent at every crowd size, while reference skimmers fall from about 5-12 percent to 2-3 percent"></svg>
     <figcaption><strong>Figure 3.</strong> Rate against how many distinct skimmers back the frequency's
     consensus — a proxy for how crowded the frequency is. One line per skimmer.
     Buckets with fewer than 25 judged spots are omitted.</figcaption>
@@ -430,29 +438,30 @@ a{color:var(--accent)}
     <em>identical on CW and RTTY</em> — +100 Hz on 40 m and +300 Hz on 15 m in
     both — which no decoder fault would produce in two unrelated demodulators.
     At +300 Hz on 15 m a 0.1 kHz consensus bin places nearly every spot in a
-    neighbouring cell, so this method scores the station as mis-attributing by
+    neighbouring cell, so this method scores the station as off-consensus by
     construction. It also explains the oddity noted below, that only 677 of
     that station's 10,423 spots were judgeable at all. VU2CPL reports the
     cause as a calibration bug applying another receiver's correction
     constant, now fixed.</p>
     <p>The lesson for the method is general: <strong>a per-skimmer frequency
-    check has to run before any mis-attribution rate is believed</strong>, and
+    check has to run before any off-consensus rate is believed</strong>, and
     it has to run on the same days as the rate. A clock error of a few parts
-    per million is indistinguishable from mis-attribution in the output, and
+    per million is indistinguishable from caller mis-attribution in the
+    output, and
     distinguishable immediately in the frequencies.</p>
   </div>
 
   <h3>Not mis-decoded callsigns</h3>
-  <p>A disputed spot can carry a garbled version of the runner's own call
+  <p>A off-consensus spot can carry a garbled version of the runner's own call
   rather than somebody else's — a single-character RTTY error, published
   because the runner's CQ preceded it. That is a decoder fault, not a
   frequency-attribution fault, and it is a different problem with a different
-  fix. Classifying every disputed spot by its edit distance from the cell's
+  fix. Classifying every off-consensus spot by its edit distance from the cell's
   consensus holder separates the two, a test proposed by VU2CPL and run here
   on both weekends:</p>
   <div class="scroll">
     <table>
-      <caption><strong>Table 4.</strong> Disputed spots by mechanism,
+      <caption><strong>Table 4.</strong> Off-consensus spots by mechanism,
         Makrothen weekend. Garbles are within edit distance 2 of the runner's
         own callsign.</caption>
       <tr><th>Group</th><th>Garble of the runner</th><th>Caller</th>
@@ -466,10 +475,10 @@ a{color:var(--accent)}
         <td class="n">49–82%</td><td class="n">1.9–4.1%</td></tr>
     </table>
   </div>
-  <p>The eight are not mis-decoding: essentially none of their disputed spots
+  <p>The eight are not mis-decoding: essentially none of their off-consensus spots
   is a garble of the station actually there. Every other group in the field,
   controls included, produces garbles at between a fifth and half of its
-  disputed spots. More usefully, the last column isolates the mechanism this
+  off-consensus spots. More usefully, the last column isolates the mechanism this
   report is about — mis-attribution of a correctly decoded callsign — and the
   separation survives it intact: <strong>40.5 to 48.6 percent against 1.9 to
   4.1 percent</strong> for the controls. The headline was never carried by
@@ -543,14 +552,14 @@ a{color:var(--accent)}
   version of this report treated them as a milder case of the same effect.
   They are not, and the correction is owed to Manoj VU2CPL, co-author of
   Meridian, who reproduced the method independently and went through the
-  disputed spots against his stations' own records.</p>
+  off-consensus spots against his stations' own records.</p>
   <p>Two separate things were happening, neither of them what this report
   described:</p>
   <ul>
     <li><code>VU2OY-9</code>'s 85.8 percent is the <strong>frequency
     offset</strong> described in section 6, not mis-attribution at all.</li>
     <li>The rest is mostly <strong>garbled decodes of the runner's own
-    callsign</strong> — 39 to 57 percent of their disputed spots, against 0 to
+    callsign</strong> — 39 to 57 percent of their off-consensus spots, against 0 to
     1 percent for the <code>UberSDR Skimmer</code> group. The two programs show
     different faults, not one shared conceptual error, and the sentence in an
     earlier version suggesting otherwise was wrong.</li>
@@ -588,8 +597,8 @@ a{color:var(--accent)}
     NCDXF/IARU beacon project puts eighteen beacons on one frequency per band —
     14100.0, 18110.0, 21150.0, 24930.0 and 28200.0 kHz — each transmitting for
     ten seconds in rotation. A five-minute consensus slot can name only one
-    holder, so every other beacon heard in that slot was scored as a
-    mis-attribution while being entirely correct.</p>
+    holder, so every other beacon heard in that slot was scored as
+    off-consensus while being entirely correct.</p>
     <p>It was not a constant offset to subtract. It accounted for 65.3 percent
     of <code>K3FEF</code>'s CW misses, 56.3 percent of <code>MM0ZBH</code>'s
     and 55.6 percent of <code>K1RA-4</code>'s, but <strong>0.0 percent</strong>
@@ -607,7 +616,7 @@ a{color:var(--accent)}
 
   <div class="scroll">
     <table>
-      <caption><strong>Table 5.</strong> CW mis-attribution by weekend, beacon frequencies excluded.</caption>
+      <caption><strong>Table 5.</strong> CW off-consensus rate by weekend, beacon frequencies excluded.</caption>
       <tr><th>CW stream, beacons excluded</th><th>UberSDR group, median</th>
         <th>range</th><th>controls, median</th><th>range</th>
         <th>ratio</th></tr>
@@ -696,7 +705,7 @@ a{color:var(--accent)}
       <span class="key"><span class="sw" style="background:var(--accent)"></span>control median (the zero line)</span>
       <span class="key" style="color:var(--ink-3)">shaded · 2–6 Oct, when the datable transitions fall</span>
     </div>
-    <svg id="c3" role="img" aria-label="Daily CW mis-attribution excess over the control median for each UberSDR Skimmer node from 26 September to 11 October, international beacon frequencies excluded. Nodes sit near zero early in the window and step up on different days between 2 and 6 October, holding between 2 and 6 points above the controls afterward."></svg>
+    <svg id="c3" role="img" aria-label="Daily CW off-consensus excess over the control median for each UberSDR Skimmer node from 26 September to 11 October, international beacon frequencies excluded. Nodes sit near zero early in the window and step up on different days between 2 and 6 October, holding between 2 and 6 points above the controls afterward."></svg>
     <figcaption><strong>Figure 4.</strong> Each node's daily CW rate minus that day's control median, in
     percentage points, with the international beacon frequencies excluded.
     Gaps are days with under 100 judged spots. The steps do not line up:
@@ -760,7 +769,7 @@ a{color:var(--accent)}
     UberSDR group is merely elevated within a noisier field rather than
     defining its top.</li>
     <li><strong>The real-call test stops discriminating.</strong> In RTTY, 90
-    to 97 percent of the group's disputed calls were confirmed by four or more
+    to 97 percent of the group's off-consensus calls were confirmed by four or more
     other skimmers against 80 to 91 percent for controls. In CW both sit at 77
     to 89 percent. Everyone's CW misses are mostly real callers, so that test
     no longer separates the groups — it only confirms the mechanism is caller
@@ -898,7 +907,7 @@ a{color:var(--accent)}
   <h2>What this amounts to</h2>
   <div class="claim">
     <p><strong>The callsigns are correct.</strong> Between 90 and 97 percent of
-    the disputed calls are independently confirmed by four or more other
+    the off-consensus calls are independently confirmed by four or more other
     skimmers, and every one is a well-formed callsign. These skimmers decode
     accurately.</p>
     <p><strong>What is wrong is the frequency's meaning.</strong> A spot says
@@ -972,7 +981,7 @@ a{color:var(--accent)}
       <tr><th>Script</th><th>What it establishes</th></tr>
       <tr><td class="call">qc_rbn_caller_skimmers.py</td><td>Per-skimmer rate ranking, with the calibration control</td></tr>
       <tr><td class="call">qc_rbn_skimmer_profile.py</td><td>Concentration, pile-up dependence, head-to-head</td></tr>
-      <tr><td class="call">qc_rbn_skimmer_realcalls.py</td><td>Whether the disputed calls are real stations</td></tr>
+      <tr><td class="call">qc_rbn_skimmer_realcalls.py</td><td>Whether the off-consensus calls are real stations</td></tr>
       <tr><td class="call">qc_rbn_skimmer_crosscontest.py</td><td>Same skimmers across both weekends</td></tr>
       <tr><td class="call">qc_rbn_denominator_matters.py</td><td>Both denominators at three sample floors</td></tr>
       <tr><td class="call">qc_rbn_mode_split.py</td><td>Per-day RTTY/CW counts — separates "absent" from "no RTTY"</td></tr>
@@ -994,7 +1003,7 @@ a{color:var(--accent)}
   counts: the frequency offset behind <code>VU2OY-9</code>, and the
   garble-versus-caller distinction in section 6.</p>
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v3.0. Rates over judged spots throughout;
+  Network archives, 15 October 2026. Report v3.1. Rates over judged spots throughout;
   consensus requires four distinct skimmers in one band / 0.1 kHz / five-minute run frequency
   cell.</p>
 </div>
