@@ -119,8 +119,8 @@ a{color:var(--accent)}
 <div class="col">
   <p class="eyebrow">Reverse Beacon Network · data quality</p>
   <h1>Makrothen Skimmer Anomaly</h1>
-  <p class="subtitle">Eight skimmers that reported the caller, not the
-  runner</p>
+  <p class="subtitle">Eight skimmers that over-reported the caller,
+  not the runner</p>
   <p class="standfirst">On the Makrothen RTTY weekend, eight RBN skimmers
   reported the station <em>answering</em> on the frequency of a
   <em>running</em> station — on 42 to 50 percent of the spots where their
@@ -132,32 +132,6 @@ a{color:var(--accent)}
   dates each node's change to a staggered 2–6 October and confirms the
   behavior was still running on 14 October.</p>
   <p class="meta">10–11 October 2026 · 195,068 RTTY spots · CW checked to 14 Oct · prepared by K1MK</p>
-
-  <div class="claim">
-    <p><strong>The callsigns are correct.</strong> Between 90 and 97 percent of
-    the disputed calls are independently confirmed by four or more other
-    skimmers, and every one is a well-formed callsign. These skimmers decode
-    accurately.</p>
-    <p><strong>What is wrong is the frequency's meaning.</strong> A spot says
-    "this station is workable here". During a pile-up that is true of the runner
-    and false of everyone calling it. These eight skimmers report the callers.</p>
-    <p><strong>It is new, and it arrived with RTTY itself.</strong> Two of
-    the eight were measured two weeks earlier in CQ WW RTTY at 5.4 percent on
-    roughly 32,000 checkable spots each. Three more were on the air that
-    weekend producing 3,872 to 18,625 CW spots and <strong>not one RTTY
-    spot</strong>. Their CW decoders were working; RTTY published nothing.</p>
-    <p><strong>And it is five operators, not eight skimmers.</strong> Rich
-    K1RA runs three of the eight instances and Nathan M9PSY runs two, so the
-    number of independent changes behind this is five.</p>
-    <p><strong>The common factor is the software, and it partitions the field
-    exactly.</strong> PSK Reporter listed nine stations running
-    <code>UberSDR Skimmer</code> on 14 October, and a tenth,
-    <code>K1HTV-4</code>, appeared the next day. Eight produced measurable
-    RTTY on this weekend, and those eight are precisely the eight skimmers
-    above. No skimmer running anything else exceeds 21.5 percent, and no
-    control runs it.</p>
-  </div>
-
 
   <h2>Where this started</h2>
   <p>Nothing about this investigation began with a rate. It began with a
@@ -834,6 +808,33 @@ a{color:var(--accent)}
   the spotted station is the one <em>holding</em> the frequency, which is the
   only question that distinguishes a caller from a runner.</p>
 
+  <h2>What this amounts to</h2>
+  <div class="claim">
+    <p><strong>The callsigns are correct.</strong> Between 90 and 97 percent of
+    the disputed calls are independently confirmed by four or more other
+    skimmers, and every one is a well-formed callsign. These skimmers decode
+    accurately.</p>
+    <p><strong>What is wrong is the frequency's meaning.</strong> A spot says
+    "this station is workable here". During a pile-up that is true of the runner
+    and false of everyone calling it. Every skimmer reports a caller
+    occasionally; these eight did it on nearly half their checkable spots.</p>
+    <p><strong>It is new, and it arrived with RTTY itself.</strong> Two of
+    the eight were measured two weeks earlier in CQ WW RTTY at 5.4 percent on
+    roughly 32,000 checkable spots each. Three more were on the air that
+    weekend producing 3,872 to 18,625 CW spots and <strong>not one RTTY
+    spot</strong>. Their CW decoders were working; RTTY published nothing.</p>
+    <p><strong>And it is five operators, not eight skimmers.</strong> Andy
+    K1RA runs three of the eight instances and Nathan M9PSY runs two, so the
+    number of independent changes behind this is five.</p>
+    <p><strong>The common factor is the software, and it partitions the field
+    exactly.</strong> PSK Reporter listed nine stations running
+    <code>UberSDR Skimmer</code> on 14 October, and a tenth,
+    <code>K1HTV-4</code>, appeared the next day. Eight produced measurable
+    RTTY on this weekend, and those eight are precisely the eight skimmers
+    above. No skimmer running anything else exceeds 21.5 percent, and no
+    control runs it.</p>
+  </div>
+
   <h2>11 · Scope and limits</h2>
   <ul>
     <li><strong>Five operators, eight instances.</strong> Andy K1RA runs
@@ -841,7 +842,7 @@ a{color:var(--accent)}
     M9PSY runs <code>MM9PSY</code> and <code>M9PSY-2</code>. Ownership comes
     from K1MK, not from the spot data, which cannot show it. It lowers the
     number of independent events from eight to five and raises the weight of
-    each: three of Rich's instances behaving alike is one decision, not
+    each: three of Andy's instances behaving alike is one decision, not
     three.</li>
     <li><strong>"Absent" and "no RTTY" are different facts</strong>, and an
     RTTY-only spot count cannot tell them apart. Of the six not measurable in
@@ -902,7 +903,7 @@ a{color:var(--accent)}
   </div>
 
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v2.5. Rates over judged spots throughout;
+  Network archives, 15 October 2026. Report v2.6. Rates over judged spots throughout;
   consensus requires four distinct skimmers in one band / 0.1 kHz / five-minute run frequency
   cell.</p>
 </div>
