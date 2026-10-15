@@ -404,15 +404,76 @@ a{color:var(--accent)}
   like 3V8LL — many skimmers, sustained over the whole session.</p>
 
   <h2>6 · What it is not</h2>
-  <h3>Not a frequency calibration error</h3>
+  <h3>Not a frequency calibration error — for these eight</h3>
   <p>An offset readout would drop a receiver's spots into the wrong frequency
   bin, where the consensus names a different station, producing this signature
   with nothing wrong at the decoder. Comparing each receiver's reported
   frequency for the same station, band and slot against the median of the
-  others, every ranked receiver — flagged and reference alike — returns a median
-  offset of <strong>0.000 kHz</strong>. The flagged receivers do show 3.4 to
-  7.0 kHz of scatter against the reference receivers' 1.4 to 2.2, which is what
-  decoding a different signal looks like rather than a shifted dial.</p>
+  others, every skimmer ranked <em>on this weekend</em> — flagged and reference
+  alike — returns a median offset of <strong>0.000 kHz</strong>. The flagged
+  skimmers do show 3.4 to 7.0 kHz of scatter against the reference skimmers'
+  1.4 to 2.2, which is what decoding a different signal looks like rather than
+  a shifted dial.</p>
+
+  <div class="correction">
+    <p><strong>That control was run on the Makrothen weekend, and one station
+    needed it on the other one.</strong> Manoj VU2CPL, co-author of the
+    Meridian skimmer software, reproduced this report's method from the RBN
+    archives and pointed out that <code>VU2OY-9</code> — CQ WW's 85.8 percent
+    outlier, cited twice in this report — is a receiver frequency offset
+    rather than caller mis-attribution. Re-running the same control on the CQ
+    WW days confirms it:</p>
+    <p style="font-family:var(--font-data);font-size:12.5px;line-height:1.8">
+    40 m&nbsp;&nbsp;+100 Hz&nbsp;&nbsp;·&nbsp;&nbsp;20 m&nbsp;&nbsp;+200 Hz&nbsp;&nbsp;·&nbsp;&nbsp;15 m&nbsp;&nbsp;+300 Hz&nbsp;&nbsp;·&nbsp;&nbsp;mean&nbsp;<strong>+13.7 ppm</strong></p>
+    <p>The offset scales with band, which is the signature of a fractional
+    error in the sampling clock rather than anything in the decoder, and it is
+    <em>identical on CW and RTTY</em> — +100 Hz on 40 m and +300 Hz on 15 m in
+    both — which no decoder fault would produce in two unrelated demodulators.
+    At +300 Hz on 15 m a 0.1 kHz consensus bin places nearly every spot in a
+    neighbouring cell, so this method scores the station as mis-attributing by
+    construction. It also explains the oddity noted below, that only 677 of
+    that station's 10,423 spots were judgeable at all. VU2CPL reports the
+    cause as a calibration bug applying another receiver's correction
+    constant, now fixed.</p>
+    <p>The lesson for the method is general: <strong>a per-skimmer frequency
+    check has to run before any mis-attribution rate is believed</strong>, and
+    it has to run on the same days as the rate. A clock error of a few parts
+    per million is indistinguishable from mis-attribution in the output, and
+    distinguishable immediately in the frequencies.</p>
+  </div>
+
+  <h3>Not mis-decoded callsigns</h3>
+  <p>A disputed spot can carry a garbled version of the runner's own call
+  rather than somebody else's — a single-character RTTY error, published
+  because the runner's CQ preceded it. That is a decoder fault, not a
+  frequency-attribution fault, and it is a different problem with a different
+  fix. Classifying every disputed spot by its edit distance from the cell's
+  consensus holder separates the two, a test proposed by VU2CPL and run here
+  on both weekends:</p>
+  <div class="scroll">
+    <table>
+      <caption><strong>Table 4.</strong> Disputed spots by mechanism,
+        Makrothen weekend. Garbles are within edit distance 2 of the runner's
+        own callsign.</caption>
+      <tr><th>Group</th><th>Garble of the runner</th><th>Caller</th>
+        <th>Caller rate over judged spots</th></tr>
+      <tr><td>UberSDR Skimmer (six nodes)</td><td class="n">0–1%</td>
+        <td class="n">97–98%</td>
+        <td class="n"><strong>40.5–48.6%</strong></td></tr>
+      <tr><td>Meridian (two nodes)</td><td class="n">39–56%</td>
+        <td class="n">39–57%</td><td class="n">7.6–9.8%</td></tr>
+      <tr><td>controls (five)</td><td class="n">18–50%</td>
+        <td class="n">49–82%</td><td class="n">1.9–4.1%</td></tr>
+    </table>
+  </div>
+  <p>The eight are not mis-decoding: essentially none of their disputed spots
+  is a garble of the station actually there. Every other group in the field,
+  controls included, produces garbles at between a fifth and half of its
+  disputed spots. More usefully, the last column isolates the mechanism this
+  report is about — mis-attribution of a correctly decoded callsign — and the
+  separation survives it intact: <strong>40.5 to 48.6 percent against 1.9 to
+  4.1 percent</strong> for the controls. The headline was never carried by
+  decoder errors.</p>
 
   <h3>Not separable by signal strength</h3>
   <p>SNR carries no usable information here. Spots matching the consensus have a
@@ -475,19 +536,43 @@ a{color:var(--accent)}
     that table either, so the eight cannot be confirmed to share one build.</p>
   </div>
 
-  <h3>A second, milder cluster</h3>
-  <p>The same join explains the weaker outliers, which had looked unrelated.
-  Four stations run <code>Meridian v0.1.25</code>, and all four read above the
-  field median — <code>LB9KJ-1</code> at 17.1 percent this weekend and 13.2
-  percent in CQ WW, <code>VU24DX-1</code> at 19.4 and 9.0,
-  <code>VU2CPL-88</code> at 8.3 in CQ WW, and <code>VU2OY-9</code>, CQ WW's
-  own 85.8 percent outlier. That is a different pattern from the
-  <code>UberSDR Skimmer</code> group: persistently elevated across both
-  weekends rather than suddenly broken in one. It is worth reporting because
-  it was the cluster the denominator correction surfaced, and because two
-  programs showing the same class of error suggests the underlying mistake —
-  treating a decode at a frequency as the station holding it — is an easy one
-  to make.</p>
+  <h3>A second cluster, and a different mechanism</h3>
+  <p>The same join surfaced four stations running <code>Meridian v0.1.25</code>
+  — <code>LB9KJ-1</code>, <code>VU24DX-1</code>, <code>VU2CPL-88</code> and
+  <code>VU2OY-9</code> — all reading above the field median. An earlier
+  version of this report treated them as a milder case of the same effect.
+  They are not, and the correction is owed to Manoj VU2CPL, co-author of
+  Meridian, who reproduced the method independently and went through the
+  disputed spots against his stations' own records.</p>
+  <p>Two separate things were happening, neither of them what this report
+  described:</p>
+  <ul>
+    <li><code>VU2OY-9</code>'s 85.8 percent is the <strong>frequency
+    offset</strong> described in section 6, not mis-attribution at all.</li>
+    <li>The rest is mostly <strong>garbled decodes of the runner's own
+    callsign</strong> — 39 to 57 percent of their disputed spots, against 0 to
+    1 percent for the <code>UberSDR Skimmer</code> group. The two programs show
+    different faults, not one shared conceptual error, and the sentence in an
+    earlier version suggesting otherwise was wrong.</li>
+  </ul>
+  <p>On the caller mechanism itself the Meridian stations sit between the
+  controls and the <code>UberSDR Skimmer</code> group: 2.9 and 4.2 percent of
+  judged spots in CQ WW, 7.6 and 9.8 percent over the Makrothen weekend,
+  against 1.9 to 4.1 percent for controls and 40.5 to 48.6 percent for the
+  eight. VU2CPL's own figures for his stations are lower again, at the
+  reference level, and the gap is a definitional one worth stating rather than
+  splitting: his classification draws on what his receivers actually recorded,
+  while this one can only ask whether a callsign is corroborated elsewhere in
+  the field, so spots he can place as unconfirmed are counted here as callers.
+  Both measures put his stations far below the eight, which is the comparison
+  that matters. He reports the garble leak as being closed in the next
+  Meridian release.</p>
+  <p>One further station is worth the same treatment, and the suggestion is
+  his: <code>KM3T-5</code> reads 13.0 percent on the caller mechanism in CQ WW
+  — above every Meridian station and the highest in that weekend's field —
+  while falling to 2.1 percent over Makrothen. <code>OK2PMU</code>'s excess,
+  by contrast, is 45 percent garbles. Neither was examined in this report
+  before he pointed at them.</p>
 
 
   <h2>8 · The same effect in CW, roughly a quarter as strong</h2>
@@ -522,7 +607,7 @@ a{color:var(--accent)}
 
   <div class="scroll">
     <table>
-      <caption><strong>Table 4.</strong> CW mis-attribution by weekend, beacon frequencies excluded.</caption>
+      <caption><strong>Table 5.</strong> CW mis-attribution by weekend, beacon frequencies excluded.</caption>
       <tr><th>CW stream, beacons excluded</th><th>UberSDR group, median</th>
         <th>range</th><th>controls, median</th><th>range</th>
         <th>ratio</th></tr>
@@ -573,7 +658,7 @@ a{color:var(--accent)}
 
   <div class="scroll">
     <table>
-      <caption><strong>Table 5.</strong> Per-skimmer transition dates, CW.</caption>
+      <caption><strong>Table 6.</strong> Per-skimmer transition dates, CW.</caption>
       <tr><th>Node</th><th>Operator</th><th>Transition</th><th>Before</th>
         <th>After</th><th>Welch t</th><th>Separation</th></tr>
       <tr><td class="call">KC2DAC</td><td>&mdash;</td>
@@ -698,7 +783,7 @@ a{color:var(--accent)}
 
   <div class="scroll">
     <table>
-      <caption><strong>Table 6.</strong> Status to 14 October, CW, beacons excluded.</caption>
+      <caption><strong>Table 7.</strong> Status to 14 October, CW, beacons excluded.</caption>
       <tr><th>Node</th><th>Own baseline</th><th>12–14 Oct</th>
         <th>Judged CW spots</th><th>Status</th></tr>
       <tr><td class="call">K3FEF</td><td class="n">never clean</td>
@@ -883,7 +968,7 @@ a{color:var(--accent)}
   reporting one of the tests above:</p>
   <div class="scroll">
     <table>
-      <caption><strong>Table 7.</strong> Scripts that reproduce each result.</caption>
+      <caption><strong>Table 8.</strong> Scripts that reproduce each result.</caption>
       <tr><th>Script</th><th>What it establishes</th></tr>
       <tr><td class="call">qc_rbn_caller_skimmers.py</td><td>Per-skimmer rate ranking, with the calibration control</td></tr>
       <tr><td class="call">qc_rbn_skimmer_profile.py</td><td>Concentration, pile-up dependence, head-to-head</td></tr>
@@ -904,8 +989,12 @@ a{color:var(--accent)}
     </table>
   </div>
 
+  <p class="foot">With thanks to Manoj VU2CPL, co-author of the Meridian skimmer software,
+  who reproduced this analysis from the RBN archives and corrected it on two
+  counts: the frequency offset behind <code>VU2OY-9</code>, and the
+  garble-versus-caller distinction in section 6.</p>
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v2.7. Rates over judged spots throughout;
+  Network archives, 15 October 2026. Report v3.0. Rates over judged spots throughout;
   consensus requires four distinct skimmers in one band / 0.1 kHz / five-minute run frequency
   cell.</p>
 </div>
