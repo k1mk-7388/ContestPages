@@ -81,6 +81,9 @@ strong{font-weight:600}
 .note p:last-child{margin-bottom:0}
 .scroll{overflow-x:auto;margin:18px 0;border:1px solid var(--rule);border-radius:4px;
   background:var(--panel)}
+caption{caption-side:top;text-align:left;font-size:12.5px;
+  color:var(--ink-3);padding:10px 14px 8px;line-height:1.45}
+caption strong{color:var(--ink-2)}
 table{border-collapse:collapse;width:100%;font-size:13.5px;
   font-variant-numeric:tabular-nums;min-width:min-content}
 th,td{padding:8px 14px;text-align:left;white-space:nowrap;
@@ -237,7 +240,7 @@ a{color:var(--accent)}
 <line x1="1" x2="351" y1="782" y2="782" stroke="#8fa3c4"/>
 <text x="7" y="797.0" font-size="9.5" font-family="var(--font-data)" fill="#8fa3c4">19 entries after filtering &#183; simulated from RBN archive &#183; v2.3</text>
 </svg></div>
-    <figcaption>Simulated from the RBN archive in the layout of N1MM's own bandmap, not a screenshot.</figcaption>
+    <figcaption><strong>Figure 1.</strong> Simulated from the RBN archive in the layout of N1MM's own bandmap, not a screenshot.</figcaption>
   </figure>
 
 <div class="col">
@@ -263,18 +266,19 @@ a{color:var(--accent)}
   the one measurement artifact found in this work (section 8) comes from the
   international beacon frequencies, which are CW.</p>
   <p>Group every RTTY spot by band, frequency to 0.1 kHz, and a five-minute
-  slot. Within each cell, the callsign that the most <em>distinct</em> skimmers
+  slot. Call each of those buckets a <em>run frequency cell</em>.
+  Within each cell, the callsign that the most <em>distinct</em> skimmers
   report is taken as the station holding the frequency. Where at least four
-  skimmers back that callsign, the cell is decided, and any spot in it naming a
+  skimmers back that callsign, the run frequency cell is decided, and any spot in it naming a
   different station is counted as mis-attributed.</p>
-  <p>On this weekend 15,245 cells reached that threshold. Rates below are
-  expressed over <em>judged</em> spots — those landing in a decided cell — not
+  <p>On this weekend 15,245 run frequency cells reached that threshold. Rates below are
+  expressed over <em>judged</em> spots — those landing in a decided run frequency cell — not
   over a skimmer's total output.</p>
 
   <div class="correction">
     <p><strong>The denominator decides the answer, so it is stated everywhere.</strong>
     Dividing instead by total spots understates any skimmer that rarely lands in
-    a decided cell. In CQ WW RTTY, VU2OY-9 reads 5.6 percent that way
+    a decided run frequency cell. In CQ WW RTTY, VU2OY-9 reads 5.6 percent that way
     (581 of 10,423) and 85.8 percent over judged spots (581 of 677). Judged is
     the right denominator for deciding whether to trust a skimmer, but it rests
     on a thin slice when a skimmer is seldom judged — VU2OY-9 is judged on 6
@@ -286,12 +290,12 @@ a{color:var(--accent)}
   <h2>1 · The split is not a gradient</h2>
   <figure>
     <div class="legend">
-      <span class="key"><span class="sw" style="background:var(--flag)"></span>out of line (8)</span>
+      <span class="key"><span class="sw" style="background:var(--flag)"></span>anomalous (8)</span>
       <span class="key"><span class="sw" style="background:var(--accent)"></span>reference skimmers (7)</span>
       <span class="key" style="color:var(--ink-3)">dashed · 4.8% median of all 38 ranked</span>
     </div>
     <svg id="c1" role="img" aria-label="Mis-attribution rate by skimmer: eight skimmers between 41.6 and 50.2 percent, then a gap, then seven between 3.9 and 9.0 percent"></svg>
-    <figcaption>Mis-attribution rate over judged spots, Makrothen weekend. The
+    <figcaption><strong>Figure 2.</strong> Mis-attribution rate over judged spots, Makrothen weekend. The
     eight flagged skimmers occupy 41.6–50.2%; the next skimmer down sits at
     9.0%. Nothing falls in between.</figcaption>
   </figure>
@@ -321,6 +325,7 @@ a{color:var(--accent)}
 
   <div class="scroll">
     <table>
+      <caption><strong>Table 1.</strong> Mis-attribution rate by skimmer, both weekends.</caption>
       <tr><th>Skimmer</th><th>Same operator</th><th>Rate</th>
         <th>Mis-attributed</th><th>Judged</th>
         <th>Total spots</th><th>CQ WW weekend, 26–27 Sep</th></tr>
@@ -349,7 +354,7 @@ a{color:var(--accent)}
   to 74 percent of every runner they hear</strong>, against 25 to 34 percent for
   the reference skimmers, and no single runner accounts for more than 4 to 9
   percent of any one skimmer's errors. The behavior follows the skimmer, not
-  the station.</p>
+  the running station.</p>
 
   <h2>3 · It does not worsen with the pile-up</h2>
   <p>This is the result that rules out a decoder simply being swamped. If a
@@ -360,11 +365,11 @@ a{color:var(--accent)}
 
   <figure>
     <div class="legend">
-      <span class="key"><span class="sw" style="background:var(--flag)"></span>out of line</span>
+      <span class="key"><span class="sw" style="background:var(--flag)"></span>anomalous</span>
       <span class="key"><span class="sw" style="background:var(--accent)"></span>reference</span>
     </div>
     <svg id="c2" role="img" aria-label="Mis-attribution rate against the number of skimmers backing the consensus: the eight flagged skimmers stay between 35 and 54 percent at every crowd size, while reference skimmers fall from about 5-12 percent to 2-3 percent"></svg>
-    <figcaption>Rate against how many distinct skimmers back the frequency's
+    <figcaption><strong>Figure 3.</strong> Rate against how many distinct skimmers back the frequency's
     consensus — a proxy for how crowded the frequency is. One line per skimmer.
     Buckets with fewer than 25 judged spots are omitted.</figcaption>
   </figure>
@@ -372,13 +377,14 @@ a{color:var(--accent)}
 <div class="col">
   <h2>4 · On identical input, they disagree and the others do not</h2>
   <p>This removes propagation, antenna and geography from the comparison. The
-  cells below are the same band, the same 0.1 kHz, the same five-minute slot:
+  run frequency cells below are the same band, the same 0.1 kHz, the same five-minute slot:
   both skimmers had the same signals available at the same moment.</p>
 </div>
 
   <div class="scroll">
     <table>
-      <tr><th>Skimmer</th><th>Shared cells with OE9GHV</th><th>Skimmer wrong</th>
+      <caption><strong>Table 2.</strong> Head-to-head on identical run frequency cells.</caption>
+      <tr><th>Skimmer</th><th>Shared run frequency cells</th><th>Skimmer wrong</th>
         <th>OE9GHV wrong</th><th>Both wrong</th></tr>
       <tr class="flagged"><td class="call">KC2DAC</td><td class="n">397</td><td class="n">43%</td><td class="n">6%</td><td class="n">12</td></tr>
       <tr class="flagged"><td class="call">K1RA</td><td class="n">647</td><td class="n">41%</td><td class="n">5%</td><td class="n">8</td></tr>
@@ -393,7 +399,7 @@ a{color:var(--accent)}
 
 <div class="col">
   <p>"Both wrong" stays in the tens throughout. They are not failing on the
-  same difficult cells; they fail where the reference skimmer succeeds.</p>
+  same difficult run frequency cells; they fail where the reference skimmer succeeds.</p>
 
   <h2>5 · The mechanism, in one run</h2>
   <p>3V8LL held 21100.1 kHz on 15 m and was reported there by 31 distinct
@@ -404,6 +410,7 @@ a{color:var(--accent)}
 
   <div class="scroll">
     <table>
+      <caption><strong>Table 3.</strong> Callers on 3V8LL's frequency, 15 m, 21100.1 kHz.</caption>
       <tr><th>Caller</th><th>First spot (UTC)</th><th>Spots</th>
         <th>Distinct skimmers</th><th>Span</th></tr>
       <tr><td class="call">GM5WXA</td><td class="n">16:06:59</td><td class="n">6</td><td class="n">6</td><td class="n">19 s</td></tr>
@@ -539,6 +546,7 @@ a{color:var(--accent)}
 
   <div class="scroll">
     <table>
+      <caption><strong>Table 4.</strong> CW mis-attribution by weekend, beacon frequencies excluded.</caption>
       <tr><th>CW stream, beacons excluded</th><th>UberSDR group, median</th>
         <th>range</th><th>controls, median</th><th>range</th>
         <th>ratio</th></tr>
@@ -589,6 +597,7 @@ a{color:var(--accent)}
 
   <div class="scroll">
     <table>
+      <caption><strong>Table 5.</strong> Per-skimmer transition dates, CW.</caption>
       <tr><th>Node</th><th>Operator</th><th>Transition</th><th>Before</th>
         <th>After</th><th>Welch t</th><th>Separation</th></tr>
       <tr><td class="call">KC2DAC</td><td>&mdash;</td>
@@ -627,7 +636,7 @@ a{color:var(--accent)}
       <span class="key" style="color:var(--ink-3)">shaded · 2–6 Oct, when the datable transitions fall</span>
     </div>
     <svg id="c3" role="img" aria-label="Daily CW mis-attribution excess over the control median for each UberSDR Skimmer node from 26 September to 11 October, international beacon frequencies excluded. Nodes sit near zero early in the window and step up on different days between 2 and 6 October, holding between 2 and 6 points above the controls afterward."></svg>
-    <figcaption>Each node's daily CW rate minus that day's control median, in
+    <figcaption><strong>Figure 4.</strong> Each node's daily CW rate minus that day's control median, in
     percentage points, with the international beacon frequencies excluded.
     Gaps are days with under 100 judged spots. The steps do not line up:
     KC2DAC and MM9PSY move on 3 October, K1RA-4 and MM0ZBH on the 6th, while
@@ -713,6 +722,7 @@ a{color:var(--accent)}
 
   <div class="scroll">
     <table>
+      <caption><strong>Table 6.</strong> Status to 14 October, CW, beacons excluded.</caption>
       <tr><th>Node</th><th>Own baseline</th><th>12–14 Oct</th>
         <th>Judged CW spots</th><th>Status</th></tr>
       <tr><td class="call">K3FEF</td><td class="n">never clean</td>
@@ -815,7 +825,7 @@ a{color:var(--accent)}
   <p>AR-Cluster's <code>SKIMVALID</code> is documented as being assigned "by
   looking back to see if there are two more spots of the same call, on the same
   frequency (± 0.3 kHz)". A caller inside a pile-up satisfies that by
-  construction — the table in section 5 shows six skimmers reporting one
+  construction — Table 3 shows six skimmers reporting one
   caller at one frequency within seconds. The spot is classified Valid, and
   correctly so: the callsign is real and it did transmit there.</p>
   <p><code>SKIMCQ</code> cannot separate them either, being a flag for the
@@ -870,6 +880,7 @@ a{color:var(--accent)}
   reporting one of the tests above:</p>
   <div class="scroll">
     <table>
+      <caption><strong>Table 7.</strong> Scripts that reproduce each result.</caption>
       <tr><th>Script</th><th>What it establishes</th></tr>
       <tr><td class="call">qc_rbn_caller_skimmers.py</td><td>Per-skimmer rate ranking, with the calibration control</td></tr>
       <tr><td class="call">qc_rbn_skimmer_profile.py</td><td>Concentration, pile-up dependence, head-to-head</td></tr>
@@ -891,8 +902,8 @@ a{color:var(--accent)}
   </div>
 
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v2.4. Rates over judged spots throughout;
-  consensus requires four distinct skimmers in a band / 0.1 kHz / five-minute
+  Network archives, 15 October 2026. Report v2.5. Rates over judged spots throughout;
+  consensus requires four distinct skimmers in one band / 0.1 kHz / five-minute run frequency
   cell.</p>
 </div>
 </div>
@@ -990,7 +1001,7 @@ a{color:var(--accent)}
   });
   // direct labels at the right edge, one per group
   txt(s2.appendChild(el('text',{x:L2+pw+10,y:yv(45)+4,fill:'var(--flag)',
-    'font-size':12,'font-weight':600,'font-family':'var(--font-body)'})),'out of line');
+    'font-size':12,'font-weight':600,'font-family':'var(--font-body)'})),'anomalous');
   txt(s2.appendChild(el('text',{x:L2+pw+10,y:yv(45)+20,fill:'var(--ink-3)',
     'font-size':10.5,'font-family':'var(--font-data)'})),'35–54%, flat');
   txt(s2.appendChild(el('text',{x:L2+pw+10,y:yv(4)+4,fill:'var(--accent)',
