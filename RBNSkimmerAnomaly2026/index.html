@@ -116,14 +116,14 @@ a{color:var(--accent)}
 <div class="col">
   <p class="eyebrow">Reverse Beacon Network · data quality</p>
   <h1>Makrothen Skimmer Anomaly</h1>
-  <p class="subtitle">Eight receivers that reported the caller, not the
+  <p class="subtitle">Eight skimmers that reported the caller, not the
   runner</p>
   <p class="standfirst">On the Makrothen RTTY weekend, eight RBN skimmers
   reported the station <em>answering</em> on the frequency of a
   <em>running</em> station — on 42 to 50 percent of the spots where their
   output
-  could be checked, against a 4.8 percent median across all receivers. All
-  eight run the same skimmer program, and every receiver in the field that
+  could be checked, against a 4.8 percent median across all skimmers. All
+  eight run the same skimmer program, and every skimmer in the field that
   runs it is one of the eight. The same effect is present in their CW output
   at roughly a quarter the strength, and because CW is spotted every day it
   dates each node's change to a staggered 2–6 October and confirms the
@@ -133,25 +133,25 @@ a{color:var(--accent)}
   <div class="claim">
     <p><strong>The callsigns are correct.</strong> Between 90 and 97 percent of
     the disputed calls are independently confirmed by four or more other
-    receivers, and every one is a well-formed callsign. These receivers decode
+    skimmers, and every one is a well-formed callsign. These skimmers decode
     accurately.</p>
     <p><strong>What is wrong is the frequency's meaning.</strong> A spot says
     "this station is workable here". During a pile-up that is true of the runner
-    and false of everyone calling it. These eight receivers report the callers.</p>
+    and false of everyone calling it. These eight skimmers report the callers.</p>
     <p><strong>It is new, and it arrived with RTTY itself.</strong> Two of
     the eight were measured two weeks earlier in CQ WW RTTY at 5.4 percent on
     roughly 32,000 checkable spots each. Three more were on the air that
     weekend producing 3,872 to 18,625 CW spots and <strong>not one RTTY
     spot</strong>. Their CW decoders were working; RTTY published nothing.</p>
-    <p><strong>And it is five operators, not eight receivers.</strong> Rich
+    <p><strong>And it is five operators, not eight skimmers.</strong> Rich
     K1RA runs three of the eight instances and Nathan M9PSY runs two, so the
     number of independent changes behind this is five.</p>
     <p><strong>The common factor is the software, and it partitions the field
     exactly.</strong> PSK Reporter listed nine stations running
     <code>UberSDR Skimmer</code> on 14 October, and a tenth,
     <code>K1HTV-4</code>, appeared the next day. Eight produced measurable
-    RTTY on this weekend, and those eight are precisely the eight receivers
-    above. No receiver running anything else exceeds 21.5 percent, and no
+    RTTY on this weekend, and those eight are precisely the eight skimmers
+    above. No skimmer running anything else exceeds 21.5 percent, and no
     control runs it.</p>
   </div>
 
@@ -245,12 +245,16 @@ a{color:var(--accent)}
   there. The other nine were answering it, and every one of them ran somewhere
   else that weekend, so they are real stations and nothing about the callsigns
   is wrong. An operator working down that column makes one contact and then
-  calls into nine frequencies where nobody is running.</p>
+  hits nine more bandmap entries that are all the same running station.</p>
   <p>Ten stations cannot occupy one frequency, so something was wrong.
   The rest of this report is the work of finding out what, and it ends up
   naming a specific piece of software. The short version: nine of those ten were
-  answering 3V8LL rather than running, and a handful of receivers were
-  reporting them as though they held the frequency themselves.</p>
+  answering 3V8LL rather than running, and a handful of skimmers were
+  reporting them as though they were CQing on the frequency as well.</p>
+  <p>Callers being spotted on a runner's frequency is a well-known artifact
+  and a fact of life at a low level — the report measures that background
+  rate, and it is a few percent. What made the Makrothen weekend different
+  was the <em>extent</em> of it.</p>
 
   <h2>How a spot is judged</h2>
   <p>The measurement below is <strong>RTTY only</strong>: every spot whose
@@ -259,21 +263,21 @@ a{color:var(--accent)}
   the one measurement artifact found in this work (section 8) comes from the
   international beacon frequencies, which are CW.</p>
   <p>Group every RTTY spot by band, frequency to 0.1 kHz, and a five-minute
-  slot. Within each cell, the callsign that the most <em>distinct</em> receivers
+  slot. Within each cell, the callsign that the most <em>distinct</em> skimmers
   report is taken as the station holding the frequency. Where at least four
-  receivers back that callsign, the cell is decided, and any spot in it naming a
+  skimmers back that callsign, the cell is decided, and any spot in it naming a
   different station is counted as mis-attributed.</p>
   <p>On this weekend 15,245 cells reached that threshold. Rates below are
   expressed over <em>judged</em> spots — those landing in a decided cell — not
-  over a receiver's total output.</p>
+  over a skimmer's total output.</p>
 
   <div class="correction">
     <p><strong>The denominator decides the answer, so it is stated everywhere.</strong>
-    Dividing instead by total spots understates any receiver that rarely lands in
+    Dividing instead by total spots understates any skimmer that rarely lands in
     a decided cell. In CQ WW RTTY, VU2OY-9 reads 5.6 percent that way
     (581 of 10,423) and 85.8 percent over judged spots (581 of 677). Judged is
-    the right denominator for deciding whether to trust a receiver, but it rests
-    on a thin slice when a receiver is seldom judged — VU2OY-9 is judged on 6
+    the right denominator for deciding whether to trust a skimmer, but it rests
+    on a thin slice when a skimmer is seldom judged — VU2OY-9 is judged on 6
     percent of its own output. Neither figure is meaningful without the count
     beside it.</p>
   </div>
@@ -283,18 +287,18 @@ a{color:var(--accent)}
   <figure>
     <div class="legend">
       <span class="key"><span class="sw" style="background:var(--flag)"></span>out of line (8)</span>
-      <span class="key"><span class="sw" style="background:var(--accent)"></span>reference receivers (7)</span>
+      <span class="key"><span class="sw" style="background:var(--accent)"></span>reference skimmers (7)</span>
       <span class="key" style="color:var(--ink-3)">dashed · 4.8% median of all 38 ranked</span>
     </div>
-    <svg id="c1" role="img" aria-label="Mis-attribution rate by receiver: eight receivers between 41.6 and 50.2 percent, then a gap, then seven between 3.9 and 9.0 percent"></svg>
+    <svg id="c1" role="img" aria-label="Mis-attribution rate by skimmer: eight skimmers between 41.6 and 50.2 percent, then a gap, then seven between 3.9 and 9.0 percent"></svg>
     <figcaption>Mis-attribution rate over judged spots, Makrothen weekend. The
-    eight flagged receivers occupy 41.6–50.2%; the next receiver down sits at
+    eight flagged skimmers occupy 41.6–50.2%; the next skimmer down sits at
     9.0%. Nothing falls in between.</figcaption>
   </figure>
 
 <div class="col">
   <p>A faulty decoder would be expected to spread across a range. These do not.
-  Eight receivers sit between 41.6 and 50.2 percent, the ninth-worst at 9.0
+  Eight skimmers sit between 41.6 and 50.2 percent, the ninth-worst at 9.0
   percent, and the bulk of the field near 4 percent. <code>MM9PSY</code> and
   <code>M9PSY-2</code> differ by 2 points, as do <code>K1RA</code> and
   <code>K1RA-4</code>, and that resemblance understates the real
@@ -308,7 +312,7 @@ a{color:var(--accent)}
   <p>They need not be co-sited, and the spot data says they probably are not:
   on identical band coverage the two K1RA instances overlap on only 23.4% of
   frequency-and-moment keys and the two M9PSY instances on 38.8%, against
-  0.8–19.5% for fifteen unrelated pairs the same weekend. Two receivers at
+  0.8–19.5% for fifteen unrelated pairs the same weekend. Two skimmers at
   different locations genuinely hear different things. What binds them is the
   operator, not the antenna — so the right reading of "eight at once" is
   <em>five operators changed something</em>, with one of them taking three
@@ -317,7 +321,7 @@ a{color:var(--accent)}
 
   <div class="scroll">
     <table>
-      <tr><th>Receiver</th><th>Same operator</th><th>Rate</th>
+      <tr><th>Skimmer</th><th>Same operator</th><th>Rate</th>
         <th>Mis-attributed</th><th>Judged</th>
         <th>Total spots</th><th>CQ WW weekend, 26–27 Sep</th></tr>
       <tr class="flagged"><td class="call">KC2DAC</td><td>&mdash;</td><td class="n">50.2%</td><td class="n">1,078</td><td class="n">2,148</td><td class="n">2,756</td><td>on air, <strong>0 RTTY</strong> / 3,872 CW</td></tr>
@@ -341,17 +345,17 @@ a{color:var(--accent)}
 <div class="col">
   <h2>2 · It is not one loud station</h2>
   <p>3V8LL, Tunisia, drew the weekend's largest pile-ups and was the first case
-  noticed. It is not the cause. The eight receivers mis-attribute on <strong>68
+  noticed. It is not the cause. The eight skimmers mis-attribute on <strong>68
   to 74 percent of every runner they hear</strong>, against 25 to 34 percent for
-  the reference receivers, and no single runner accounts for more than 4 to 9
-  percent of any one receiver's errors. The behavior follows the receiver, not
+  the reference skimmers, and no single runner accounts for more than 4 to 9
+  percent of any one skimmer's errors. The behavior follows the skimmer, not
   the station.</p>
 
   <h2>3 · It does not worsen with the pile-up</h2>
   <p>This is the result that rules out a decoder simply being swamped. If a
-  crowded frequency were overwhelming these receivers, the rate should climb as
-  the crowd grows. It does not move. The reference receivers, meanwhile, get
-  steadily <em>better</em> as more receivers agree.</p>
+  crowded frequency were overwhelming these skimmers, the rate should climb as
+  the crowd grows. It does not move. The reference skimmers, meanwhile, get
+  steadily <em>better</em> as more skimmers agree.</p>
 </div>
 
   <figure>
@@ -359,9 +363,9 @@ a{color:var(--accent)}
       <span class="key"><span class="sw" style="background:var(--flag)"></span>out of line</span>
       <span class="key"><span class="sw" style="background:var(--accent)"></span>reference</span>
     </div>
-    <svg id="c2" role="img" aria-label="Mis-attribution rate against the number of receivers backing the consensus: the eight flagged receivers stay between 35 and 54 percent at every crowd size, while reference receivers fall from about 5-12 percent to 2-3 percent"></svg>
-    <figcaption>Rate against how many distinct receivers back the frequency's
-    consensus — a proxy for how crowded the frequency is. One line per receiver.
+    <svg id="c2" role="img" aria-label="Mis-attribution rate against the number of skimmers backing the consensus: the eight flagged skimmers stay between 35 and 54 percent at every crowd size, while reference skimmers fall from about 5-12 percent to 2-3 percent"></svg>
+    <figcaption>Rate against how many distinct skimmers back the frequency's
+    consensus — a proxy for how crowded the frequency is. One line per skimmer.
     Buckets with fewer than 25 judged spots are omitted.</figcaption>
   </figure>
 
@@ -369,12 +373,12 @@ a{color:var(--accent)}
   <h2>4 · On identical input, they disagree and the others do not</h2>
   <p>This removes propagation, antenna and geography from the comparison. The
   cells below are the same band, the same 0.1 kHz, the same five-minute slot:
-  both receivers had the same signals available at the same moment.</p>
+  both skimmers had the same signals available at the same moment.</p>
 </div>
 
   <div class="scroll">
     <table>
-      <tr><th>Receiver</th><th>Shared cells with OE9GHV</th><th>Receiver wrong</th>
+      <tr><th>Skimmer</th><th>Shared cells with OE9GHV</th><th>Skimmer wrong</th>
         <th>OE9GHV wrong</th><th>Both wrong</th></tr>
       <tr class="flagged"><td class="call">KC2DAC</td><td class="n">397</td><td class="n">43%</td><td class="n">6%</td><td class="n">12</td></tr>
       <tr class="flagged"><td class="call">K1RA</td><td class="n">647</td><td class="n">41%</td><td class="n">5%</td><td class="n">8</td></tr>
@@ -389,19 +393,19 @@ a{color:var(--accent)}
 
 <div class="col">
   <p>"Both wrong" stays in the tens throughout. They are not failing on the
-  same difficult cells; they fail where the reference receiver succeeds.</p>
+  same difficult cells; they fail where the reference skimmer succeeds.</p>
 
   <h2>5 · The mechanism, in one run</h2>
   <p>3V8LL held 21100.1 kHz on 15 m and was reported there by 31 distinct
-  receivers over the session. Inside that window, at the same frequency to
-  0.1 kHz, these callers appear — each reported by six different receivers
+  skimmers over the session. Inside that window, at the same frequency to
+  0.1 kHz, these callers appear — each reported by six different skimmers
   within a few seconds, then gone:</p>
 </div>
 
   <div class="scroll">
     <table>
       <tr><th>Caller</th><th>First spot (UTC)</th><th>Spots</th>
-        <th>Distinct receivers</th><th>Span</th></tr>
+        <th>Distinct skimmers</th><th>Span</th></tr>
       <tr><td class="call">GM5WXA</td><td class="n">16:06:59</td><td class="n">6</td><td class="n">6</td><td class="n">19 s</td></tr>
       <tr><td class="call">AI9T</td><td class="n">16:10:28</td><td class="n">6</td><td class="n">6</td><td class="n">8 s</td></tr>
       <tr><td class="call">TF4CU</td><td class="n">16:19:12</td><td class="n">6</td><td class="n">6</td><td class="n">18 s</td></tr>
@@ -412,9 +416,9 @@ a{color:var(--accent)}
   </div>
 
 <div class="col">
-  <p>Spots equal receivers, inside a span shorter than one exchange: a single
+  <p>Spots equal skimmers, inside a span shorter than one exchange: a single
   transmission heard widely. That is what a caller looks like. A runner looks
-  like 3V8LL — many receivers, sustained over the whole session.</p>
+  like 3V8LL — many skimmers, sustained over the whole session.</p>
 
   <h2>6 · What it is not</h2>
   <h3>Not a frequency calibration error</h3>
@@ -446,12 +450,12 @@ a{color:var(--accent)}
   <p>PSK Reporter publishes the decoder software each reporting station used
   over the preceding seven days, a window that covers this contest. Joining
   that list against the measured rates answers the question the spot data
-  cannot: these receivers have one thing in common, and it is not geography,
+  cannot: these skimmers have one thing in common, and it is not geography,
   antennas, or an operator.</p>
   <p>Nine stations were listed as running <code>UberSDR Skimmer</code> when
   this was first checked on 14 October. Eight of them produced enough RTTY on
   the Makrothen weekend to be judged, and those eight are exactly the eight
-  receivers in section 1. The ninth, <code>M9PSY</code>, is Nathan's third
+  skimmers in section 1. The ninth, <code>M9PSY</code>, is Nathan's third
   callsign and posted no RTTY. The partition holds in both directions:</p>
   <p>A tenth, <code>K1HTV-4</code>, joined the roster on 15 October. It came on
   the air late on the 14th and produced 41 CW spots in a 28-minute window, 23
@@ -463,8 +467,8 @@ a{color:var(--accent)}
     <li><strong>No false negatives.</strong> Every judged
     <code>UberSDR Skimmer</code> station is in the 41.6–50.2 percent group;
     the group's median is 44.3 percent.</li>
-    <li><strong>No false positives.</strong> Every ranked receiver above 30
-    percent runs <code>UberSDR Skimmer</code>. The worst receiver on any other
+    <li><strong>No false positives.</strong> Every ranked skimmer above 30
+    percent runs <code>UberSDR Skimmer</code>. The worst skimmer on any other
     software is 21.5 percent, and the controls run unrelated programs —
     <code>CW reporter</code>, <code>CWSL_DIGI</code>, and VE3NEA's own
     <code>RTTY Skimmer Server v.1.3.0.432</code>.</li>
@@ -504,7 +508,7 @@ a{color:var(--accent)}
 
 
   <h2>8 · The same effect in CW, roughly a quarter as strong</h2>
-  <p>These receivers post CW as well as RTTY — 3,246 to 14,298 CW spots each
+  <p>These skimmers post CW as well as RTTY — 3,246 to 14,298 CW spots each
   over this weekend — so the same test can ask how far the defect reaches. It
   reaches CW. Every one of the eight is elevated, and the excess appeared
   between the two weekends exactly as it did in RTTY, while the controls did
@@ -553,7 +557,7 @@ a{color:var(--accent)}
   sampling noise even after the beacon correction — but it is a few percentage
   points, not the double digits an earlier version of this section
   reported.</p>
-  <p>For scale, across the same two weekends the RTTY rate for these receivers
+  <p>For scale, across the same two weekends the RTTY rate for these skimmers
   went from 0.9× the field median to 9.2×. CW went from 1.1× to 1.9×. The
   effect is real in CW and roughly a quarter as pronounced.</p>
 
@@ -576,7 +580,7 @@ a{color:var(--accent)}
   11 October — with each node compared to the <em>same day's</em> control
   median, so that a busy contest Saturday (3 October carried 947,000 CW spots
   against roughly 350,000 on a weekday) cannot be mistaken for a change in one
-  receiver. The controls held between 3.2 and 4.6 percent across the whole
+  skimmer. The controls held between 3.2 and 4.6 percent across the whole
   window with no trend.</p>
   <p>Each node's own series was then split at the point that best separates it,
   weighting every day by its judged-spot count because a rate from 300 spots is
@@ -687,7 +691,7 @@ a{color:var(--accent)}
     defining its top.</li>
     <li><strong>The real-call test stops discriminating.</strong> In RTTY, 90
     to 97 percent of the group's disputed calls were confirmed by four or more
-    other receivers against 80 to 91 percent for controls. In CW both sit at 77
+    other skimmers against 80 to 91 percent for controls. In CW both sit at 77
     to 89 percent. Everyone's CW misses are mostly real callers, so that test
     no longer separates the groups — it only confirms the mechanism is caller
     confusion in both.</li>
@@ -747,7 +751,7 @@ a{color:var(--accent)}
   <h3>Three of the nine are currently dark</h3>
   <p>Three nodes report no CW at all over 12–14 October, and that needed
   checking rather than assuming, because a mode-filtered count cannot tell a
-  receiver that was switched off from one that is running and producing
+  skimmer that was switched off from one that is running and producing
   something else — a distinction this investigation got wrong once already.
   They are genuinely off the air: <code>K1RA</code>, <code>KW4VA</code> and
   <code>M9PSY</code> show <strong>zero spots in any mode</strong> on all three
@@ -811,7 +815,7 @@ a{color:var(--accent)}
   <p>AR-Cluster's <code>SKIMVALID</code> is documented as being assigned "by
   looking back to see if there are two more spots of the same call, on the same
   frequency (± 0.3 kHz)". A caller inside a pile-up satisfies that by
-  construction — the table in section 5 shows six receivers reporting one
+  construction — the table in section 5 shows six skimmers reporting one
   caller at one frequency within seconds. The spot is classified Valid, and
   correctly so: the callsign is real and it did transmit there.</p>
   <p><code>SKIMCQ</code> cannot separate them either, being a flag for the
@@ -844,15 +848,15 @@ a{color:var(--accent)}
     contest after CQ WW, so there is no intermediate weekend to bisect.</li>
     <li><strong>CQ WW RTTY was not free of this.</strong> VU2OY-9 reached 85.8
     percent there, on 677 judged spots, with CN3A at 24.7 and OK4ZW at 21.2.
-    What distinguishes Makrothen is not that a receiver went wrong but that
+    What distinguishes Makrothen is not that a skimmer went wrong but that
     <em>eight did at once, each on a large sample</em>: at a 1,000-judged floor
     CQ WW's worst is 15.0 percent, 2.6× its median, while Makrothen still shows
-    six receivers at 43–50 percent.</li>
+    six skimmers at 43–50 percent.</li>
     <li><strong>The weekends differ in size</strong> — 1,427,716 RTTY spots
-    against 195,068 — so only the per-receiver comparison carries weight, never
+    against 195,068 — so only the per-skimmer comparison carries weight, never
     the aggregate difference between contests.</li>
     <li><strong>The common factor is established; the defect is not.</strong>
-    Shared software explains which receivers misbehave, and the measurements
+    Shared software explains which skimmers misbehave, and the measurements
     in sections 2–6 constrain what kind of fault it is: flat in pile-up size,
     spread across nearly every runner, correct callsigns at correct
     frequencies. What the defect actually is, and which version introduced it,
@@ -867,10 +871,10 @@ a{color:var(--accent)}
   <div class="scroll">
     <table>
       <tr><th>Script</th><th>What it establishes</th></tr>
-      <tr><td class="call">qc_rbn_caller_skimmers.py</td><td>Per-receiver rate ranking, with the calibration control</td></tr>
+      <tr><td class="call">qc_rbn_caller_skimmers.py</td><td>Per-skimmer rate ranking, with the calibration control</td></tr>
       <tr><td class="call">qc_rbn_skimmer_profile.py</td><td>Concentration, pile-up dependence, head-to-head</td></tr>
       <tr><td class="call">qc_rbn_skimmer_realcalls.py</td><td>Whether the disputed calls are real stations</td></tr>
-      <tr><td class="call">qc_rbn_skimmer_crosscontest.py</td><td>Same receivers across both weekends</td></tr>
+      <tr><td class="call">qc_rbn_skimmer_crosscontest.py</td><td>Same skimmers across both weekends</td></tr>
       <tr><td class="call">qc_rbn_denominator_matters.py</td><td>Both denominators at three sample floors</td></tr>
       <tr><td class="call">qc_rbn_mode_split.py</td><td>Per-day RTTY/CW counts — separates "absent" from "no RTTY"</td></tr>
       <tr><td class="call">qc_rbn_cosite_test.py</td><td>Instance overlap and band coverage, against unrelated pairs</td></tr>
@@ -887,8 +891,8 @@ a{color:var(--accent)}
   </div>
 
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v2.3. Rates over judged spots throughout;
-  consensus requires four distinct receivers in a band / 0.1 kHz / five-minute
+  Network archives, 15 October 2026. Report v2.4. Rates over judged spots throughout;
+  consensus requires four distinct skimmers in a band / 0.1 kHz / five-minute
   cell.</p>
 </div>
 </div>
@@ -908,7 +912,7 @@ a{color:var(--accent)}
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
   function txt(e,s){e.appendChild(document.createTextNode(s));return e;}
 
-  // ---- Chart 1: sorted bars, rate by receiver -------------------------------
+  // ---- Chart 1: sorted bars, rate by skimmer -------------------------------
   var L=86, Rp=46, T=26, rowH=23, barH=13, W=640;
   var H = T + R.length*rowH + 34;
   var maxX = 55, plotW = W - L - Rp;
@@ -972,7 +976,7 @@ a{color:var(--accent)}
   });
   txt(s2.appendChild(el('text',{x:L2+pw/2,y:H2-6,'text-anchor':'middle',
     fill:'var(--ink-3)','font-size':11,'font-family':'var(--font-body)'})),
-    'distinct receivers backing the frequency consensus');
+    'distinct skimmers backing the frequency consensus');
   C.forEach(function(d){
     var col = d.f ? 'var(--flag)' : 'var(--accent)';
     var pts = d.v.map(function(v,i){ return xb(i)+','+yv(v); }).join(' ');
