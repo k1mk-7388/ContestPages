@@ -159,39 +159,13 @@ a{color:var(--accent)}
   <h2>Where this started</h2>
   <p>Nothing about this investigation began with a rate. It began with a
   bandmap that looked wrong.</p>
-  <p>A bandmap holds spots for a timeout rather than showing an instant, so
-  every callsign spotted on a frequency inside that window sits on screen at
-  once. Below is a ten-minute timeout — the realistic setting — slid across a
-  twenty-minute pool of spots to find the worst moment. The pool has to be
-  wider than the window because the RBN re-reports a given callsign on a band
-  only about once every ten minutes per skimmer, and the skimmers are not
-  synchronized.</p>
-  <p>Two filters are applied first, so that what remains is what an operator
-  running a sensible setup would actually see. The first is K1MK's own
-  AR-Cluster filter; its skimmer branch is
-  <code>skimCQ AND (skimValid OR skimQSY)</code>, and
-  <code>skimValid</code> is CT1BOH's test for two further spots of the same
-  call on the same frequency. The second drops busted callsigns, by checking
-  each against a master list built from four SCP files and the contest's own
-  call history, and by discarding any call that sits beside a near-identical
-  one with far more corroboration — by one character, or by truncation, which
-  is the characteristic RTTY mis-decode. Between them they remove ten of the
-  twenty-nine entries, four as busts: <code>ST2P</code> of <code>WT2P</code>,
-  <code>NK4O</code> of <code>NR4O</code>, and both <code>VE2B</code> and
-  <code>VE2BV</code> of <code>VE2BVV</code>.</p>
-  <p>3V8LL's main run of the weekend was on 40 m, 7065.4 kHz, held across
-  seven consecutive consensus slots. What survives both filters, in the worst
-  ten minutes, is nineteen bandmap entries — of which
-  <strong>ten sit on 7065.2 alone</strong>.</p>
-  <p>It is not one pile-up but three. The same consensus test names a runner
-  on each of the occupied frequencies: <code>WT2P</code> on 7061.8 with twelve
-  distinct skimmers behind it, <code>VE2BVV</code> on 7062.5 with eleven, and
-  <code>3V8LL</code> on 7065.2 with eighteen. Each is followed down the map by
-  the stations answering it. That is also a second, independent check on the
-  busts — <code>WT2P</code> and <code>VE2BVV</code> hold their frequencies on
-  skimmer agreement alone, and they are exactly the calls that
-  <code>ST2P</code>, <code>VE2B</code> and <code>VE2BV</code> were judged
-  mis-decodes of.</p>
+  <p>Below is ten minutes of 40 m RTTY, on the evening of 10 October. The
+  spots have already been through an operator's own cluster filter and a
+  check for mis-decoded callsigns, so nothing here is raw noise.</p>
+  <p>Three stations were running: <code>WT2P</code> on 7061.8,
+  <code>VE2BVV</code> on 7062.5 and <code>3V8LL</code> on 7065.2. Each is
+  followed down the map by a fan of other callsigns on its own frequency —
+  <strong>ten entries on 7065.2 alone</strong>.</p>
 </div>
 
   <figure>
@@ -263,17 +237,7 @@ a{color:var(--accent)}
 <line x1="1" x2="351" y1="782" y2="782" stroke="#8fa3c4"/>
 <text x="7" y="797.0" font-size="9.5" font-family="var(--font-data)" fill="#8fa3c4">19 entries after filtering &#183; simulated from RBN archive &#183; v2.3</text>
 </svg></div>
-    <figcaption>Simulated from the RBN archive in the layout of N1MM's own
-    bandmap, not a screenshot. The scale is magenta because the whole span is
-    the digital segment. Beam headings are computed from K1TTT to each
-    station's Loc1 in the contest's call history. The three runners —
-    <code>WT2P</code>, <code>VE2BVV</code> and <code>3V8LL</code> — are grey
-    as worked. Each was the first station spotted on its frequency and keeps
-    being re-spotted, so it holds its true position while every later arrival
-    fans below it; the leaders run one way and never cross. Everything in blue
-    is a station answering one of the three. Each is a real, listed station whose spots pass
-    <code>skimValid</code>, so no filter setting available to an operator
-    would remove them.</figcaption>
+    <figcaption>Simulated from the RBN archive in the layout of N1MM's own bandmap, not a screenshot.</figcaption>
   </figure>
 
 <div class="col">
