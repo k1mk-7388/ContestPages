@@ -231,29 +231,31 @@ a{color:var(--accent)}
   </figure>
 
 <div class="col">
-  <p>Of the ten on 7065.2, only one — <code>3V8LL</code> — was the station
+  <p>Of the ten stations spotted on 7065.2, only one — <code>3V8LL</code> — was the station
   running there. The other nine were answering <code>3V8LL</code>, and every
-  one of them ran somewhere else that weekend, so they are real stations and
+  one of them ran somewhere else over the course of that weekend. They are real stations and
   nothing about the callsigns is wrong. An operator working down the bandmap
   makes one contact and then hits nine more bandmap entries that are all the
   same running station.</p>
-  <p>Ten stations typically do not run on one frequency at the same time, so something was wrong.
-  The rest of this report is the work to identify the cause. The short
-  version: nine of those ten were
+  <p>Ten stations typically do not run on one frequency at the same time, so something
+    was clearly wrong.
+  The rest of what is reported here is my effort to identify and understand the cause.
+    The short
+  version: nine of those stations were
   answering 3V8LL rather than running, and a handful of skimmers were
-  reporting them as though they were CQing on the frequency as well.</p>
+  reporting them as though they were CQing on that frequency as well.</p>
   <p>Callers being spotted on a runner's frequency is a well-known artifact
-  that occurs at a low, manageable rate. This report measures that background
-  at a few percent — a fact of life that assisted stations are accustomed to
+  that is always present at a low, manageable rate. This investigation measures that background
+  at a few percent. It is a fact of life which assisted stations are accustomed to
   dealing with. What made the Makrothen weekend different was how much more
   often it occurred.</p>
 
   <h2>How a spot is judged</h2>
-  <p>The core measurement (sections 1–7) is <strong>RTTY only</strong>: every
+  <p>The core measurements (sections 1–7) are <strong>RTTY only</strong>: every
   spot whose mode is anything else — CW, FT8, PSK — is discarded before the
-  first grouping, not filtered afterwards. That matters more than it sounds,
-  because the beacon artifact found in the CW analysis (section 8) comes from
-  the international beacon frequencies, which are CW, and cannot reach it.</p>
+  first grouping, not filtered afterwards. That matters because the beacon
+  artifact found in the CW analysis (section 8) comes from the international
+  beacon frequencies, which are CW, so it cannot affect the RTTY results.</p>
   <p>Group every RTTY spot by band, frequency to 0.1 kHz, and a five-minute
   slot. Call each of those buckets a <em>run frequency cell</em>.
   Within each cell, the callsign that the most <em>distinct</em> skimmers
@@ -263,14 +265,14 @@ a{color:var(--accent)}
   different station is counted as <strong>off-consensus</strong>.</p>
   <p>Off-consensus is a measurement, not a verdict. A spot can be off-consensus
   for several unrelated reasons — a mis-decoded callsign, a station answering
-  rather than running, a receiver whose frequency readout is offset, a report
+  rather than running, a skimmer whose frequency readout is offset, a report
   that arrives after the station has moved, a frequency changing hands inside
   the slot — and sections 6 and 7 separate them.
   Every skimmer in the field produces some: the controls run at 1.9 to 4.1
   percent. The word <strong>mis-attribution</strong> is reserved here for the
   one mechanism this report is about — a correctly decoded callsign reported
   as though it held a frequency it was only answering on.</p>
-  <p>On this weekend 15,245 run frequency cells reached that threshold. Rates below are
+  <p>Over the Makrothen weekend 15,245 run frequency cells reached that threshold. Rates below are
   expressed over <em>judged</em> spots — those landing in a decided run frequency cell — not
   over a skimmer's total output.</p>
 
@@ -300,12 +302,12 @@ a{color:var(--accent)}
   </figure>
 
 <div class="col">
-  <p>A faulty decoder would be expected to spread across a range. These do not.
+  <p>If this were ordinary decoder trouble, the rates would spread across a range. They do not.
   Eight skimmers sit between 41.6 and 50.2 percent, the ninth-worst at 9.0
   percent, and the bulk of the field near 4 percent. <code>MM9PSY</code> and
   <code>M9PSY-2</code> differ by 2 points, and <code>K1RA</code> and
-  <code>K1RA-4</code> by 3, and that resemblance understates the real
-  grouping. <strong>Five of the eight instances belong to two
+  <code>K1RA-4</code> by 3, and even that understates how closely they are
+  linked. <strong>Five of the eight instances belong to two
   operators:</strong> <code>K1RA</code>, <code>K1RA-4</code> and
   <code>KW4VA</code> are all run by Andy K1RA, and <code>MM9PSY</code> and
   <code>M9PSY-2</code> are both run by Nathan M9PSY. The eight instances are
@@ -317,10 +319,10 @@ a{color:var(--accent)}
   <p>They need not be co-sited, and the spot data says they probably are not:
   on identical band coverage the two K1RA instances overlap on only 23.4% of
   frequency-and-moment keys and the two M9PSY instances on 38.8%, against
-  0.8–19.5% for fifteen unrelated pairs the same weekend. Two skimmers at
-  different locations genuinely hear different things. What binds them is the
-  operator, not the antenna — so "eight at once" reads as <em>five operators
-  changed something</em>, one of them across three instances.</p>
+  0.8–19.5% for fifteen unrelated pairs the same weekend. Skimmers at
+  different locations hear different things. What links them is the operator,
+  not the antenna, so "eight at once" means <em>five operators changed
+  something</em>, one of them on three instances.</p>
 </div>
 
   <div class="scroll">
@@ -353,14 +355,14 @@ a{color:var(--accent)}
   noticed. It is not the cause. The eight skimmers go off-consensus on <strong>68
   to 74 percent of every runner they hear</strong>, against 25 to 34 percent for
   the reference skimmers, and no single runner accounts for more than 4 to 9
-  percent of any one skimmer's errors. The behavior follows the skimmer, not
-  the running station.</p>
+  percent of any one skimmer's errors. The problem goes with the skimmer, not
+  with any one running station.</p>
 
   <h2>3 · It does not worsen with the pile-up</h2>
-  <p>This is the result that rules out a decoder simply being swamped. If a
-  crowded frequency were overwhelming these skimmers, the rate should climb as
-  the crowd grows. It does not move. The reference skimmers, meanwhile, get
-  steadily <em>better</em> as more skimmers agree.</p>
+  <p>This rules out a decoder that is simply being swamped. If a crowded
+  frequency were overwhelming these skimmers, their rate would climb as the
+  pile-up grows. It does not. The reference skimmers actually get
+  <em>better</em> as more skimmers agree.</p>
 </div>
 
   <figure>
@@ -376,9 +378,10 @@ a{color:var(--accent)}
 
 <div class="col">
   <h2>4 · On identical input, they disagree and the others do not</h2>
-  <p>This removes propagation, antenna and geography from the comparison. The
-  run frequency cells below are the same band, the same 0.1 kHz, the same five-minute slot:
-  both skimmers had the same signals available at the same moment.</p>
+  <p>Comparing two skimmers on the same run frequency cells takes propagation,
+  antennas and geography out of the picture: same band, same 0.1 kHz, same
+  five-minute slot, so both had the same signals to work with at the same
+  moment.</p>
 </div>
 
   <div class="scroll">
@@ -398,8 +401,9 @@ a{color:var(--accent)}
   </div>
 
 <div class="col">
-  <p>"Both wrong" stays in the tens throughout. They are not failing on the
-  same difficult run frequency cells; they fail where the reference skimmer succeeds.</p>
+  <p>"Both wrong" stays in the tens throughout. The eight are not tripping
+  over the same hard cells as the reference skimmer; they fail where it
+  succeeds.</p>
 
   <h2>5 · The mechanism, in one run</h2>
   <p>3V8LL held 21100.1 kHz on 15 m and was reported there by 31 distinct
@@ -423,21 +427,22 @@ a{color:var(--accent)}
   </div>
 
 <div class="col">
-  <p>Spots equal skimmers, inside a span shorter than one exchange: a single
-  transmission heard widely. That is what a caller looks like. A runner looks
-  like 3V8LL — many skimmers, sustained over the whole session.</p>
+  <p>Each caller was spotted once by each of six skimmers, all within 7 to 19
+  seconds, which is less than one exchange: a single transmission heard by
+  many skimmers. That is what a caller looks like. A runner looks like 3V8LL:
+  many skimmers, spotting it for the whole session.</p>
 
   <h2>6 · What it is not</h2>
   <h3>Not a frequency calibration error — for these eight</h3>
-  <p>An offset readout would drop a receiver's spots into the wrong frequency
-  bin, where the consensus names a different station, producing this signature
-  with nothing wrong at the decoder. Comparing each receiver's reported
-  frequency for the same station, band and slot against the median of the
-  others, every skimmer ranked <em>on this weekend</em> — flagged and reference
-  alike — returns a median offset of <strong>0.000 kHz</strong>. The flagged
-  skimmers do show 3.4 to 7.0 kHz of scatter against the reference skimmers'
-  1.4 to 2.2, which is what decoding a different signal looks like rather than
-  a shifted dial.</p>
+  <p>A skimmer whose frequency readout is off would drop its spots into the
+  wrong cell, where the consensus names a different station, and produce this
+  signature with nothing wrong in the decoder. So I compared each skimmer's
+  reported frequency for the same station, band and slot with the median of
+  the others. Every skimmer ranked <em>on this weekend</em>, flagged and
+  reference alike, has a median offset of <strong>0.000 kHz</strong>. The
+  flagged skimmers do show more scatter, 3.4 to 7.0 kHz against 1.4 to 2.2 for
+  the reference skimmers, but that is what decoding a different signal looks
+  like, not a shifted dial.</p>
 
   <div class="correction">
     <p><strong>That control was run on the Makrothen weekend, and one station
@@ -451,22 +456,21 @@ a{color:var(--accent)}
     40 m&nbsp;&nbsp;+100 Hz&nbsp;&nbsp;·&nbsp;&nbsp;20 m&nbsp;&nbsp;+200
     Hz&nbsp;&nbsp;·&nbsp;&nbsp;15 m&nbsp;&nbsp;+300
     Hz&nbsp;&nbsp;·&nbsp;&nbsp;mean&nbsp;<strong>+13.7 ppm</strong></p>
-    <p>The offset scales with band, which is the signature of a fractional
-    error in the sampling clock rather than anything in the decoder, and it is
-    <em>identical on CW and RTTY</em> — +100 Hz on 40 m and +300 Hz on 15 m in
-    both — which no decoder fault would produce in two unrelated demodulators.
+    <p>The offset grows with frequency, which points to a small error in the
+    receiver's sampling clock rather than anything in the decoder, and it is
+    <em>identical on CW and RTTY</em> (+100 Hz on 40 m and +300 Hz on 15 m in
+    both), which no decoder fault would produce in two unrelated demodulators.
     At +300 Hz on 15 m a 0.1 kHz consensus bin places nearly every spot in a
     neighboring cell, so this method scores the station as off-consensus by
-    construction. It also explains the oddity noted below, that only 677 of
-    that station's 10,423 spots were judgeable at all. VU2CPL reports the
+    construction. It also explains the oddity noted earlier, that only 677 of
+    that station's 10,423 spots could be judged at all. VU2CPL reports the
     cause as a calibration bug applying another receiver's correction
     constant, now fixed.</p>
-    <p>The lesson for the method is general: <strong>a per-skimmer frequency
-    check has to run before any off-consensus rate is believed</strong>, and
-    it has to run on the same days as the rate. A clock error of a few parts
-    per million is indistinguishable from caller mis-attribution in the
-    output, and
-    distinguishable immediately in the frequencies.</p>
+    <p>The lesson is general: <strong>check each skimmer's frequency
+    calibration before believing any off-consensus rate</strong>, and check it
+    on the same days. A clock error of a few parts per million looks exactly
+    like caller mis-attribution in the rates, and shows up immediately in the
+    frequencies.</p>
   </div>
 
   <h3>Not mis-decoded callsigns</h3>
@@ -497,11 +501,11 @@ a{color:var(--accent)}
   <p>The eight are not mis-decoding: essentially none of their off-consensus spots
   is a garble of the station actually there. Every other group in the field,
   controls included, produces garbles at between a fifth and half of its
-  off-consensus spots. More usefully, the last column isolates the mechanism this
-  report is about — mis-attribution of a correctly decoded callsign — and the
-  separation survives it intact: <strong>40.5 to 48.6 percent against 1.9 to
-  4.1 percent</strong> for the controls. The headline was never carried by
-  decoder errors.</p>
+  off-consensus spots. The last column counts only the mechanism this report
+  is about, a correctly decoded caller reported as if it were the runner, and
+  the gap is still there: <strong>40.5 to 48.6 percent against 1.9 to 4.1
+  percent</strong> for the controls. Decoder errors were never what drove the
+  headline numbers.</p>
 
   <h3>Not separable by signal strength</h3>
   <p>SNR carries no usable information here. Spots matching the consensus have a
@@ -520,15 +524,15 @@ a{color:var(--accent)}
 
   <h2>7 · The common factor is one skimmer program</h2>
   <p>PSK Reporter publishes the decoder software each reporting station used
-  over the preceding seven days, a window that covers this contest. Joining
-  that list against the measured rates answers the question the spot data
+  over the preceding seven days, a window that covers this contest. Matching
+  that list against the measured rates answers what the spot data alone
   cannot: these skimmers have one thing in common, and it is not geography,
-  antennas, or an operator.</p>
+  antennas or an operator.</p>
   <p>Nine stations were listed as running <code>UberSDR Skimmer</code> when
   this was first checked on 14 October. Eight of them produced enough RTTY on
   the Makrothen weekend to be judged, and those eight are exactly the eight
   skimmers in section 1. The ninth, <code>M9PSY</code>, is Nathan's third
-  callsign and posted no RTTY. The partition holds in both directions:</p>
+  callsign and posted no RTTY. The match works both ways:</p>
   
   <ul>
     <li><strong>No false negatives.</strong> Every judged
@@ -549,9 +553,9 @@ a{color:var(--accent)}
   support is aimed at FT4, FT8 and WSPR, plus a driver for VE3NEA's Skim
   Server; a dedicated RTTY skimmer is not part of its documented feature set,
   which is consistent with RTTY decoding being recent. This report does not
-  identify which part of the program is responsible. What the data supports is
-  narrower and sufficient: the behavior tracks the program, not the site, the
-  antenna, or the operator.</p>
+  identify which part of the program is responsible. What the data does show
+  is enough: the behavior goes with the program, not the site, the antenna or
+  the operator.</p>
 
   <div class="note">
     <p><strong>What this does not establish.</strong> The software list covers
@@ -564,9 +568,9 @@ a{color:var(--accent)}
   </div>
 
   <h3>A second grouping, and a different mechanism</h3>
-  <p>The same join surfaced four stations running <code>Meridian v0.1.25</code>
+  <p>The same list showed four stations running <code>Meridian v0.1.25</code>
   — <code>LB9KJ-1</code>, <code>VU24DX-1</code>, <code>VU2CPL-88</code> and
-  <code>VU2OY-9</code> — all reading above the field median. An earlier
+  <code>VU2OY-9</code> — all above the field median. An earlier
   version of this report treated them as a milder case of the same effect.
   They are not, and the correction is owed to Manoj VU2CPL, co-author of
   Meridian, who reproduced the method independently and went through the
@@ -603,14 +607,13 @@ a{color:var(--accent)}
   Manoj reports the garble leak is being closed in the next Meridian
   release.</p>
   <h3>A third case: <code>KM3T-5</code></h3>
-  <p>One further station is worth the same treatment, and the suggestion is
-  VU2CPL's. On this report's measure — any off-consensus spot that is not a
+  <p>VU2CPL also suggested looking at two more stations. On this report's
+  measure — any off-consensus spot that is not a
   garble — <code>KM3T-5</code> reads 13.0 percent in CQ WW, above every
   Meridian station and the highest among skimmers reporting that weekend, and
-  then 2.1 percent over Makrothen. <code>OK2PMU</code>'s excess splits more
+  only 2.1 percent over Makrothen. <code>OK2PMU</code>'s excess splits more
   evenly: of its 10.3 percent off-consensus rate, 4.6 points are garbles and
-  5.6 are callers. Neither station was examined in this report before VU2CPL
-  pointed at them.</p>
+  5.6 are callers. I had not looked at either one before VU2CPL pointed them out.</p>
   <p>Over the CQ WW weekend <code>KM3T-5</code> went off-consensus on
   <strong>15.0 percent</strong> of its 29,062 judged spots: 13.0 points that
   are not garbles and 2.0 that are. Its garble rate is among the lowest in the
@@ -632,11 +635,11 @@ a{color:var(--accent)}
   peers, and 2 percent for <code>KM3T-5</code> itself over Makrothen — and 45
   percent of those are on a different band from the one the station was
   running on. Another 13 percent name a station no other skimmer reported at
-  all, against about 1 percent for the peers. Nothing about the frequencies
-  explains this: there is no offset, and no harmonic, mixing or image
-  relation between where <code>KM3T-5</code> placed a station and where it
+  all, against about 1 percent for the peers. The frequencies do not explain
+  it: there is no offset, and no harmonic, mixing or image relationship
+  between where <code>KM3T-5</code> put a station and where it actually
   was.</p>
-  <p>Time does explain it. In 1,976 of these spots <code>KM3T-5</code> put a
+  <p>Timing does. In 1,976 of these spots <code>KM3T-5</code> put a
   station on <strong>the exact frequency that station had itself run on
   earlier</strong> — a median of 55 minutes earlier, and more than an hour
   in 772 cases — after someone else had taken it. Its three peers between
@@ -644,8 +647,8 @@ a{color:var(--accent)}
   654 stations involved are mostly widely heard DX stations, not local ones
   that might still be audible only in New Hampshire. The skimmer was reporting
   stations at frequencies they had left.
-  Its CW output, decoded by the same node, shows the same fault at a milder
-  stage. In the hours concerned its CW spots arrived <strong>162 to 412
+  Its CW output, from the same node, shows the same fault in a milder form. In
+  the hours concerned its CW spots arrived <strong>162 to 412
   seconds</strong> behind the first skimmer to hear the same runner, against
   7 to 228 seconds for the other skimmers in the comparison, and it made 171
   stale CW spots to its peers' 0 to 16. A skimmer that has fallen behind
@@ -664,22 +667,21 @@ a{color:var(--accent)}
   everything <code>KM3T-5</code> reported, against 0.4 percent in its other
   hours. In the worst hours nearly half of its output was stale, enough by
   itself to account for most of the deficit.</p>
-  <p>And the fault belonged to the CQ WW weekend alone. Over Makrothen, two
+  <p>The fault was confined to the CQ WW weekend. Over Makrothen, two
   weeks later, it was gone, or at least did not show itself: stale spots were
   0.2 percent of <code>KM3T-5</code>'s RTTY output, with no hour above 2
   percent; it named the runner 98.4 percent of the time; and its CW spots
-  were as prompt as anyone's. Nor does its runner-naming show anything like
-  it on any other RTTY weekend in its 2025–26 record.</p>
-  <p>A second skimmer at the same site settles where the fault lies.
+  were as prompt as anyone's. Its runner-naming shows nothing like it on any
+  other RTTY weekend in its 2025–26 record either.</p>
+  <p>A second skimmer at the same site shows where the fault lies.
   <code>KM3T-2</code> runs at the station owner's QTH alongside
   <code>KM3T-5</code>, on its own receiver and antenna, and decodes CW. It
   was clean in every hour of the weekend: its CW runner-naming share stayed
   within about five points of the regional peers' throughout, with 5 stale
-  spots in 6,108. Weather, propagation and anything else common to the site
-  reached both. What failed was <code>KM3T-5</code>'s own chain — its
-  antenna, receiver, or computer and software — and the form the failure
-  took, latency in two modes at once, is the form a processing backlog
-  takes.</p>
+  spots in 6,108. Weather, propagation and anything else at the site affected
+  both. What failed was something in <code>KM3T-5</code>'s own chain: its
+  antenna, receiver, or computer and software. Latency in two modes at once is
+  what a processing backlog looks like.</p>
 
   <h3>Not the contest, not the weather</h3>
   <p>It was not the size of the contest. A year earlier, through a busier CQ
@@ -722,10 +724,10 @@ a{color:var(--accent)}
 
 
   <h2>8 · The same effect in CW, roughly a quarter as strong</h2>
-  <p>These skimmers post CW as well as RTTY — 3,246 to 14,298 CW spots each
-  over the Makrothen weekend — so the same test can ask how far the defect
-  reaches. It
-  reaches CW. Every one of the eight is elevated, and the excess appeared
+  <p>These skimmers spot CW as well as RTTY — 3,246 to 14,298 CW spots each
+  over the Makrothen weekend — so the same test can show whether the defect
+  reaches CW. It does. Every one of the eight is elevated, and the excess
+  appeared
   between the two weekends exactly as it did in RTTY, while the controls did
   not move.</p>
 
@@ -737,14 +739,14 @@ a{color:var(--accent)}
     ten seconds in rotation. A five-minute consensus slot can name only one
     holder, so every other beacon heard in that slot was scored as
     off-consensus while being entirely correct.</p>
-    <p>It was not a constant offset to subtract. It accounted for 65.3 percent
+    <p>It could not simply be subtracted. It accounted for 65.3 percent
     of <code>K3FEF</code>'s CW misses, 56.3 percent of <code>MM0ZBH</code>'s
     and 55.6 percent of <code>K1RA-4</code>'s, but <strong>0.0 percent</strong>
     for four of the seven controls, which simply do not cover those
     frequencies. The published CW excesses were therefore inflated by roughly
-    two to three times, and every number below is the corrected one. It was
-    found by examining a newly-added node's first 23 spots by hand, which is
-    an argument for reading individual spots and not only rates.</p>
+    two to three times, and every number below is the corrected one. I found
+    it by reading a newly added node's first 23 spots by hand, which is a good
+    argument for looking at individual spots and not only rates.</p>
     <p><strong>The RTTY analysis is unaffected</strong>, because the beacons
     are CW and the primary measurement discards every non-RTTY spot before it
     groups anything. Re-running sections 1–7 with these frequencies excluded
@@ -880,7 +882,7 @@ a{color:var(--accent)}
   </div>
 
   <div class="note">
-    <p><strong>Binary search was the wrong instrument, and the record is kept
+    <p><strong>Binary search was the wrong tool, and I have left the record
     here deliberately.</strong> Bisecting the group median converged on 2–3
     October after four archive days. That boundary is an artifact: the median
     covers whichever nodes clear the judged floor each day, and
@@ -902,8 +904,8 @@ a{color:var(--accent)}
     <code>OK4YL</code> at 30.5 are all worse, and none of them runs
     <code>UberSDR Skimmer</code>. CW has its own unrelated bad actors —
     <code>K5KHK</code> was also 41.1 percent on the earlier weekend — and the
-    UberSDR group is merely elevated within a noisier field rather than
-    defining its top.</li>
+    UberSDR group is just elevated within a noisier field, not at the top of
+    it.</li>
     <li><strong>The real-call test stops discriminating.</strong> In RTTY, 90
     to 97 percent of the group's off-consensus calls were confirmed by four or more
     other skimmers against 80 to 91 percent for controls. In CW both sit at 77
@@ -911,11 +913,11 @@ a{color:var(--accent)}
     no longer separates the groups — it only confirms the mechanism is caller
     confusion in both.</li>
   </ul>
-  <p>The useful consequence is for localizing the fault: because CW is affected
-  too, this is not purely a broken RTTY decoder. Something shared across modes
-  changed. But the amplitudes differ by roughly fivefold, so a single shared
-  cause and two separate ones fit the data equally well, and this report cannot
-  choose between them.</p>
+  <p>This helps locate the fault: because CW is affected too, it is not just a
+  broken RTTY decoder; something shared by both modes changed. But the size of
+  the effect differs roughly fivefold between the two modes, so one shared
+  cause and two separate ones fit the data equally well, and I cannot tell
+  which.</p>
 
 
   <h2>9 · Still happening, and what it costs to exclude them</h2>
@@ -1122,8 +1124,7 @@ a{color:var(--accent)}
     in sections 2–6 constrain what kind of fault it is: flat in pile-up size,
     spread across nearly every runner, correct callsigns at correct
     frequencies. What the defect actually is, and which version introduced it,
-    needs someone with the source — this report is intended to hand them a
-    reproducible target.</li>
+    needs someone with the source — this report is meant to give them a reproducible target.</li>
   </ul>
 
   <h2>Reproducing this</h2>
@@ -1174,7 +1175,7 @@ a{color:var(--accent)}
   garble-versus-caller distinction in section 6 — and suggested the closer
   look at <code>KM3T-5</code> and <code>OK2PMU</code>.</p>
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v3.20. Rates over judged spots throughout;
+  Network archives, 15 October 2026. Report v3.21. Rates over judged spots throughout;
   consensus requires four distinct skimmers in one band / 0.1 kHz / five-minute run frequency
   cell.</p>
 </div>
