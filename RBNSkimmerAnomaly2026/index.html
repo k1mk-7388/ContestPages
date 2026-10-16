@@ -133,6 +133,14 @@ a{color:var(--accent)}
   behavior was still running on 15 October.</p>
   <p class="meta">10–11 October 2026 · 195,068 RTTY spots · CW checked to 15 Oct · prepared by K1MK</p>
 
+  <p>
+    This is an engineering notebook documenting the investigation into the anomaly seen during the 2026 Makrothen RTTY
+    contest. The intent is to collect evidence and analysis in one place, so that the RBN community can understand
+    what happened and how to mitigate it in the upcoming JARL WW RTTY contest. The notebook is in roughly chronological
+    order and is structured to provide context,
+    methodology, findings, and conclusions, with supporting data visualizations and tables.
+  </p>
+
   <h2>Where this started</h2>
   <p>Nothing about the investigation reported here began with a rate. It
   began with an N1MM bandmap that looked wrong.</p>
@@ -225,15 +233,13 @@ a{color:var(--accent)}
   makes one contact and then hits nine more bandmap entries that are all the
   same running station.</p>
   <p>Ten stations typically do not run on one frequency at the same time, so something was wrong.
-  The rest of this report is the work of finding out what, and it ends up
-  naming a specific piece of software. The short version: nine of those ten were
+  The rest of this report is the work to identify the cause. The short version: nine of those ten were
   answering 3V8LL rather than running, and a handful of skimmers were
   reporting them as though they were CQing on the frequency as well.</p>
   <p>Callers being spotted on a runner's frequency is a well-known artifact
-  and a fact of life (at a low level) — the report measures that background
-  rate, and it is a few percent — which assisted stations deal with routinely.
-  What made the Makrothen weekend different was the vastly increased
-  <em>extent</em>.</p>
+    at a low, manageable level. This report measures that background
+  rate at a few percent — a fact of life that assisted stations are accustomed to dealing with.
+  What made the Makrothen weekend different was the vastly increased rate at which it occurred.</p>
 
   <h2>How a spot is judged</h2>
   <p>The measurement below is <strong>RTTY only</strong>: every spot whose
@@ -313,21 +319,21 @@ a{color:var(--accent)}
       <tr><th>Skimmer</th><th>Same operator</th><th>Rate</th>
         <th>Off-consensus</th><th>Judged</th>
         <th>Total spots</th><th>CQ WW weekend, 26–27 Sep</th></tr>
-      <tr class="flagged"><td class="call">KC2DAC</td><td>&mdash;</td><td class="n">50.2%</td><td class="n">1,078</td><td class="n">2,148</td><td class="n">2,756</td><td>on air, <strong>0 RTTY</strong> / 3,872 CW</td></tr>
+      <tr class="flagged"><td class="call">KC2DAC</td><td>—</td><td class="n">50.2%</td><td class="n">1,078</td><td class="n">2,148</td><td class="n">2,756</td><td>on air, <strong>0 RTTY</strong> / 3,872 CW</td></tr>
       <tr class="flagged"><td class="call">K1RA</td><td><strong>Andy K1RA</strong></td><td class="n">47.7%</td><td class="n">1,484</td><td class="n">3,111</td><td class="n">5,883</td><td><strong>5.4%</strong> on 31,981 judged</td></tr>
       <tr class="flagged"><td class="call">MM9PSY</td><td><strong>Nathan M9PSY</strong></td><td class="n">45.7%</td><td class="n">3,333</td><td class="n">7,292</td><td class="n">10,391</td><td>on air, <strong>0 RTTY</strong> / 14,034 CW</td></tr>
       <tr class="flagged"><td class="call">K1RA-4</td><td><strong>Andy K1RA</strong></td><td class="n">44.9%</td><td class="n">2,690</td><td class="n">5,992</td><td class="n">8,681</td><td><strong>5.4%</strong> on 31,964 judged</td></tr>
-      <tr class="flagged"><td class="call">K3FEF</td><td>&mdash;</td><td class="n">43.8%</td><td class="n">4,112</td><td class="n">9,397</td><td class="n">13,255</td><td>absent, no spots at all</td></tr>
+      <tr class="flagged"><td class="call">K3FEF</td><td>—</td><td class="n">43.8%</td><td class="n">4,112</td><td class="n">9,397</td><td class="n">13,255</td><td>absent, no spots at all</td></tr>
       <tr class="flagged"><td class="call">M9PSY-2</td><td><strong>Nathan M9PSY</strong></td><td class="n">43.7%</td><td class="n">2,931</td><td class="n">6,707</td><td class="n">9,337</td><td>absent, no spots at all</td></tr>
       <tr class="flagged"><td class="call">KW4VA</td><td><strong>Andy K1RA</strong></td><td class="n">41.9%</td><td class="n">603</td><td class="n">1,438</td><td class="n">5,097</td><td>absent, no spots at all</td></tr>
-      <tr class="flagged"><td class="call">MM0ZBH</td><td>&mdash;</td><td class="n">41.6%</td><td class="n">3,725</td><td class="n">8,965</td><td class="n">13,877</td><td>on air, <strong>0 RTTY</strong> / 18,625 CW</td></tr>
-      <tr><td class="call">SZ1A</td><td>&mdash;</td><td class="n">9.0%</td><td class="n">76</td><td class="n">842</td><td class="n">2,223</td><td>sample too small</td></tr>
-      <tr><td class="call">RN4WA</td><td>&mdash;</td><td class="n">6.0%</td><td class="n">160</td><td class="n">2,668</td><td class="n">4,944</td><td>7.1%</td></tr>
-      <tr><td class="call">AA4PA</td><td>&mdash;</td><td class="n">5.3%</td><td class="n">182</td><td class="n">3,462</td><td class="n">5,301</td><td>5.8%</td></tr>
-      <tr><td class="call">HB9EMP</td><td>&mdash;</td><td class="n">5.0%</td><td class="n">165</td><td class="n">3,279</td><td class="n">4,621</td><td>6.2%</td></tr>
-      <tr><td class="call">OE9GHV</td><td>&mdash;</td><td class="n">4.9%</td><td class="n">343</td><td class="n">6,936</td><td class="n">9,723</td><td>5.7%</td></tr>
-      <tr><td class="call">S50ARX</td><td>&mdash;</td><td class="n">4.3%</td><td class="n">258</td><td class="n">6,017</td><td class="n">8,032</td><td>6.1%</td></tr>
-      <tr><td class="call">K9LC</td><td>&mdash;</td><td class="n">3.9%</td><td class="n">151</td><td class="n">3,896</td><td class="n">4,698</td><td>4.7%</td></tr>
+      <tr class="flagged"><td class="call">MM0ZBH</td><td>—</td><td class="n">41.6%</td><td class="n">3,725</td><td class="n">8,965</td><td class="n">13,877</td><td>on air, <strong>0 RTTY</strong> / 18,625 CW</td></tr>
+      <tr><td class="call">SZ1A</td><td>—</td><td class="n">9.0%</td><td class="n">76</td><td class="n">842</td><td class="n">2,223</td><td>sample too small</td></tr>
+      <tr><td class="call">RN4WA</td><td>—</td><td class="n">6.0%</td><td class="n">160</td><td class="n">2,668</td><td class="n">4,944</td><td>7.1%</td></tr>
+      <tr><td class="call">AA4PA</td><td>—</td><td class="n">5.3%</td><td class="n">182</td><td class="n">3,462</td><td class="n">5,301</td><td>5.8%</td></tr>
+      <tr><td class="call">HB9EMP</td><td>—</td><td class="n">5.0%</td><td class="n">165</td><td class="n">3,279</td><td class="n">4,621</td><td>6.2%</td></tr>
+      <tr><td class="call">OE9GHV</td><td>—</td><td class="n">4.9%</td><td class="n">343</td><td class="n">6,936</td><td class="n">9,723</td><td>5.7%</td></tr>
+      <tr><td class="call">S50ARX</td><td>—</td><td class="n">4.3%</td><td class="n">258</td><td class="n">6,017</td><td class="n">8,032</td><td>6.1%</td></tr>
+      <tr><td class="call">K9LC</td><td>—</td><td class="n">3.9%</td><td class="n">151</td><td class="n">3,896</td><td class="n">4,698</td><td>4.7%</td></tr>
     </table>
   </div>
 
@@ -452,7 +458,7 @@ a{color:var(--accent)}
   </div>
 
   <h3>Not mis-decoded callsigns</h3>
-  <p>A off-consensus spot can carry a garbled version of the runner's own call
+  <p>An off-consensus spot can carry a garbled version of the runner's own call
   rather than somebody else's — a single-character RTTY error, published
   because the runner's CQ preceded it. That is a decoder fault, not a
   frequency-attribution fault, and it is a different problem with a different
@@ -571,21 +577,22 @@ a{color:var(--accent)}
   controls and the <code>UberSDR Skimmer</code> group: 2.9 and 4.2 percent of
   judged spots in CQ WW, 7.6 and 9.8 percent over the Makrothen weekend,
   against 1.9 to 4.1 percent for controls and 40.5 to 48.6 percent for the
-  eight. VU2CPL's own figures for his stations are lower again, at the
-  reference level, and the gap is a definitional one worth stating rather than
-  splitting: his classification draws on what his receivers actually recorded,
-  while this one can only ask whether a callsign is corroborated elsewhere in
-  the field, so spots he can place as unconfirmed are counted here as callers.
-  Both measures put his stations far below the eight, which is the comparison
-  that matters. He reports the garble leak as being closed in the next
+  eight. VU2CPL's own figures for his skimmers are lower again, at the
+  reference level, and the gap is a definitional one worth stating: VU2CPL's
+    classification draws on what his skimmers actually recorded,
+  while an external analysis such as this one can only ask whether a callsign is corroborated by other
+    skimmers out in the wild. The former is the more accurate measure of what is happening, and spots Manoj can identify as
+    unconfirmed are counted in this analysis as callers.
+  Both measures put VU2CPL's skimmers far below the eight, which is the comparison
+  that matters. Manoj reports the garble leak as being closed in the next
   Meridian release.</p>
   <p>One further station is worth the same treatment, and the suggestion is
-  his: <code>KM3T-5</code> reads 13.0 percent on the caller mechanism in CQ WW
-  — above every Meridian station and the highest in that weekend's field —
+  VU2CPL's: <code>KM3T-5</code> reads 13.0 percent on the caller mechanism in CQ WW
+  — above every Meridian station and the highest among skimmers reporting that weekend —
   while falling to 2.1 percent over Makrothen. <code>OK2PMU</code>'s excess
   splits more evenly: of its 10.3 percent off-consensus rate, 4.6 points are
   garbles against 5.6 points callers. Neither station was examined in this
-  report before he pointed at them.</p>
+  report before VU2CPL pointed at them.</p>
   <p>Taking <code>KM3T-5</code> apart on one denominator, since two of its
   figures otherwise round to the same number for different reasons: over the
   CQ WW weekend it went off-consensus on <strong>15.0 percent</strong> of its
@@ -595,13 +602,13 @@ a{color:var(--accent)}
   is callers, not mis-copies.</p>
 
   <h3>Testing a weather explanation for <code>KM3T-5</code></h3>
-  <p>K1MK suggested a cause. The station is in south-eastern New Hampshire,
+  <p><code>KM3T-5</code> is located in southeastern New Hampshire,
   and a major early-season nor'easter crossed the region over the CQ WW
   weekend with heavy rain and high winds. Three mechanisms could follow from
   that — precipitation static, lightning, and wind shaking antenna hardware
-  or power-line fittings loose enough to arc — and each raises the noise a
-  receiver has to decode through. A marginal runner lost in that noise while
-  a louder caller still decodes would produce exactly this signature —
+  or power-line fittings loose enough to arc — and each raises the noise that a
+  skimmer has to decode through. A marginal runner lost in that noise while
+  the louder callers in its pile-up still decode would produce exactly this signature —
   callers, not garbles. Eight tests follow, each
   against the same regional skimmers (<code>WZ7I</code>, <code>AA4PA</code>,
   <code>K9LC</code>) so that anything common to the whole band drops out.</p>
@@ -643,7 +650,7 @@ a{color:var(--accent)}
     hours were affected: about half were, at every level from 20 to 32 knots,
     and four hours with gusts of 30 to 31 knots showed entirely normal
     reception. Direction cannot be tested, since the wind blew from the
-    north-east almost the whole weekend, as a nor'easter's does.</li>
+    northeast almost the whole weekend, as a nor'easter's does.</li>
     <li><strong>Was there lightning nearby?</strong> Two sources were used.
     ASOS stations report thunder and automatically detected lightning out to
     about 30 nautical miles; surveys of 35 stations across six states and 28
@@ -794,7 +801,7 @@ a{color:var(--accent)}
       <caption><strong>Table 6.</strong> Per-skimmer transition dates, CW.</caption>
       <tr><th>Node</th><th>Operator</th><th>Transition</th><th>Before</th>
         <th>After</th><th>Welch t</th><th>Separation</th></tr>
-      <tr><td class="call">KC2DAC</td><td>&mdash;</td>
+      <tr><td class="call">KC2DAC</td><td>—</td>
         <td><strong>2 → 3 Oct</strong></td><td class="n">−0.5</td>
         <td class="n">+3.6</td><td class="n">6.5</td><td>clean</td></tr>
       <tr><td class="call">MM9PSY</td><td>Nathan M9PSY</td>
@@ -803,13 +810,13 @@ a{color:var(--accent)}
       <tr><td class="call">K1RA-4</td><td>Andy K1RA</td>
         <td><strong>5 → 6 Oct</strong></td><td class="n">+0.1</td>
         <td class="n">+4.2</td><td class="n">13.4</td><td>clean</td></tr>
-      <tr><td class="call">MM0ZBH</td><td>&mdash;</td>
+      <tr><td class="call">MM0ZBH</td><td>—</td>
         <td><strong>5 → 6 Oct</strong></td><td class="n">+0.7</td>
         <td class="n">+2.8</td><td class="n">11.6</td><td>clean</td></tr>
       <tr><td class="call">K1RA</td><td>Andy K1RA</td>
         <td colspan="5">not datable — no reliable clean period; under 1,000
         judged CW spots a day before 4 Oct, elevated on every day after</td></tr>
-      <tr><td class="call">K3FEF</td><td>&mdash;</td>
+      <tr><td class="call">K3FEF</td><td>—</td>
         <td colspan="5">not datable — first clears the floor on 3 Oct already
         at +10.9, never observed clean</td></tr>
       <tr><td class="call">M9PSY</td><td>Nathan M9PSY</td>
@@ -1137,7 +1144,7 @@ a{color:var(--accent)}
   counts: the frequency offset behind <code>VU2OY-9</code>, and the
   garble-versus-caller distinction in section 6.</p>
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v3.7. Rates over judged spots throughout;
+  Network archives, 15 October 2026. Report v3.8. Rates over judged spots throughout;
   consensus requires four distinct skimmers in one band / 0.1 kHz / five-minute run frequency
   cell.</p>
 </div>
