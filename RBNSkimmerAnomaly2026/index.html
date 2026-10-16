@@ -146,7 +146,7 @@ a{color:var(--accent)}
 </div>
 
   <figure>
-<div class="bandmap"><svg viewBox="0 0 352 806" role="img" aria-label="A simulation of the N1MM bandmap for 40 metres, 7061.4 to 7065.6 kilohertz, with a 10-minute spot timeout. Three stations are running -- WT2P on 7061.8, VE2BVV on 7062.5 and 3V8LL on 7065.2 -- each shown in grey as worked and each followed by a fan of stations answering it, ten entries on 7065.2 alone.">
+<div class="bandmap"><svg viewBox="0 0 352 806" role="img" aria-label="A simulation of the N1MM bandmap for 40 meters, 7061.4 to 7065.6 kilohertz, with a 10-minute spot timeout. Three stations are running -- WT2P on 7061.8, VE2BVV on 7062.5 and 3V8LL on 7065.2 -- each shown in gray as worked and each followed by a fan of stations answering it, ten entries on 7065.2 alone.">
 <rect x="0.5" y="0.5" width="351" height="805" fill="#ffffff" stroke="#8fa3c4" rx="2"/>
 <rect x="1" y="1" width="350" height="17" fill="#ccd6ea"/>
 <text x="7" y="13.5" font-size="10" font-family="var(--font-data)" fill="#17233d">RBN Bandmap &#8212; 40m RTTY</text>
@@ -438,7 +438,7 @@ a{color:var(--accent)}
     <em>identical on CW and RTTY</em> — +100 Hz on 40 m and +300 Hz on 15 m in
     both — which no decoder fault would produce in two unrelated demodulators.
     At +300 Hz on 15 m a 0.1 kHz consensus bin places nearly every spot in a
-    neighbouring cell, so this method scores the station as off-consensus by
+    neighboring cell, so this method scores the station as off-consensus by
     construction. It also explains the oddity noted below, that only 677 of
     that station's 10,423 spots were judgeable at all. VU2CPL reports the
     cause as a calibration bug applying another receiver's correction
@@ -589,24 +589,90 @@ a{color:var(--accent)}
   29,062 judged spots, and that divides into <strong>13.0 points of callers
   and 2.0 points of garbles</strong>. Its caller rate is the highest in that
   weekend's field; its garble rate is among the lowest. What distinguishes it
-  is callers, not mis-copies. Local conditions are a candidate
-  explanation — the station is in south-eastern New Hampshire, and a major
-  early-season nor'easter crossed the region over the CQ WW weekend, which
-  would raise the noise floor. That could produce callers rather than garbles
-  if a marginal runner fails to decode while a louder caller succeeds.</p>
-  <div class="note">
-    <p><strong>The archive cannot test that, and its apparent answer should
-    not be trusted.</strong> <code>KM3T-5</code> reported a median 27 dB over
-    the CQ WW weekend against a 22 dB field median — the highest of its
-    north-eastern peers, and above its own 23 dB over Makrothen. Taken at face
-    value that is the opposite of a raised noise floor, but it is weak
-    evidence in both directions. A skimmer measures SNR against its own noise
-    floor, so a uniform rise is largely invisible in the reported figure; and
-    only signals that decode are spotted at all, so raising the floor removes
-    the weak ones from the data and biases the surviving distribution upward.
-    Settling this needs the station's own noise records, not the spot
-    archive.</p>
-  </div>
+  is callers, not mis-copies.</p>
+
+  <h3>Testing a weather explanation for <code>KM3T-5</code></h3>
+  <p>K1MK suggested a cause. The station is in south-eastern New Hampshire,
+  and a major early-season nor'easter crossed the region over the CQ WW
+  weekend with heavy rain and high winds. Three mechanisms could follow from
+  that — precipitation static, lightning, and wind shaking antenna hardware
+  or power-line fittings loose enough to arc — and each raises the noise a
+  receiver has to decode through. A marginal runner lost in that noise while
+  a louder caller still decodes would produce exactly this signature —
+  callers, not garbles. Seven tests follow, each
+  against the same regional skimmers (<code>WZ7I</code>, <code>AA4PA</code>,
+  <code>K9LC</code>) so that anything common to the whole band drops out.</p>
+  <ul>
+    <li><strong>Did it stop hearing runners?</strong> For every judged run
+    frequency cell a skimmer spotted into, the share in which it named the
+    runner. <code>KM3T-5</code> fell from 98.4 percent over Makrothen to 87.5
+    percent over CQ WW; its peers moved by 0.7 to 1.7 points. Measured as a
+    difference-in-differences, that is a <strong>10-point deficit specific to
+    this station and this weekend</strong> — real, and the same event as its
+    caller rate.</li>
+    <li><strong>Was the loss geographic?</strong> If local noise let near,
+    strong signals through and stopped far, weak ones, its off-consensus spots
+    should over-represent US callers on DX runners. They do not: its share
+    moved by 5.0 points against a peer median of 5.6. No geographic
+    selectivity.</li>
+    <li><strong>One receiver, or the site?</strong> A single faulty receiver
+    would confine the loss to one band. It appears on all three of the
+    station's active bands — 20 m, 15 m and 40 m — so it affected the
+    station as a whole.</li>
+    <li><strong>Does its reported SNR show it?</strong> No, and that reading
+    should not be trusted either way. <code>KM3T-5</code> reported a 27 dB
+    median against a 22 dB field median. A skimmer measures SNR against its
+    own noise floor, so a uniform rise is largely invisible; and only signals
+    that decode are spotted at all, so a raised floor removes the weak ones
+    and biases what survives upward.</li>
+    <li><strong>Was the weather real, and does the deficit follow it?</strong>
+    Hourly observations from three nearby ASOS stations — Nashua, Manchester
+    and Portsmouth — show rain through most of the weekend and gusts to about
+    30 knots, as described. But the deficit does not follow rainfall
+    intensity: some of the heaviest rain of the weekend coincided with normal
+    reception at <code>KM3T-5</code>. Nashua's own gauge cannot be used here;
+    it reported zero accumulation in all 45 observations in which its sensor
+    was reporting rain.</li>
+    <li><strong>Does it follow the wind?</strong> Arcing from loose hardware
+    should track wind load rather than rain. No affected hour fell in calm
+    conditions — every one came after the storm arrived, when gusts were 20
+    knots or more. But within the storm, gust strength did not predict which
+    hours were affected: about half were, at every level from 20 to 32 knots,
+    and four hours with gusts of 30 to 31 knots showed entirely normal
+    reception. Direction cannot be tested, since the wind blew from the
+    north-east almost the whole weekend, as a nor'easter's does.</li>
+    <li><strong>Was there lightning?</strong> Without access to strike-level
+    data from the National Lightning Detection Network, the surface network
+    is the next best source: ASOS stations report thunder, thunderstorms in
+    the vicinity, and automatically detected lightning out to about 30
+    nautical miles. Two surveys were run — 35 stations across six states,
+    then 28 along the storm's coastal track from south-eastern New England
+    through Rhode Island and Long Island to the Jersey shore. On
+    <strong>26 September</strong> lightning was widespread: 22 of the 28
+    coastal stations reported it, from Long Island to Nantucket, and the
+    nearest report was Worcester, 64 km from Nashua. On <strong>27
+    September</strong> it was confined to three stations on the Jersey shore,
+    362 km and more away, with nothing in New England or on Long Island.
+    None of the New Hampshire stations nearest the receiver reported
+    lightning on either day.</li>
+  </ul>
+  <p>Read together: the storm was real, and on the first day lightning was
+  widespread and well within the range at which static crashes reach an HF
+  receiver, so it may well have contributed. On the second day the deficit
+  was as large, but the lightning had retreated to the Jersey shore. That is
+  not out of reach — static carries hundreds of kilometers, particularly on
+  the lower bands — but it is a much weaker case, and the land network cannot
+  see convection offshore, so the second day is unexplained rather than
+  cleared. The deficit also tracks neither rainfall nor gust strength: it
+  never appeared in calm air, but storm-strength rain and wind often
+  coincided with normal reception, which argues against a cause that simply
+  scales with either. Precipitation static is
+  weakened as the main explanation rather than excluded — its severity
+  depends on the charge carried and the rate of impact, not simply on how
+  much rain falls, and stations 20 to 65 km away are not the antenna site.
+  <strong>The cause of <code>KM3T-5</code>'s deficit is not established
+  here.</strong> The station's own noise records, or strike-level lightning
+  data, would settle it where the spot archive cannot.</p>
 
 
   <h2>8 · The same effect in CW, roughly a quarter as strong</h2>
@@ -1018,6 +1084,12 @@ a{color:var(--accent)}
       <tr><td class="call">qc_rbn_cw_changepoint.py</td><td>Weighted changepoint search — each node's own transition date</td></tr>
       <tr><td class="call">qc_rbn_cw_current.py</td><td>Whether each node is still elevated, to the latest archive day</td></tr>
       <tr><td class="call">qc_rbn_blacklist_cost.py</td><td>What an exclusion removes, and what only these nodes reported</td></tr>
+      <tr><td class="call">qc_rbn_km3t_hypothesis.py</td><td>Runner detection and geography, difference-in-differences against peers</td></tr>
+      <tr><td class="call">qc_rbn_km3t_byband.py</td><td>Whether a skimmer's reception deficit is one band or the whole site</td></tr>
+      <tr><td class="call">qc_rbn_weather_vs_deficit.py</td><td>Hourly ASOS precipitation and weather against a skimmer's deficit</td></tr>
+      <tr><td class="call">qc_rbn_wind_vs_deficit.py</td><td>Gust strength and direction against a skimmer's deficit</td></tr>
+      <tr><td class="call">qc_rbn_regional_lightning.py</td><td>Thunder and lightning reports across 35 New England ASOS stations</td></tr>
+      <tr><td class="call">qc_rbn_coastal_lightning.py</td><td>The same, day by day along the storm track to the Jersey shore</td></tr>
       <tr><td class="call">qc_rbn_jarl_mult_risk.py</td><td>Call-area and DXCC-entity multipliers an exclusion would cost</td></tr>
       <tr><td class="call">qc_rbn_quiet_nodes.py</td><td>Separates a node that is off the air from one merely unmeasurable</td></tr>
     </table>
@@ -1028,7 +1100,7 @@ a{color:var(--accent)}
   counts: the frequency offset behind <code>VU2OY-9</code>, and the
   garble-versus-caller distinction in section 6.</p>
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v3.3. Rates over judged spots throughout;
+  Network archives, 15 October 2026. Report v3.5. Rates over judged spots throughout;
   consensus requires four distinct skimmers in one band / 0.1 kHz / five-minute run frequency
   cell.</p>
 </div>
