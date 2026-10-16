@@ -605,147 +605,110 @@ a{color:var(--accent)}
   <p>Taking <code>KM3T-5</code> apart on one denominator, since two of its
   figures otherwise round to the same number for different reasons: over the
   CQ WW weekend it went off-consensus on <strong>15.0 percent</strong> of its
-  29,062 judged spots, and that divides into <strong>13.0 points of callers
-  and 2.0 points of garbles</strong>. Its caller rate is the highest in that
-  weekend's field; its garble rate is among the lowest. What distinguishes it
-  is callers, not mis-copies.</p>
+  29,062 judged spots, and that divides into 13.0 points that are not
+  garbles and 2.0 points that are. Its garble rate is among the lowest in the
+  field. But on VU2CPL's stricter definition only <strong>2.5 points</strong>
+  of the 13.0 are confirmed callers, which is the reference level. The rest
+  are not callers at all.</p>
 
-  <h3>Testing a weather explanation for <code>KM3T-5</code></h3>
-  <p><code>KM3T-5</code> is located in southeastern New Hampshire,
-  and a major early-season nor'easter passed off the southern New England coast over the CQ WW
-  weekend, bringing with it heavy rain and high winds. Three mechanisms could follow from
-  that — precipitation static, lightning, and wind shaking antenna hardware
-  or power-line fittings loose enough to arc — and each raises the noise that a
-  skimmer has to decode through. A marginal-strength runner that gets lost in the noise while
-  louder callers in its pile-up still decode would produce exactly this signature —
-  callers, not garbles. Nine tests follow, each
-  against the same regional skimmers — <code>WC2L</code>, <code>WZ7I</code>
-  and <code>N2YCH</code>, all within 400 km by the locators they report to
-  PSK Reporter — so that anything common to the whole band drops out.
-  <code>WC2L</code> posted no RTTY on 26 September, so that day's hourly
-  comparisons rest on the other two.</p>
+  <h3>What <code>KM3T-5</code>'s spots actually were</h3>
+  <p>Of <code>KM3T-5</code>'s 3,785 disputed spots in CQ WW that are not
+  garbles, only 19 percent name a caller that other skimmers also heard
+  calling there. <strong>Half name a station that was itself running
+  somewhere else at the time</strong> — against 0 to 3 percent for its
+  peers, and 2 percent for <code>KM3T-5</code> itself over Makrothen — and 45
+  percent of those are on a different band from the one the station was
+  running on. Another 13 percent name a station no other skimmer reported at
+  all, against about 1 percent for the peers. Nothing about the frequencies
+  explains this: there is no offset, and no harmonic, mixing or image
+  relation between where <code>KM3T-5</code> placed a station and where it
+  was.</p>
+  <p>Time does explain it. In 1,976 of these spots <code>KM3T-5</code> put a
+  station on <strong>the exact frequency that station had itself run on
+  earlier</strong> — a median of 55 minutes earlier, and more than an hour
+  in 772 cases — after someone else had taken it. Its three peers between
+  them produced about a hundred such spots, typically five minutes old. The
+  stations involved are not local ones that might plausibly still be audible
+  only in New Hampshire: they number 654 and are mostly widely heard DX
+  stations. The skimmer was reporting stations at frequencies they had left.
+  Its CW output, decoded by the same node, shows the same fault at a milder
+  stage. In the hours concerned its CW spots arrived <strong>162 to 412
+  seconds</strong> behind the first skimmer to hear the same runner, against
+  7 to 228 seconds for the other skimmers in the comparison, and it made 171
+  stale CW spots to its peers' 0 to 16. A skimmer that has fallen behind
+  reports a station late, and a late enough report names it on a frequency
+  it has already left.</p>
+  <p>The fault kept much the same hours on both days. On 26 September it
+  began at 1400Z and was fully on from 1500Z until 2200Z (10 a.m. to 6 p.m.
+  local, EDT); on 27 September it began an hour earlier, at 1300Z, was fully
+  on from 1400Z, and was still on when the contest ended at 2400Z (8 p.m.
+  local). Each time it started and stopped within an hour or so, and outside
+  those hours <code>KM3T-5</code> was as good as its peers. Its CW latency
+  covers the same windows. <strong>96 percent of the stale spots fall in
+  those hours</strong>, where they make up 27.5 percent of
+  everything <code>KM3T-5</code> reported, against 0.4 percent in its other
+  hours. In the worst hours nearly half of its output was stale, enough by
+  itself to account for most of the deficit.</p>
+  <p>And the fault belonged to the CQ WW weekend alone. Over Makrothen, two
+  weeks later, it was gone, or at least did not show itself: stale spots were
+  0.2 percent of <code>KM3T-5</code>'s RTTY output, with no hour above 2
+  percent; it named the runner 98.4 percent of the time; and its CW spots
+  were as prompt as anyone's. Nor does its runner-naming show anything like
+  it on any other RTTY weekend in its 2025–26 record.</p>
+  <p>A second skimmer at the same site settles where the fault lies.
+  <code>KM3T-2</code> runs at the station owner's QTH alongside
+  <code>KM3T-5</code>, on its own receiver and antenna, and decodes CW. It
+  was clean in every hour of the weekend: its CW runner-naming share stayed
+  within about five points of the regional peers' throughout, with 5 stale
+  spots in 6,108. Weather, propagation and anything else common to the site
+  reached both. What failed was <code>KM3T-5</code>'s own chain — its
+  antenna, receiver, or computer and software — and the form the failure
+  took, latency in two modes at once, is the form a processing backlog
+  takes.</p>
+
+  <h3>What it was not</h3>
+  <p>Measured against three regional skimmers within 400 km —
+  <code>WC2L</code>, <code>WZ7I</code> and <code>N2YCH</code> —
+  <code>KM3T-5</code> named the runner in 87.5 percent of the cells it
+  spotted into over CQ WW against 98.4 percent over Makrothen, while they
+  moved by under two points: a 9-point deficit specific to this skimmer and
+  this weekend, on all three of its bands. It is not the size of the
+  contest. A year earlier, through a busier CQ WW — 2.25 million RTTY spots
+  against 1.43 million — it matched its peers to within a point, and it did
+  so on every other 2025–26 RTTY weekend where it could be compared.</p>
+  <p>A nor'easter passed off the southern New England coast that weekend,
+  and K1MK suggested it as the trigger — through precipitation static,
+  lightning, or wind shaking hardware loose enough to arc. Each was tested
+  against the hours in which the fault appeared:</p>
   <ul>
-    <li><strong>Did it stop hearing runners?</strong> For every judged run
-    frequency cell a skimmer spotted into, the share in which it named the
-    runner. <code>KM3T-5</code> fell from 98.4 percent over Makrothen to 87.5
-    percent over CQ WW; its peers moved by 0.8 to 1.7 points. Measured as a
-    difference-in-differences, that is a <strong>9-point deficit specific to
-    this station and this weekend</strong> — real, and the same event as its
-    caller rate.</li>
-    <li><strong>Was the loss geographic?</strong> If local noise let near,
-    strong signals through and stopped far, weak ones, its off-consensus spots
-    should over-represent US callers on DX runners. They lean that way: its
-    share rose 5.0 points between the weekends, against changes of −5.4, +0.3
-    and +3.2 for its peers (median +0.3). That is a modest tilt rather than a
-    clear signal — the two nearest peers' figures rest on small samples, 64
-    to 522 off-consensus spots — so geographic selectivity is not ruled out,
-    but not established either.</li>
-    <li><strong>One receiver, or the site?</strong> A single faulty receiver
-    would confine the loss to one band. It appears on all three of the
-    station's active bands — 20 m, 15 m and 40 m — so it affected the
-    station as a whole.</li>
-    <li><strong>Does its reported SNR show it?</strong> No, and that reading
-    should not be trusted either way. <code>KM3T-5</code> reported a 27 dB
-    median against a 22 dB field median. A skimmer measures SNR against its
-    own noise floor, so a uniform rise is largely invisible; and only signals
-    that decode are spotted at all, so a raised floor removes the weak ones
-    and biases what survives upward.</li>
-    <li><strong>Was the weather real, and does the deficit follow it?</strong>
-    Hourly observations from the ASOS stations nearest the skimmer —
-    Manchester, Fitchburg, Lawrence and Concord for rain, 20 to 44 km away,
-    with Nashua, 10 km away, added for wind — show rain in 46 of the
-    weekend's 47 judged hours and gusts to 45 knots, as described. But the
-    deficit does not follow rainfall intensity: the wettest hour of the
-    weekend, 0.30 inches, and another of 0.22 coincided with normal reception
-    at <code>KM3T-5</code>, while other hours of 0.22 to 0.25 inches did not. Nashua's own gauge cannot be used here; it reported
-    zero accumulation in 42 of the 43 observations in which its sensor was
-    reporting rain.</li>
-    <li><strong>Does it follow the wind?</strong> Arcing from loose hardware
-    should track wind load rather than rain. It does not. Gusts reached 30
-    to 45 knots in 24 hours of the weekend; 10 of those hours were affected
-    and 14 were normal, including all eight with the strongest gusts, 37 to
-    45 knots. Across the weekend, gust strength and the deficit are
-    uncorrelated (r = 0.00). Direction cannot be tested, since the wind blew
-    from the northeast almost the whole weekend, as a nor'easter's does.</li>
-    <li><strong>Was there lightning nearby?</strong> Two sources were used.
-    ASOS stations report thunder and automatically detected lightning out to
-    about 30 nautical miles; surveys of 35 stations across six states and 28
-    along the storm's coastal track found lightning widespread on 26 September,
-    from Long Island to Nantucket, and on 27 September only at three Jersey
-    shore stations 362 km and more away. Land stations cannot see convection
-    offshore, so the second source is the Geostationary Lightning Mapper on
-    GOES-East, which maps every flash, in cloud and to ground, over land and
-    sea, from NOAA's public archive. Within 1,500 km of the station it
-    recorded 6,615 flashes on 26 September and 19,086 on the 27th. On
-    <strong>26 September</strong> the station's worst hours coincided with the
-    storm's closest approach, the nearest flashes about 100 km away. But
-    earlier that day, with as much lightning within 300 km and the nearest
-    flash 145 to 243 km away, it heard normally. On <strong>27
-    September</strong> it was affected for ten consecutive hours with at most
-    one flash within 600 km in any of them, while hours earlier that day with
-    as much or more lightning within 1,000 km were clean. Across the weekend, hourly
-    flash counts and the deficit are uncorrelated at every radius tested
-    (Spearman ρ between −0.14 and +0.16).</li>
-    <li><strong>Did lightning arrive by skywave?</strong> K1MK pointed out
-    that static from distant storms travels by the ionosphere, and so keeps
-    propagation's schedule rather than the storm's: 20 m and 15 m carry it
-    from beyond their skip zones while open, and 40 m from thousands of
-    kilometers when it goes long. GLM's full view of the Americas and the
-    Atlantic — 1.1 to 1.5 million flashes a day — was counted by hour in
-    distance bands out past 6,000 km and compared per band. The Makrothen
-    weekend is a poor control here: a severe geomagnetic storm (Kp 7)
-    disturbed propagation through much of 10 October. The two CQ WW days are a
-    good one: both were geomagnetically quiet (Kp 2.7 or below in the hours
-    that matter) with similar solar flux, so the same UTC hour on each day
-    had the same hop geometry. Matched that way, no band of distance tracks
-    the deficit throughout. In the two hours where <code>KM3T-5</code> heard
-    normally on one day and was 68 points below its peers on the other on
-    20 m — and 12 to 14 points below on 40 m — the normal day had as much or more lightning at
-    2,000 to 4,500 km; only the 4,500 to 6,000 km band was heavier on the
-    affected day. That band then fails the other way: in hours where it
-    carried up to four times more lightning on 26 September, the deficit was
-    deeper on the 27th. Lightning beyond 6,000 km differed five- to
-    seventeen-fold between the days in hours whose deficits were within about
-    a dozen points of each other. And
-    40 m, with heavy lightning 2,000 to 6,000 km away on both nights, showed
-    no deficit.
-    The peers argue the same way: <code>WC2L</code>, <code>N2YCH</code> and
-    <code>WZ7I</code>, 184 to 393 km from <code>KM3T-5</code>, would receive
-    static from a storm thousands of kilometers away by nearly the same path,
-    and were unaffected — though no station's antenna directivity is
-    known.</li>
-    <li><strong>Is it the size of the contest?</strong> CQ WW is the busiest
-    RTTY weekend of the year, so a deficit that grows with band activity would
-    look like this. The station's own history says otherwise. On nine
-    weekends in 2025 and 2026 it and its peers all posted enough RTTY to
-    compare, and on eight of them its runner-naming share and caller rate
-    stayed within about 1.3 points of its peers'. That includes <strong>CQ WW
-    2025</strong> — the same contest, with 2.25 million RTTY spots against
-    2026's 1.43 million — where it named the runner 97.6 percent of the time
-    against its peers' 97.8, and CQ WPX RTTY 2025, with 1.59 million. Only CQ
-    WW 2026 stands apart: 9.2 points below its peers on runner share and 9.4
-    above them on callers. Across the other
-    weekends, busier ones were if anything slightly better. The comparison
-    could not be made against Makrothen 2025 or SARTG 2026, because on both
-    weekends the skimmer, and every other KM3T node, posted CW but no
-    RTTY.</li>
+    <li><strong>Rain</strong>, from the four nearest working gauges (20 to
+    44 km): rain fell in 46 of the weekend's 47 hours, and the wettest hour,
+    0.30 inches, came with normal reception while other hours of 0.22 to 0.25
+    did not.</li>
+    <li><strong>Wind</strong>, from the four nearest stations: of 24 hours
+    with gusts of 30 to 45 knots, 10 were affected and 14 normal — including
+    all eight with the strongest gusts. Gust strength and the deficit are
+    uncorrelated.</li>
+    <li><strong>Lightning nearby</strong>, from the surface network and the
+    GOES-East satellite's lightning mapper: the first day's worst hours
+    coincided with the storm's closest approach, about 100 km, but as much
+    lightning earlier that day left reception normal; the second day's ten
+    affected hours had almost no lightning within 600 km.</li>
+    <li><strong>Lightning by skywave</strong>, from storms out past 6,000 km,
+    matched hour for hour across the two geomagnetically quiet days: no band
+    of distance followed the fault, and hours with comparable distant
+    lightning gave opposite results.</li>
+    <li><strong>The same site</strong>: <code>KM3T-2</code>, in the same
+    weather, was unaffected.</li>
   </ul>
-  <p>Read together: the storm was real, but lightning does not explain the
-  deficit. It was tested nearby and by skywave, under matched propagation,
-  and fits neither: the second day's deficit ran its course with no
-  lightning in range, and no band of distance follows it from hour to hour
-  across the two days. On the first day nearby lightning may have added to
-  it, but as much lightning earlier that day left reception normal. The deficit
-  also tracks neither rainfall nor gust strength: the wettest hour and the
-  strongest gusts of the weekend all coincided with normal reception, which
-  argues against a cause that simply scales with either.
-  Nor is it the size of the contest: a year earlier, through a busier CQ WW,
-  the station heard as well as its peers. Precipitation static is weakened as the main explanation rather than
-  excluded — its severity depends on the charge carried and the rate of
-  impact, not simply on how much rain falls, and weather stations 10 to 44 km away
-  are not the antenna site. <strong>The cause of <code>KM3T-5</code>'s
-  deficit is not established here.</strong> The station's own noise records
-  would settle it where the spot archive cannot.</p>
+  <p>Each pointed away from the weather without ruling out every form of it —
+  noise picked up by <code>KM3T-5</code>'s own antenna and not its
+  neighbor's could still have flooded its decoder — so the investigation did
+  not produce a clean answer. <strong>What triggered the fault is not
+  established here.</strong> It lies in <code>KM3T-5</code>'s own antenna,
+  receiver or computer, and the host's own records for that weekend —
+  processor load, the skimmer's logs, anything changed on that node since CQ
+  WW 2025 — would settle it where the spot archive cannot.</p>
 
 
   <h2>8 · The same effect in CW, roughly a quarter as strong</h2>
@@ -1160,6 +1123,8 @@ a{color:var(--accent)}
       <tr><td class="call">qc_rbn_cw_current.py</td><td>Whether each node is still elevated, to the latest archive day</td></tr>
       <tr><td class="call">qc_rbn_blacklist_cost.py</td><td>What an exclusion removes, and what only these nodes reported</td></tr>
       <tr><td class="call">qc_rbn_km3t_hypothesis.py</td><td>Runner detection and geography, difference-in-differences against peers</td></tr>
+      <tr><td class="call">qc_rbn_km3t_unconfirmed.py</td><td>Where else each of a skimmer's unconfirmed calls was heard: nearby, running elsewhere, or alone</td></tr>
+      <tr><td class="call">qc_rbn_km3t_latency.py</td><td>Spot latency and stale re-reports by hour, RTTY or CW, against same-site and regional skimmers</td></tr>
       <tr><td class="call">qc_rbn_km3t_history.py</td><td>The same skimmer against its peers on every 2025–26 RTTY weekend it posted</td></tr>
       <tr><td class="call">qc_rbn_km3t_byband.py</td><td>Whether a skimmer's reception deficit is one band or the whole site</td></tr>
       <tr><td class="call">qc_rbn_weather_vs_deficit.py</td><td>Hourly ASOS precipitation and weather against a skimmer's deficit</td></tr>
@@ -1179,7 +1144,7 @@ a{color:var(--accent)}
   counts: the frequency offset behind <code>VU2OY-9</code>, and the
   garble-versus-caller distinction in section 6.</p>
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v3.12. Rates over judged spots throughout;
+  Network archives, 15 October 2026. Report v3.17. Rates over judged spots throughout;
   consensus requires four distinct skimmers in one band / 0.1 kHz / five-minute run frequency
   cell.</p>
 </div>
