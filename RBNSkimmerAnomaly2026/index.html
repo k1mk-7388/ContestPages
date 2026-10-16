@@ -599,7 +599,7 @@ a{color:var(--accent)}
   or power-line fittings loose enough to arc — and each raises the noise a
   receiver has to decode through. A marginal runner lost in that noise while
   a louder caller still decodes would produce exactly this signature —
-  callers, not garbles. Seven tests follow, each
+  callers, not garbles. Eight tests follow, each
   against the same regional skimmers (<code>WZ7I</code>, <code>AA4PA</code>,
   <code>K9LC</code>) so that anything common to the whole band drops out.</p>
   <ul>
@@ -641,38 +641,68 @@ a{color:var(--accent)}
     and four hours with gusts of 30 to 31 knots showed entirely normal
     reception. Direction cannot be tested, since the wind blew from the
     north-east almost the whole weekend, as a nor'easter's does.</li>
-    <li><strong>Was there lightning?</strong> Without access to strike-level
-    data from the National Lightning Detection Network, the surface network
-    is the next best source: ASOS stations report thunder, thunderstorms in
-    the vicinity, and automatically detected lightning out to about 30
-    nautical miles. Two surveys were run — 35 stations across six states,
-    then 28 along the storm's coastal track from south-eastern New England
-    through Rhode Island and Long Island to the Jersey shore. On
-    <strong>26 September</strong> lightning was widespread: 22 of the 28
-    coastal stations reported it, from Long Island to Nantucket, and the
-    nearest report was Worcester, 64 km from Nashua. On <strong>27
-    September</strong> it was confined to three stations on the Jersey shore,
-    362 km and more away, with nothing in New England or on Long Island.
-    None of the New Hampshire stations nearest the receiver reported
-    lightning on either day.</li>
+    <li><strong>Was there lightning nearby?</strong> Two sources were used.
+    ASOS stations report thunder and automatically detected lightning out to
+    about 30 nautical miles; surveys of 35 stations across six states and 28
+    along the storm's coastal track found lightning widespread on 26 September,
+    from Long Island to Nantucket, and on 27 September only at three Jersey
+    shore stations 362 km and more away. Land stations cannot see convection
+    offshore, so the second source is the Geostationary Lightning Mapper on
+    GOES-East, which maps every flash, in cloud and to ground, over land and
+    sea, from NOAA's public archive. Within 1,500 km of the station it
+    recorded 6,615 flashes on 26 September and 19,086 on the 27th. On
+    <strong>26 September</strong> the station's worst hours coincided with the
+    storm's closest approach, the nearest flashes about 100 km away. But
+    earlier that day, with as much lightning within 300 km and the nearest
+    flash 145 to 243 km away, it heard normally. On <strong>27
+    September</strong> it was affected for ten consecutive hours with at most
+    one flash within 600 km in any of them, while hours earlier that day with
+    as much or more lightning within 1,000 km were clean. Across the weekend, hourly
+    flash counts and the deficit are uncorrelated at every radius tested
+    (Spearman ρ between −0.05 and +0.17).</li>
+    <li><strong>Did lightning arrive by skywave?</strong> K1MK pointed out
+    that static from distant storms travels by the ionosphere, and so keeps
+    propagation's schedule rather than the storm's: 20 m and 15 m carry it
+    from beyond their skip zones while open, and 40 m from thousands of
+    kilometers when it goes long. GLM's full view of the Americas and the
+    Atlantic — 1.1 to 1.5 million flashes a day — was counted by hour in
+    distance bands out past 6,000 km and compared per band. The Makrothen
+    weekend is a poor control here: a severe geomagnetic storm (Kp 7)
+    disturbed propagation through much of 10 October. The two CQ WW days are a
+    good one: both were geomagnetically quiet (Kp 2.7 or below in the hours
+    that matter) with similar solar flux, so the same UTC hour on each day
+    had the same hop geometry. Matched that way, no band of distance tracks
+    the deficit throughout. In the two hours where <code>KM3T-5</code> heard
+    normally on one day and was 44 to 68 points below its peers on the other,
+    on 20 m and 15 m alike, the normal day had as much or more lightning at
+    2,000 to 4,500 km; only the 4,500 to 6,000 km band was heavier on the
+    affected day. That band then fails the other way: in hours where it
+    carried up to four times more lightning on 26 September, the deficit was
+    deeper on the 27th. Lightning beyond 6,000 km differed as much as
+    seventeen-fold between the days in hours with a similar deficit. And
+    40 m, with heavy lightning 2,000 to 6,000 km away on both nights, showed
+    no deficit.
+    The peers argue the same way: <code>WZ7I</code>, 393 km from
+    <code>KM3T-5</code> by the locators both report to PSK Reporter, would
+    receive static from a storm thousands of kilometers away by nearly the
+    same path, and was unaffected — though neither station's antenna
+    directivity is known.</li>
   </ul>
-  <p>Read together: the storm was real, and on the first day lightning was
-  widespread and well within the range at which static crashes reach an HF
-  receiver, so it may well have contributed. On the second day the deficit
-  was as large, but the lightning had retreated to the Jersey shore. That is
-  not out of reach — static carries hundreds of kilometers, particularly on
-  the lower bands — but it is a much weaker case, and the land network cannot
-  see convection offshore, so the second day is unexplained rather than
-  cleared. The deficit also tracks neither rainfall nor gust strength: it
-  never appeared in calm air, but storm-strength rain and wind often
-  coincided with normal reception, which argues against a cause that simply
-  scales with either. Precipitation static is
-  weakened as the main explanation rather than excluded — its severity
-  depends on the charge carried and the rate of impact, not simply on how
-  much rain falls, and stations 20 to 65 km away are not the antenna site.
-  <strong>The cause of <code>KM3T-5</code>'s deficit is not established
-  here.</strong> The station's own noise records, or strike-level lightning
-  data, would settle it where the spot archive cannot.</p>
+  <p>Read together: the storm was real, but lightning does not explain the
+  deficit. It was tested nearby and by skywave, under matched propagation,
+  and fits neither: the second day's deficit ran its course with no
+  lightning in range, and no band of distance follows it from hour to hour
+  across the two days. On the first day nearby lightning may have added to
+  it, but as much lightning earlier that day left reception normal. The deficit
+  also tracks neither rainfall nor gust strength: it never appeared in calm
+  air, but storm-strength rain and wind often coincided with normal
+  reception, which argues against a cause that simply scales with either.
+  Precipitation static is weakened as the main explanation rather than
+  excluded — its severity depends on the charge carried and the rate of
+  impact, not simply on how much rain falls, and stations 20 to 65 km away
+  are not the antenna site. <strong>The cause of <code>KM3T-5</code>'s
+  deficit is not established here.</strong> The station's own noise records
+  would settle it where the spot archive cannot.</p>
 
 
   <h2>8 · The same effect in CW, roughly a quarter as strong</h2>
@@ -1090,6 +1120,9 @@ a{color:var(--accent)}
       <tr><td class="call">qc_rbn_wind_vs_deficit.py</td><td>Gust strength and direction against a skimmer's deficit</td></tr>
       <tr><td class="call">qc_rbn_regional_lightning.py</td><td>Thunder and lightning reports across 35 New England ASOS stations</td></tr>
       <tr><td class="call">qc_rbn_coastal_lightning.py</td><td>The same, day by day along the storm track to the Jersey shore</td></tr>
+      <tr><td class="call">fetch_glm_flashes.py</td><td>GOES-East lightning flashes from NOAA's public archive, near the station and by hour over the whole disk</td></tr>
+      <tr><td class="call">qc_rbn_glm_vs_deficit.py</td><td>Flashes within 1,500 km against a skimmer's hourly deficit</td></tr>
+      <tr><td class="call">qc_rbn_glm_skywave.py</td><td>Distant lightning by band and distance, matched hour for hour across days</td></tr>
       <tr><td class="call">qc_rbn_jarl_mult_risk.py</td><td>Call-area and DXCC-entity multipliers an exclusion would cost</td></tr>
       <tr><td class="call">qc_rbn_quiet_nodes.py</td><td>Separates a node that is off the air from one merely unmeasurable</td></tr>
     </table>
@@ -1100,7 +1133,7 @@ a{color:var(--accent)}
   counts: the frequency offset behind <code>VU2OY-9</code>, and the
   garble-versus-caller distinction in section 6.</p>
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v3.5. Rates over judged spots throughout;
+  Network archives, 15 October 2026. Report v3.6. Rates over judged spots throughout;
   consensus requires four distinct skimmers in one band / 0.1 kHz / five-minute run frequency
   cell.</p>
 </div>
