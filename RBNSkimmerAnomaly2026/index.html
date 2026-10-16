@@ -579,14 +579,22 @@ a{color:var(--accent)}
   judged spots in CQ WW, 7.6 and 9.8 percent over the Makrothen weekend,
   against 1.9 to 4.1 percent for controls and 40.5 to 48.6 percent for the
   eight. VU2CPL's own figures for his skimmers are lower again, at the
-  reference level, and the gap is a definitional one worth stating: VU2CPL's
-    classification draws on what his skimmers actually recorded,
-  while an external analysis such as this one can only ask whether a callsign is corroborated by other
-    skimmers out in the wild. The former is the more accurate measure of what is happening, and spots Manoj can identify as
-    unconfirmed are counted in this analysis as callers.
-  Both measures put VU2CPL's skimmers far below the eight, which is the comparison
-  that matters. Manoj reports the garble leak as being closed in the next
-  Meridian release.</p>
+  reference level, and the difference is mostly one of definition. Manoj
+  splits the non-garble disputed spots in two: <em>callers</em>, which
+  other skimmers also heard calling on that frequency, and
+  <em>unconfirmed</em> calls, which only that skimmer reported there. He
+  counts only the former as callers; this report counts both. The same
+  three-way split can be rebuilt from the public archive alone, and it
+  reproduces his garble shares almost exactly and his caller and unconfirmed
+  shares to within several points. On his definition the Meridian caller
+  rate falls to 2.1 to 5.4 percent of judged spots, against 2.0 to 2.8
+  percent for controls, while the <code>UberSDR Skimmer</code> nodes stay
+  at 30 to 34 percent. His stations' own logs then added what the archive
+  cannot show: the message context each call arrived in, which showed that
+  the garbles follow the runner's own CQ. Both measures put VU2CPL's
+  skimmers far below the eight, which is the comparison that matters.
+  Manoj reports the garble leak as being closed in the next Meridian
+  release.</p>
   <p>One further station is worth the same treatment, and the suggestion is
   VU2CPL's: <code>KM3T-5</code> reads 13.0 percent on the caller mechanism in CQ WW
   — above every Meridian station and the highest among skimmers reporting that weekend —
@@ -1144,6 +1152,7 @@ a{color:var(--accent)}
       <tr><td class="call">qc_rbn_mode_split.py</td><td>Per-day RTTY/CW counts — separates "absent" from "no RTTY"</td></tr>
       <tr><td class="call">qc_rbn_cosite_test.py</td><td>Instance overlap and band coverage, against unrelated pairs</td></tr>
       <tr><td class="call">qc_rbn_software_clusters.py</td><td>Joins PSK Reporter's software table against measured rates</td></tr>
+      <tr><td class="call">qc_rbn_disputed_split.py</td><td>Garble, caller and unconfirmed shares of disputed spots, set beside VU2CPL's figures</td></tr>
       <tr><td class="call">qc_rbn_cw_probe.py</td><td>The same test on the CW stream, both weekends</td></tr>
       <tr><td class="call">qc_rbn_cw_mechanism.py</td><td>CW across three bin widths, and whether the calls are real</td></tr>
       <tr><td class="call">qc_rbn_cw_timeline.py</td><td>Per-node daily CW excess across the whole window</td></tr>
@@ -1170,7 +1179,7 @@ a{color:var(--accent)}
   counts: the frequency offset behind <code>VU2OY-9</code>, and the
   garble-versus-caller distinction in section 6.</p>
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v3.11. Rates over judged spots throughout;
+  Network archives, 15 October 2026. Report v3.12. Rates over judged spots throughout;
   consensus requires four distinct skimmers in one band / 0.1 kHz / five-minute run frequency
   cell.</p>
 </div>
