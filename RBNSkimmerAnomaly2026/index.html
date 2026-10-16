@@ -135,8 +135,9 @@ a{color:var(--accent)}
 
   <p>
     This is an engineering notebook documenting the investigation into the anomaly seen during the 2026 Makrothen RTTY
-    contest. The intent is to collect evidence and analysis in one place, so that the RBN community can understand
-    what happened and how to mitigate it in the upcoming JARL WW RTTY contest. The notebook is in roughly chronological
+    contest. The intent is to collect evidence and analysis in one place, so that the RBN community (in particular spot
+    consumers like me) can understand
+    what happened and how to mitigate for the upcoming JARL WW RTTY contest. The notebook is in roughly chronological
     order and is structured to provide context,
     methodology, findings, and conclusions, with supporting data visualizations and tables.
   </p>
@@ -236,7 +237,7 @@ a{color:var(--accent)}
   The rest of this report is the work to identify the cause. The short version: nine of those ten were
   answering 3V8LL rather than running, and a handful of skimmers were
   reporting them as though they were CQing on the frequency as well.</p>
-  <p>Callers being spotted on a runner's frequency is a well-known artifact
+  <p>Callers being spotted on a runner's frequency is a well-known artifact that happens all the time
     at a low, manageable level. This report measures that background
   rate at a few percent — a fact of life that assisted stations are accustomed to dealing with.
   What made the Makrothen weekend different was the vastly increased rate at which it occurred.</p>
@@ -251,7 +252,7 @@ a{color:var(--accent)}
   slot. Call each of those buckets a <em>run frequency cell</em>.
   Within each cell, the callsign that the most <em>distinct</em> skimmers
   report is taken as the station holding the frequency. Where at least four
-  skimmers back that callsign, the run frequency cell is decided, and any spot in it naming a
+  skimmers back that callsign, the run frequency cell is decided (assigned to a runner), and any spot in it naming a
   different station is counted as <strong>off-consensus</strong>.</p>
   <p>Off-consensus is a measurement, not a verdict. A spot can be off-consensus
   for several unrelated reasons — a mis-decoded callsign, a station answering
@@ -431,7 +432,7 @@ a{color:var(--accent)}
 
   <div class="correction">
     <p><strong>That control was run on the Makrothen weekend, and one station
-    needed it on the other one.</strong> Manoj VU2CPL, co-author of the
+    needed it on CQ WW.</strong> Manoj VU2CPL, co-author of the
     Meridian skimmer software, reproduced this report's method from the RBN
     archives and pointed out that <code>VU2OY-9</code> — CQ WW's 85.8 percent
     outlier, cited twice in this report — is a receiver frequency offset
@@ -609,7 +610,7 @@ a{color:var(--accent)}
   or power-line fittings loose enough to arc — and each raises the noise that a
   skimmer has to decode through. A marginal runner lost in that noise while
   the louder callers in its pile-up still decode would produce exactly this signature —
-  callers, not garbles. Eight tests follow, each
+  callers, not garbles. Nine tests follow, each
   against the same regional skimmers (<code>WZ7I</code>, <code>AA4PA</code>,
   <code>K9LC</code>) so that anything common to the whole band drops out.</p>
   <ul>
@@ -697,6 +698,20 @@ a{color:var(--accent)}
     receive static from a storm thousands of kilometers away by nearly the
     same path, and was unaffected — though neither station's antenna
     directivity is known.</li>
+    <li><strong>Is it the size of the contest?</strong> CQ WW is the busiest
+    RTTY weekend of the year, so a deficit that grows with band activity would
+    look like this. The station's own history says otherwise. It posted RTTY
+    on twelve scorable weekends in 2025 and 2026, and on eleven of them its
+    runner-naming share and caller rate stayed within about two points of its
+    peers'. That includes <strong>CQ WW 2025</strong> — the same contest, with
+    2.25 million RTTY spots against 2026's 1.43 million — where it named the
+    runner 97.6 percent of the time against its peers' 97.7, and CQ WPX RTTY
+    2025, with 1.59 million. Only CQ WW 2026 stands apart: 9.1 points below
+    its peers on runner share and 9.5 above them on callers. Across the other
+    weekends, busier ones were if anything slightly better. The comparison
+    could not be made against Makrothen 2025 or SARTG 2026, because on both
+    weekends the station, and every other KM3T node, posted CW but no
+    RTTY.</li>
   </ul>
   <p>Read together: the storm was real, but lightning does not explain the
   deficit. It was tested nearby and by skywave, under matched propagation,
@@ -707,7 +722,8 @@ a{color:var(--accent)}
   also tracks neither rainfall nor gust strength: it never appeared in calm
   air, but storm-strength rain and wind often coincided with normal
   reception, which argues against a cause that simply scales with either.
-  Precipitation static is weakened as the main explanation rather than
+  Nor is it the size of the contest: a year earlier, through a busier CQ WW,
+  the station heard as well as its peers. Precipitation static is weakened as the main explanation rather than
   excluded — its severity depends on the charge carried and the rate of
   impact, not simply on how much rain falls, and stations 20 to 65 km away
   are not the antenna site. <strong>The cause of <code>KM3T-5</code>'s
@@ -1126,6 +1142,7 @@ a{color:var(--accent)}
       <tr><td class="call">qc_rbn_cw_current.py</td><td>Whether each node is still elevated, to the latest archive day</td></tr>
       <tr><td class="call">qc_rbn_blacklist_cost.py</td><td>What an exclusion removes, and what only these nodes reported</td></tr>
       <tr><td class="call">qc_rbn_km3t_hypothesis.py</td><td>Runner detection and geography, difference-in-differences against peers</td></tr>
+      <tr><td class="call">qc_rbn_km3t_history.py</td><td>The same skimmer against its peers on every 2025–26 RTTY weekend it posted</td></tr>
       <tr><td class="call">qc_rbn_km3t_byband.py</td><td>Whether a skimmer's reception deficit is one band or the whole site</td></tr>
       <tr><td class="call">qc_rbn_weather_vs_deficit.py</td><td>Hourly ASOS precipitation and weather against a skimmer's deficit</td></tr>
       <tr><td class="call">qc_rbn_wind_vs_deficit.py</td><td>Gust strength and direction against a skimmer's deficit</td></tr>
@@ -1144,7 +1161,7 @@ a{color:var(--accent)}
   counts: the frequency offset behind <code>VU2OY-9</code>, and the
   garble-versus-caller distinction in section 6.</p>
   <p class="foot">Prepared by K1MK · analysis of Reverse Beacon
-  Network archives, 15 October 2026. Report v3.8. Rates over judged spots throughout;
+  Network archives, 15 October 2026. Report v3.9. Rates over judged spots throughout;
   consensus requires four distinct skimmers in one band / 0.1 kHz / five-minute run frequency
   cell.</p>
 </div>
