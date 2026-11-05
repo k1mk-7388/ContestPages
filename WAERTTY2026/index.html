@@ -131,6 +131,52 @@ hours this station already chose to be off, so the table shows where past
 off-times fell as much as where the bands are dead. The band plan is the
 independent check.</p>
 
+<h2>An independent check: what the skimmers heard</h2>
+<p>The Reverse Beacon Network's RTTY skimmers in W1, W2 and W3 — 5 to 7
+of them each year, K1TTT's own among them in 2022 and 2023 — heard what this
+station could hear, whether or not anyone here was on the air. Over the four
+WAE RTTY weekends 2022–2025 they give, for every hour and band, the stations
+available and the multipliers among them. Calibrated against this station's own
+logs (it worked 0.16–0.28 of the stations heard per hour, at most
+59 an hour across both radios, and sent 1.65 QTCs per European QSO),
+and played hour by hour under the real scoring with <b>two radios</b> — one
+signal at a time, sharing that hourly ceiling, each radio's new multipliers
+limited by its own QSOs, the pair of bands in each hour chosen for the largest
+score gain — they give this plan:</p>
+<table class="tbl"><tr><th></th><th class="r">00</th><th class="r">01</th><th class="r">02</th><th class="r">03</th><th class="r">04</th><th class="r">05</th><th class="r">06</th><th class="r">07</th><th class="r">08</th><th class="r">09</th><th class="r">10</th><th class="r">11</th><th class="r">12</th><th class="r">13</th><th class="r">14</th><th class="r">15</th><th class="r">16</th><th class="r">17</th><th class="r">18</th><th class="r">19</th><th class="r">20</th><th class="r">21</th><th class="r">22</th><th class="r">23</th></tr><tr><td>Sat</td><td class="r">80+40</td><td class="r">80+40</td><td class="r">80+40</td><td class="r">80+40</td><td class="r">80+40</td><td class="r">80+40</td><td class="r">80+40</td><td class="r" style="opacity:.45">off</td><td class="r" style="opacity:.45">off</td><td class="r" style="opacity:.45">off</td><td class="r" style="opacity:.45">off</td><td class="r">20+15</td><td class="r">20+15</td><td class="r">15+10</td><td class="r">20+10</td><td class="r">20+15</td><td class="r">20+15</td><td class="r">20+15</td><td class="r">20+15</td><td class="r">20+10</td><td class="r">40+20</td><td class="r">40+20</td><td class="r">80+40</td><td class="r">80+40</td></tr><tr><td>Sun</td><td class="r">80+40</td><td class="r" style="opacity:.6;font-style:italic">rest</td><td class="r" style="opacity:.6;font-style:italic">rest</td><td class="r" style="opacity:.6;font-style:italic">rest</td><td class="r" style="opacity:.6;font-style:italic">rest</td><td class="r">80+40</td><td class="r">80+40</td><td class="r" style="opacity:.45">off</td><td class="r" style="opacity:.45">off</td><td class="r" style="opacity:.45">off</td><td class="r" style="opacity:.45">off</td><td class="r">20+15</td><td class="r">20+15</td><td class="r">15+10</td><td class="r">15+10</td><td class="r">15+10</td><td class="r">15+10</td><td class="r">20+15</td><td class="r">20+15</td><td class="r">20+15</td><td class="r">40+20</td><td class="r">40+20</td><td class="r">40+15</td><td class="r">40+15</td></tr></table><p class="src">The two bands, in meters, for each UTC hour: the most frequent best pair over the four years. <b>off</b>: the dead hours both sources agree on; <i>rest</i>: the suggested early-Sunday break that makes up the twelve hours off.</p>
+<p><b>Where the two sources agree, the answer is firm:</b> Saturday
+0700–1100Z and Sunday 0700–1100Z are dead on every band — the skimmers hear
+almost nothing and the logs show almost nothing. That is eight of the twelve
+hours off. The other four fit best in the early-Sunday lull, 0100–0500Z, the
+quietest stretch in the logs outside the dead hours, where what is still on the
+air has mostly been worked.</p>
+<p><b>Keep the opening.</b> Left to itself the model would also drop Saturday
+0000Z, but it sees only stations calling CQ, the ones to search and pounce,
+and not the run rate this station makes when everyone is fresh: the logs make
+Saturday 0000Z the single best hour of the contest. Even in the model's own
+terms, this schedule costs only 1.2% against its optimum.</p>
+<h3>A third check: what the top northeastern single operators did</h3>
+<p>DARC publishes every submitted WAE log. The top five northeastern North
+American single-operator logs of each year 2022–2025, 20 logs from 11
+stations (AA3B, AE1P, K1DC, K1LZ, K3MM, N1IXF, N2HMM, N3QE, VE3NZ, W3FIZ, W3LL),
+show where the stations that beat this one, or nearly did, actually spent
+their hours. In the hours marked <b>off</b> above they were off the air in
+86% of cases and logged only 2% of their QSOs and QTCs: the dead hours are
+dead for everyone. In the early-Sunday <i>rest</i> they were off only 39% of
+the time. The twelve hours most of them sat out were Sat 0700–1200Z, Sun 0500–1200Z — one long
+Sunday-morning block rather than two breaks, which in the skimmer model costs
+2.2% against its optimum, against 1.2% for the plan above: within what
+this model can tell apart, so choose between them on how you want to sleep. Their
+two busiest bands match the plan's pair in 31 of the 48 hours. Where they
+differ, they kept 20m as the second band through the evening and into the first
+hours of Saturday, where the plan pairs 40m with 80m for its ×4 weight, and on
+Saturday afternoon ran 15m with 10m where the plan keeps 20m: they leaned toward
+rate, the plan toward multipliers.</p>
+<p class="src">Skimmers hear runners, not callers, so a multiplier that only
+answers is missed, and five to seven skimmers is a modest sample. The plan's
+value is in the comparison between hours and bands, not in its absolute
+score.</p>
+
 <h2>How this was built</h2>
 <ul>
 <li><b>An 84-day archive of spots to/from FN32&nbsp;±&nbsp;1 grid
@@ -150,7 +196,9 @@ extrapolation rather than an interpolation.</p>
 
 <h2>Sources</h2>
 <p class="src">WAE DX Contest rules (darc.de) · this station's own Cabrillo
-logs 2023–2025 · PSKReporter spot archive at K1TTT · cty.dat via
+logs 2023–2025 · Reverse Beacon Network daily archives for the WAE RTTY weekends
+2022–2025 · DARC's public WAE RTTY logs of the top northeastern single operators,
+2022–2025 · PSKReporter spot archive at K1TTT · cty.dat via
 callsign_lookup. Generated 2026-11-05.</p>
 </div>
 </body>
