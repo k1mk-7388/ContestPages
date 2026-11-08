@@ -209,7 +209,9 @@ th.n{text-align:center}
   and every skimmer reporting to the RBN that
   ran it and qualified for ranking was one of the eight. A smaller excess is present in their CW output
   and was not corrected with the RTTY fault; whether the two have separate
-  causes remains unconfirmed (<a href="#s11">&sect;&nbsp;11</a>).</p>
+  causes remains unconfirmed (<a href="#s11">&sect;&nbsp;11</a>). A CW fix for
+  the same mistake, released on October 27, has not reduced it so far
+  (<a href="#s11-3">&sect;&nbsp;11.3</a>).</p>
   <p class="standfirst">The fault was present by October 9. No skimmer running the program sent RTTY
   during the October 2 Weekly RTTY Test; in the October 9 test, the day before
   Makrothen, four were already reporting callers as runners (<a href="#s15">&sect;&nbsp;15</a>). A week
@@ -260,7 +262,7 @@ th.n{text-align:center}
     <a href="#appC">Appendix C</a> looks at what the RTTY frequencies reported to
     10 Hz show about frequency accuracy.
   </p>
-  <p class="meta">RBN data through 2026 November 6</p>
+  <p class="meta">RBN data through 2026 November 7</p>
   <p class="note-small">Throughout what follows, a skimmer's rate is the share of its judged
   spots that are off-consensus, and a spot is judged when it falls in a 100 Hz frequency bin
     and five-minute time cell that four distinct skimmers attribute to one
@@ -1252,6 +1254,39 @@ th.n{text-align:center}
   among 245 CW skimmers but 35.6 percent among 43 RTTY ones; those are output
   shares, not estimates of the share attributable to a fault.</p>
 
+  <h3 id="s11-3">11.3 · A CW Fix That Has Not Shown Up</h3>
+  <p>The developer has since treated CW as a problem of its own. The program's
+  public changelog, kept in the mirror since October 27, lists under release
+  v2026.10.27-3, published that day at 1331Z: "callers answering a CW runner
+  were sometimes spotted as calling CQ on the runner's frequency." That is the
+  RTTY fault described in CW, fixed ten days after the RTTY one, and the
+  strongest sign yet that the CW excess is the same kind of mistake made in a
+  separate part of the program.</p>
+  <p>The spots do not show the fix taking hold. Split the way
+  <a href="#tab4">Table 4</a> splits RTTY, into garbles, runners reported on the
+  wrong frequency, callers, and unconfirmed calls, the roster's off-consensus
+  CW spots are callers more than anything else, and the callers did not fall:
+  across the 11 roster skimmers measured on both sides of the release, they
+  made up 1.94 percent of judged spots from October 19 to 26 and 1.96 percent
+  from October 28 to November 6, against 0.72 and 0.71 percent for the
+  controls. Day by day, the roster's median CW excess averaged 2.4 points before
+  the release and 2.6 after, while the controls held between 2.8 and 3.9
+  percent. Updates are installed by hand, so the spots cannot say whether the
+  operators have the release or whether it changed less than its note
+  suggests.</p>
+  <p>The first hours of the ARRL November Sweepstakes in CW, from 2100 to 2400Z
+  on November 7, pushed the callers up instead. A Sweepstakes runner sends the
+  caller's callsign at the start of nearly every exchange, which is what a
+  skimmer reading callers out of the runner's signal would pick up, and across
+  the roster the caller share rose to 3.18 percent of judged spots, from 2.07 on
+  the quiet days of November 3 to 6, and to between 3.3 and 4.8 percent at
+  <code>K1RA-4</code>, <code>K3GMQ</code>, <code>K1HTV-4</code>, <code>NB3A</code>,
+  <code>N7OR</code>, and <code>K3FEF</code>, while the controls' fell from 0.71 to
+  0.58 percent. Garbles fell at the same time, so the total excess rose less,
+  from 3.3 to 3.7 points. The exceptions were <code>K5TR</code>, whose caller
+  share fell from 1.85 to 0.80 percent, and <code>KM3T-2</code> and
+  <code>EI4HQ</code>, unchanged.</p>
+
   <h2 id="s12">12 · Cost of Excluding <code>UberSDR Skimmer</code> for JARL
   WW RTTY</h2>
   <p>This section records the exclusion recommendation made before JARL,
@@ -1432,7 +1467,7 @@ th.n{text-align:center}
   documentation are mirrored publicly
   (<a href="https://github.com/madpsy/ubersdr_skimmer_public">ubersdr_skimmer_public</a>),
   and each mirror commit identifies the source commit from which it derives.
-  Two changes to the program's documentation correspond to the fault:</p>
+  Three changes correspond to the fault, the third of them in CW:</p>
   <ul>
     <li><strong>Mirrored October 15, 1651Z (source commit <code>66d8ca7</code>).</strong>
     A new <code>--rtty-contests</code> file tells the skimmer "the words
@@ -1454,6 +1489,11 @@ th.n{text-align:center}
     and the skimmer stops sending PSK Reporter the calls it only read in another
     station's text, which "need not have been received." That matches the fault
     this document measures, described from within the program.</li>
+    <li><strong>Released October 27, 1331Z (v2026.10.27-3, in the mirror's
+    changelog).</strong> "Callers answering a CW runner were sometimes spotted as
+    calling CQ on the runner's frequency": the same fault in CW, fixed ten days
+    after the RTTY one. <a href="#s11-3">&sect;&nbsp;11.3</a> finds no effect in
+    the spots so far.</li>
   </ul>
   <p>The developer described the fault on the RBN-OPS list on October 15 at
   1633Z, in this document's terms: "I should be able to solve the issue with
@@ -1824,7 +1864,10 @@ th.n{text-align:center}
       Test of November 6. The CW excess was unchanged throughout,
       suggesting that the RTTY correction did not address its cause. Separate
       causes are plausible, but establishing them would require the source code
-      (&sect;&sect;&nbsp;<a href="#s13">13</a>&ndash;<a href="#s15">15</a>).</li>
+      (&sect;&sect;&nbsp;<a href="#s13">13</a>&ndash;<a href="#s15">15</a>). A CW
+      fix for the same mistake followed on October 27, but the CW caller share
+      has not fallen since, and in the first hours of Sweepstakes it rose
+      (<a href="#s11-3">&sect;&nbsp;11.3</a>).</li>
       <li><strong>What it shows is a missing boundary.</strong> Development
       and testing proceeded without an effective boundary between experimental
       output and the live RBN. Nothing at the level of the program, the
@@ -1891,7 +1934,7 @@ th.n{text-align:center}
     <li>the RBN daily archives, read directly: chiefly 2026 September 26–27 for CQ WW,
     October 10–11 for Makrothen (RTTY within the three contest periods only),
     October 17–18 for JARL, the Fridays of October 2, 9, 16, 23, and 30 and November 6 for the
-    Weekly RTTY Test, and October 31–November 1 for Russian WW, with the CW days from September 12 to October 24
+    Weekly RTTY Test, and October 31–November 1 for Russian WW, with the CW days from September 12 to November 7 (Sweepstakes' first hours on November 7)
     and, for <code>KM3T-5</code>'s history, the 2025–26 RTTY weekends;</li>
     <li>PSK Reporter's software table, live and in the Internet Archive's
     earlier copies;</li>
@@ -2257,7 +2300,8 @@ th.n{text-align:center}
     an excess of 3.2 points (2.0 times), inside the quiet days' range of 2.4 to
     4.0 points (1.5 to 2.1 times). As in RTTY
     (<a href="#s5">&sect;&nbsp;5</a>), a busier band does not make the fault
-    worse.</li>
+    worse. Sweepstakes, whose exchanges begin with the caller's callsign, did
+    raise the caller share (<a href="#s11-3">&sect;&nbsp;11.3</a>).</li>
     <li><strong>The Stew Perry, on 160 m: almost none.</strong> The roster's
     median was 3.0 percent against 2.7 (1.1 times), on 11,948 of its judged
     spots, far below its excess on the other bands. On quiet days 160 m
@@ -2791,7 +2835,7 @@ th.n{text-align:center}
   accuracy takes a reference.</p>
 
   <p class="foot">Prepared by K1MK (contact: k1mk at alum.mit.edu) · analysis of Reverse Beacon
-  Network archives through 2026 November 6. Document v5.79.</p>
+  Network archives through 2026 November 7. Document v5.80.</p>
   <p class="foot">Copyright &copy; 2026 Michael Keane K1MK. All rights reserved.</p>
 </div>
 </div>
