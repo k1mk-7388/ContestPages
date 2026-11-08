@@ -1208,8 +1208,8 @@ th.n{text-align:center}
     to 97 percent of the group's off-consensus calls were confirmed by four or more
     other skimmers against 80 to 90 percent for controls. In CW both lie
     between 77 and 89 percent. The test therefore no longer distinguishes the
-    groups; <a href="#tab7">Table 7</a> splits the CW off-consensus spots by mechanism instead. It establishes that most discrepant callsigns belong to real
-    stations, but does not by itself identify the mechanism.</li>
+    groups. It establishes that most discrepant callsigns belong to real
+    stations, but does not by itself identify the mechanism; <a href="#tab7">Table 7</a> splits the CW off-consensus spots by mechanism instead.</li>
   </ul>
   <p>This might have helped locate the fault: because CW was affected too, it
   may not have been just a broken RTTY decoder; it could have been something
@@ -1255,7 +1255,8 @@ th.n{text-align:center}
   shares, not estimates of the share attributable to a fault.</p>
 
   <h3 id="s11-3">11.3 · A CW Fix That Has Not Shown Up</h3>
-  <p>The developer has since treated CW as a problem of its own. The program's
+  <p>The <code>UberSDR Skimmer</code> development team has since treated CW as a problem of its own.
+    The program's
   public changelog, kept in the mirror since October 27, lists under release
   v2026.10.27-3, published that day at 1331Z: "callers answering a CW runner
   were sometimes spotted as calling CQ on the runner's frequency." That is the
@@ -1269,18 +1270,19 @@ th.n{text-align:center}
   across the 11 roster skimmers measured on both sides of the release, they
   made up 1.94 percent of judged spots from October 19 to 26 and 1.96 percent
   from October 28 to November 6, against 0.72 and 0.71 percent for the
-  controls. With nothing changed across the release, <a href="#tab7">Table 7</a>
-  pools all 28 days from October 10 to November 6 for each skimmer's split.
-  Against the controls' 3.37 percent off-consensus, 1.17 of it garbles,
-  1.30 runners elsewhere, 0.76 callers, and 0.13 unconfirmed, the
-  19 roster skimmers run 4.4 to 7.4 percent. Callers are the one part
-  of that excess clearly above the controls on every skimmer, 0.3 to 1.6 points above the
-  controls; runners reported on the wrong frequency add up to 1.3 points,
-  garbles up to 1.2, and unconfirmed calls up to 0.7. Day by day, the roster's median CW excess averaged 2.4 points before
+  controls. Day by day, the roster's median CW excess averaged 2.4 points before
   the release and 2.6 after, while the controls held between 2.8 and 3.9
   percent. Updates are installed by hand, so the spots cannot say whether the
   operators have the release or whether it changed less than its note
   suggests.</p>
+  <p>With nothing changed across the release, <a href="#tab7">Table 7</a>
+  pools all 28 days from October 10 to November 6 for each skimmer's split.
+  Against the controls' 3.37 percent off-consensus, 1.17 of it garbles,
+  1.30 runners elsewhere, 0.76 callers, and 0.13 unconfirmed, the
+  19 roster skimmers run 4.4 to 7.4 percent. Callers are the one part
+  of that excess clearly above the controls on every skimmer, by 0.3 to 1.6
+  points; runners reported on the wrong frequency add up to 1.3 points,
+  garbles up to 1.2, and unconfirmed calls up to 0.7.</p>
   <div class="scroll">
     <table id="tab7">
       <caption><strong>Table 7.</strong> CW Off-consensus Spots by Mechanism, October 10 to November 6.</caption>
@@ -2886,7 +2888,7 @@ th.n{text-align:center}
   accuracy takes a reference.</p>
 
   <p class="foot">Prepared by K1MK (contact: k1mk at alum.mit.edu) · analysis of Reverse Beacon
-  Network archives through 2026 November 7. Document v5.81.</p>
+  Network archives through 2026 November 7. Document v5.82.</p>
   <p class="foot">Copyright &copy; 2026 Michael Keane K1MK. All rights reserved.</p>
 </div>
 </div>
