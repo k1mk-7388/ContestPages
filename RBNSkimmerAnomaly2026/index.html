@@ -1353,6 +1353,52 @@ th.n{text-align:center}
   share fell from 1.85 to 0.80 percent, and <code>KM3T-2</code> and
   <code>EI4HQ</code>, unchanged.</p>
 
+  <h3 id="s11-4">11.4 · No Other Identifiable Group</h3>
+  <p>Is <code>UberSDR Skimmer</code> the only group of skimmers with a CW excess? The test is the
+  one that found it (<a href="#s10">&sect;&nbsp;10</a>): join PSK Reporter's software table to each
+  skimmer's CW rate. Over November 1 to 7, the seven days that table describes, 237 skimmers had at
+  least 1000 judged CW spots, each with its receiver clock error removed
+  (<a href="#s9">&sect;&nbsp;9</a>), and their median off-consensus rate was 3.41 percent. Of the 11
+  programs listed for at least three of them, only <code>UberSDR Skimmer</code> differs from the
+  rest: its 26 skimmers ran a median of 6.57 percent against 3.37 for all the others, and callers
+  at 2.17 percent against 0.66, a difference far past what testing 11 groups at once requires
+  (Mann-Whitney p of 5 &times; 10<sup>&minus;8</sup>, against a threshold of 0.0045). The UberSDR
+  platform itself, whose operators skim CW with VE3NEA's CW Skimmer Server, ran at 3.39 percent,
+  and no other program differed from the rest by more than about half a point.</p>
+  <p>That search is only as good as the software labels, and they are thin. 137 of the 237
+  skimmers do not report to PSK Reporter at all, and for many that do, the table names the bridge
+  that forwards their spots, CW reporter, not the decoder behind it. The RBN's own detailed node
+  list, which records a version string for every connected skimmer, cannot fill the gap. Of the
+  259 nodes it listed on November 9, 217 reported skimmer version v.1.6.0.145, the version of
+  VE3NEA's CW Skimmer Server, and so did every one of the 19 <code>UberSDR Skimmer</code> nodes on
+  it: a program that imitates Skimmer Server's interface reports Skimmer Server's version. Only
+  five nodes name their program at all (SparkGap 1.2 on three, Wave Owl 1.17.0 and Hammerhead
+  0.1.0 on one each), and the four Meridian stations stand out only because they send the same
+  digits without the "v.". Other than <code>UberSDR Skimmer</code>, which reports itself to PSK
+  Reporter by name, a group of skimmers sending Skimmer Server's version string cannot be told
+  from Skimmer Server itself by any public record, so the absence of another identifiable group
+  is partly an absence of the means to identify one.</p>
+  <p>Two excesses did appear without a program behind them. The three SparkGap 1.2 nodes, two of
+  them one operator's, ran a median of 6.0 percent with callers at 1.5: suggestive, but too few to
+  call a group. And skimmers in Asia ran a median of 9.7 percent, callers 5.8, against 3.2 in
+  Europe and 3.4 in North America. That excess is simply an artifact of propagation combined
+  with frequency reuse. More than half of their off-consensus spots name an Asian station on a
+  frequency the consensus gives to a European or North American station, in most of those cases
+  one that no Asian skimmer heard: two stations on the same frequency at once, each heard only
+  where its signal reaches, while the consensus is decided by the far more numerous skimmers of
+  Europe and North America. The Asian skimmers report what they hear correctly; the method scores
+  them against stations they cannot hear (<a href="#s19">&sect;&nbsp;19</a>).</p>
+  <p>40 m shows it most plainly. During daylight hours in Japan it is effectively a different band from
+  40 m in Europe and North America at the same hour, and vice versa. Over November 3 to 5 the
+  Japanese skimmers were off-consensus on 48.5 percent of their judged 40 m spots between 0800 and
+  1700 local time (2300 to 0800Z), and 35.2 percent of those judged spots named an Asian station
+  on a frequency held by a European or North American station that no Asian skimmer backed;
+  during nighttime hours in Japan the same skimmers were off-consensus on 13.7 percent of their 40 m
+  spots, 8.1 percent of them of that kind. On the higher bands, where all regions share the
+  same propagation more often, the effect fades: 20 m in daylight hours in Japan, 7.8 percent off-consensus
+  and 2.9 of that kind, and 15 m almost nothing. 40 m in daylight hours in Japan alone accounts for 62
+  percent of all such spots.</p>
+
   <h2 id="s12">12 · Cost of Excluding <code>UberSDR Skimmer</code> for JARL
   WW RTTY</h2>
   <p>This section records the exclusion recommendation made before JARL,
@@ -1791,7 +1837,9 @@ th.n{text-align:center}
   RTTY spots and 83 percent of the off-consensus ones. The output was not
   labeled: RBN spots name no software,
   <code>UberSDR Skimmer</code> gives no version even in PSK Reporter's table,
-  and a test build reports under the same callsign as a release. A way to stop
+  and a test build reports under the same callsign as a release. The RBN's own node list goes
+  further and shows every <code>UberSDR Skimmer</code> node as VE3NEA's CW Skimmer Server,
+  version v.1.6.0.145 (<a href="#s11-4">&sect;&nbsp;11.4</a>). A way to stop
   sending RTTY alone came only afterward: since October 17,
   <code>UberSDR Skimmer</code> has had a setting, <code>RBN_MODES</code>, that
   lets each skimmer's operator keep decoding RTTY without sending it to the
@@ -1918,7 +1966,9 @@ th.n{text-align:center}
       (<a href="#appD">Appendix D</a>).</li>
       <li><strong>The common factor was one program.</strong> Every ranked
       skimmer running <code>UberSDR Skimmer</code> was among the eight, and no
-      other skimmer approached them (<a href="#s10">&sect;&nbsp;10</a>). The
+      other skimmer approached them (<a href="#s10">&sect;&nbsp;10</a>); in CW, no other software
+      group shows an excess, though the public records cannot tell most programs apart
+      (<a href="#s11-4">&sect;&nbsp;11.4</a>). The
       eight instances were operated by five people, and their differing
       transition dates indicate an instance-by-instance rollout rather than
       a single misconfigured station.</li>
@@ -1961,7 +2011,11 @@ th.n{text-align:center}
     availability of a four-skimmer consensus; where a
     section uses a different denominator, it states so (<a
     href="#appA-2">Appendix A.2</a>). Stale spots can be identified only in
-    decided cells, so their counts are lower bounds. <a href="#appD">Appendices D</a> and
+    decided cells, so their counts are lower bounds. Propagation combined with frequency reuse
+    also defeats a consensus decided by the majority of skimmers: when two stations share a
+    frequency in regions out of each other's reach, a correct spot from the minority region scores
+    as off-consensus, which inflates the rates of skimmers in Asia and Oceania (<a href="#s11-4">&sect;&nbsp;11.4</a>) but not those of the eight or the controls, all
+    in Europe and North America. <a href="#appD">Appendices D</a> and
     <a href="#appE">E</a> apply the same method, with clock errors removed, to every benchmark
     RTTY and CW contest the archive covers, which puts the 2026 figures on a scale of a decade
     or more.</li>
@@ -2011,7 +2065,8 @@ th.n{text-align:center}
     Weekly RTTY Test, and October 31–November 1 for Russian WW, with the CW days from September 12 to November 7 (Sweepstakes' first hours on November 7)
     and, for <code>KM3T-5</code>'s history, the 2025–26 RTTY weekends;</li>
     <li>PSK Reporter's software table, live and in the Internet Archive's
-    earlier copies;</li>
+    earlier copies, and the RBN's detailed node list (both as of November 9 for
+    <a href="#s11-4">&sect;&nbsp;11.4</a>);</li>
     <li><a href="https://www.weather.gov/asos/">Automated Surface Observing
     System (ASOS)</a> weather observations and GOES-East lightning data, for
     <a href="#appA-2">Appendix A.2</a>;</li>
@@ -3124,7 +3179,7 @@ th.n{text-align:center}
   </figure>
 
   <p class="foot">Prepared by K1MK (contact: k1mk at alum.mit.edu) · analysis of Reverse Beacon
-  Network archives through 2026 November 7. Document v5.94.</p>
+  Network archives through 2026 November 7. Document v5.98.</p>
   <p class="foot">Copyright &copy; 2026 Michael Keane K1MK. All rights reserved.</p>
 </div>
 </div>
