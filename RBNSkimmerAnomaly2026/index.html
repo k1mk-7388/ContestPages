@@ -287,7 +287,7 @@ th.n{text-align:center}
   under discussion. <em>Reference skimmers</em>, also called the controls,
   means the seven comparison skimmers in Table 1; the RTTY checks of
   <a href="#s15">&sect;&nbsp;15</a> use the same set with <code>PI4CC</code> in place
-  of <code>SZ1A</code>, and <a href="#tab4">Table 4</a> uses the five it names.</p>
+  of <code>SZ1A</code>, and the mechanism split of <a href="#s8-2">&sect;&nbsp;8.2</a> uses the five it names.</p>
 
     <div class="correction">
     <p><strong>This was not a minor leak. It was a network-scale RTTY spotting failure during a contest,
@@ -1408,6 +1408,57 @@ th.n{text-align:center}
   Reporter by name, a group of skimmers sending Skimmer Server's version string cannot be told
   from Skimmer Server itself by any public record, so the absence of another identifiable group
   is largely the absence of the means to identify one.</p>
+  <p>The node list does record two settings each skimmer runs with: its <em>sensitivity</em>, and
+  a <em>spot filter</em> that sends either all spots or CQ spots only. Joining the list of
+  November 9 to the same CW rates (206 of the 237 skimmers appear on it) shows neither setting
+  separating the callers (<a href="#tab8">Tables 8</a> and <a href="#tab9">9</a>). The filter
+  makes no difference in any category, and skimmers set to send CQ spots only report callers at
+  nearly the same rate as the rest, 0.63 against 0.73 percent: a caller misattributed as a runner
+  goes out as a CQ spot, so the filter passes it, consistent with the fault lying in the
+  skimmer's interpretation rather than its decoding. All 19 <code>UberSDR Skimmer</code> nodes
+  report the same settings, normal sensitivity and all spots, which the 113 other skimmers with
+  those settings share at 0.69 percent callers, so the settings do not explain the roster's
+  excess either. Sensitivity shows up in decoding instead: the 15 skimmers set to minimal run 4.12
+  percent off-consensus against 3.34 for the 168 at normal, mostly garbles, 1.75 against 1.21
+  percent (Mann&ndash;Whitney p of 3 &times; 10<sup>&minus;6</sup>), while their callers do not
+  differ significantly (p of 0.07). Whether the minimal setting itself produces the garbles, or
+  something else those 15 stations share, the spots cannot say.</p>
+  <div class="scroll">
+    <table id="tab8">
+      <caption><strong>Table 8.</strong> CW Off-consensus Spots by Mechanism and Spot Filter, November 1&ndash;7.</caption>
+      <tr><th>Spot Filter</th><th class="n">Skimmers</th><th class="n">Garble</th><th class="n">Runner Elsewhere</th>
+        <th class="n">Caller</th><th class="n">Unconfirmed</th><th class="n">Off-consensus</th></tr>
+      <tr><td>ALL spots</td><td class="n"><span class="nb" style="min-width:3ch">146</span></td><td class="n"><span class="nb" style="min-width:4ch">1.32</span></td><td class="n"><span class="nb" style="min-width:4ch">1.25</span></td><td class="n"><span class="nb" style="min-width:4ch">0.73</span></td><td class="n"><span class="nb" style="min-width:4ch">0.16</span></td><td class="n"><span class="nb" style="min-width:4ch">3.43</span></td></tr>
+      <tr><td>CQ only</td><td class="n"><span class="nb" style="min-width:3ch">60</span></td><td class="n"><span class="nb" style="min-width:4ch">1.18</span></td><td class="n"><span class="nb" style="min-width:4ch">1.26</span></td><td class="n"><span class="nb" style="min-width:4ch">0.63</span></td><td class="n"><span class="nb" style="min-width:4ch">0.14</span></td><td class="n"><span class="nb" style="min-width:4ch">3.43</span></td></tr>
+    </table>
+  </div>
+  <p class="note-small">Medians over skimmers, percent of judged CW spots, November 1&ndash;7
+  (beacon frequencies excluded, receiver clock errors removed), for the 206 skimmers with at
+  least 1000 judged spots that appear on the RBN node list of November 9, the
+  <code>UberSDR Skimmer</code> roster included: all 19 send all spots, and without them that row
+  is 127 skimmers at 3.37 percent off-consensus and 0.70 callers. Two-sided Mann&ndash;Whitney p
+  for the difference between the rows: off-consensus 0.45, garble 0.07, runner elsewhere 0.83,
+  caller 0.28, unconfirmed 0.26; without the roster, all 0.21 or more. The settings come from one
+  snapshot, so a skimmer that changed them during the week would be misfiled.</p>
+  <div class="scroll">
+    <table id="tab9">
+      <caption><strong>Table 9.</strong> CW Off-consensus Spots by Mechanism and Sensitivity, November 1&ndash;7, <code>UberSDR Skimmer</code> Roster Excluded.</caption>
+      <tr><th>Sensitivity</th><th class="n">Skimmers</th><th class="n">Garble</th><th class="n">Runner Elsewhere</th>
+        <th class="n">Caller</th><th class="n">Unconfirmed</th><th class="n">Off-consensus</th></tr>
+      <tr><td>normal</td><td class="n"><span class="nb" style="min-width:3ch">168</span></td><td class="n"><span class="nb" style="min-width:4ch">1.21</span></td><td class="n"><span class="nb" style="min-width:4ch">1.20</span></td><td class="n"><span class="nb" style="min-width:4ch">0.68</span></td><td class="n"><span class="nb" style="min-width:4ch">0.14</span></td><td class="n"><span class="nb" style="min-width:4ch">3.34</span></td></tr>
+      <tr><td>minimal</td><td class="n"><span class="nb" style="min-width:3ch">15</span></td><td class="n"><span class="nb" style="min-width:4ch"><strong>1.75</strong></span></td><td class="n"><span class="nb" style="min-width:4ch">1.36</span></td><td class="n"><span class="nb" style="min-width:4ch">0.79</span></td><td class="n"><span class="nb" style="min-width:4ch">0.22</span></td><td class="n"><span class="nb" style="min-width:4ch">4.12</span></td></tr>
+      <tr><td>aggressive</td><td class="n"><span class="nb" style="min-width:3ch">3</span></td><td class="n"><span class="nb" style="min-width:4ch">0.38</span></td><td class="n"><span class="nb" style="min-width:4ch">1.28</span></td><td class="n"><span class="nb" style="min-width:4ch">0.45</span></td><td class="n"><span class="nb" style="min-width:4ch">0.02</span></td><td class="n"><span class="nb" style="min-width:4ch">2.11</span></td></tr>
+      <tr><td>0 (numeric)</td><td class="n"><span class="nb" style="min-width:3ch">1</span></td><td class="n"><span class="nb" style="min-width:4ch">12.19</span></td><td class="n"><span class="nb" style="min-width:4ch">3.42</span></td><td class="n"><span class="nb" style="min-width:4ch">1.92</span></td><td class="n"><span class="nb" style="min-width:4ch">2.62</span></td><td class="n"><span class="nb" style="min-width:4ch">20.14</span></td></tr>
+    </table>
+  </div>
+  <p class="note-small">As <a href="#tab8">Table 8</a>, without the <code>UberSDR Skimmer</code>
+  roster, all of whose nodes report normal sensitivity. Two-sided Mann&ndash;Whitney p, minimal
+  against normal: off-consensus 0.0002, garble 3 &times; 10<sup>&minus;6</sup>, runner elsewhere
+  0.07, caller 0.07, unconfirmed 0.0005. The aggressive and numeric settings are too few to test.
+  The 15 at minimal are <code>DO4DXA</code>, <code>G3AKX</code>, <code>G4IRN</code>,
+  <code>HA1VHF</code>, <code>HS0ZGZ</code>, <code>LZ3CB</code>, <code>N7TUG</code>,
+  <code>OH4KA</code>, <code>PY2KNK</code>, <code>RN4WA</code>, <code>RU9CZD</code>,
+  <code>S53A</code>, <code>UY2RA</code>, <code>W6YX</code>, and <code>YO2KAR</code>.</p>
   <p>Two excesses did appear without a program behind them. The three SparkGap 1.2 nodes, two of
   them one operator's, ran a median of 6.0 percent with callers at 1.5: suggestive, but too few to
   call a group. And the 18 skimmers in Asia ran a median off-consensus rate of 9.5 percent and a
@@ -1440,14 +1491,14 @@ th.n{text-align:center}
   excluded) remained elevated, and none had returned to its own baseline: they
   ran +2.0 to +3.6
   points above the controls, which averaged 3.4 percent over the same days
-  (<a href="#tab8">Table 8</a>). A
+  (<a href="#tab10">Table 10</a>). A
   tenth skimmer, <code>K1HTV-4</code>, began reporting late on the 14th, and
   on its single complete day it ran +1.2, lower than any of the six, although
   one day is too brief a record to rank.</p>
 
   <div class="scroll">
-    <table id="tab8">
-      <caption><strong>Table 8.</strong> Status to October 15, CW, Beacons Excluded.</caption>
+    <table id="tab10">
+      <caption><strong>Table 10.</strong> Status to October 15, CW, Beacons Excluded.</caption>
       <tr><th>Skimmer</th><th class="n">Own Baseline<br><span class="unit">(pp)</span></th><th class="n">Oct 13–15<br><span class="unit">(pp)</span></th>
         <th class="n">Judged CW Spots</th><th>Status</th></tr>
       <tr><td class="call">K3FEF</td><td class="n"><span class="nb" style="min-width:4ch">no baseline observed</span></td>
@@ -1590,7 +1641,7 @@ th.n{text-align:center}
   morning, mid-contest:
   "It appears that I may be sending out RTTY spots of callers… I'm running an
   older version… I'll shut it off later this afternoon"
-  (<a href="https://groups.io/g/RBN-OPS/message/9543">#9543</a>). <a href="#tab9">Table 9</a>
+  (<a href="https://groups.io/g/RBN-OPS/message/9543">#9543</a>). <a href="#tab11">Table 11</a>
   (<a href="#s15">&sect;&nbsp;15</a>) shows <code>N7OR</code> clean only
   from the 2100Z block.</p>
   <p>The public record documents the mailing-list discussion, the developer's
@@ -1669,13 +1720,13 @@ th.n{text-align:center}
   4.8 percent of their judged spots over the contest, against 3.5 percent for the reference skimmers; at Makrothen they were at 41.8 to 50.2 percent. Of
   the newer skimmers, <code>EI4HQ</code>, <code>K3GMQ</code>, and
   <code>YO5LD-U</code> were clean too. Four more were corrected during the
-  contest, each in a single step, and one was not (<a href="#tab9">Table 9</a> and
+  contest, each in a single step, and one was not (<a href="#tab11">Table 11</a> and
   <a href="#fig7">Figure 7</a>):</p>
 </div>
 
   <div class="scroll">
-    <table id="tab9">
-      <caption><strong>Table 9.</strong> Skimmers Still Faulty When JARL WW RTTY Began.</caption>
+    <table id="tab11">
+      <caption><strong>Table 11.</strong> Skimmers Still Faulty When JARL WW RTTY Began.</caption>
       <tr><th>Skimmer</th><th class="n">Before</th><th class="n">After</th><th>Clean From</th>
         <th class="n">Whole Contest</th></tr>
       <tr><td class="call">K5TR</td><td class="n"><span class="nb" style="min-width:6ch">38%</span></td><td class="n"><span class="nb" style="min-width:4ch">1–4%</span></td>
@@ -1701,7 +1752,7 @@ th.n{text-align:center}
     <svg id="h_jarl" role="img" aria-label="Histogram of RTTY off-consensus rate over the whole JARL WW RTTY contest, 56 skimmers: most of the UberSDR Skimmer skimmers now inside the main cluster near 3.7 percent, with a few between 15 and 42 percent"></svg>
     <figcaption><strong>Figure 7.</strong> All RTTY skimmers over JARL WW RTTY, October 17–18: 56 skimmers with at least 100 judged spots, median 3.7%. By then
     most of the roster was inside the main cluster. A skimmer fixed during the
-    contest shows a whole-contest rate between its before and after (<a href="#tab9">Table 9</a>),
+    contest shows a whole-contest rate between its before and after (<a href="#tab11">Table 11</a>),
     which is why <code>K1HTV-4</code>, <code>N7OR</code>, and
     <code>KM3T-2</code> sit in the gap.</figcaption>
   </figure>
@@ -2490,11 +2541,11 @@ th.n{text-align:center}
   it, weighting every day by its count of judged spots, because a rate derived
   from 300 spots is considerably less reliable than one derived from 11,000.
   There is no single date of transition; four skimmers show clear transitions,
-  in two pairs (<a href="#tab10">Table 10</a> and <a href="#fig9">Figure 9</a>):</p>
+  in two pairs (<a href="#tab12">Table 12</a> and <a href="#fig9">Figure 9</a>):</p>
 
   <div class="scroll">
-    <table id="tab10">
-      <caption><strong>Table 10.</strong> Per-skimmer Transition Dates, CW.</caption>
+    <table id="tab12">
+      <caption><strong>Table 12.</strong> Per-skimmer Transition Dates, CW.</caption>
       <tr><th>Skimmer</th><th>Operator</th><th>Transition</th><th class="n">Before<br><span class="unit">(pp)</span></th>
         <th class="n">After<br><span class="unit">(pp)</span></th><th class="n">Standardized<br>Separation Statistic</th><th>Daily Ranges</th></tr>
       <tr><td class="call">KC2DAC</td><td>…</td>
@@ -3019,7 +3070,7 @@ th.n{text-align:center}
   by up to about a point in a year (CQ WW RTTY 2019), but it does not change the trend.</p>
 
   <h3 id="appD-1">D.1 · Ten Years of Steady Improvement</h3>
-  <p>Over those 10 years the network got markedly better (<a href="#tab11">Table 11</a> and
+  <p>Over those 10 years the network got markedly better (<a href="#tab13">Table 13</a> and
   <a href="#fig11">Figure 11</a>). The
   median skimmer's off-consensus rate fell by about half, from between 5.9 and 9.6 percent of
   judged spots in 2015 and 2016 (above 6.4 in five of the six contests) to between 3.8 and 5.1
@@ -3041,8 +3092,8 @@ th.n{text-align:center}
   By 2025 a caller misattributed as a runner had become one of the rarest things an RTTY
   skimmer did wrong.</p>
   <div class="scroll fit">
-    <table class="fit" id="tab11">
-      <caption><strong>Table 11.</strong> RTTY Off-consensus Rate and Caller Share by Year, Benchmark Contests.</caption>
+    <table class="fit" id="tab13">
+      <caption><strong>Table 13.</strong> RTTY Off-consensus Rate and Caller Share by Year, Benchmark Contests.</caption>
       <tr><th rowspan="2">Year</th><th colspan="2" class="n">ARRL RTTY Roundup</th><th colspan="2" class="n">CQ WPX RTTY</th><th colspan="2" class="n">CQ WW RTTY</th></tr>
       <tr><th class="n">Median<br>Skimmer</th><th class="n">Caller</th><th class="n">Median<br>Skimmer</th><th class="n">Caller</th><th class="n">Median<br>Skimmer</th><th class="n">Caller</th></tr>
       <tr><td>2015</td><td class="n"><span class="nb" style="min-width:4ch">6.5</span></td><td class="n"><span class="nb" style="min-width:4ch">3.76</span></td><td class="n"><span class="nb" style="min-width:4ch">8.5</span></td><td class="n"><span class="nb" style="min-width:4ch">3.24</span></td><td class="n"><span class="nb" style="min-width:4ch">9.6</span></td><td class="n"><span class="nb" style="min-width:4ch">4.33</span></td></tr>
@@ -3078,7 +3129,7 @@ th.n{text-align:center}
 
   <h3 id="appD-3">D.3 · Against That Background</h3>
   <p>Measured the same way, the Makrothen weekend stands far outside a decade of these contests
-  (<a href="#tab12">Table 12</a>). The network as a whole was off-consensus on 18.4 percent of
+  (<a href="#tab14">Table 14</a>). The network as a whole was off-consensus on 18.4 percent of
   judged spots, against a median of 5.1 percent for the nine benchmark weekends of 2023 to 2025
   (4.1 to 7.4) and about twice the 9.0 percent of the worst benchmark since 2015
   (CQ WPX RTTY 2016). Its caller share, 10.5 percent of judged spots, was 13 times
@@ -3093,8 +3144,8 @@ th.n{text-align:center}
     errors removed. Points are the observations, each contest placed at its month (Roundup
     January, WPX February, CQ WW September); the line is one least-squares trend through all
     three contests, 2015&ndash;2026. The hollow point is Makrothen without the eight skimmers of
-    <a href="#tab1">Table 1</a>. Hover a point for its value; <a href="#tab11">Table 11</a> and
-    <a href="#tab12">Table 12</a> give the figures.</figcaption>
+    <a href="#tab1">Table 1</a>. Hover a point for its value; <a href="#tab13">Table 13</a> and
+    <a href="#tab14">Table 14</a> give the figures.</figcaption>
   </figure>
   <p>The rest of the network was on trend. Without the eight, Makrothen's figures were
   4.6 percent off-consensus and 1.12 percent callers, squarely within recent years;
@@ -3114,8 +3165,8 @@ th.n{text-align:center}
   it undid as in what it did.</p>
 
   <div class="scroll">
-    <table id="tab12">
-      <caption><strong>Table 12.</strong> The 2026 RTTY Contests against the Benchmarks, Measured the Same Way.</caption>
+    <table id="tab14">
+      <caption><strong>Table 14.</strong> The 2026 RTTY Contests against the Benchmarks, Measured the Same Way.</caption>
       <tr><th>Contest</th><th class="n">RTTY Spots</th><th class="n">Network<br>Off-consensus</th><th class="n">Median<br>Skimmer</th>
         <th class="n">Upper<br>Quartile</th><th class="n">Caller</th></tr>
       <tr><td>Benchmarks, 2023&ndash;2025 (9)</td><td class="n"><span class="nb" style="min-width:9ch">0.59&ndash;2.25 million</span></td><td class="n"><span class="nb" style="min-width:4ch">4.1&ndash;7.4</span></td><td class="n"><span class="nb" style="min-width:4ch">3.8&ndash;5.1</span></td><td class="n"><span class="nb" style="min-width:4ch">4.5&ndash;6.3</span></td><td class="n"><span class="nb" style="min-width:4ch">0.66&ndash;2.10</span></td></tr>
@@ -3127,7 +3178,7 @@ th.n{text-align:center}
     </table>
   </div>
   <p class="note-small">Percent of judged RTTY spots, clock-corrected, by the method of
-  <a href="#tab11">Table 11</a>. Makrothen counts its three periods only (§&nbsp;2); JARL its whole
+  <a href="#tab13">Table 13</a>. Makrothen counts its three periods only (§&nbsp;2); JARL its whole
   48 hours. <em>Without the eight</em> leaves out the eight skimmers of
   <a href="#tab1">Table 1</a>, all running <code>UberSDR Skimmer</code>, and its
   spot count is the other skimmers' alone. The 2026 spot counts are of the five contest
@@ -3139,7 +3190,7 @@ th.n{text-align:center}
   <h2 id="appE">Appendix E · The CW Record: No Comparable Break</h2>
   <p>The measurement of <a href="#appD">Appendix D</a>, applied to three benchmark CW contests,
   ARRL DX CW (third full weekend of February), CQ WPX CW (last full weekend of May), and CQ WW CW
-  (last full weekend of November), gives the comparison the RTTY record needs (<a href="#tab13">Table 13</a> and
+  (last full weekend of November), gives the comparison the RTTY record needs (<a href="#tab15">Table 15</a> and
   <a href="#fig12">Figure 12</a>). The archive reaches back to 2009 for CW, but through 2010 there
   were too few skimmers and too little could be judged, so the series starts in 2011; by then
   there were 75 to 96 CW skimmers in each contest, and there are some 240 now.</p>
@@ -3178,8 +3229,8 @@ th.n{text-align:center}
   times the norm
   (<a href="#appD">Appendix D</a>).</p>
   <div class="scroll fit">
-    <table class="fit" id="tab13">
-      <caption><strong>Table 13.</strong> CW Off-consensus Rate and Caller Share by Year, Benchmark Contests.</caption>
+    <table class="fit" id="tab15">
+      <caption><strong>Table 15.</strong> CW Off-consensus Rate and Caller Share by Year, Benchmark Contests.</caption>
       <tr><th rowspan="2">Year</th><th colspan="2" class="n">ARRL DX CW</th><th colspan="2" class="n">CQ WPX CW</th><th colspan="2" class="n">CQ WW CW</th></tr>
       <tr><th class="n">Median<br>Skimmer</th><th class="n">Caller</th><th class="n">Median<br>Skimmer</th><th class="n">Caller</th><th class="n">Median<br>Skimmer</th><th class="n">Caller</th></tr>
       <tr><td>2011</td><td class="n"><span class="nb" style="min-width:4ch">5.7</span></td><td class="n"><span class="nb" style="min-width:4ch">1.63</span></td><td class="n"><span class="nb" style="min-width:4ch">9.1</span></td><td class="n"><span class="nb" style="min-width:4ch">2.26</span></td><td class="n"><span class="nb" style="min-width:4ch">4.1</span></td><td class="n"><span class="nb" style="min-width:4ch">0.91</span></td></tr>
@@ -3202,7 +3253,7 @@ th.n{text-align:center}
   </div>
   <p class="note-small">Percent of judged CW spots, clock-corrected, international beacon
   frequencies excluded; median skimmer over the skimmers with at least 300 judged spots, as in
-  <a href="#s11">&sect;&nbsp;11</a>; caller as in <a href="#tab11">Table 11</a>. …: CQ WW CW 2026 has not
+  <a href="#s11">&sect;&nbsp;11</a>; caller as in <a href="#tab13">Table 13</a>. …: CQ WW CW 2026 has not
   yet taken place.</p>
   <figure id="fig12">
     <svg id="c12" role="img" aria-label="Two panels, 2011 to 2026, on the same scales as Figure 11. Top: callers reported as runners in ARRL DX CW, CQ WPX CW and CQ WW CW, flat at about 1 percent of judged CW spots throughout; the Makrothen weekend's CW at 1.4 percent, 1.3 without the eight. Bottom: all CW off-consensus spots, about 4 to 6 percent with a nearly flat trend; the Makrothen weekend at 4.9 percent, 4.7 without the eight."></svg>
@@ -3216,11 +3267,11 @@ th.n{text-align:center}
     1.15 million CW spots were a sixth to a tenth of the 6.4 to 12.8 million of the benchmark
     contests of 2022 to 2026, with fewer skimmers behind each decided cell (a median of 9, against
     13 to 16), so its point does not compare like for like with the others. Hover a point for its
-    value; <a href="#tab13">Table 13</a> gives the figures.</figcaption>
+    value; <a href="#tab15">Table 15</a> gives the figures.</figcaption>
   </figure>
 
   <p class="foot">Prepared by K1MK (contact: k1mk at alum.mit.edu) · analysis of Reverse Beacon
-  Network archives through 2026 November 7. Document v5.112.</p>
+  Network archives through 2026 November 7. Document v5.113.</p>
   <p class="foot">Copyright &copy; 2026 Michael Keane K1MK. All rights reserved.</p>
 </div>
 </div>
