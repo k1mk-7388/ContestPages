@@ -124,7 +124,7 @@ tr.row-both td:first-child{box-shadow:inset 4px 0 0 var(--m-both)}
 .key-rtty{background:var(--m-rtty-bg);box-shadow:inset 4px 0 0 var(--m-rtty)}
 .key-both{background:var(--m-both-bg);box-shadow:inset 4px 0 0 var(--m-both)}
 p.note-small{margin:0 0 5px}
-[id^="s"],[id^="app"],[id^="fig"],[id^="tab"],#start,#judging,#s16,#s19,#meridian,#meridian-group{scroll-margin-top:16px}
+[id^="s"],[id^="app"],[id^="fig"],[id^="tab"],#start,#judging,#s16,#s19,#meridian,#caller-definition{scroll-margin-top:16px}
 .scroll.fit{width:fit-content;max-width:100%;margin-inline:auto}
 table.fit{width:auto}
 .scroll{overflow-x:auto;margin:18px 0;border:1px solid var(--rule);border-radius:4px;
@@ -200,15 +200,15 @@ th.n{text-align:center}
   <p class="standfirst">Over the three periods of the 2026 Makrothen RTTY contest (October 10&ndash;11), eight RBN skimmers
   reported stations <em>answering</em> a <em>running</em> station as if they
   held the frequency. Of their spots that could be checked against other
-  skimmers' reports, 42 to 50 percent disagreed with the consensus, against a
-  4.2 percent median for the other 30 skimmers with at least 100 judged spots, the threshold for ranking. Only 43 skimmers worldwide sent RTTY
-  spots to
-  the RBN that weekend; these eight, nearly one in five of them, sent a third
+  skimmers' reports, 42 to 50 percent disagreed with the consensus. The
+  median for the other 30 ranked skimmers was 4.2 percent; 100 judged spots
+  was the threshold for ranking. Only 43 skimmers worldwide sent RTTY spots
+  to the RBN that weekend; these eight, nearly one in five of them, sent a third
   of all RTTY spots and <strong>83 percent of the <a href="#s2">off-consensus</a> ones</strong>.
   That was a departure, not a bad weekend: measured the same way over a decade of benchmark RTTY
   contests, the network's rate of reporting callers as runners had fallen from between 2 and 4
   percent of judged spots in 2015 and 2016 to a median of 0.8 percent over 2023&ndash;2025, and the
-  Makrothen weekend put it above 10 (<a href="#appD">Appendix D</a>).</p>
+  Makrothen weekend put it above 10 percent (<a href="#appD">Appendix D</a>).</p>
   <p class="standfirst">All eight ran the same skimmer program,
   and every skimmer reporting to the RBN that
   ran it and qualified for ranking was one of the eight. A smaller excess is present in their CW output
@@ -216,7 +216,7 @@ th.n{text-align:center}
   causes remains unconfirmed (<a href="#s11">&sect;&nbsp;11</a>). A CW fix for
   the same mistake, released on October 27, has not reduced it so far
   (<a href="#s11-3">&sect;&nbsp;11.3</a>). Spread over some 245 CW skimmers, the excess does not
-  show in the network's CW statistics at all, which have been nearly flat for fifteen years
+  show in the network's CW statistics at all, which have been nearly flat for 15 years
   (<a href="#appE">Appendix E</a>).</p>
   <p class="standfirst">The fault was present by October 9. No skimmer running the program sent RTTY
   during the October 2 Weekly RTTY Test; in the October 9 test, the day before
@@ -235,21 +235,27 @@ th.n{text-align:center}
   <div class="note">
     <p><strong>Terminology.</strong> A <em>runner</em> calls CQ (a general
     invitation to make contact) on a frequency; a <em>caller</em> answers.
-    A <em>skimmer</em> automatically decodes signals and sends <em>spots</em>,
-    reports pairing a callsign with a frequency and time. A <em>bandmap</em>
+    A <em>skimmer</em> automatically decodes signals, interprets the decoded
+    text, and sends <em>spots</em>, reports pairing a callsign with a frequency
+    and time. Its <em>decoder</em> only turns signals into text; deciding which
+    callsign is calling CQ and which is answering is interpretation, so
+    <em>decoder</em> here means that first step and <em>skimmer</em> the whole
+    process. A <em>bandmap</em>
     displays those spots by frequency. An <em>assisted operator</em> uses
     spotting assistance to locate stations. RTTY is radioteletype; CW
     (continuous wave) denotes Morse-code operation here; SDR means
     software-defined radio; and I/Q means in-phase and quadrature samples,
     which together represent a signal's amplitude and phase.</p>
   </div>
-  <p>This document began as an engineering notebook recording my investigation into an
-    anomaly I encountered in the spots I received from the Reverse Beacon Network (RBN) during the 2026 Makrothen
-  RTTY contest (October 10&ndash;11). The RBN is a network of skimmers that report spots to a central server, and its
-    spots are used by many assisted operators in contests. I began looking into the anomaly
-    right after the Makrothen contest,
-    which was five days before the JARL WW RTTY
-  contest, and this document details my inquiry into the fault as it progressed through the Makrothen contest and into the JARL follow-up. With the immediate episode over, this retrospective brings together the analysis and its lessons.</p>
+  <p>This document began as an engineering notebook about an anomaly I noticed
+  in the spots I received from the Reverse Beacon Network (RBN) during the
+  2026 Makrothen RTTY contest (October 10&ndash;11). The RBN is a network of
+  skimmers that report spots to a central server, and many assisted operators
+  use those spots in contests. I began investigating immediately after
+  Makrothen, five days before the JARL WW RTTY contest. The fault came to light
+  during Makrothen; the JARL follow-up traced its fixes skimmer by skimmer.
+  With the episode over, this retrospective brings together the analysis and
+  its lessons.</p>
   <p>This document follows the investigation in order: a bandmap that looked wrong (<a
     href="#s1">&sect;&nbsp;1</a>); a way of judging spots against each other
     (<a href="#s2">&sect;&nbsp;2</a>) and what it showed (&sect;&sect;&nbsp;<a
@@ -275,6 +281,13 @@ th.n{text-align:center}
   spots that are off-consensus, and a spot is judged when it falls in a 100 Hz frequency bin
     and five-minute time cell that four distinct skimmers attribute to one
   running station (<a href="#s2">&sect;&nbsp;2</a>).</p>
+  <p class="note-small">Here, <em>the eight</em> means the original eight
+  high-rate skimmers in <a href="#tab1">Table 1</a>. <em>The roster</em> means
+  the skimmers listed as running <code>UberSDR Skimmer</code> at the date
+  under discussion. <em>Reference skimmers</em>, also called the controls,
+  means the seven comparison skimmers in Table 1; the RTTY checks of
+  <a href="#s15">&sect;&nbsp;15</a> use the same set with <code>PI4CC</code> in place
+  of <code>SZ1A</code>, and <a href="#tab4">Table 4</a> uses the five it names.</p>
 
     <div class="correction">
     <p><strong>This was not a minor leak. It was a network-scale RTTY spotting failure during a contest,
@@ -389,15 +402,16 @@ th.n{text-align:center}
   </figure>
 
 <div class="col">
-  <p>Of the 10 stations spotted on 7065.2, only <code>3V8LL</code> was
-  running there. The other nine were answering <code>3V8LL</code>, and every
-  one of them ran elsewhere at some point that weekend: they are genuine
-  stations, and nothing about the callsigns is incorrect. An operator working
+  <p>Of the 10 callsigns shown on 7065.2 in that 10-minute window, only
+  <code>3V8LL</code> was running there. The other nine were answering
+  <code>3V8LL</code>, and every one of those stations ran elsewhere at some
+  point that weekend. All nine callsigns identify real stations; the error
+  was their attribution, not the callsigns themselves. An operator working
   down the bandmap completes one contact and then encounters nine further
   entries, all of which lead back to the same running station. The bandmap
-  offered ten ways to work 3V8LL, but the log would accept only one of them.</p>
-  <p>Ten stations do not ordinarily run on a single frequency simultaneously,
-  so something was evidently amiss, and what follows documents my
+  offered 10 ways to work 3V8LL, but the log would accept only one of them.</p>
+  <p>Ten callsigns on one frequency in a 10-minute bandmap window are
+  unusual. Something was evidently amiss, and what follows documents my
   attempt to determine what it was. In summary, a small number of skimmers
   were reporting the nine callers as though they, too, were calling CQ on that frequency.</p>
   <p>Callers spotted on a runner's frequency are a familiar artifact.
@@ -419,10 +433,11 @@ th.n{text-align:center}
   so every Makrothen RTTY figure counts only spots sent within those periods,
   and "the Makrothen weekend" means those 24 hours wherever RTTY is measured;
   the 2261 RTTY spots sent outside them, 1.2 percent of the two days, are
-  left out. The CQ WW RTTY contest and JARL WW RTTY run 48 hours without a break and are
-  taken whole. CW figures use whole days throughout, since none of these
-  contests is a CW one. RTTY is confined, too, to the five bands RTTY
-  contests use, 80, 40, 20, 15, and 10 m; the few RTTY spots on other bands,
+  left out. The CQ WW RTTY contest and JARL WW RTTY run 48 hours without a
+  break and are taken whole. CW figures use whole days throughout, since
+  none of these contests is a CW one.</p>
+  <p>RTTY is confined to the five bands RTTY contests use: 80, 40, 20, 15,
+  and 10 m. The few RTTY spots on other bands,
   22 at CQ WW, 5 at Makrothen, and 50 at JARL, never reached a decided cell,
   so leaving them out changes spot totals and nothing else.</p>
   <p>I group every RTTY spot by band, by frequency to 100 Hz, and by
@@ -431,15 +446,17 @@ th.n{text-align:center}
   (<a href="https://groups.io/g/RBN-OPS/message/9248">RBN-OPS #9248</a>), some
   skimmers report to 10 Hz and the rest to 100 Hz (the archive drops a
   trailing zero, so a skimmer's resolution has to be judged from all of its
-  spots, not from any one; see <a href="#trailing-zero">&sect;&nbsp;20</a>); every frequency is
-  rounded half-up to its 100 Hz cell, so 7042.85 always falls in the 7042.9
-  cell. Within each cell, I take the callsign reported by the largest
-  number of <em>distinct</em> skimmers as the station holding the frequency;
-  where at least four skimmers support that callsign, the run frequency cell
-  is <strong>decided</strong>, that is, attributed to a running station. I
-  classify any
-  spot in a decided cell that names a station other than the runner holding
-  that cell as <strong>off-consensus</strong>.</p>
+  spots, not from any one; see <a href="#trailing-zero">&sect;&nbsp;20</a>).
+  Every frequency is rounded half-up to its 100 Hz cell, so 7042.85 always
+  falls in the 7042.9 cell.</p>
+  <p>Within each cell, I identify the leading
+  callsign—the one reported by the largest number of <em>distinct</em>
+  skimmers—as the candidate station holding the frequency. If callsigns tie,
+  the one spotted first in the slot is used. A cell is
+  <strong>decided</strong> only when at least four distinct skimmers report
+  that leading callsign; it is then attributed to a running station. A spot
+  in a decided cell that names a different station is
+  <strong>off-consensus</strong>.</p>
   <p>Off-consensus is a measurement, not a verdict. A spot can be
   off-consensus for several unrelated reasons, among them a misdecoded
   callsign, a station answering rather than running, a skimmer whose frequency
@@ -486,8 +503,8 @@ th.n{text-align:center}
   group between 41.8 and 50.2
   percent, and below them lies a gap of roughly 20 points: the ninth-worst,
   <code>HA8TKS</code>, is at 21.6 percent, two
-  Meridian skimmers follow at 19.2 and 17.9 (<a href="#s10">&sect;&nbsp;10</a> and <a href="#appA">Appendix A</a>
-  explain all three),
+  Meridian skimmers follow at 19.2 and 17.9 (<a href="#appA">Appendix A</a>
+  explains all three),
   and the
   bulk of RTTY skimmers sits near 4 percent (<a href="#fig3">Figure 3</a>).</p>
   <p><strong>Eight is not a small minority.</strong> Of the 43 skimmers that
@@ -519,8 +536,10 @@ th.n{text-align:center}
   can hear different signals even at one site, so that overlap does not show
   whether either pair shared a receiving site. The common operator is known;
   how each operator's instances are set up is not.</p>
-  <p>Two weeks earlier, over the CQ WW RTTY weekend, RTTY skimmers had no such
-  group (<a href="#fig4">Figure 4</a>), and nothing like it had appeared in a decade of RTTY
+  <p>Two weeks earlier, over the CQ WW RTTY weekend, only two of the eight
+  were active in RTTY, and both sat within the main cluster; the 58
+  ranked skimmers showed no comparable high-rate group
+  (<a href="#fig4">Figure 4</a>). Nothing like the Makrothen split had appeared in a decade of RTTY
   contests, over which the network's rates had been falling steadily
   (<a href="#appD">Appendix D</a>).</p>
 </div>
@@ -663,7 +682,7 @@ th.n{text-align:center}
   characteristic of caller misattribution. Unlike 3V8LL, none persists as
   the station holding the frequency. The archive alone does not establish
   whether the skimmers decoded the callers' transmissions or their callsigns
-  in the runner's replies (<a href="#s10-1">&sect;&nbsp;10.1</a>).</p>
+  in the runner's replies (<a href="#s10-1">&sect;&nbsp;10</a>).</p>
 
   <h2 id="s8">8 · What It Was Not</h2>
   <h3 id="s8-1">8.1 · Not a Frequency Calibration Error—for These Eight</h3>
@@ -718,7 +737,7 @@ th.n{text-align:center}
     to be plotted. At CQ WW its 10,423 spots still yielded 688. With the error
     removed it would be 12.0 percent on 142 judged spots at Makrothen and
     21.0 percent on 667 at JARL.</p>
-    <p><code>CN3A</code> at 24.2 percent and <code>OK4ZW</code> at 21.4 also
+    <p>Over the CQ WW weekend, <code>CN3A</code> at 24.2 percent and <code>OK4ZW</code> at 21.4 also
     have clock errors in RTTY, +12.1 and +6.1 ppm; with the errors removed,
     the two are at 18.5 and 19.3 percent, so neither error accounts for all
     of its skimmer's excess.</p>
@@ -744,7 +763,7 @@ th.n{text-align:center}
   <div class="scroll">
     <table id="tab4">
       <caption><strong>Table 4.</strong> Off-consensus Spots by Mechanism, Makrothen Weekend.</caption>
-      <tr><th>Group</th><th class="n">Garble of the Runner</th><th class="n">Corroborated Caller</th>
+      <tr><th>Group</th><th class="n">Garble of the Runner</th><th class="n">Corroborated Non-garble Caller</th>
         <th class="n">Corroborated Caller Rate over Judged Spots</th></tr>
       <tr><td><code>UberSDR Skimmer</code> (six skimmers)</td><td class="n"><span class="nb" style="min-width:6ch">0–1%</span></td>
         <td class="n"><span class="nb" style="min-width:6ch">97–98%</span></td>
@@ -768,9 +787,9 @@ th.n{text-align:center}
   is a non-garble callsign that held a frequency somewhere during the contest
   or was reported by at least four distinct skimmers. The remaining,
   uncorroborated calls are not shown, so the first two columns need not sum
-  to 100 percent. The broader caller category used elsewhere includes those
-  uncorroborated calls; <a href="#meridian-group">&sect;&nbsp;10.2</a> gives
-  VU2CPL's stricter requirement for corroboration on the calling frequency.</p>
+  to 100 percent. The broader <em>caller</em> category used elsewhere also
+  includes uncorroborated calls. VU2CPL's stricter definition, corroboration on
+  the calling frequency, is tested <a href="#caller-definition">below</a>.</p>
   <p>The six tabulated instances were not significantly garbling the runner's
   callsign: essentially none of their off-consensus spots was a garble of
   the station actually present. Every other group
@@ -781,6 +800,16 @@ th.n{text-align:center}
   disparity persists: <strong>40.7 to 48.7 percent against 2.0 to 4.0
   percent</strong> for the controls. Misdecoded callsigns therefore do not
   explain the principal disparity.</p>
+  <p id="caller-definition">The result does not depend on what counts as a caller. VU2CPL
+  divides the off-consensus spots that are not garbles into two categories,
+  <em>callers</em>, which other
+  skimmers also heard calling on that frequency, and <em>unconfirmed</em>
+  calls, which only that skimmer reported there, and counts only the former as
+  callers, whereas I count both. I reconstructed his classification from the
+  public archive alone, and it reproduces his garble shares almost exactly and
+  his caller and unconfirmed shares to within several points. On his
+  definition the <code>UberSDR Skimmer</code> group stays at 30.7 to 34.5 percent of judged spots, against 2.0 to 2.9 percent for controls, so the
+  finding does not depend on which definition is used.</p>
 
   <h3 id="s8-3">8.3 · Not Separable by Signal Strength</h3>
   <p>Signal-to-noise ratio provides no usable discrimination here: spots
@@ -828,13 +857,14 @@ th.n{text-align:center}
   off over the three contest weekends; 3 ppm is SM7IUN's threshold for a
   skimmer that needs recalibrating (below). Each skimmer receives a single
   figure for CW and RTTY combined, because one receiver clock serves both
-  modes and, for nearly every skimmer, the two agree to within 0.8 ppm. The
-  skimmers are grouped according to how that figure behaved across the
+  modes and, for nearly every skimmer, the two agree to within 0.8 ppm.</p>
+  <p>The skimmers are grouped according to how that figure behaved across the
   weekends: 18 remained stable to within 2 ppm, and for them the figure
   is the mean; 7 were measured on only one weekend, among them
   <code>CN3A</code>, a skimmer at a multi-multi station that operated only for
   CQ WW; and 14 changed between weekends or differ between modes, so
-  that each weekend's figure is shown in sequence. For the stable group, the
+  that each weekend's figure is shown in sequence.</p>
+  <p>For the stable group, the
   3 ppm inclusion threshold applies to the magnitude of the mean across
   measured weekends, not to an isolated weekend or mode. A stable skimmer
   whose mean has a magnitude below 3 ppm is therefore excluded even if one
@@ -927,11 +957,13 @@ th.n{text-align:center}
   bands. The JARL figure is the RTTY fit; on the bands CW and RTTY share, the
   two agree.</p>
   <p class="note-small"><sup>g</sup> Not a clock error. <code>SZ1A</code>'s
-  RTTY reads about +75 Hz high on every band (+78, +39, +77, and +75 Hz on 80
-  to 15 m) while its CW is within 19 Hz: a roughly fixed offset in RTTY only,
-  plausibly close to 85 Hz, half the 170 Hz FSK shift, as if its RTTY spots
-  were referenced to a different point of the signal than the mark frequency
-  the RBN convention uses. The +4.5 is the clock fit to that offset.</p>
+  RTTY reads high on every band, by +78, +39, +77, and +75 Hz on 80, 40, 20,
+  and 15 m, while its CW is within 19 Hz: an offset in RTTY only that does not
+  grow with frequency. On 80, 20, and 15 m it is near 85 Hz, half the 170 Hz
+  FSK shift, as if its RTTY spots were referenced to a different point of the
+  signal than the mark frequency the RBN convention uses; 40 m, at about half
+  that, does not fit, and the spots do not say why. The +4.5 is the clock fit
+  to that offset.</p>
   <p class="note-small"><sup>h</sup> About +4 ppm on both JARL days and −0.1
   by October 19: corrected right after JARL.</p>
   <p>Two of the eight appear in <a href="#tab5">Table 5</a>.
@@ -969,7 +1001,7 @@ th.n{text-align:center}
   to it during the preceding seven days. That window encompassed the
   Makrothen weekend when I consulted it. Comparing the list with the measured
   rates identifies a common program among the eight, although a listed name
-  can identify reporting software rather than the underlying decoder.</p>
+  can identify reporting software rather than the skimmer behind it.</p>
   <p>PSK Reporter listed nine stations as running <code>UberSDR Skimmer</code>
   when I first consulted it on October 14. Eight of them produced sufficient
   RTTY on the Makrothen weekend to be judged, and those eight are precisely
@@ -986,7 +1018,9 @@ th.n{text-align:center}
     listed under other reporting software is 21.6 percent, and the controls'
     listed reporting programs are
     <code>CW reporter</code>, <code>CWSL_DIGI</code>, and VE3NEA's
-    <code>RTTY Skimmer Server v.1.3.0.432</code>.</li>
+    <code>RTTY Skimmer Server v.1.3.0.432</code>. Four stations running
+    <code>Meridian v0.1.25</code> also sit above the RTTY median, for unrelated
+    reasons (<a href="#meridian">Appendix A.1</a>).</li>
   </ul>
   <p>A tenth, <code>K1HTV-4</code>, joined the roster on October 15, after the
   measurements reported above. <a href="#s12">&sect;&nbsp;12</a> covers its
@@ -1026,8 +1060,8 @@ th.n{text-align:center}
     <code>UberSDR 0.1.66</code> SDR
     program and under <code>CW reporter 1.1</code>, and has no <code>UberSDR
     Skimmer</code> entry at all; <code>K1RA</code> is also listed under
-    <code>CWSL_DIGI 0.88</code>. None of these programs is an RTTY decoder, so
-    which program decoded their RTTY at CQ WW is not recorded. The copy of October 12, which
+    <code>CWSL_DIGI 0.88</code>. None of these programs is an RTTY skimmer, so
+    which program skimmed their RTTY at CQ WW is not recorded. The copy of October 12, which
     covers Makrothen, lists both under <code>UberSDR Skimmer</code>, and
     <code>CW reporter</code> is gone. Between the two contests, therefore,
     they appear to have changed programs rather than merely a setting. Two
@@ -1037,8 +1071,7 @@ th.n{text-align:center}
     the eight shared a single build.</p>
   </div>
 
-  <h3 id="s10-1">10.1 · What the Program's Documentation Described</h3>
-  <p><code>UberSDR Skimmer</code> performs its own RTTY decoding rather than
+  <p id="s10-1"><code>UberSDR Skimmer</code> performs its own RTTY decoding and interpretation rather than
   using VE3NEA's <code>RTTY Skimmer Server</code>, although it reproduces that program's
   output formats. Its source code is private, but its documentation has been
   mirrored publicly since October 4 (<a href="#s14">&sect;&nbsp;14</a>), and
@@ -1065,27 +1098,6 @@ th.n{text-align:center}
   distinguished from a runner's; the developer's own description of the fault
   (<a href="#s14">&sect;&nbsp;14</a>) is nevertheless consistent with it.</p>
 
-  <h3 id="meridian-group">10.2 · A Second Grouping, and a Different Mechanism</h3>
-  <p>The same list showed four stations running <code>Meridian v0.1.25</code>—<code>LB9KJ-1</code>, <code>VU24DX-1</code>, <code>VU2CPL-88</code>, and
-  <code>VU2OY-9</code>—all above the RTTY median. An earlier version of
-  this document treated them as a milder instance of the same effect; they are
-  not, and I owe the correction to Manoj VU2CPL, coauthor of Meridian, who
-  reproduced the method independently and examined the off-consensus spots
-  against his stations' own records. Their excess is mostly garbled decodes of
-  the runner's own callsign, and <code>VU2OY-9</code>'s is a frequency
-  offset (<a href="#meridian">Appendix A.1</a>): the two programs show
-  different faults, not one shared conceptual error.</p>
-  <p>The comparison also tests what counts as a caller. Manoj divides the
-  off-consensus spots that are not garbles into two categories,
-  <em>callers</em>, which other
-  skimmers also heard calling on that frequency, and <em>unconfirmed</em>
-  calls, which only that skimmer reported there, and counts only the former as
-  callers, whereas I count both. I reconstructed his classification from the
-  public archive alone, and it reproduces his garble shares almost exactly and
-  his caller and unconfirmed shares to within several points. On his
-  definition the <code>UberSDR Skimmer</code> group stays at 30.7 to 34.5 percent of judged spots, against 2.0 to 2.9 percent for controls, so the
-  finding does not depend on which definition is used.</p>
-
   <h2 id="s11">11 · A Smaller, Persistent Excess in CW</h2>
   <p>These skimmers spot CW as well as RTTY, between 3246 and 14,298 CW spots
   each over the Makrothen weekend, so <a href="#s2">the same test</a> can show whether they
@@ -1098,7 +1110,7 @@ th.n{text-align:center}
   its cause. Separate causes are plausible, but the source code would be
   needed to establish that distinction. This
   section and <a href="#appB">Appendix B</a> record what the CW spots show; none of the RTTY
-  findings depend on it. <a href="#appE">Appendix E</a> sets it against fifteen years of the
+  findings depend on it. <a href="#appE">Appendix E</a> sets it against 15 years of the
   network's CW record, in which it does not show at all.</p>
 
   <div class="correction">
@@ -1205,7 +1217,7 @@ th.n{text-align:center}
     href="#s8">&sect;&nbsp;8</a>):
     <code>OH2BBT</code> at −12.9 ppm, <code>OK2RZ</code> at +14.9, and
     <code>OK4YL</code> at +14.7. With each error removed, their rates decline
-    to 4.6, 3.5, and 4.1 percent, at the CW median. <code>K5KHK</code> has
+    to 4.6, 3.5, and 4.1 percent, close to the CW median. <code>K5KHK</code> has
     no clock error
     and stays essentially unchanged, at 34.1 percent; it was also 41.1 percent in CW over the CQ WW
     RTTY weekend. Even after correction, a small number of skimmers running
@@ -1215,16 +1227,21 @@ th.n{text-align:center}
     at 7.1 percent and the controls' at 3.8, so the CW excess is not
     attributable to frequency error.</li>
     <li><strong>The test of whether the calls are real stations stops
-    discriminating.</strong> In RTTY, 90
-    to 97 percent of the group's off-consensus calls were confirmed by four or more
-    other skimmers against 80 to 90 percent for controls. In CW both lie
+    discriminating.</strong> In RTTY, 90 to 97 percent of the distinct
+    callsigns each of the eight reported off-consensus were spotted by four or
+    more skimmers, itself included, during the Makrothen periods, against 80 to
+    94 percent for the seven reference skimmers of <a href="#tab1">Table 1</a>,
+    already a weak separation; <a href="#tab4">Table 4</a>, which counts spots
+    rather than callsigns and also accepts a call that held a frequency,
+    separates them more (97 to 98 percent against 49 to 81). In CW both lie
     between 77 and 89 percent. The test therefore no longer distinguishes the
     groups. It establishes that most discrepant callsigns belong to real
     stations, but does not by itself identify the mechanism; <a href="#tab7">Table 7</a> splits the CW off-consensus spots by mechanism instead.</li>
   </ul>
   <p>This might have helped locate the fault: because CW was affected too, it
   may not have been just a broken RTTY decoder; it could have been something
-  common to both modes. The disparity is much larger in RTTY, but these
+  common to both modes, such as the interpretation that decides which callsign
+  holds the frequency. The disparity is much larger in RTTY, but these
   weekends alone are consistent with either a shared cause or separate
   causes. <a href="#s15">&sect;&nbsp;15</a>
   adds evidence for operational separation: a fix that cleared RTTY left CW
@@ -1233,7 +1250,7 @@ th.n{text-align:center}
   <h3 id="s11-2">11.2 · How Much Each Disturbed the Spot Stream</h3>
   <p>How much a skimmer contributes to the stream's measured disagreement
   depends on two things: its off-consensus rate and how much of the stream it supplies.
-  The RTTY excess was about eleven times larger, and the eight supplied about
+  The RTTY excess was about 11 times larger, and the eight supplied about
   six times as much of the spot stream. Measured as excess off-consensus spots
   relative to each mode's judged traffic, the RTTY disturbance was about 65
   times the CW one over the Makrothen weekend:</p>
@@ -1258,7 +1275,7 @@ th.n{text-align:center}
   skimmers on the air sent 10.1 percent of all CW spots, and their excess was
   0.3 percent of judged CW spots. It remains a small disturbance in a deep pool;
   the RTTY fault was a large one in a shallow pool. <a href="#appD">Appendices D</a> and
-  <a href="#appE">E</a> measure the same contrast against a decade of each mode.</p>
+  <a href="#appE">E</a> measure the same contrast against a decade or more of each mode.</p>
   <p>That contrast is itself another risk of testing on the live network. How
   far a defect skews the total traffic depends not only on the defect but on how
   many other skimmers dilute it, and nobody knows either number until the spots
@@ -1272,7 +1289,7 @@ th.n{text-align:center}
   public changelog, kept in the mirror since October 27, lists under release
   v2026.10.27-3, published that day at 1331Z: "callers answering a CW runner
   were sometimes spotted as calling CQ on the runner's frequency." That is the
-  RTTY fault described in CW, fixed ten days after the RTTY one, and the
+  RTTY fault described in CW, fixed 10 days after the RTTY one, and the
   strongest sign yet that the CW excess is the same kind of mistake made in a
   separate part of the program.</p>
   <p>The spots do not show the fix taking hold. Split the way
@@ -1326,12 +1343,15 @@ th.n{text-align:center}
   </div>
   <p class="note-small">Percent of judged spots, pooled over the 28 days from October 10 to
   November 6 (beacon frequencies excluded), for the controls and every roster skimmer with at
-  least 10,000 judged CW spots. Each off-consensus spot is classed by what it names: a
+  least 10,000 judged CW spots.</p>
+  <p class="note-small">Each off-consensus spot is classed by what it names: a
   <em>garble</em> is within edit distance 2 of the cell's holder; a <em>runner elsewhere</em>
   holds another decided cell in the same five-minute slot or an adjacent one; a
   <em>caller</em> is neither but held some decided cell that day or was reported by four or
-  more distinct skimmers; anything else is <em>unconfirmed</em>. The four add up to the
-  off-consensus rate. The last column is the first three hours of the ARRL November
+  more distinct skimmers; anything else is <em>unconfirmed</em>. Its caller test is
+  day-specific, narrower than Table 4's, which accepts a call that held a frequency at any time in the contest.
+  The four categories add up to the off-consensus rate.</p>
+  <p class="note-small">The last column is the first three hours of the ARRL November
   Sweepstakes, where at least 300 judged spots are needed (…: fewer); on the quiet days of
   November 3&ndash;6 the roster's callers were 2.07 percent and the controls' 0.71.
   Rows run by judged CW spots, most first. The roster median is taken column by column
@@ -1339,18 +1359,29 @@ th.n{text-align:center}
   columns need not add up; the controls row pools the seven controls' spots.
   <code>ON6URE</code> and <code>PD2RPS</code>, first listed as running the program on
   November 8, are left out, since their earlier spots may come from other software.</p>
-  <p>The first hours of the ARRL November Sweepstakes in CW, from 2100 to 2400Z
-  on November 7, pushed the callers up instead. A Sweepstakes runner sends the
-  caller's callsign at the start of nearly every exchange, which is what a
-  skimmer reading callers out of the runner's signal would pick up, and across
-  the roster the caller share rose to 3.18 percent of judged spots, from 2.07 on
-  the quiet days of November 3 to 6, and to between 3.3 and 4.8 percent at
-  <code>K1RA-4</code>, <code>K3GMQ</code>, <code>K1HTV-4</code>, <code>NB3A</code>,
-  <code>N7OR</code>, and <code>K3FEF</code>, while the controls' fell from 0.71 to
-  0.58 percent. Garbles fell at the same time, so the total excess rose less,
-  from 3.3 to 3.7 points. The exceptions were <code>K5TR</code>, whose caller
-  share fell from 1.85 to 0.80 percent, and <code>KM3T-2</code> and
-  <code>EI4HQ</code>, unchanged.</p>
+  <p>During the first three hours of ARRL November Sweepstakes CW, from 2100
+  to 2400Z on November 7, the roster's caller share rose to 3.18 percent of
+  judged spots, from 2.07 percent on the quiet days of November 3 to 6. The
+  controls' share fell from 0.71 to 0.58 percent. A Sweepstakes runner sends
+  the caller's callsign at the start of nearly every exchange, which gives a
+  skimmer reading callers out of the runner's signal more chances to misreport
+  them.</p>
+  <p>The six roster skimmers with the most judged spots in those hours each
+  had more than 4000, and their caller rates ranged from 3.3 to 4.8 percent:
+  <code>K1RA-4</code> rose from 2.53 percent on the quiet days to 3.65;
+  <code>K3GMQ</code>, from 2.37 to 3.44; <code>K1HTV-4</code>, from 2.18 to
+  3.34; <code>NB3A</code>, from 2.45 to 3.82; and <code>N7OR</code>, from
+  1.86 to 4.82. <code>K3FEF</code> reached 4.29 percent, but the quiet days
+  provide no comparable figure for it. Three roster skimmers with fewer
+  judged spots reached the same range: <code>EA8/DF4UE</code>, 4.52 percent on 3122 spots,
+  up from 1.99 on the quiet days, and <code>DF4UE</code> and
+  <code>MM9PSY</code>, 3.88 and 3.85 percent on only about 300 spots
+  each.</p>
+  <p>Garbles fell at the same time, so the total excess rose less, from 3.3
+  to 3.7 points. Caller rates fell for <code>K5TR</code> (1.85 to 0.80
+  percent) and, slightly, for <code>GM0UDL</code> (2.17 to 1.95); they were
+  essentially unchanged for <code>KM3T-2</code> (1.32 to 1.39) and
+  <code>EI4HQ</code> (2.29 to 2.24).</p>
 
   <h3 id="s11-4">11.4 · No Other Identifiable Group</h3>
   <p>Is <code>UberSDR Skimmer</code> the only group of skimmers with a CW excess? The test is the
@@ -1361,12 +1392,12 @@ th.n{text-align:center}
   programs listed for at least three of them, only <code>UberSDR Skimmer</code> differs from the
   rest: its 26 skimmers ran a median of 6.57 percent against 3.37 for all the others, and callers
   at 2.17 percent against 0.66, a difference far past what testing 11 groups at once requires
-  (Mann-Whitney p of 5 &times; 10<sup>&minus;8</sup>, against a threshold of 0.0045). The UberSDR
+  (Mann&ndash;Whitney p of 5 &times; 10<sup>&minus;8</sup>, against a threshold of 0.0045). The UberSDR
   platform itself, whose operators skim CW with VE3NEA's CW Skimmer Server, ran at 3.39 percent,
   and no other program differed from the rest by more than about half a point.</p>
-  <p>That search is only as good as the software labels, and they are thin. 137 of the 237
-  skimmers do not report to PSK Reporter at all, and for many that do, the table names the bridge
-  that forwards their spots, CW reporter, not the decoder behind it. The RBN's own detailed node
+  <p>That search is only as good as the software labels, and they are thin. Of the 237
+  skimmers, 137 do not report to PSK Reporter at all, and for many that do, the table names the bridge
+  that forwards their spots, CW reporter, not the skimmer behind it. The RBN's own detailed node
   list, which records a version string for every connected skimmer, cannot fill the gap. Of the
   259 nodes it listed on November 9, 217 reported skimmer version v.1.6.0.145, the version of
   VE3NEA's CW Skimmer Server, and so did every one of the 19 <code>UberSDR Skimmer</code> nodes on
@@ -1376,26 +1407,27 @@ th.n{text-align:center}
   digits without the "v.". Other than <code>UberSDR Skimmer</code>, which reports itself to PSK
   Reporter by name, a group of skimmers sending Skimmer Server's version string cannot be told
   from Skimmer Server itself by any public record, so the absence of another identifiable group
-  is partly an absence of the means to identify one.</p>
+  is largely the absence of the means to identify one.</p>
   <p>Two excesses did appear without a program behind them. The three SparkGap 1.2 nodes, two of
   them one operator's, ran a median of 6.0 percent with callers at 1.5: suggestive, but too few to
-  call a group. And skimmers in Asia ran a median of 9.7 percent, callers 5.8, against 3.2 in
-  Europe and 3.4 in North America. That excess is simply an artifact of propagation combined
+  call a group. And the 18 skimmers in Asia ran a median off-consensus rate of 9.5 percent and a
+  median caller rate of 5.4 percent, against 3.2 and 0.6 percent for the 126 in Europe and 3.5
+  and 0.8 percent for the 80 in North America. That excess is simply an artifact of propagation combined
   with frequency reuse. More than half of their off-consensus spots name an Asian station on a
   frequency the consensus gives to a European or North American station, in most of those cases
   one that no Asian skimmer heard: two stations on the same frequency at once, each heard only
   where its signal reaches, while the consensus is decided by the far more numerous skimmers of
   Europe and North America. The Asian skimmers report what they hear correctly; the method scores
   them against stations they cannot hear (<a href="#s19">&sect;&nbsp;19</a>).</p>
-  <p>40 m shows it most plainly. During daylight hours in Japan it is effectively a different band from
+  <p>The 40 m band shows it most plainly. During daylight hours in Japan it is effectively a different band from
   40 m in Europe and North America at the same hour, and vice versa. Over November 3 to 5 the
   Japanese skimmers were off-consensus on 48.5 percent of their judged 40 m spots between 0800 and
   1700 local time (2300 to 0800Z), and 35.2 percent of those judged spots named an Asian station
-  on a frequency held by a European or North American station that no Asian skimmer backed;
+  on a frequency held by a European or North American station that no Asian skimmer reported;
   during nighttime hours in Japan the same skimmers were off-consensus on 13.7 percent of their 40 m
   spots, 8.1 percent of them of that kind. On the higher bands, where all regions share the
   same propagation more often, the effect fades: 20 m in daylight hours in Japan, 7.8 percent off-consensus
-  and 2.9 of that kind, and 15 m almost nothing. 40 m in daylight hours in Japan alone accounts for 62
+  and 2.9 of that kind, and 15 m almost nothing. In daylight hours in Japan, 40 m alone accounts for 62
   percent of all such spots.</p>
 
   <h2 id="s12">12 · Cost of Excluding <code>UberSDR Skimmer</code> for JARL
@@ -1602,7 +1634,7 @@ th.n{text-align:center}
     this document measures, described from within the program.</li>
     <li><strong>Released October 27, 1331Z (v2026.10.27-3, in the mirror's
     changelog).</strong> "Callers answering a CW runner were sometimes spotted as
-    calling CQ on the runner's frequency": the same fault in CW, fixed ten days
+    calling CQ on the runner's frequency": the same fault in CW, fixed 10 days
     after the RTTY one. <a href="#s11-3">&sect;&nbsp;11.3</a> finds no effect in
     the spots so far.</li>
   </ul>
@@ -1709,9 +1741,9 @@ th.n{text-align:center}
   busiest one on the list had at most 158 judged spots in a day, and CW,
   although spotted every day, cannot substitute for it, since the RTTY
   correction left CW unchanged.</p>
-  <p>There is one exception. The Weekly RTTY Test, on Thursday evenings in
-  North America, runs exactly 30 minutes, 0145 to 0215Z every Friday UTC,
-  and packs pileups into them. I score each week from 0140 to 0220Z, with
+  <p>There is one exception. The Weekly RTTY Test runs every Friday,
+  0145–0215Z, a half-hour that falls on Thursday evening in North America.
+  It packs pileups into that window. I score each week from 0140 to 0220Z, with
   five minutes' margin either side, and in that window the RBN carried 155
   to 534 RTTY spots per 10 minutes on October 9, 16, and 23, against 10 to 40
   outside it, enough to judge
@@ -1829,69 +1861,60 @@ th.n{text-align:center}
   experimental output so it can be filtered; and have a way to stop it
   quickly.</p>
   <p>Measured against those practices, the <code>UberSDR Skimmer</code>
-  rollout fell short. It was staged, but by
-  each operator's timing rather than by design,
+  rollout fell short. It was staged by each operator's timing, not by design,
   and the public record shows no systematic comparison of output between
   stages. By Makrothen, the eight affected skimmers supplied a third of all
-  RTTY spots and 83 percent of the off-consensus ones. The output was not
-  labeled: RBN spots name no software,
-  <code>UberSDR Skimmer</code> gives no version even in PSK Reporter's table,
-  and a test build reports under the same callsign as a release. The RBN's own node list goes
-  further and shows every <code>UberSDR Skimmer</code> node as VE3NEA's CW Skimmer Server,
-  version v.1.6.0.145 (<a href="#s11-4">&sect;&nbsp;11.4</a>). A way to stop
-  sending RTTY alone came only afterward: since October 17,
-  <code>UberSDR Skimmer</code> has had a setting, <code>RBN_MODES</code>, that
-  lets each skimmer's operator keep decoding RTTY without sending it to the
-  RBN, while still sending CW.</p>
-  <p>And the RBN itself, like the ARPANET in 1980—the internet in its early, Wild West days—passes every skimmer's spots on and leaves the judging to whoever reads
-  them. I found no published RBN policy for testing new skimmer software. The
-  unwritten policy would seem to be caveat emptor: let the spot
-  consumer beware. That alone makes the case for analyses like those in this
-  document.</p>
-<p>None of this was hidden, and that is the troubling part. The
-  program's own README has said "Status: testing." since its first public
-  commit on October 4, six days before Makrothen, and the program fed the live
-  RBN through Makrothen and JARL regardless. The README was candid about the
-  software's status; the deployment ignored it. Makrothen was, in effect, an
-  unannounced field test on the live network: I found no notice to spot
-  consumers beforehand on RBN-OPS, the RTTY list, Skimmertalk, or the
-  project's own ubersdr list. That made every assisted
-  operator who relied on the spot stream in those contests an
-  unconsulted test subject, and made the
-  cost of each defect theirs to absorb. In addition to the direct impact on their
-  contest operation, the cost of being an unwitting tester includes the time
-  spent identifying the problem, tracing it back to its source, and determining
-  to whom to report the defect&mdash;the exact process documented here.</p>
-  <p>A contester should not have to suspend operating to diagnose and trace
-  an upstream software defect. Even afterward, that investigation requires
-  substantial time and motivation.</p>
-  <p>Expecting defects is a very sound attitude in a test environment.
-  Testing on a shared network in the middle of a contest creates an
-  externality: the developers learn, and everyone else pays. When the fault
-  came to light, the developer's public answer on the RBN-OPS list was:
-  "Apologies if it caused confusion on the weekend - nothing like a contest to
-  find bugs"
-  (<a href="https://groups.io/g/RBN-OPS/message/9526">Nathan M9PSY, October 15</a>). The apology is welcome. The second half is a concise restatement
-  of the problem: a contest is not
-  a test bench, and the practices described above exist and should be
-  followed so that it never has to be one.
-  <code>UberSDR Skimmer</code> had the tools to follow them (below), and
-  the developer's public acknowledgment followed a spot consumer's notes
-  unintentionally appearing on three mailing lists; the public record does
-  not establish when the development team first recognized the fault
+  RTTY spots and 83 percent of the off-consensus ones. Their output was not
+  labeled: RBN spots name no software, <code>UberSDR Skimmer</code> gives no
+  version even in PSK Reporter's table, and a test build reports under the
+  same callsign as a release. The RBN's node list goes further, identifying
+  every <code>UberSDR Skimmer</code> node as VE3NEA's CW Skimmer Server,
+  version v.1.6.0.145 (<a href="#s11-4">&sect;&nbsp;11.4</a>). Only after
+  Makrothen, on October 17, did <code>UberSDR Skimmer</code> add an
+  <code>RBN_MODES</code> setting that lets operators keep decoding RTTY
+  without sending it to the RBN, while still sending CW.</p>
+  <p>The RBN itself reflects the same trust model: like the ARPANET in
+  1980—the internet in its early, Wild West days—it passes skimmers'
+  spots along and leaves the judging to whoever reads them. I found no
+  published RBN policy for testing new skimmer software. The unwritten policy
+  would seem to be <em>caveat emptor</em>: let the spot consumer beware. That
+  alone makes the case for analyses like those in this document.</p>
+  <p>None of this was hidden, and that is the troubling part. The program's
+  own README has said "Status: testing." since its first public commit on
+  October 4, six days before Makrothen; it nevertheless fed the live RBN
+  through Makrothen and JARL. The README was candid about the software's
+  status; the deployment ignored it. Makrothen was, in effect, an unannounced
+  field test: I found no advance notice to spot consumers on RBN-OPS, the RTTY
+  list, Skimmertalk, or the project's own ubersdr list. Assisted operators
+  relying on those spots became unconsulted test subjects and bore the cost:
+  disruption to their contest operation, plus the time needed to identify the
+  problem, trace it to its source, and decide where to report it&mdash;the exact
+  process documented here. A contester should not have to suspend operating to
+  do that work. Even afterward, that investigation requires substantial time
+  and motivation.</p>
+  <p>Expecting defects is sound in a test environment. Testing on a shared
+  network during a contest creates an externality: the developers learn, and
+  everyone else pays. When the fault came to light, the developer's public
+  answer on RBN-OPS was: "Apologies if it caused confusion on the weekend -
+  nothing like a contest to find bugs"
+  (<a href="https://groups.io/g/RBN-OPS/message/9526">Nathan M9PSY, October 15</a>).
+  The apology is welcome; the second half restates the problem. A contest is
+  not a test bench. The public acknowledgment followed a spot consumer's
+  notes appearing unintentionally on three mailing lists; the public record
+  does not establish when the development team first recognized the fault
   (<a href="#s13">&sect;&nbsp;13</a>).</p>
   <p>Testing RTTY does present a conundrum: outside contests there is very little RTTY activity to
-  decode, so a new RTTY decoder can only really be exercised in a contest,
+  decode, so a new RTTY skimmer can only really be exercised in a contest,
   and to the operators entering it no contest is a minor event that can
   tolerate significant disruption. Thin RTTY coverage also magnifies any
   defect: with only a few dozen skimmers, instances of one affected program
   can supply a third of the stream (<a href="#s11-2">&sect;&nbsp;11.2</a>). The way out is to
   bring the contest to the test rather than the test to the contest. An SDR
   can record a whole band (or multiple RTTY segments) during a contest, and a
-  new decoder can then be run
+  new skimmer can then be run
   against that recording as often as needed and scored against the RBN
   archive for the same hours; the consensus this document uses is a ready-made
-  yardstick. Live, a new decoder can run in shadow mode, decoding the
+  yardstick. Live, a new skimmer can run in shadow mode, skimming the
   contest as it happens and comparing against the RBN consensus without
   sending anything to the RBN. Only once it has passed both should it publish,
   and then under a unique callsign, such as a separate SSID, because the
@@ -1916,14 +1939,15 @@ th.n{text-align:center}
   output is optional, and <code>RN4WA</code>'s instance, for one, reports to 100 Hz,
   the program's true share was likely a majority. Judged by PSK Reporter's
   table, it would look like a minor program.</p>
-  <p>The tools mentioned above were already in <code>UberSDR Skimmer</code>'s documentation before Makrothen:
+  <p>Tools for these safeguards were already in <code>UberSDR Skimmer</code>'s
+  documentation before Makrothen:
   <code>RBN_DRY_RUN</code>, which signs on to the RBN and judges spots but
   uploads none, is in its documentation from October 4; <code>--record</code>
   and <code>--input</code>, which capture and replay I/Q samples, from October 5; and
   <code>--compare</code>, which holds each spot until the RBN has heard the
   station and then reports <code>other:CALL</code> "when RBN heard another
   call on our frequency," from October 8. That last is close to the consensus
-  check this document uses. Tools for these safeguards shipped with the
+  check this document uses. They shipped with the
   program; whether anyone used them to validate the RTTY output before
   sending it to the RBN, the archive cannot say.</p>
   <p>The guardrails were available; they did not keep this fault off the
@@ -1935,19 +1959,20 @@ th.n{text-align:center}
   <code>UberSDR Skimmer</code> is aimed squarely at that gap, a wideband
   multimode skimmer for an open-source SDR platform, and the operators behind
   the eight are, before anything else, volunteers putting more RTTY receivers
-  on the air. The lead developer answered the day after the fault was raised and had a
-  first fix on the public mirror within the hour (<a href="#s14">&sect;&nbsp;14</a>).
-  Nothing here is meant as a personal
-  criticism of anyone: what this document criticizes is a practice, sending untested
-  output to a shared network, and the hope is that calling attention to the risks
-  of that practice will advance testing protocols, so that the next new decoder helps contesters from its first weekend.</p>
+  on the air. The lead developer answered the day after the fault was raised
+  and had a first fix on the public mirror within the hour
+  (<a href="#s14">&sect;&nbsp;14</a>). Nothing here is meant as a personal
+  criticism of anyone: the criticism is of a practice—sending
+  untested output to a shared network—not of people. The hope is that
+  addressing its risks will improve testing, so the next new skimmer helps
+  contesters from its first weekend.</p>
 
   <h2 id="s18">18 · Summary and Conclusions</h2>
     <ul>
       <li><strong>The callsigns were right; their attribution was not.</strong>
-      Between 90 and 97 percent of the eight's off-consensus calls were
-      corroborated by four or more other skimmers, and every one was a
-      well-formed callsign. The error lay in the spot's meaning, since a spot
+      Of the distinct callsigns each of the eight reported off-consensus, 90 to
+      97 percent were spotted by four or more skimmers during the contest
+      periods, and every one was a well-formed callsign. The error lay in the spot's meaning, since a spot
       asserts that "this station is workable here," which during a pileup is
       true of the runner and false of everyone calling it, and these eight
       reported callers as runners on nearly half their judged spots.</li>
@@ -1987,12 +2012,12 @@ th.n{text-align:center}
       fix for the same mistake followed on October 27, but the CW caller share
       has not fallen since, and in the first hours of Sweepstakes it rose
       (<a href="#s11-3">&sect;&nbsp;11.3</a>). In the network's CW statistics, nearly flat for
-      fifteen years, the eight are diluted to invisibility (<a href="#appE">Appendix E</a>).</li>
+      15 years, the eight are diluted to invisibility (<a href="#appE">Appendix E</a>).</li>
       <li><strong>What it shows is a missing boundary.</strong> Development
       and testing proceeded without an effective boundary between experimental
       output and the live RBN. Nothing at the level of the program, the
       network, or the cluster kept the two apart; until something
-      does, nothing stops the next untested decoder from reaching contest
+      does, nothing stops the next untested skimmer from reaching contest
       operators the same way (&sect;&sect;&nbsp;<a href="#s16">16</a>–<a href="#s17">17</a>).</li>
       <li><strong>The criticism is of a risky practice, not of people.</strong> The RBN
       needs more and better RTTY skimmers, and the volunteers who build and run
@@ -2137,7 +2162,7 @@ th.n{text-align:center}
     filtering individual spots by decimal count.</p>
     <p>The majority rule labels a skimmer's output within the day or weekend
     being analyzed, not permanently by callsign, and does not imply uniform
-    resolution. <a href="#appC-2-6">C.2.6</a> documents output that changes
+    resolution. <a href="#appC-2-6">Appendix C.2.6</a> documents output that changes
     with frequency or time. The ramp comparisons retain eligible readings
     from the named group members, including their rounded readings, rather
     than selecting individual spots by their digits. The 100 Hz reference
@@ -2147,7 +2172,7 @@ th.n{text-align:center}
     its output had that resolution, but not in the pooled 31-day reference.</p>
   </div>
   <p>The Python scripts that reproduce every result in this document are
-  available on request.</p>
+  available on request; contact information is in the footer.</p>
 
   <p class="foot">With thanks to Manoj VU2CPL, coauthor of the Meridian skimmer software,
   who reproduced this analysis from the RBN archives, corrected it on two
@@ -2160,19 +2185,23 @@ th.n{text-align:center}
   RBN-OPS, RTTY, and Skimmertalk lists, which is how the fault reached the
   developer (<a href="#s13">&sect;&nbsp;13</a>).</p>
   <h2 id="appA">Appendix A · Four Other Anomalies, Other Causes</h2>
-  <p>Four further cases were conspicuous over these weekends for reasons
-  of their own. None is among the eight, and none alters the main finding,
-  but each belongs in the record. The Meridian skimmers exhibit a different
-  software fault, garbles rather than callers; <code>KM3T-5</code>, a fault
-  that nothing in a spot reveals; and <code>OK2PMU</code>, the ordinary
-  faults that any skimmer can develop. <code>HA8TKS</code> appears to reproduce, on a
-  smaller scale, the practice of the <code>UberSDR Skimmer</code>
-  rollout.</p>
+  <p>Four further cases stood out over these weekends, each for a different
+  reason. None is among the eight, and none alters the main finding. The
+  Meridian skimmers show a different software fault: garbles rather than
+  callers. <code>KM3T-5</code> fell behind in a way the spots alone cannot
+  explain. <code>OK2PMU</code> shows more ordinary decoder and clock errors.
+  <code>HA8TKS</code> appears to echo, on a smaller scale, the
+  <code>UberSDR Skimmer</code> rollout's use of unreleased software.</p>
   <h3 id="meridian">A.1 · Meridian: Garbles and a Clock Error</h3>
-  <p>The four <code>Meridian v0.1.25</code> stations
-  (<a href="#meridian-group">&sect;&nbsp;10.2</a>) sat above the RTTY median
-  for two distinct reasons, neither of which corresponded to my original
-  description:</p>
+  <p>PSK Reporter's software table (<a href="#s10">&sect;&nbsp;10</a>) listed four
+  stations running <code>Meridian v0.1.25</code>—<code>LB9KJ-1</code>,
+  <code>VU24DX-1</code>, <code>VU2CPL-88</code>, and <code>VU2OY-9</code>—all
+  above the RTTY median. An earlier version of this document treated them as a
+  milder instance of the same effect; they are not, and I owe the correction to
+  Manoj VU2CPL, coauthor of Meridian, who reproduced the method independently
+  and examined the off-consensus spots against his stations' own records. They
+  sat above the median for two distinct reasons, neither of which corresponded
+  to my original description:</p>
   <ul>
     <li><code>VU2OY-9</code>'s 86.3 percent is the <strong>frequency
     offset</strong> described in <a href="#s8">&sect;&nbsp;8</a>, not misattribution at all.</li>
@@ -2180,12 +2209,13 @@ th.n{text-align:center}
     callsign</strong>—40 to 58 percent of their off-consensus spots, against 0 to
     1 percent for the <code>UberSDR Skimmer</code> group.</li>
   </ul>
-  <p>With respect to the caller mechanism itself, the Meridian stations occupy
+  <p>The two programs therefore show different faults, not one shared
+  conceptual error. With respect to the caller mechanism itself, the Meridian stations occupy
   an intermediate position between the controls and the <code>UberSDR
   Skimmer</code> group: 3.0 and 4.2 percent of judged spots in CQ WW, 7.2 and 10.2 percent over the Makrothen weekend, against 2.0 to 4.0 percent for controls and 40.7 to 48.7 percent for the
   tabulated <code>UberSDR Skimmer</code> instances. VU2CPL's own figures for his skimmers are lower still, near the
   reference level, largely because he counts only confirmed callers
-  (<a href="#meridian-group">&sect;&nbsp;10.2</a>): on that definition the
+  (<a href="#caller-definition">&sect;&nbsp;8.2</a>): on that definition the
   Meridian caller rate falls to 2.1 to 5.6 percent of judged spots, against 2.0 to 2.9 percent for controls. His stations' own logs
   supplied what the archive cannot show, the message context of each call,
   which demonstrated that the garbles follow the runner's own CQ. Both
@@ -2355,7 +2385,7 @@ th.n{text-align:center}
   200 Hz on 15 m. An offset that increases with frequency indicates a
   receiver clock error, and this one increased over time: about +1 to +3 ppm
   averaged over CQ WW, then +8.7
-  ppm in CW by October 10 (<a href="#tab5">Table 5</a>), where it alone raised
+  ppm in CW by October 10 (<a href="#tab5">Table 5</a>), where the error alone raised
   the CW rate from 10.4 to 16.1 percent.</p>
   <p>It was not delayed: its spots arrived
   as promptly as its peers', and stale spots constituted 0.5 percent of its
@@ -2381,7 +2411,7 @@ th.n{text-align:center}
   does "callsign extraction from RTTY transmissions." By its author's own
   account it was unreleased: "software release not yet published," with
   documentation that "is not yet a validated end-user installation manual."
-  Its site does not explain how the RTTY decoder distinguishes a CQ from a caller.</p>
+  Its site does not explain how its RTTY skimmer distinguishes a CQ from a caller.</p>
   <p>One qualification is important. The copies of October 12, 14, and 15, each
   covering the preceding seven days and together October 6–15, the Makrothen
   weekend included, also list <code>HA8TKS</code> under two other RTTY
@@ -2396,7 +2426,7 @@ th.n{text-align:center}
   Reporter records what software reported to it, not which program fed the RBN, but on that
   evidence Ditty is the likelier source of its JARL spots. If Ditty supplied them, this is the same history as
   that of <code>UberSDR Skimmer</code> on a smaller scale: software its own
-  author has not yet released or validated, decoding RTTY
+  author has not yet released or validated, skimming RTTY
   for the live RBN through two contests (<a href="#s17">&sect;&nbsp;17</a>).</p>
 
   <h2 id="appB">Appendix B · The CW Excess in Detail</h2>
@@ -2582,7 +2612,7 @@ th.n{text-align:center}
   each 10 Hz skimmer from the majority of its spots and keep all of them
   (<a href="#trailing-zero">&sect;&nbsp;20</a>). A frequency resolved to 10 Hz
   rather than 100 Hz allows the frequency check of
-  <a href="#s9">&sect;&nbsp;9</a> to be repeated at ten times the resolution,
+  <a href="#s9">&sect;&nbsp;9</a> to be repeated at 10 times the resolution,
   for the RTTY skimmers that report it: 28 over the CQ WW weekend, 16 over
   the Makrothen weekend, and 22 at JARL. Nothing here changes the main
   findings, but the finer view shows two things the 100 Hz check could not.</p>
@@ -2620,11 +2650,14 @@ th.n{text-align:center}
   fall into two groups that agree within themselves to about 10 Hz but
   disagree with each other, and the disagreement is not a constant: it is a
   straight-line ramp across each band, with nearly the same slope on every
-  band. On 40 m one group reads 90 Hz above the other at 7030 kHz, the two
-  agree near 7085 kHz, and the order reverses to 10 Hz the other way at 7100 kHz, a
-  scale difference of about 0.15 percent of a signal's distance from that
-  point; on 20 m the difference runs from +20 Hz at 14070 kHz to −90 Hz at
-  14140 kHz, about 0.17 percent. The same difference appears on every contest
+  band. On 40 m, the negative-slope group reads about 90 Hz above the
+  positive-slope group at 7030 kHz. They agree near 7085 kHz; by 7100 kHz,
+  the negative-slope group reads about 10 Hz below the positive-slope group.
+  This is a scale difference of about 0.15 percent of a signal's distance
+  from that point. On 20 m, the negative-slope group's lead likewise gives
+  way to a lag: the difference runs from +20 Hz at 14070 kHz to −90 Hz at
+  14140 kHz, about 0.17 percent.</p>
+  <p>The same difference appears on every contest
   band: fitted with each bin weighted by its readings, it is 0.16 to 0.17
   percent on 40, 20, and 15 m, 0.13 percent on 80 m, where activity fills
   mainly the top of the segment, and 0.19 percent on 10 m, where few of these
@@ -2638,7 +2671,8 @@ th.n{text-align:center}
   would be centered to cover both the CW and the RTTY parts of a band, and the
   skimmers' own coverage shows they are set up that way. On 20 and 15 m nearly
   every one reports CW and RTTY together across 130 to 150 kHz, more than a
-  96 kHz receiver spans, so they sample at 192 kHz. On 10 m, those that use a
+  96 kHz receiver spans, so they sample at 192 kHz.</p>
+  <p>On 10 m, those that use a
   single receiver report down to the band edge but nothing above about
   28170 kHz, not even the beacons from 28190 kHz up that other skimmers log
   thousands of times; the two whose reports reach highest, <code>AC0C-1</code>
@@ -2782,7 +2816,7 @@ th.n{text-align:center}
   groups. The adjustment subtracts the estimated distortion from each
   reported frequency, reducing a positive stretch rather than adding to it.
   Applying that adjustment raises the pile's concentration (0 for an even spread,
-  1 for a single value) from 0.06–0.10 to 0.25–0.38. If the pile belongs to
+  1 for a single value) from between 0.06 and 0.10 to between 0.25 and 0.38. If the pile belongs to
   transmitting stations, and is not an artifact the two groups share (assuming that both run RTTY
   Skimmer Server; the Meridian stations, running a different program,
   show it at 94 to 98 Hz with almost no correction), the negative-slope group
@@ -2927,10 +2961,12 @@ th.n{text-align:center}
   150 kHz of each band it covers in CW and RTTY together; and those whose
   centers can be bracketed sit at the same place in both groups. The segment
   settings do not separate them either, since all of them decode beyond the
-  non-contest segments. With one public build of the program since 2018,
-  something set at each station presumably selects the difference, a setting
-  or option the spots cannot reveal. Only the operators' settings can settle
-  it.</p>
+  non-contest segments. The evidence rules out a simple mismatch between the
+  sample rate delivered and the rate the program assumes; it does not rule
+  out other differences in driver versions or configuration. With one public
+  build of the program since 2018, some station-specific setting or option
+  presumably selects the difference, but the spots cannot reveal which one.
+  Only the operators' settings can settle it.</p>
   <p>What needs to be determined is therefore twofold: what the members of
   each group have in common with one another, and what differs between the
   two groups. Everything the spots and the operators' public descriptions
@@ -2983,7 +3019,7 @@ th.n{text-align:center}
   by up to about a point in a year (CQ WW RTTY 2019), but it does not change the trend.</p>
 
   <h3 id="appD-1">D.1 · Ten Years of Steady Improvement</h3>
-  <p>Over those ten years the network got markedly better (<a href="#tab11">Table 11</a> and
+  <p>Over those 10 years the network got markedly better (<a href="#tab11">Table 11</a> and
   <a href="#fig11">Figure 11</a>). The
   median skimmer's off-consensus rate fell by about half, from between 5.9 and 9.6 percent of
   judged spots in 2015 and 2016 (above 6.4 in five of the six contests) to between 3.8 and 5.1
@@ -3036,7 +3072,7 @@ th.n{text-align:center}
   share of RTTY spots that could be judged at all from between 21 and 51 percent in 2015 to
   about 75 percent, so part of the decline is the measure itself growing surer. Receivers were better
   calibrated: the median skimmer's clock error, 1.4 to 2.2 ppm from 2018 to 2020, has been 0.7 to
-  0.9 ppm since 2023 except at CQ WW RTTY 2025 (1.3), with fewer skimmers 10 ppm or more off. It was not a decoder upgrade: RTTY Skimmer
+  0.9 ppm since 2023 except at CQ WW RTTY 2025 (1.3), with fewer skimmers 10 ppm or more off. It was not a skimmer upgrade: RTTY Skimmer
   Server, behind most RTTY spots, has had no new public build since 2018
   (<a href="#appC-3">C.3</a>).</p>
 
@@ -3062,13 +3098,16 @@ th.n{text-align:center}
   </figure>
   <p>The rest of the network was on trend. Without the eight, Makrothen's figures were
   4.6 percent off-consensus and 1.12 percent callers, squarely within recent years;
-  so was the median skimmer, 4.7 percent with the eight included, since 8 of 39 ranked
-  skimmers cannot move a median. What they moved was the upper quartile, 20.2 percent against
+  so was the median skimmer, 4.7 percent with the eight included and 4.1 without them: as
+  8 of 39 ranked skimmers, the eight raised the median by only 0.6 points. (Removing clock
+  errors brings VU2OY-9 over the 100 judged spots needed to rank, so 39 skimmers rank here
+  where &sect;&nbsp;3, measuring the spots as reported, ranks 38, with a median of 4.8
+  percent.) What they moved was the upper quartile, 20.2 percent against
   4.5&ndash;6.3 for the recent benchmarks. A week later at JARL, with the fault still on several of the
   newer skimmers for part of the contest (<a href="#s15">&sect;&nbsp;15</a>), the network was at
   6.5 percent and 2.6 percent callers, and by the Russian WW Multimode contest the roster's
   callers were back at or below the reference skimmers' (<a href="#s15">&sect;&nbsp;15</a>).</p>
-  <p>That is what makes Makrothen more than a bad weekend. A network that had spent ten years
+  <p>That is what makes Makrothen more than a bad weekend. A network that had spent 10 years
   steadily learning not to report callers as runners, through more skimmers and better clocks,
   lost all of that ground in one contest, to eight skimmers on new software,
   and regained it only when the software was fixed. The fault's significance lies as much in what
@@ -3080,17 +3119,20 @@ th.n{text-align:center}
       <tr><th>Contest</th><th class="n">RTTY Spots</th><th class="n">Network<br>Off-consensus</th><th class="n">Median<br>Skimmer</th>
         <th class="n">Upper<br>Quartile</th><th class="n">Caller</th></tr>
       <tr><td>Benchmarks, 2023&ndash;2025 (9)</td><td class="n"><span class="nb" style="min-width:9ch">0.59&ndash;2.25 million</span></td><td class="n"><span class="nb" style="min-width:4ch">4.1&ndash;7.4</span></td><td class="n"><span class="nb" style="min-width:4ch">3.8&ndash;5.1</span></td><td class="n"><span class="nb" style="min-width:4ch">4.5&ndash;6.3</span></td><td class="n"><span class="nb" style="min-width:4ch">0.66&ndash;2.10</span></td></tr>
-      <tr><td>CQ WW RTTY 2026, September 26&ndash;27</td><td class="n"><span class="nb" style="min-width:9ch">1,427,716</span></td><td class="n"><span class="nb" style="min-width:4ch">6.0</span></td><td class="n"><span class="nb" style="min-width:4ch">5.6</span></td><td class="n"><span class="nb" style="min-width:4ch">7.1</span></td><td class="n"><span class="nb" style="min-width:4ch">1.28</span></td></tr>
-      <tr class="flagged"><td><strong>Makrothen 2026, October 10&ndash;11</strong></td><td class="n"><span class="nb" style="min-width:9ch">192,807</span></td><td class="n"><span class="nb" style="min-width:4ch">18.4</span></td><td class="n"><span class="nb" style="min-width:4ch">4.7</span></td><td class="n"><span class="nb" style="min-width:4ch">20.2</span></td><td class="n"><span class="nb" style="min-width:4ch">10.45</span></td></tr>
-      <tr><td>&nbsp;&nbsp;without the eight</td><td class="n"><span class="nb" style="min-width:9ch">192,807</span></td><td class="n"><span class="nb" style="min-width:4ch">4.6</span></td><td class="n"><span class="nb" style="min-width:4ch">4.1</span></td><td class="n"><span class="nb" style="min-width:4ch">5.1</span></td><td class="n"><span class="nb" style="min-width:4ch">1.12</span></td></tr>
-      <tr><td>JARL WW RTTY 2026, October 17&ndash;18</td><td class="n"><span class="nb" style="min-width:9ch">528,676</span></td><td class="n"><span class="nb" style="min-width:4ch">6.5</span></td><td class="n"><span class="nb" style="min-width:4ch">3.6</span></td><td class="n"><span class="nb" style="min-width:4ch">5.6</span></td><td class="n"><span class="nb" style="min-width:4ch">2.62</span></td></tr>
-      <tr><td>&nbsp;&nbsp;without the eight</td><td class="n"><span class="nb" style="min-width:9ch">528,676</span></td><td class="n"><span class="nb" style="min-width:4ch">5.5</span></td><td class="n"><span class="nb" style="min-width:4ch">3.4</span></td><td class="n"><span class="nb" style="min-width:4ch">5.6</span></td><td class="n"><span class="nb" style="min-width:4ch">2.01</span></td></tr>
+      <tr><td>CQ WW RTTY 2026, September 26&ndash;27</td><td class="n"><span class="nb" style="min-width:9ch">1,427,694</span></td><td class="n"><span class="nb" style="min-width:4ch">6.0</span></td><td class="n"><span class="nb" style="min-width:4ch">5.6</span></td><td class="n"><span class="nb" style="min-width:4ch">7.1</span></td><td class="n"><span class="nb" style="min-width:4ch">1.28</span></td></tr>
+      <tr class="flagged"><td><strong>Makrothen 2026, October 10&ndash;11</strong></td><td class="n"><span class="nb" style="min-width:9ch">192,802</span></td><td class="n"><span class="nb" style="min-width:4ch">18.4</span></td><td class="n"><span class="nb" style="min-width:4ch">4.7</span></td><td class="n"><span class="nb" style="min-width:4ch">20.2</span></td><td class="n"><span class="nb" style="min-width:4ch">10.45</span></td></tr>
+      <tr><td>&nbsp;&nbsp;without the eight</td><td class="n"><span class="nb" style="min-width:9ch">124,247</span></td><td class="n"><span class="nb" style="min-width:4ch">4.6</span></td><td class="n"><span class="nb" style="min-width:4ch">4.1</span></td><td class="n"><span class="nb" style="min-width:4ch">5.1</span></td><td class="n"><span class="nb" style="min-width:4ch">1.12</span></td></tr>
+      <tr><td>JARL WW RTTY 2026, October 17&ndash;18</td><td class="n"><span class="nb" style="min-width:9ch">528,626</span></td><td class="n"><span class="nb" style="min-width:4ch">6.5</span></td><td class="n"><span class="nb" style="min-width:4ch">3.6</span></td><td class="n"><span class="nb" style="min-width:4ch">5.6</span></td><td class="n"><span class="nb" style="min-width:4ch">2.62</span></td></tr>
+      <tr><td>&nbsp;&nbsp;without the eight</td><td class="n"><span class="nb" style="min-width:9ch">433,826</span></td><td class="n"><span class="nb" style="min-width:4ch">5.5</span></td><td class="n"><span class="nb" style="min-width:4ch">3.4</span></td><td class="n"><span class="nb" style="min-width:4ch">5.6</span></td><td class="n"><span class="nb" style="min-width:4ch">2.01</span></td></tr>
     </table>
   </div>
   <p class="note-small">Percent of judged RTTY spots, clock-corrected, by the method of
   <a href="#tab11">Table 11</a>. Makrothen counts its three periods only (§&nbsp;2); JARL its whole
   48 hours. <em>Without the eight</em> leaves out the eight skimmers of
-  <a href="#tab1">Table 1</a>, all running <code>UberSDR Skimmer</code>. Makrothen is a smaller
+  <a href="#tab1">Table 1</a>, all running <code>UberSDR Skimmer</code>, and its
+  spot count is the other skimmers' alone. The 2026 spot counts are of the five contest
+  bands, as in &sect;&nbsp;2; the 22, 5, and 50 RTTY spots on other bands never reached a
+  decided cell, so leaving them out changes no rate. Makrothen is a smaller
   contest than the benchmarks, scored by distance, in three eight-hour periods; the rates are per
   judged spot, and the network without the eight falls in line with them.</p>
 
@@ -3107,8 +3149,8 @@ th.n{text-align:center}
   5.2 percent of judged spots across 2011 to 2020 (the median of those contests) and 4.4 percent
   across 2022 to 2025. Callers reported as runners were never a large part of CW's errors: a
   median of 1.0 percent of judged spots over the whole period, 0.83 to 1.12 percent from 2022 to
-  2025, with no trend. CW decoders appear to have told callers from runners reliably all
-  along, while RTTY decoders learned to over a decade.</p>
+  2025, with no trend. CW skimmers appear to have told callers from runners reliably all
+  along, while RTTY skimmers learned to over a decade.</p>
   <p>Underneath the flat total the mix changed much as it did in RTTY. Runners reported on the
   wrong frequency fell from a median of 3.0 percent of judged spots over 2016&ndash;2020 to 1.9 over
   2023&ndash;2025, and garbles rose from 1.2 to 2.0; garbles roughly doubled in RTTY over the same years.
@@ -3128,11 +3170,11 @@ th.n{text-align:center}
   by 0.15 points, from 4.85 to 4.70 percent, and its caller share by 0.06, from 1.38 to 1.32,
   well inside the scatter between one benchmark contest and the next. In RTTY the same eight were
   8 of 43 skimmers and sent a third of the spots, and leaving them out moves the network rate by
-  13.7 points, from 18.4 to 4.6 percent, and the caller share by 9.3, from 10.5 to 1.1. It is the
+  13.7 points (calculated from unrounded rates), from 18.4 to 4.6 percent, and the caller share by 9.3, from 10.5 to 1.1. It is the
   same contrast <a href="#s11-2">&sect;&nbsp;11.2</a> draws, a small disturbance in a deep pool and a
-  large one in a shallow pool, now set against a decade of each.</p>
+  large one in a shallow pool, now set against a decade or more of each.</p>
   <p>That makes the RTTY record the sharper: in CW, callers spotted as runners were always rare
-  and stayed rare; in RTTY they had become rare, and at Makrothen were suddenly more than ten
+  and stayed rare; in RTTY they had become rare, and at Makrothen were suddenly more than 10
   times the norm
   (<a href="#appD">Appendix D</a>).</p>
   <div class="scroll fit">
@@ -3178,7 +3220,7 @@ th.n{text-align:center}
   </figure>
 
   <p class="foot">Prepared by K1MK (contact: k1mk at alum.mit.edu) · analysis of Reverse Beacon
-  Network archives through 2026 November 7. Document v5.100.</p>
+  Network archives through 2026 November 7. Document v5.112.</p>
   <p class="foot">Copyright &copy; 2026 Michael Keane K1MK. All rights reserved.</p>
 </div>
 </div>
