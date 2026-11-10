@@ -1370,6 +1370,16 @@ th.n{text-align:center}
   controls' fell from 0.71 to 0.59 percent. A Sweepstakes runner sends the caller's callsign
   at the start of nearly every exchange, which gives a skimmer reading callers out of the
   runner's signal more chances to misreport them.</p>
+  <p><strong>Hypothesis, requiring confirmation:</strong> the caller, too, sends their own
+  callsign inside the Sweepstakes exchange, so a caller's callsign goes out at least twice in
+  each contact, against once in a contest whose exchange omits it. A second clean decode is all
+  that a commonly heard callsign needs before Skimmer Server spots it at the Normal Validation
+  Level (<a href="#tab16">Table 16</a>). That may be why the roster's caller share stood further
+  above the controls' during Sweepstakes, 2.47 against 0.59 percent, about four times, than on
+  the quiet days, 2.05 against 0.71, about three times. The archive cannot separate this from the
+  rise in activity itself (<a href="#s11-5">&sect;&nbsp;11.5</a>), and the controls' own caller
+  share fell rather than rose. Comparison with a CW contest whose exchange omits the caller's
+  callsign, measured the same way and with the same software in use, would test it.</p>
   <p>The rise was concentrated on six skimmers: <code>K1RA-4</code> rose from 2.53 percent
   on the quiet days to 3.66, <code>NB3A</code> from 2.45 to 3.36,
   <code>N7OR</code> from 1.86 to 3.29, <code>K1HTV-4</code> from 2.18 to
@@ -1396,9 +1406,12 @@ th.n{text-align:center}
   tell most programs apart, however: most skimmers do not report to PSK Reporter at all, and the
   RBN's own node list shows nearly every skimmer, <code>UberSDR Skimmer</code>'s included, as
   VE3NEA's CW Skimmer Server, so the absence of another identifiable group is largely the absence
-  of the means to identify one. The two settings the node list does record, the Validation Level
-  and a CQ-only spot filter, do not explain the callers either; the Validation Level shows up in
-  garbles instead.</p>
+  of the means to identify one. The two settings the node list does record do not explain the
+  callers either. <strong>Skimmers set to send CQ spots only report misattributed callers at nearly
+  the same rate as those sending all spots, 0.63 against 0.73 percent:</strong> a misattributed caller
+  goes out already labeled CQ, so neither that setting nor the Aggregator, which forwards only CQ
+  spots and beacons, can stop it. The other setting, the Validation Level, shows up in garbles
+  instead.</p>
   <p>Skimmers in Asia do run high, a median off-consensus rate of 9.5 percent against 3.2 in
   Europe and 3.5 in North America, but that is an artifact of propagation combined with frequency
   reuse, not a defect: an Asian skimmer correctly hears an Asian station on a frequency that the
@@ -1415,7 +1428,8 @@ th.n{text-align:center}
   quiet days. The roster's skimmers, about 8 percent of CW skimmers, added nearly as many again.
   Seeing more caller spots therefore mostly measures activity: only a skimmer group's rate,
   measured against controls on the same frequencies and times (&sect;&nbsp;2), can show a defect
-  (<a href="#appF">Appendix F</a>).</p>
+  (<a href="#appF">Appendix F</a>). Nor is setting skimmers to send CQ spots only a remedy: a
+  misattributed caller already carries the CQ label (<a href="#s11-4">&sect;&nbsp;11.4</a>).</p>
 
   <h2 id="s12">12 · Cost of Excluding <code>UberSDR Skimmer</code> for JARL
   WW RTTY</h2>
@@ -3296,6 +3310,20 @@ th.n{text-align:center}
   not by itself evidence of an emerging problem. The defect in this document was found the way it
   had to be: by measuring each skimmer group's rate against controls on the same frequencies and
   times (&sect;&nbsp;2).</p>
+  <p><strong>Hypothesis, requiring confirmation:</strong> calling a running station zero beat
+  is what every caller is expected to do, yet callers are misattributed in well under 1 percent
+  of spots, so zero beating alone cannot explain why some callers are spotted. A caller who
+  answers by sending their callsign two or three times, rather than once, may be enough to
+  trigger it. A commonly heard callsign, one whose pattern <code>patt3ch.lst</code> marks +,
+  needs only two clean decodes before Skimmer Server spots it at the Normal Validation Level
+  (<a href="#tab16">Table 16</a>). A callsign sent once gives a skimmer at most one decode on
+  the runner's frequency, short of that threshold; a callsign sent twice in one transmission
+  supplies both at once, and the runner's TEST or CQ just before it on the same frequency would
+  let it go out labeled CQ. The Sweepstakes exchange, which repeats the caller's callsign, may
+  contribute in the same way (<a href="#s11-3">&sect;&nbsp;11.3</a>). The archive records
+  neither how a caller signed nor what any skimmer decoded, and VE3NEA has not published how
+  Skimmer Server associates a callsign with a CQ, so recordings of the band are needed to
+  confirm or rule it out.</p>
 
 
   <h2 id="appG">Appendix G · Looking for Another Group</h2>
@@ -3411,7 +3439,7 @@ th.n{text-align:center}
   <code>LZ3CB</code>, <code>N7TUG</code>,
   <code>OH4KA</code>, <code>PY2KNK</code>, <code>RN4WA</code>, <code>RU9CZD</code>,
   <code>S53A</code>, <code>UY2RA</code>, <code>W6YX</code>, and <code>YO2KAR</code>.</p>
-  <h3 id="appG-3">G.3 · Excesses without a Program: SparkGap and Asia</h3>
+  <h3 id="appG-3">G.3 · Excesses without a Program: SparkGap, Asia, and K5KHK</h3>
   <p>Two excesses did appear without a program behind them. The three SparkGap 1.2 nodes, two of
   them one operator's, ran a median of 6.0 percent with callers at 1.5: suggestive, but too few to
   call a group. And the 18 skimmers in Asia ran a median off-consensus rate of 9.5 percent and a
@@ -3433,9 +3461,20 @@ th.n{text-align:center}
   same propagation more often, the effect fades: on 20 m in daylight hours in Japan the figures were 7.8 percent off-consensus
   and 2.9 of that kind, and 15 m almost nothing. In daylight hours in Japan, 40 m alone accounts for 62
   percent of all such spots.</p>
+  <p>One more skimmer stands out on its own. <code>K5KHK</code>, which
+  <a href="#s11-1">&sect;&nbsp;11.1</a> finds above the <code>UberSDR Skimmer</code> group in CW over
+  the Makrothen weekend with no clock error, appears on the RBN node list as Skimmer Server
+  v.1.6.0.145 and is not in PSK Reporter's software table, so the public records do not name its
+  program. Before September 2026 it scarcely appears in the archive: 4 CW spots in CQ WW CW 2024,
+  none in the 2025 benchmark contests, and 28 on August 15. From October 10 to 18 it ran 16 to 50
+  percent off-consensus in CW, with unconfirmed calls at 5 to 11 percent of its judged spots; over
+  October 19 to 22 it fell to about 5 percent, the network median, and has stayed there. Its
+  operator, Karl Heinz Kremer K5KHK, has since published an open-source skimmer,
+  <a href="https://github.com/khkremer/OpenSkimmer">OpenSkimmer</a>, first released on
+  November 10; whether the node ran it, the public record does not say.</p>
 
   <p class="foot">Prepared by K1MK (contact: k1mk at alum.mit.edu) · analysis of Reverse Beacon
-  Network archives through 2026 November 9. Document v5.132.</p>
+  Network archives through 2026 November 9. Document v5.136.</p>
   <p class="foot">Copyright &copy; 2026 Michael Keane K1MK. All rights reserved.</p>
 </div>
 </div>
