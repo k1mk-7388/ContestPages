@@ -3369,6 +3369,10 @@ th.n{text-align:center}
     <span class="who">Second caller</span><span class="tx">CQ <span class="cut">(stopped)</span></span>
     <span class="who">Caller W0XYZ</span><span class="tx">W0XYZ</span>
   </div>
+  <p>Nor need that second station be zero beat. A skimmer copies each signal in a narrow channel,
+  about 47 Hz wide in OpenSkimmer, and a station calling a little off frequency, or loud enough
+  for its signal to bleed into the channel copying the runner, lands in the same stream of text.
+  Its stray CQ then sits in front of whichever call that channel decodes next.</p>
   <p>Either way the rule does exactly what it says. The word in front of <code>W0XYZ</code> is a
   CQ, with no other call between them, so <code>W0XYZ</code> is credited with calling CQ. Neither
   guard applies: the first covers a TEST, not a CQ, and the second is satisfied because nothing at
@@ -3388,7 +3392,8 @@ th.n{text-align:center}
   runners rule out a single runner's habit, but not whose slip it was: <code>VA3EC</code>'s own,
   or another caller's on the same frequency. The archive cannot show whether a CQ leaked, or
   from whom.</p>
-  <p>Nothing in that chain is a defect. The operator made a slip every contester makes; the
+  <p>Nothing in that chain is a defect. Either there was "Rotten QRM"<sup><a href="#fn-rqrm" id="fnref-rqrm">1</a></sup> (as there has been for nearly 110 years; <a href="#appF-4">F.4</a> measures it)
+    or the operator made a slip every contester makes; the
   decoder decoded it correctly; the rule was applied as written; the Aggregator forwarded a spot
   labeled CQ, as it should. No rule that reads text alone can tell a leaked CQ from a real one: a
   CQ message that goes out whole ("CQ SS W0XYZ") is, in the text, exactly what it says. And once
@@ -3399,13 +3404,61 @@ th.n{text-align:center}
   that no one can take back.</p>
   <p>A lot of stuff happens during a contest. A busy run frequency is a mildly chaotic place: keys slip,
   macros fire and are cut off, and several callers pile onto one frequency at once. Seen against
-  that, it is remarkable that skimmers reading nothing but decoded text, by rules as plain as
+  that, it is remarkable that skimmers reading nothing but decoded text, by rules as plain and simple as
   these, keep misattributed callers to fewer than 1 in 100 judged spots: a median of 0.66 percent
   for skimmers not running <code>UberSDR Skimmer</code> (<a href="#appG-1">Appendix G.1</a>).</p>
   <p>The RBN archive records spots, not the decoded text behind them, so it cannot show how
   often this happens; recordings of a contest band, replayed through a skimmer, could. The rule
   is OpenSkimmer's, which decodes CW only; how VE3NEA's Skimmer Server or
-  <code>UberSDR Skimmer</code> treats the same text, only their unpublished code can say.</p>
+  <code>UberSDR Skimmer</code> treats the same text, only their unpublished code can say. <a href="#appF-4">F.4</a> finds that
+  misattributions do rise when another station stays on the runner's frequency.</p>
+  <p class="note-small" id="fn-rqrm"><sup>1</sup> The Old Man (Hiram Percy Maxim, 1AW),
+  "Rotten QRM," <em>QST</em>, 1917 January, p. 8
+  (<a href="https://www.worldradiohistory.com/INTERNATIONAL/QST/QST-1917-01.pdf">scan</a>;
+  <a href="https://www.arrl.org/news/the-old-man-rotten-qrm">reprinted by the ARRL</a>).
+  <a href="#fnref-rqrm" aria-label="Back to the text">&#8617;</a></p>
+  <h3 id="appF-4">F.4 · Rotten QRM: A Competing Station on the Runner's Frequency</h3>
+  <p>A competing station on the runner's frequency is the "Rotten QRM" of <a href="#appF-3">F.3</a>,
+  and it can be measured. If another station's signal in the channel copying the runner is what puts a caller's call
+  behind a stray CQ (<a href="#appF-3">F.3</a>), misattributed callers should rise when another
+  station stays on the runner's frequency. A misattributed caller appears in the runner's cell
+  once and is gone; a competing station stays. <a href="#tab16">Table 16</a> therefore counts as a
+  competitor a station other than the runner, and not a garble of its call, that was spotted in the
+  runner's 100 Hz cell or an adjacent one in both the current five-minute slot and the one before,
+  by at least two skimmers other than the one being judged, and compares the competitor's median
+  signal-to-noise ratio with the runner's. The samples are those of <a href="#appF-1">F.1</a>: the
+  first 10 hours of the Sweepstakes and the quiet days of November 3 to 6.</p>
+  <div class="scroll">
+    <table id="tab16">
+      <caption><strong>Table 16.</strong> Misattributed Callers by Persistent Competing Station, CW.</caption>
+      <tr><th rowspan="2">Persistent Competitor</th><th colspan="2" class="n">Other Skimmers</th><th colspan="2" class="n">UberSDR Skimmer<br>Roster</th></tr>
+      <tr><th class="n">Sweepstakes,<br>First 10 Hours</th><th class="n">Quiet Days</th><th class="n">Sweepstakes,<br>First 10 Hours</th><th class="n">Quiet Days</th></tr>
+      <tr><td>None</td><td class="n"><span class="nb" style="min-width:6ch">0.77%</span></td><td class="n"><span class="nb" style="min-width:6ch">0.78%</span></td><td class="n"><span class="nb" style="min-width:6ch">3.15%</span></td><td class="n"><span class="nb" style="min-width:6ch">1.80%</span></td></tr>
+      <tr><td>Adjacent cell only, quieter than the runner</td><td class="n"><span class="nb" style="min-width:6ch">0.43%</span></td><td class="n"><span class="nb" style="min-width:6ch">0.67%</span></td><td class="n"><span class="nb" style="min-width:6ch">1.57%</span></td><td class="n"><span class="nb" style="min-width:6ch">1.86%</span></td></tr>
+      <tr><td>Adjacent cell only, louder than the runner</td><td class="n"><span class="nb" style="min-width:6ch">0.38%</span></td><td class="n"><span class="nb" style="min-width:6ch">0.70%</span></td><td class="n"><span class="nb" style="min-width:6ch">1.21%</span></td><td class="n"><span class="nb" style="min-width:6ch">2.13%</span></td></tr>
+      <tr><td>Same cell, quieter than the runner</td><td class="n"><span class="nb" style="min-width:6ch">1.21%</span></td><td class="n"><span class="nb" style="min-width:6ch">1.54%</span></td><td class="n"><span class="nb" style="min-width:6ch">3.24%</span></td><td class="n"><span class="nb" style="min-width:6ch">3.28%</span></td></tr>
+      <tr><td>Same cell, louder than the runner</td><td class="n"><span class="nb" style="min-width:6ch">1.34%</span></td><td class="n"><span class="nb" style="min-width:6ch">1.82%</span></td><td class="n"><span class="nb" style="min-width:6ch">6.49%</span></td><td class="n"><span class="nb" style="min-width:6ch">5.57%</span></td></tr>
+    </table>
+  </div>
+  <p class="note-small">Percent of judged CW spots that name a misattributed caller (the caller
+  test of <a href="#tab7">Table 7</a>), beacon frequencies excluded, clock errors not removed.
+  <em>Same cell</em> is the runner's own 100 Hz cell, which cannot tell a zero-beat competitor from
+  one some tens of hertz off; <em>adjacent cell</em> is one cell away, roughly 50 to 150 Hz.
+  <em>Louder</em> and <em>quieter</em> compare the loudest competitor's median SNR with the
+  runner's, over all skimmers in that slot. Each competitor row rests on 2805 to 37,399 judged
+  spots; the rows without a competitor, on 122,622 to 1,370,753.</p>
+  <p>A competitor that stays in the runner's own cell roughly doubles the misattributed-caller rate
+  of the skimmers outside the roster, from about 0.8 percent of judged spots to 1.2 to 1.8, and a
+  louder competitor raises it more than a quieter one in every comparison; for the roster, a louder
+  competitor brings it to 5.6 to 6.5 percent. A competitor one cell away makes little or no
+  difference: at most 0.3 points, and at the Sweepstakes peak the rate was lower. That fits
+  <a href="#appF-3">F.3</a>: whatever a second station adds reaches the decoder only when it shares
+  the runner's channel. It does not show that the second station's text was a stray CQ, and a
+  caller who keeps calling for two slots would count as a competitor. Such competitors are present
+  for only about 4 to 5 percent of judged spots, so they account for a small part of the
+  misattributions: most occur with no competing station in view. Nor do they explain the roster's
+  Sweepstakes rise. With no competitor at all, the roster's rate rose from 1.80 percent on the quiet
+  days to 3.15 at the Sweepstakes peak, while the other skimmers' held at 0.77 to 0.78.</p>
 
 
   <h2 id="appG">Appendix G · Looking for Additional Groups</h2>
@@ -3451,10 +3504,10 @@ th.n{text-align:center}
   <em>spot filter</em> that sends either all spots or CQ spots only. How many clean decodes a callsign
     needs before it is spotted depends on the level and on
   whether the call is on the operator's watch list or in the program's pattern file of known
-  callsign patterns (<a href="#tab16">Table 16</a>): at Normal, a call the pattern file does not
+  callsign patterns (<a href="#tab17">Table 17</a>): at Normal, a call the pattern file does not
   know must be decoded five times, at Minimal twice, and at Aggressive it is never spotted. Joining the list of
   November 9 to the same CW rates (206 of the 237 skimmers appear on it) shows neither setting
-  separating the callers (<a href="#tab17">Tables 17</a> and <a href="#tab18">18</a>). The filter
+  separating the callers (<a href="#tab18">Tables 18</a> and <a href="#tab19">19</a>). The filter
   makes no difference in any category; skimmers set to send CQ spots only report callers at
   nearly the same rate as the rest, 0.63 against 0.73 percent. A caller misattributed as a runner
   is still sent as a CQ spot and passes the filter, consistent with the defect lying in the
@@ -3466,13 +3519,13 @@ th.n{text-align:center}
   the 168 at Normal, mostly garbles, 1.77 against 1.21 percent (Mann&ndash;Whitney p of
   1 &times; 10<sup>&minus;6</sup>), while their callers differ only marginally (p of 0.04, above
   the 0.01 that testing five mechanisms at once requires). The three at Aggressive, which rejects
-  more callsigns, have the fewest garbles, 0.38 percent. Both fit <a href="#tab16">Table 16</a>: a misdecode that no
+  more callsigns, have the fewest garbles, 0.38 percent. Both fit <a href="#tab17">Table 17</a>: a misdecode that no
   known pattern matches needs two clean decodes at Minimal rather than five, and is never
   spotted at Aggressive. Whether the Minimal level itself admits
   the garbles, or something else those 16 stations share, the spots cannot say.</p>
   <div class="scroll">
-    <table id="tab16">
-      <caption><strong>Table 16.</strong> Clean Decodes a Callsign Needs before Skimmer Server Spots It, by Validation Level.</caption>
+    <table id="tab17">
+      <caption><strong>Table 17.</strong> Clean Decodes a Callsign Needs before Skimmer Server Spots It, by Validation Level.</caption>
       <tr><th>Callsign</th><th class="n">Minimal</th><th class="n">Normal</th><th class="n">Aggressive</th><th class="n">Paranoid</th></tr>
       <tr><td>On the watch list</td><td class="n"><span class="nb" style="min-width:5ch">1</span></td><td class="n"><span class="nb" style="min-width:5ch">1</span></td><td class="n"><span class="nb" style="min-width:5ch">2</span></td><td class="n"><span class="nb" style="min-width:5ch">2</span></td></tr>
       <tr><td>In the pattern file, marked + (common)</td><td class="n"><span class="nb" style="min-width:5ch">2</span></td><td class="n"><span class="nb" style="min-width:5ch">2</span></td><td class="n"><span class="nb" style="min-width:5ch">4</span></td><td class="n"><span class="nb" style="min-width:5ch">never</span></td></tr>
@@ -3489,8 +3542,8 @@ th.n{text-align:center}
   pattern is commonly heard; the watch list, <code>watch.lst</code>, is the operator's own and
   has no default. Decodes are counted in the program's 256-character sample buffer.</p>
   <div class="scroll">
-    <table id="tab17">
-      <caption><strong>Table 17.</strong> CW Off-consensus Spots by Mechanism and Spot Filter, November 1&ndash;7.</caption>
+    <table id="tab18">
+      <caption><strong>Table 18.</strong> CW Off-consensus Spots by Mechanism and Spot Filter, November 1&ndash;7.</caption>
       <tr><th>Spot Filter</th><th class="n">Skimmers</th><th class="n">Garble</th><th class="n">Runner Elsewhere</th>
         <th class="n">Caller</th><th class="n">Unconfirmed</th><th class="n">Off-consensus</th></tr>
       <tr><td>ALL spots</td><td class="n"><span class="nb" style="min-width:3ch">146</span></td><td class="n"><span class="nb" style="min-width:4ch">1.32</span></td><td class="n"><span class="nb" style="min-width:4ch">1.25</span></td><td class="n"><span class="nb" style="min-width:4ch">0.73</span></td><td class="n"><span class="nb" style="min-width:4ch">0.16</span></td><td class="n"><span class="nb" style="min-width:4ch">3.43</span></td></tr>
@@ -3507,8 +3560,8 @@ th.n{text-align:center}
   caller 0.28, unconfirmed 0.26; without the roster, all 0.21 or more. The settings come from one
   snapshot, so a skimmer that changed them during the week would be misfiled.</p>
   <div class="scroll">
-    <table id="tab18">
-      <caption><strong>Table 18.</strong> CW Off-consensus Spots by Mechanism and Validation Level, November 1&ndash;7, <code>UberSDR Skimmer</code> Roster Excluded.</caption>
+    <table id="tab19">
+      <caption><strong>Table 19.</strong> CW Off-consensus Spots by Mechanism and Validation Level, November 1&ndash;7, <code>UberSDR Skimmer</code> Roster Excluded.</caption>
       <tr><th>Validation Level</th><th class="n">Skimmers</th><th class="n">Garble</th><th class="n">Runner Elsewhere</th>
         <th class="n">Caller</th><th class="n">Unconfirmed</th><th class="n">Off-consensus</th></tr>
       <tr><td>Normal</td><td class="n"><span class="nb" style="min-width:3ch">168</span></td><td class="n"><span class="nb" style="min-width:4ch">1.21</span></td><td class="n"><span class="nb" style="min-width:4ch">1.20</span></td><td class="n"><span class="nb" style="min-width:4ch">0.68</span></td><td class="n"><span class="nb" style="min-width:4ch">0.14</span></td><td class="n"><span class="nb" style="min-width:4ch">3.34</span></td></tr>
@@ -3516,7 +3569,7 @@ th.n{text-align:center}
       <tr><td>Aggressive</td><td class="n"><span class="nb" style="min-width:3ch">3</span></td><td class="n"><span class="nb" style="min-width:4ch">0.38</span></td><td class="n"><span class="nb" style="min-width:4ch">1.28</span></td><td class="n"><span class="nb" style="min-width:4ch">0.45</span></td><td class="n"><span class="nb" style="min-width:4ch">0.02</span></td><td class="n"><span class="nb" style="min-width:4ch">2.11</span></td></tr>
     </table>
   </div>
-  <p class="note-small">As <a href="#tab17">Table 17</a>, without the <code>UberSDR Skimmer</code>
+  <p class="note-small">As <a href="#tab18">Table 18</a>, without the <code>UberSDR Skimmer</code>
   roster, all of whose nodes report the Normal level. Two-sided Mann&ndash;Whitney p, Minimal
   against Normal: off-consensus 7 &times; 10<sup>&minus;5</sup>, garble 1 &times; 10<sup>&minus;6</sup>,
   runner elsewhere 0.03, caller 0.04, unconfirmed 0.0002. The three at Aggressive are too few to
@@ -3565,7 +3618,7 @@ th.n{text-align:center}
   percent of all such spots.</p>
 
   <p class="foot">Prepared by K1MK (contact: k1mk at alum.mit.edu) · analysis of Reverse Beacon
-  Network archives through 2026 November 9. Document v5.155.</p>
+  Network archives through 2026 November 9. Document v5.159.</p>
   <p class="foot">Copyright &copy; 2026 Michael Keane K1MK. All rights reserved.</p>
 </div>
 </div>
