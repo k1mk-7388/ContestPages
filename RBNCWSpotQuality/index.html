@@ -240,7 +240,23 @@ th.n{text-align:center}
   <p>The method and definitions are those of the Makrothen document and are not repeated here: spots
   are judged against the consensus of other skimmers as in <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#s2">Makrothen &sect;&nbsp;2</a>; the
   <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#def-roster"><code>UberSDR Skimmer</code> roster</a> and the reference skimmers are defined
-  in its introduction; and its terminology is used throughout. References into that document are
+  in its introduction; and its terminology is used throughout. <span id="def-controls">The
+  reference skimmers, also called the controls, are the seven comparison skimmers of
+  <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#tab1">Makrothen Table 1</a>:
+  <code>AA4PA</code>, <code>HB9EMP</code>, <code>K9LC</code>, <code>OE9GHV</code>,
+  <code>RN4WA</code>, <code>S50ARX</code>, and <code>SZ1A</code>. Wherever this document compares
+  with the controls it means these seven; comparisons with other skimmers or skimmers not on the
+  roster say so. They were chosen for the RTTY comparison of that table, as established skimmers
+  not running <code>UberSDR Skimmer</code> and active on the weekends compared, and they serve in CW
+  because they meet what a CW control needs. Six of the seven show VE3NEA's program in the RBN's
+  node list (<code>OE9GHV</code> is not listed). Their membership is fixed, so a day-by-day series
+  compares the same skimmers throughout. And they are typical rather than flattering: from October
+  10 to November 6 their pooled misattributed-caller rate was 0.76 percent of judged CW spots,
+  against a median of 0.71 (middle half 0.59 to 0.85) for the 186 skimmers not on the roster with
+  at least 10,000 judged spots, and one by one they fall between the 13th and 84th percentiles of
+  those 186. Five are in Europe and two in North America, while the roster is mostly in North
+  America and Great Britain, so where that could matter, as in the North American Sweepstakes, a
+  same-continent baseline is given as well (<a href="#ss-continent">&sect;&nbsp;1.3</a>).</span> References into that document are
   labeled Makrothen. Two of its sections apply here as much as there: a misattributed caller is a
   real station, so the cluster's CT1BOH quality flags pass it (<a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#s16">Makrothen &sect;&nbsp;16</a>),
   and the case for testing new software before it reaches a shared network
@@ -481,7 +497,11 @@ th.n{text-align:center}
   19 roster skimmers run 4.4 to 7.4 percent. Callers are the one part
   of that excess clearly above the controls on every skimmer, by 0.3 to 1.6
   points; runners reported on the wrong frequency add up to 1.3 points,
-  garbles up to 1.2, and unconfirmed calls up to 0.7.</p>
+  garbles up to 1.2, and unconfirmed calls up to 0.7. Frequencies changing hands do not explain
+  the callers: a handover counts as a runner elsewhere, and the slow handovers that could leak into
+  the caller column are at most about a fifth of caller spots, for the roster and the controls
+  alike. Removing every one of them leaves the roster at 1.47 percent of judged spots against
+  0.61, still 2.4 times (<a href="#appF-5">Appendix C.5</a>).</p>
   <div class="scroll">
     <table id="tab7">
       <caption><strong>Table 2.</strong> CW Off-consensus Spots by Mechanism, October 10 to November 6.</caption>
@@ -512,7 +532,7 @@ th.n{text-align:center}
     </table>
   </div>
   <p class="note-small">Percent of judged spots, pooled over the 28 days from October 10 to
-  November 6 (beacon frequencies excluded), for the controls and every skimmer on the <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#def-roster"><code>UberSDR Skimmer</code> roster</a> with at
+  November 6 (beacon frequencies excluded), for the <a href="#def-controls">seven controls</a> and every skimmer on the <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#def-roster"><code>UberSDR Skimmer</code> roster</a> with at
   least 10,000 judged CW spots.</p>
   <p class="note-small">Each off-consensus spot is classed by what it names: a
   <em>garble</em> is within edit distance 2 of the cell's holder; a <em>runner elsewhere</em>
@@ -523,19 +543,27 @@ th.n{text-align:center}
   The four categories add up to the off-consensus rate.</p>
   <p class="note-small">The last column is the whole ARRL November Sweepstakes CW, 2100Z
   November 7 to 0300Z November 9, where at least 300 judged spots are needed (…: fewer); on the
-  quiet days of November 3&ndash;6 the 16 roster skimmers measured in both had callers at
-  2.05 percent, pooled, and the controls 0.71.
+  quiet days of November 3&ndash;6 the 17 roster skimmers listed by November 3 and measured in
+  both had callers at 2.04 percent, pooled, and the controls 0.71.
   Rows run by judged CW spots, most first. The roster median is taken column by column
   across the 19 skimmers (18 of them in the Sweepstakes column), so its
   columns need not add up; the controls row pools the seven controls' spots.
   <code>ON6URE</code> and <code>PD2RPS</code>, first listed as running the program on
   November 8, are left out, since their earlier spots may come from other software.</p>
   <p>Over the whole ARRL November Sweepstakes CW, from 2100Z November 7 to 0300Z November 9,
-  the caller share of the 16 roster skimmers measured both then and on the quiet days of
-  November 3 to 6 rose to 2.47 percent of judged spots, from 2.05, pooled, while the
+  the caller share of the 17 roster skimmers listed by November 3 and measured both then and on
+  the quiet days of November 3 to 6 rose to 2.45 percent of judged spots, from 2.04, pooled, while the
   controls' fell from 0.71 to 0.59 percent. A Sweepstakes runner sends the caller's callsign
   at the start of nearly every exchange, which gives a skimmer reading callers out of the
   runner's signal more chances to misreport them.</p>
+  <p id="ss-continent">Five of the seven controls are in Europe, and the Sweepstakes is a North
+  American contest, so a North American baseline is the fairer comparison there. It tells the same
+  story more strongly. The 54 North American skimmers not on the roster with at least 300 judged
+  spots in both periods fell further than the controls, from 0.85 to 0.57 percent, while the 10
+  North American roster skimmers among those 17 rose from 2.02 to 2.51 percent, more than four
+  times that baseline. The five in Europe went from 2.11 to 2.01 percent, and the European
+  skimmers not on the roster from 0.66 to 0.75. The rise in the Sweepstakes belongs to the North American roster
+  skimmers, and the controls' fall is not an artifact of where they are.</p>
   <p>The rise was concentrated on six skimmers: <code>K1RA-4</code> rose from 2.53 percent
   on the quiet days to 3.66, <code>NB3A</code> from 2.45 to 3.36,
   <code>N7OR</code> from 1.86 to 3.29, <code>K1HTV-4</code> from 2.18 to
@@ -545,12 +573,12 @@ th.n{text-align:center}
   from 1.65 to 1.98. The five skimmers in Great Britain and Ireland,
   <code>MM0ZBH</code>, <code>MM9PSY</code>, <code>M9PSY-2</code>, <code>GM0UDL</code>, and
   <code>EI4HQ</code>, stayed between 1.65 and 2.17 percent, within 0.3 points of
-  their quiet days, and four fell: <code>K5TR</code> from 1.85 to 0.61,
-  <code>DF4UE</code> from 1.63 to 1.09, <code>WT8P</code> from 1.34 to
+  their quiet days, <code>N6WAI</code> held at 1.20 and 1.18, and four fell: <code>K5TR</code>
+  from 1.85 to 0.61, <code>DF4UE</code> from 1.63 to 1.09, <code>WT8P</code> from 1.34 to
   1.06, and <code>KM3T-2</code> from 1.32 to 1.12.</p>
-  <p>Garbles fell at the same time, from 1.83 to 1.55 percent, so the total excess over the
-  controls rose less than the callers' own excess did: from 3.06 to 3.50 points, against 1.34
-  to 1.88 for callers alone.</p>
+  <p>Garbles fell at the same time, from 1.83 to 1.56 percent, so the total excess over the
+  controls rose less than the callers' own excess did: from 3.06 to 3.46 points, against 1.34
+  to 1.85 for callers alone.</p>
   <p>Over the WAE DX RTTY weekend, November 14&ndash;15, the excess was larger still: the 29 roster
   skimmers with at least 1000 judged CW spots ran a median of 7.6 percent off-consensus, against
   3.8 for the reference skimmers, an excess of 3.8 points against about 2.5 on the quiet days, while
@@ -563,6 +591,112 @@ th.n{text-align:center}
   1.67 to 1.78 percent, and the controls from 0.69 to 0.67 percent. A drop of 0.2 points on one day
   is within the day-to-day variation, and the updated skimmers still ran at more than twice the
   controls' rate.</p>
+
+  <h4 id="cwt">The Weekly CWops Tests</h4>
+  <p>The <a href="https://cwops.org/cwops-tests/">CWops Tests</a> offer four one-hour sessions every
+  week: Wednesday at 1300Z and 1900Z, and Thursday at 0300Z and 0700Z. I measured the five complete
+  weeks after Makrothen, October 14 to November 12, by the same mechanism split as
+  <a href="#tab7">Table 2</a>. These are all CW spots in each hour, not a selection of CWT
+  participants. The <code>UberSDR Skimmer</code> roster is the list available on November 17,
+  applied to every week; as the introduction notes, it can include a node whose CW spots come
+  from another program, and a node listed later may have run other software earlier.</p>
+  <p>In every one of the 20 hours the roster's pooled caller share was above the controls':
+  from 0.95 to 2.92 percent of its judged spots, against 0.28 to 1.34 percent for the controls
+  (<a href="#tab-cwt-history">Table 3</a>, <a href="#fig-cwt">Figure 2</a>). The gap is present
+  before and after the October 27 release, but changes in activity, propagation, and which skimmers
+  are on the air can move these pooled rates. The series is not a fixed-membership test of the
+  release. The last complete week gives the full split in <a href="#tab-cwt-split">Table 5</a>.</p>
+  <div class="scroll">
+    <table id="tab-cwt-history">
+      <caption><strong>Table 3.</strong> CWops Test Hours: Off-consensus Spots and Misattributed Callers, October 14 to November 12.</caption>
+      <tr><th>2026 UTC</th><th class="n">All Skimmers<br>Judged Spots</th><th class="n">All Skimmers<br>Off-consensus <span class="unit">(%)</span></th>
+        <th class="n"><code>UberSDR Skimmer</code><br>Judged Spots</th><th class="n"><code>UberSDR Skimmer</code><br>Misattributed Callers <span class="unit">(%)</span></th>
+        <th class="n">Controls<br>Judged Spots</th><th class="n">Controls<br>Misattributed Callers <span class="unit">(%)</span></th></tr>
+      <tr><td>Oct 14 1300</td><td class="n">52,179</td><td class="n">6.71</td><td class="n">6847</td><td class="n">1.46</td><td class="n">2619</td><td class="n">0.76</td></tr>
+      <tr><td>Oct 14 1900</td><td class="n">54,658</td><td class="n">6.13</td><td class="n">8128</td><td class="n">1.80</td><td class="n">2549</td><td class="n">1.02</td></tr>
+      <tr><td>Oct 15 0300</td><td class="n">29,775</td><td class="n">5.77</td><td class="n">3892</td><td class="n">2.00</td><td class="n">1311</td><td class="n">0.92</td></tr>
+      <tr><td>Oct 15 0700</td><td class="n">22,237</td><td class="n">3.72</td><td class="n">2091</td><td class="n">1.53</td><td class="n">1030</td><td class="n">1.26</td></tr>
+      <tr><td>Oct 21 1300</td><td class="n">58,826</td><td class="n">6.27</td><td class="n">9583</td><td class="n">2.25</td><td class="n">2563</td><td class="n">1.29</td></tr>
+      <tr><td>Oct 21 1900</td><td class="n">64,316</td><td class="n">5.02</td><td class="n">10,120</td><td class="n">2.07</td><td class="n">2854</td><td class="n">1.02</td></tr>
+      <tr><td>Oct 22 0300</td><td class="n">28,981</td><td class="n">3.90</td><td class="n">4272</td><td class="n">1.43</td><td class="n">1299</td><td class="n">0.85</td></tr>
+      <tr><td>Oct 22 0700</td><td class="n">18,837</td><td class="n">3.94</td><td class="n">1862</td><td class="n">1.02</td><td class="n">809</td><td class="n">0.74</td></tr>
+      <tr><td>Oct 28 1300</td><td class="n">59,957</td><td class="n">5.07</td><td class="n">8513</td><td class="n">2.26</td><td class="n">2682</td><td class="n">0.89</td></tr>
+      <tr><td>Oct 28 1900</td><td class="n">65,883</td><td class="n">5.00</td><td class="n">11,214</td><td class="n">1.43</td><td class="n">2725</td><td class="n">0.77</td></tr>
+      <tr><td>Oct 29 0300</td><td class="n">29,997</td><td class="n">3.95</td><td class="n">4602</td><td class="n">1.02</td><td class="n">1344</td><td class="n">0.67</td></tr>
+      <tr><td>Oct 29 0700</td><td class="n">28,063</td><td class="n">4.19</td><td class="n">3577</td><td class="n">0.95</td><td class="n">1301</td><td class="n">0.46</td></tr>
+      <tr><td>Nov 4 1300</td><td class="n">67,600</td><td class="n">6.24</td><td class="n">12,885</td><td class="n">2.36</td><td class="n">2259</td><td class="n">1.20</td></tr>
+      <tr><td>Nov 4 1900</td><td class="n">71,971</td><td class="n">5.18</td><td class="n">14,454</td><td class="n">2.08</td><td class="n">2185</td><td class="n">1.10</td></tr>
+      <tr><td>Nov 5 0300</td><td class="n">39,123</td><td class="n">4.23</td><td class="n">7446</td><td class="n">1.58</td><td class="n">1332</td><td class="n">0.38</td></tr>
+      <tr><td>Nov 5 0700</td><td class="n">33,645</td><td class="n">4.32</td><td class="n">4801</td><td class="n">2.42</td><td class="n">1043</td><td class="n">0.29</td></tr>
+      <tr><td>Nov 11 1300</td><td class="n">64,049</td><td class="n">5.73</td><td class="n">13,637</td><td class="n">2.39</td><td class="n">1997</td><td class="n">0.60</td></tr>
+      <tr><td>Nov 11 1900</td><td class="n">75,869</td><td class="n">5.51</td><td class="n">17,731</td><td class="n">2.59</td><td class="n">2470</td><td class="n">1.34</td></tr>
+      <tr><td>Nov 12 0300</td><td class="n">34,475</td><td class="n">4.88</td><td class="n">8253</td><td class="n">2.92</td><td class="n">1123</td><td class="n">0.62</td></tr>
+      <tr><td>Nov 12 0700</td><td class="n">32,061</td><td class="n">3.31</td><td class="n">5654</td><td class="n">1.10</td><td class="n">1077</td><td class="n">0.28</td></tr>
+    </table>
+  </div>
+  <p class="note-small">Percent of judged CW spots, pooled within each group and hour; the
+  <code>UberSDR Skimmer</code> group and controls are included in All. The roster, 47 calls, is that of
+  November 17, not a historical assignment of CW software. The seven controls are those named in the
+  <a href="#def-controls">introduction</a>, as in <a href="#tab7">Table 2</a>.
+  Beacon frequencies are excluded; clock errors are not removed. A cell is decided in its own
+  five-minute slot; the caller and runner-elsewhere tests use the whole day's CW archive as in
+  <a href="#tab7">Table 2</a>.</p>
+  <p>The November list can include stations that had not yet taken up <code>UberSDR Skimmer</code>
+  in October. As a check on the earliest week, the
+  <a href="https://web.archive.org/web/20261013170059/https://pskreporter.info/cgi-bin/pskstats.pl">October 13 PSK Reporter snapshot</a>
+  names nine calls reporting that program during the preceding seven days; six contributed judged
+  spots in each of the four hours. Restricting the first week to those six gives <a href="#tab-cwt-october-check">Table 4</a>:</p>
+  <div class="scroll">
+    <table id="tab-cwt-october-check">
+      <caption><strong>Table 4.</strong> CWops Test Hours, First Week: October 13 Software List against November 17 List.</caption>
+      <tr><th>2026 UTC</th><th class="n">October List<br>Judged Spots</th><th class="n">October List<br>Misattributed Callers <span class="unit">(%)</span></th>
+        <th class="n">November List<br>Judged Spots</th><th class="n">November List<br>Misattributed Callers <span class="unit">(%)</span></th></tr>
+      <tr><td>Oct 14 1300</td><td class="n">2903</td><td class="n">2.14</td><td class="n">6847</td><td class="n">1.46</td></tr>
+      <tr><td>Oct 14 1900</td><td class="n">3560</td><td class="n">2.78</td><td class="n">8128</td><td class="n">1.80</td></tr>
+      <tr><td>Oct 15 0300</td><td class="n">1621</td><td class="n">3.02</td><td class="n">3892</td><td class="n">2.00</td></tr>
+      <tr><td>Oct 15 0700</td><td class="n">1150</td><td class="n">1.74</td><td class="n">2091</td><td class="n">1.53</td></tr>
+    </table>
+  </div>
+  <p class="note-small">Misattributed callers are percent of judged spots. The six on the October list ran higher,
+  not lower, than the November list in every hour, so applying the November list to the first week
+  does not inflate the gap. The October list predates the test
+  hours and may miss stations, and reporting the program to PSK Reporter does not prove which
+  software produced a node's CW spots in a particular hour. It is a historical cross-check, not
+  a complete assignment of software at the time. The November-list columns repeat Table 3.</p>
+  <figure id="fig-cwt">
+    <div class="legend">
+      <span class="key"><span class="sw" style="background:var(--flag)"></span><code>UberSDR Skimmer</code> roster</span>
+      <span class="key"><span class="sw" style="background:var(--accent)"></span>controls</span>
+    </div>
+    <svg id="cwt-chart" role="img" aria-label="Four panels show the pooled caller rate in each CWops Test hour from October 14 through November 12. The roster rate exceeds the controls in all 20 sessions; the individual rates are listed in Table 3."></svg>
+    <figcaption><strong>Figure 2.</strong> Misattributed callers as percent of judged spots, by
+    CWops Test hour and week. Each marker is one pooled group rate from <a href="#tab-cwt-history">Table 3</a>;
+    the four sessions are kept separate because their hours and propagation differ. No line connects
+    the observations. The October 27 release falls between the second and third weeks.</figcaption>
+  </figure>
+  <div class="scroll">
+    <table id="tab-cwt-split">
+      <caption><strong>Table 5.</strong> CWops Test Hours: Off-consensus Spots by Mechanism, November 11&ndash;12.</caption>
+      <tr><th>2026 UTC</th><th>Group</th><th class="n">Judged</th><th class="n">Garble</th>
+        <th class="n">Runner Elsewhere</th><th class="n">Caller</th><th class="n">Unconfirmed</th><th class="n">Off-consensus</th></tr>
+      <tr><td>Nov 11 1300</td><td>Roster</td><td class="n">13,637</td><td class="n">1.65</td><td class="n">2.86</td><td class="n">2.39</td><td class="n">0.59</td><td class="n">7.49</td></tr>
+      <tr><td>Nov 11 1300</td><td>Controls</td><td class="n">1997</td><td class="n">1.35</td><td class="n">2.05</td><td class="n">0.60</td><td class="n">0.15</td><td class="n">4.16</td></tr>
+      <tr><td>Nov 11 1900</td><td>Roster</td><td class="n">17,731</td><td class="n">1.49</td><td class="n">3.16</td><td class="n">2.59</td><td class="n">0.59</td><td class="n">7.84</td></tr>
+      <tr><td>Nov 11 1900</td><td>Controls</td><td class="n">2470</td><td class="n">1.34</td><td class="n">2.27</td><td class="n">1.34</td><td class="n">0.45</td><td class="n">5.38</td></tr>
+      <tr><td>Nov 12 0300</td><td>Roster</td><td class="n">8253</td><td class="n">1.82</td><td class="n">2.12</td><td class="n">2.92</td><td class="n">0.55</td><td class="n">7.40</td></tr>
+      <tr><td>Nov 12 0300</td><td>Controls</td><td class="n">1123</td><td class="n">1.34</td><td class="n">1.16</td><td class="n">0.62</td><td class="n">0.00</td><td class="n">3.12</td></tr>
+      <tr><td>Nov 12 0700</td><td>Roster</td><td class="n">5654</td><td class="n">1.38</td><td class="n">1.82</td><td class="n">1.10</td><td class="n">0.35</td><td class="n">4.65</td></tr>
+      <tr><td>Nov 12 0700</td><td>Controls</td><td class="n">1077</td><td class="n">0.74</td><td class="n">1.02</td><td class="n">0.28</td><td class="n">0.09</td><td class="n">2.14</td></tr>
+    </table>
+  </div>
+  <p class="note-small">As <a href="#tab-cwt-history">Table 3</a>, with the four off-consensus
+  mechanisms of <a href="#tab7">Table 2</a> shown separately. Rounded components need not sum
+  exactly to the total.</p>
+  <p>These one-hour windows are not a useful fixed test for the frozen signal reports of
+  <a href="#appI">&sect;&nbsp;5</a>. Its long-run test needs eight or more spots of the same
+  station, usually an hour or more of hearing; cutting each run at the window boundary leaves few
+  long runs. None was frozen in these 20 hours, but that does not establish a fix. The daily
+  whole-archive measurement in <a href="#appI-7">&sect;&nbsp;5.7</a> is the stronger check.</p>
 
   <h3 id="s11-4">1.4 · No Other Identifiable Group</h3>
   <p>Is <code>UberSDR Skimmer</code> the only group of skimmers with a CW excess? Joining PSK
@@ -607,12 +741,12 @@ th.n{text-align:center}
   running VE3NEA's program; and, from 1600Z on November 16, <code>KM3T-6</code>, running
   <code>UberSDR Skimmer</code>, with <code>KM3T-3</code>, running VE3NEA's, the last two reporting the
   same antenna to PSK Reporter. On one signal, a difference in what the two skimmers spot belongs to
-  the programs and their settings, not to the station (<a href="#tab23">Table 3</a>).</p>
+  the programs and their settings, not to the station (<a href="#tab23">Table 6</a>).</p>
 </div>
 
   <div class="scroll">
     <table id="tab23">
-      <caption><strong>Table 3.</strong> Misattributed Callers on the Same Signal, Two Programs at One Station.</caption>
+      <caption><strong>Table 6.</strong> Misattributed Callers on the Same Signal, Two Programs at One Station.</caption>
       <tr><th>Pair and Period</th><th>Skimmer</th><th>Program</th><th class="n">Judged Spots</th>
         <th class="n">Misattributed Callers</th></tr>
       <tr><td rowspan="2">CW, October 18 to November 9</td><td class="call">KM3T-2</td><td><code>UberSDR Skimmer</code></td>
@@ -635,15 +769,15 @@ th.n{text-align:center}
   November 16 to November 17 (144 of 20,487).</p>
 
 <div class="col">
-  <p>In RTTY the two programs now agree on the same signal. In CW the program reports nearly twice as
+  <p>In RTTY the two programs now agree on the same signal. In CW <code>UberSDR Skimmer</code> reports nearly twice as
   many misattributed callers as VE3NEA's at the same station, while sending only about 5 percent more
   CW spots in all from October 18 to November 9, 102,438 against 97,974, or about 15 percent more
-  outside the Sweepstakes weekend. Misattributed callers rose by 72 percent for a few percent more
+  outside the Sweepstakes weekend. Misattributed callers rose by 72 percent for about 5 percent more
   spots, so they are not the price of hearing more. <code>KM3T-5</code>'s CW output fell from November
   10, so the longer comparison stops at November 9.</p>
   <p>The pairing is inferred, not documented, and the spots alone cannot establish it. At HF a
   skimmer's signal-to-noise ratios are set by external noise and by its program's way of measuring
-  them, not by the receiver: the two <code>UberSDR Skimmer</code> skimmers agree with each other
+  them, not by the receiver: the two skimmers running <code>UberSDR Skimmer</code> agree with each other
   within a decibel or two, as do the two running VE3NEA's program, and the programs differ from each
   other by the same amount, band by band, whichever way the skimmers are paired. Matching signal
   reports identify a program, not a receiver.</p>
@@ -676,12 +810,12 @@ th.n{text-align:center}
   its 6955 spots confirmed, with the unconfirmed remainder sorted into calls unique to the node and
   potential junk, busted calls and callers spotted as CQ among them. I reproduced the method on the
   same archive day, and it matches his report to within a few spots on every line.
-  <a href="#tab21">Table 4</a> sets it beside this document's measure for <code>KM3T-2</code>, his
+  <a href="#tab21">Table 7</a> sets it beside this document's measure for <code>KM3T-2</code>, his
   reference skimmer <code>KM3T-3</code> at the same station, two nearby skimmers running VE3NEA's
   Skimmer Server, and <code>K3FEF</code>, another skimmer on the roster.</p>
   <div class="scroll">
     <table id="tab21">
-      <caption><strong>Table 4.</strong> Confirmed Rate and Misattributed Callers, CW, 2026 November 15.</caption>
+      <caption><strong>Table 7.</strong> Confirmed Rate and Misattributed Callers, CW, 2026 November 15.</caption>
       <tr><th rowspan="2">Skimmer</th><th rowspan="2">Program</th><th colspan="2" class="n">Confirmed Rate</th><th colspan="3" class="n">This Document's Measure</th></tr>
       <tr><th class="n">CQ Spots</th><th class="n">Confirmed</th><th class="n">Off-consensus</th><th class="n">Callers</th><th class="n">Callers<br>Confirmed</th></tr>
       <tr><td><code>KM3T-2</code></td><td><code>UberSDR Skimmer</code></td><td class="n"><span class="nb" style="min-width:6ch">6955</span></td><td class="n"><span class="nb" style="min-width:6ch">98.6%</span></td><td class="n"><span class="nb" style="min-width:6ch">4.24%</span></td><td class="n"><span class="nb" style="min-width:6ch">0.67%</span></td><td class="n"><span class="nb" style="min-width:6ch">39 of 44</span></td></tr>
@@ -759,7 +893,7 @@ th.n{text-align:center}
   Busted, which matters for garbles but not for a caller whose call is unlike the runner's. I applied
   that rule to the RBN archive, which carries the same spots as the feed a cluster receives, together
   with two variants: requiring three or five distinct receivers other than the sender, the raised
-  thresholds proposed in its place. <a href="#tab24">Table 5</a> gives the share of spots marked Valid,
+  thresholds proposed in its place. <a href="#tab24">Table 8</a> gives the share of spots marked Valid,
   for the misattributed callers of the samples of <a href="#appF-1">Appendix C.1</a>, the first 10
   hours of the Sweepstakes and November 3 to 6, and, as the filter's cost, for the spots of the running
   stations themselves.</p>
@@ -767,7 +901,7 @@ th.n{text-align:center}
 
   <div class="scroll">
     <table id="tab24">
-      <caption><strong>Table 5.</strong> Spots Marked Valid by AR-Cluster's SKIMVALID Rule, CW.</caption>
+      <caption><strong>Table 8.</strong> Spots Marked Valid by AR-Cluster's SKIMVALID Rule, CW.</caption>
       <tr><th>Sample</th><th>Spots</th><th>Skimmers</th><th class="n">Judged Spots</th>
         <th class="n">AR-Cluster Rule</th><th class="n">3 Other Receivers</th><th class="n">5 Other Receivers</th></tr>
       <tr><td rowspan="4">Sweepstakes peak</td><td rowspan="2">Misattributed callers</td><td>Other skimmers</td>
@@ -870,7 +1004,7 @@ th.n{text-align:center}
   <h3 id="appI-3">5.3 · History</h3>
   <div class="scroll">
     <table id="tab22">
-      <caption><strong>Table 6.</strong> Frozen Signal Reports by Week, CW, October 1 to November 17.</caption>
+      <caption><strong>Table 9.</strong> Frozen Signal Reports by Week, CW, October 1 to November 17.</caption>
       <tr><th>Days</th><th class="n">Roster: Frozen Runs</th><th class="n">Roster Rate</th>
         <th class="n">Others: Frozen Runs</th><th class="n">Others' Rate</th></tr>
       <tr><td>Oct 1&ndash;2</td><td class="n"><span class="nb" style="min-width:12ch">0 of 284</span></td><td class="n"><span class="nb" style="min-width:5ch">0.00%</span></td><td class="n"><span class="nb" style="min-width:12ch">1 of 1902</span></td><td class="n"><span class="nb" style="min-width:5ch">0.05%</span></td></tr>
@@ -944,13 +1078,21 @@ th.n{text-align:center}
     <li>the RBN daily archives, read directly: the CW days from September 12 to November 17
     (Sweepstakes from 2100Z November 7 to 0300Z November 9), CQ WW RTTY on September 26&ndash;27 and
     Makrothen on October 10&ndash;11 for <a href="#fig6">Figure 1</a>, and WAE DX RTTY on November
-    14&ndash;15 for <a href="#tab23">Table 3</a> and <a href="#appI-4">&sect;&nbsp;5.4</a>;</li>
+    14&ndash;15 for <a href="#tab23">Table 6</a> and <a href="#appI-4">&sect;&nbsp;5.4</a>;</li>
     <li>PSK Reporter's software table and the RBN's detailed node list, as of November 9, 11, 12, 16,
     17, and 18, for which skimmers run the program and which release each ran
     (<a href="#appG">Appendix D</a>, <a href="#s11-3">&sect;&nbsp;1.3</a>);</li>
     <li>the program's public mirror and changelog, for the releases in
     <a href="#s11-3">&sect;&nbsp;1.3</a>, and the OpenSkimmer and SparkGap source code, for
     <a href="#appG-3">Appendix D.3</a>;</li>
+    <li>for the CWops Test hours in <a href="#cwt">&sect;&nbsp;1.3</a>: the
+    <a href="https://cwops.org/cwops-tests/">CWops schedule</a>, RBN archives of October 14 to
+    November 12, and the November 17 roster snapshot;</li>
+    <li>for the slow-handover bound in <a href="#appF-5">Appendix C.5</a>: the RBN archives of
+    October 10 to November 6;</li>
+    <li>for the same-continent Sweepstakes baseline in <a href="#ss-continent">&sect;&nbsp;1.3</a>:
+    the RBN archives of November 3&ndash;9 and the RBN node list of November 18, which gives each
+    skimmer's continent;</li>
     <li>for <a href="#appE">Appendix B</a>: the RBN archives of every ARRL DX CW, CQ WPX CW, and CQ WW
     CW weekend from 2009;</li>
     <li>for <a href="#appF">Appendix C</a>: the RBN archives of November 3 to 8 (CW, beacon frequencies
@@ -1028,11 +1170,11 @@ th.n{text-align:center}
   it, weighting every day by its count of judged spots, because a rate derived
   from 300 spots is considerably less reliable than one derived from 11,000.
   There is no single date of transition; four skimmers show clear transitions,
-  in two pairs (<a href="#tab10">Table 7</a> and <a href="#fig9">Figure 2</a>):</p>
+  in two pairs (<a href="#tab10">Table 10</a> and <a href="#fig9">Figure 3</a>):</p>
 
   <div class="scroll">
     <table id="tab10">
-      <caption><strong>Table 7.</strong> Per-skimmer Transition Dates, CW.</caption>
+      <caption><strong>Table 10.</strong> Per-skimmer Transition Dates, CW.</caption>
       <tr><th>Skimmer</th><th>Operator</th><th>Transition</th><th class="n">Before<br><span class="unit">(pp)</span></th>
         <th class="n">After<br><span class="unit">(pp)</span></th><th class="n">Standardized<br>Separation Statistic</th><th>Daily Ranges</th></tr>
       <tr><td class="call">KC2DAC</td><td>…</td>
@@ -1080,7 +1222,7 @@ th.n{text-align:center}
       <span class="key" style="color:var(--ink-3)">shaded · Oct 2–6, when the datable transitions fall</span>
     </div>
     <svg id="c3" role="img" aria-label="Daily CW off-consensus excess over the control median for each skimmer running UberSDR Skimmer from 26 September to 11 October, international beacon frequencies excluded. They sit near zero early in the window and step up on different days between 2 and 6 October, holding between 2 and 6 points above the controls afterward."></svg>
-    <figcaption><strong>Figure 2.</strong> Each skimmer's daily CW rate minus that day's control median, in
+    <figcaption><strong>Figure 3.</strong> Each skimmer's daily CW rate minus that day's control median, in
     percentage points, with the international beacon frequencies excluded.
     Each skimmer has its own marker shape.
     Gaps are days with under 100 judged spots. The steps do not line up:
@@ -1140,8 +1282,8 @@ th.n{text-align:center}
   <h2 id="appE">Appendix B · The CW Record: No Comparable Break</h2>
   <p>The measurement of <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#appD">Makrothen Appendix C</a>, applied to three benchmark CW contests,
   ARRL DX CW (third full weekend of February), CQ WPX CW (last full weekend of May), and CQ WW CW
-  (last full weekend of November), gives the comparison the RTTY record needs (<a href="#tab13">Table 8</a> and
-  <a href="#fig12">Figure 3</a>). The archive reaches back to 2009 for CW, but through 2010 there
+  (last full weekend of November), gives the comparison the RTTY record needs (<a href="#tab13">Table 11</a> and
+  <a href="#fig12">Figure 4</a>). The archive reaches back to 2009 for CW, but through 2010 there
   were too few skimmers and too little could be judged, so the series starts in 2011; by then
   there were 75 to 96 CW skimmers in each contest, and there are some 240 now.</p>
   <p>CW shows no trend of the kind RTTY does. A single least-squares line through all three
@@ -1180,7 +1322,7 @@ th.n{text-align:center}
   (<a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#appD">Makrothen Appendix C</a>).</p>
   <div class="scroll fit">
     <table class="fit" id="tab13">
-      <caption><strong>Table 8.</strong> CW Off-consensus Rate and Caller Share by Year, Benchmark Contests.</caption>
+      <caption><strong>Table 11.</strong> CW Off-consensus Rate and Caller Share by Year, Benchmark Contests.</caption>
       <tr><th rowspan="2">Year</th><th colspan="2" class="n">ARRL DX CW</th><th colspan="2" class="n">CQ WPX CW</th><th colspan="2" class="n">CQ WW CW</th></tr>
       <tr><th class="n">Median<br>Skimmer</th><th class="n">Caller</th><th class="n">Median<br>Skimmer</th><th class="n">Caller</th><th class="n">Median<br>Skimmer</th><th class="n">Caller</th></tr>
       <tr><td>2011</td><td class="n"><span class="nb" style="min-width:4ch">5.7</span></td><td class="n"><span class="nb" style="min-width:4ch">1.63</span></td><td class="n"><span class="nb" style="min-width:4ch">9.1</span></td><td class="n"><span class="nb" style="min-width:4ch">2.26</span></td><td class="n"><span class="nb" style="min-width:4ch">4.1</span></td><td class="n"><span class="nb" style="min-width:4ch">0.91</span></td></tr>
@@ -1207,7 +1349,7 @@ th.n{text-align:center}
   yet taken place.</p>
   <figure id="fig12">
     <svg id="c12" role="img" aria-label="Two panels, 2011 to 2026, on the same scales as Figure 11. Top: callers reported as runners in ARRL DX CW, CQ WPX CW and CQ WW CW, flat at about 1 percent of judged CW spots throughout; the Makrothen weekend's CW at 1.4 percent, 1.3 without the eight. Bottom: all CW off-consensus spots, about 4 to 6 percent with a nearly flat trend; the Makrothen weekend at 4.9 percent, 4.7 without the eight."></svg>
-    <figcaption><strong>Figure 3.</strong> The CW counterpart of <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#fig11">Makrothen Figure 9</a>,
+    <figcaption><strong>Figure 4.</strong> The CW counterpart of <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#fig11">Makrothen Figure 9</a>,
     on the same scales: callers reported as runners (top) and all off-consensus spots (bottom) in
     three benchmark CW contests, 2011&ndash;2026, as percent of judged CW spots across the network,
     clock errors removed and beacon frequencies excluded, with the Makrothen weekend's CW measured
@@ -1217,7 +1359,7 @@ th.n{text-align:center}
     1.15 million CW spots were a sixth to a tenth of the 6.4 to 12.8 million of the benchmark
     contests of 2022 to 2026, with fewer skimmers behind each decided cell (a median of 9, against
     13 to 16), so its point does not compare like for like with the others. Hover a point for its
-    value; <a href="#tab13">Table 8</a> gives the figures.</figcaption>
+    value; <a href="#tab13">Table 11</a> gives the figures.</figcaption>
   </figure>
 
   <h2 id="appF">Appendix C · Misattributed Callers on a Busy CW Band</h2>
@@ -1238,7 +1380,7 @@ th.n{text-align:center}
   five-minute slot on one 100 Hz frequency. For a loud runner, one backed by 30 to 79 skimmers,
   at least one skimmer outside the roster reported a misattributed caller in 12.5 to 12.9 percent
   of its slots during the Sweepstakes peak, against 6.5 to 7.0 percent on the quiet days
-  (<a href="#tab14">Table 9</a>). With 12 slots an hour, that is about 1.5 slots an hour of
+  (<a href="#tab14">Table 12</a>). With 12 slots an hour, that is about 1.5 slots an hour of
   running at the peak, against about 0.8 on the quiet days. The share stops rising once about
   20 skimmers back the runner, because the caller rate per spot falls as the runner gets louder,
   from 1.66 percent to 0.24: the extra skimmers mostly report the runner itself, and the
@@ -1250,7 +1392,7 @@ th.n{text-align:center}
   quiet-day share.</p>
   <div class="scroll">
     <table id="tab14">
-      <caption><strong>Table 9.</strong> Five-Minute Slots with at Least One Misattributed Caller, by Runner Loudness, CW.</caption>
+      <caption><strong>Table 12.</strong> Five-Minute Slots with at Least One Misattributed Caller, by Runner Loudness, CW.</caption>
       <tr><th rowspan="2">Skimmers Backing<br>the Runner</th><th colspan="4" class="n">Sweepstakes, First 10 Hours</th><th colspan="3" class="n">Quiet Days, November 3&ndash;6</th></tr>
       <tr><th class="n">Slots</th><th class="n">Other Skimmers</th><th class="n">Caller Rate<br>per Spot</th><th class="n">UberSDR Skimmer<br>Roster</th>
         <th class="n">Slots</th><th class="n">Other Skimmers</th><th class="n">UberSDR Skimmer<br>Roster</th></tr>
@@ -1274,12 +1416,12 @@ th.n{text-align:center}
   callers, each a callsign at one 100 Hz frequency, and keeping only North American skimmers,
   roughly what a filtered North American cluster feed passes, the median window during the
   Sweepstakes peak held 15 to 21 misattributed callers from skimmers outside the roster for every
-  100 runners on 40, 20, and 15 m (<a href="#tab15">Table 10</a>): 18 among 106 runners on 40 m,
+  100 runners on 40, 20, and 15 m (<a href="#tab15">Table 13</a>): 18 among 106 runners on 40 m,
   20 among 118 on 20 m, and 16 among 118 on 15 m. On the quiet days the same bandmap showed none
   or one. The roster added another 13 to 17 on each of those three bands at the peak.</p>
   <div class="scroll">
     <table id="tab15">
-      <caption><strong>Table 10.</strong> Misattributed Callers on a 10-Minute Bandmap, North American Skimmers, CW.</caption>
+      <caption><strong>Table 13.</strong> Misattributed Callers on a 10-Minute Bandmap, North American Skimmers, CW.</caption>
       <tr><th rowspan="2">Band</th><th colspan="4" class="n">Sweepstakes, First 10 Hours</th><th colspan="3" class="n">Quiet Days, November 3&ndash;6</th></tr>
       <tr><th class="n">Runners</th><th class="n">Callers,<br>Other Skimmers</th><th class="n">Callers, UberSDR<br>Skimmer Roster</th><th class="n">Other per<br>100 Runners</th>
         <th class="n">Runners</th><th class="n">Callers,<br>Other Skimmers</th><th class="n">Other per<br>100 Runners</th></tr>
@@ -1393,7 +1535,7 @@ th.n{text-align:center}
   within 10 minutes, so one such event is not enough. Its guard
   against a garbled runner's call, which would block the case outright, is off by default.</p>
   <p>If this case is common, a skimmer should misattribute callers mostly when it is not copying the
-  runner. <a href="#tab16">Table 11</a> tests that with each skimmer's own spots: for every
+  runner. <a href="#tab16">Table 14</a> tests that with each skimmer's own spots: for every
   misattributed caller in the samples of <a href="#appF-1">C.1</a>, it asks whether the same
   skimmer had itself spotted the runner, within 300 Hz, in the 10 minutes before, only in the 10
   minutes after, or in neither. VE3NEA's Skimmer Server spots a station at most once in 10 minutes,
@@ -1401,7 +1543,7 @@ th.n{text-align:center}
   span; no spot of the runner there means the skimmer was not copying the runner's call.</p>
   <div class="scroll">
     <table id="tab16">
-      <caption><strong>Table 11.</strong> Misattributed Callers by Whether the Same Skimmer Had Spotted the Runner, CW.</caption>
+      <caption><strong>Table 14.</strong> Misattributed Callers by Whether the Same Skimmer Had Spotted the Runner, CW.</caption>
       <tr><th rowspan="2">Skimmers and Sample</th><th rowspan="2" class="n">Misattributed<br>Callers</th><th colspan="3" class="n">Runner Spotted by the Same Skimmer</th></tr>
       <tr><th class="n">Before</th><th class="n">Only After</th><th class="n">Neither</th></tr>
       <tr><td>Other skimmers, Sweepstakes peak</td><td class="n"><span class="nb" style="min-width:6ch">5854</span></td><td class="n"><span class="nb" style="min-width:6ch">37.7%</span></td><td class="n"><span class="nb" style="min-width:6ch">21.9%</span></td><td class="n"><span class="nb" style="min-width:6ch">40.4%</span></td></tr>
@@ -1481,7 +1623,7 @@ th.n{text-align:center}
   and it can be measured. If another station's signal in the channel copying the runner is what puts a caller's call
   behind a stray CQ (<a href="#appF-3">C.3</a>), misattributed callers should rise when another
   station stays on the runner's frequency. A misattributed caller appears in the runner's cell
-  once and is gone; a competing station stays. <a href="#tab17">Table 12</a> therefore counts as a
+  once and is gone; a competing station stays. <a href="#tab17">Table 15</a> therefore counts as a
   competitor a station other than the runner, and not a garble of its call, that was spotted in the
   runner's 100 Hz cell or an adjacent one in both the current five-minute slot and the one before,
   by at least two skimmers other than the one being judged, and compares the competitor's median
@@ -1489,7 +1631,7 @@ th.n{text-align:center}
   first 10 hours of the Sweepstakes and the quiet days of November 3 to 6.</p>
   <div class="scroll">
     <table id="tab17">
-      <caption><strong>Table 12.</strong> Misattributed Callers by Persistent Competing Station, CW.</caption>
+      <caption><strong>Table 15.</strong> Misattributed Callers by Persistent Competing Station, CW.</caption>
       <tr><th rowspan="2">Persistent Competitor</th><th colspan="2" class="n">Other Skimmers</th><th colspan="2" class="n">UberSDR Skimmer<br>Roster</th></tr>
       <tr><th class="n">Sweepstakes,<br>First 10 Hours</th><th class="n">Quiet Days</th><th class="n">Sweepstakes,<br>First 10 Hours</th><th class="n">Quiet Days</th></tr>
       <tr><td>None</td><td class="n"><span class="nb" style="min-width:6ch">0.77%</span></td><td class="n"><span class="nb" style="min-width:6ch">0.78%</span></td><td class="n"><span class="nb" style="min-width:6ch">3.15%</span></td><td class="n"><span class="nb" style="min-width:6ch">1.80%</span></td></tr>
@@ -1518,6 +1660,36 @@ th.n{text-align:center}
   misattributions: most occur with no competing station in view. Nor do they explain the roster's
   Sweepstakes rise. With no competitor at all, the roster's rate rose from 1.80 percent on the quiet
   days to 3.15 at the Sweepstakes peak, while the other skimmers' held at 0.77 to 0.78.</p>
+
+  <h3 id="appF-5">C.5 &middot; Recycled Frequencies</h3>
+  <p>Run frequencies are recycled: a runner moves on and another starts on the same frequency,
+  sometimes within one five-minute cell. The judging method does not follow a handover, but it is built
+  not to mistake one for a misattributed caller. Each cell is judged on its own: its holder is the call
+  reported by the most distinct skimmers in that slot (the one spotted first, on a tie), and the
+  cell is decided when at least four back it. When a frequency changes hands within a slot, only one
+  runner can hold the cell, and every spot of the other is off-consensus, part of every skimmer's
+  rate, the controls' included
+  (<a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#s2">Makrothen &sect;&nbsp;2</a>).
+  The mechanism split then tests such a spot before the caller test: a call that holds any decided
+  cell in the same slot or the one before or after is a <em>runner elsewhere</em>
+  (<a href="#tab7">Table 2</a>). The outgoing runner normally held the cell in the slot before, and
+  the incoming one holds it in the slot after. A handover, a late report of a runner that has just left, and a
+  runner that moves a few kilohertz all land there, not among the callers.</p>
+  <p>A handover reaches the caller column only when it is slow: when the runner that lost the cell
+  holds no decided cell within one slot either side, as on a quiet band or in a short run backed
+  by fewer than four skimmers, and the call still passes the caller test, having held a decided
+  cell at some other time that day or been reported by four skimmers. To bound that leak I counted the caller spots whose call held the same frequency,
+  on the same band and within one 100 Hz bin, two or three slots away (10 to 15 minutes) and, more
+  generously, up to six (30 minutes). From October 10 to November 6 these were 16 and 20 percent of
+  the controls' caller spots and 17 and 21 percent of the roster's, 14 to 31 percent skimmer by
+  skimmer. Not all are handovers, since a station that answered a runner and later ran on the same
+  frequency qualifies too, so these are upper bounds. Removing every one of them lowers the
+  roster's caller rate from 1.86 percent of judged spots to 1.47 and the controls' from 0.76 to
+  0.61; the ratio between them stays at 2.4. Slow handovers can inflate both groups' caller counts
+  by about the same fraction, and they do not explain the roster's excess.</p>
+  <p class="note-small">Pooled over the skimmers of <a href="#tab7">Table 2</a>: the seven controls
+  and the 19 roster skimmers with at least 10,000 judged CW spots. Beacon frequencies are excluded;
+  clock errors are not removed.</p>
 
 
   <h2 id="appG">Appendix D · Looking for Additional Groups</h2>
@@ -1563,10 +1735,10 @@ th.n{text-align:center}
   <em>spot filter</em> that sends either all spots or CQ spots only. How many clean decodes a callsign
     needs before it is spotted depends on the level and on
   whether the call is on the operator's watch list or in the program's pattern file of known
-  callsign patterns (<a href="#tab18">Table 13</a>): at Normal, a call the pattern file does not
+  callsign patterns (<a href="#tab18">Table 16</a>): at Normal, a call the pattern file does not
   know must be decoded five times, at Minimal twice, and at Aggressive it is never spotted. Joining the list of
   November 9 to the same CW rates (206 of the 237 skimmers appear on it) shows neither setting
-  separating the callers (<a href="#tab19">Tables 14</a> and <a href="#tab20">15</a>). The filter
+  separating the callers (<a href="#tab19">Tables 17</a> and <a href="#tab20">18</a>). The filter
   makes no difference in any category; skimmers set to send CQ spots only report callers at
   nearly the same rate as the rest, 0.63 against 0.73 percent. A caller misattributed as a runner
   is still sent as a CQ spot and passes the filter, consistent with the defect lying in the
@@ -1578,13 +1750,13 @@ th.n{text-align:center}
   the 168 at Normal, mostly garbles, 1.77 against 1.21 percent (Mann&ndash;Whitney p of
   1 &times; 10<sup>&minus;6</sup>), while their callers differ only marginally (p of 0.04, above
   the 0.01 that testing five mechanisms at once requires). The three at Aggressive, which rejects
-  more callsigns, have the fewest garbles, 0.38 percent. Both fit <a href="#tab18">Table 13</a>: a misdecode that no
+  more callsigns, have the fewest garbles, 0.38 percent. Both fit <a href="#tab18">Table 16</a>: a misdecode that no
   known pattern matches needs two clean decodes at Minimal rather than five, and is never
   spotted at Aggressive. Whether the Minimal level itself admits
   the garbles, or something else those 16 stations share, the spots cannot say.</p>
   <div class="scroll">
     <table id="tab18">
-      <caption><strong>Table 13.</strong> Clean Decodes a Callsign Needs before Skimmer Server Spots It, by Validation Level.</caption>
+      <caption><strong>Table 16.</strong> Clean Decodes a Callsign Needs before Skimmer Server Spots It, by Validation Level.</caption>
       <tr><th>Callsign</th><th class="n">Minimal</th><th class="n">Normal</th><th class="n">Aggressive</th><th class="n">Paranoid</th></tr>
       <tr><td>On the watch list</td><td class="n"><span class="nb" style="min-width:5ch">1</span></td><td class="n"><span class="nb" style="min-width:5ch">1</span></td><td class="n"><span class="nb" style="min-width:5ch">2</span></td><td class="n"><span class="nb" style="min-width:5ch">2</span></td></tr>
       <tr><td>In the pattern file, marked + (common)</td><td class="n"><span class="nb" style="min-width:5ch">2</span></td><td class="n"><span class="nb" style="min-width:5ch">2</span></td><td class="n"><span class="nb" style="min-width:5ch">4</span></td><td class="n"><span class="nb" style="min-width:5ch">never</span></td></tr>
@@ -1602,7 +1774,7 @@ th.n{text-align:center}
   has no default. Decodes are counted in the program's 256-character sample buffer.</p>
   <div class="scroll">
     <table id="tab19">
-      <caption><strong>Table 14.</strong> CW Off-consensus Spots by Mechanism and Spot Filter, November 1&ndash;7.</caption>
+      <caption><strong>Table 17.</strong> CW Off-consensus Spots by Mechanism and Spot Filter, November 1&ndash;7.</caption>
       <tr><th>Spot Filter</th><th class="n">Skimmers</th><th class="n">Garble</th><th class="n">Runner Elsewhere</th>
         <th class="n">Caller</th><th class="n">Unconfirmed</th><th class="n">Off-consensus</th></tr>
       <tr><td>ALL spots</td><td class="n"><span class="nb" style="min-width:3ch">146</span></td><td class="n"><span class="nb" style="min-width:4ch">1.32</span></td><td class="n"><span class="nb" style="min-width:4ch">1.25</span></td><td class="n"><span class="nb" style="min-width:4ch">0.73</span></td><td class="n"><span class="nb" style="min-width:4ch">0.16</span></td><td class="n"><span class="nb" style="min-width:4ch">3.43</span></td></tr>
@@ -1620,7 +1792,7 @@ th.n{text-align:center}
   snapshot, so a skimmer that changed them during the week would be misfiled.</p>
   <div class="scroll">
     <table id="tab20">
-      <caption><strong>Table 15.</strong> CW Off-consensus Spots by Mechanism and Validation Level, November 1&ndash;7, <code>UberSDR Skimmer</code> Roster Excluded.</caption>
+      <caption><strong>Table 18.</strong> CW Off-consensus Spots by Mechanism and Validation Level, November 1&ndash;7, <code>UberSDR Skimmer</code> Roster Excluded.</caption>
       <tr><th>Validation Level</th><th class="n">Skimmers</th><th class="n">Garble</th><th class="n">Runner Elsewhere</th>
         <th class="n">Caller</th><th class="n">Unconfirmed</th><th class="n">Off-consensus</th></tr>
       <tr><td>Normal</td><td class="n"><span class="nb" style="min-width:3ch">168</span></td><td class="n"><span class="nb" style="min-width:4ch">1.21</span></td><td class="n"><span class="nb" style="min-width:4ch">1.20</span></td><td class="n"><span class="nb" style="min-width:4ch">0.68</span></td><td class="n"><span class="nb" style="min-width:4ch">0.14</span></td><td class="n"><span class="nb" style="min-width:4ch">3.34</span></td></tr>
@@ -1628,7 +1800,7 @@ th.n{text-align:center}
       <tr><td>Aggressive</td><td class="n"><span class="nb" style="min-width:3ch">3</span></td><td class="n"><span class="nb" style="min-width:4ch">0.38</span></td><td class="n"><span class="nb" style="min-width:4ch">1.28</span></td><td class="n"><span class="nb" style="min-width:4ch">0.45</span></td><td class="n"><span class="nb" style="min-width:4ch">0.02</span></td><td class="n"><span class="nb" style="min-width:4ch">2.11</span></td></tr>
     </table>
   </div>
-  <p class="note-small">As <a href="#tab19">Table 14</a>, without the <code>UberSDR Skimmer</code>
+  <p class="note-small">As <a href="#tab19">Table 17</a>, without the <code>UberSDR Skimmer</code>
   roster, all of whose nodes report the Normal level. Two-sided Mann&ndash;Whitney p, Minimal
   against Normal: off-consensus 7 &times; 10<sup>&minus;5</sup>, garble 1 &times; 10<sup>&minus;6</sup>,
   runner elsewhere 0.03, caller 0.04, unconfirmed 0.0002. The three at Aggressive are too few to
@@ -1677,11 +1849,61 @@ th.n{text-align:center}
   percent of all such spots.</p>
 
   <p class="foot">Prepared by K1MK (contact: k1mk at alum.mit.edu) · analysis of Reverse Beacon
-  Network archives through 2026 November 17. Document v1.08.</p>
+  Network archives through 2026 November 17. Document v1.17.</p>
   <p class="foot">Copyright &copy; 2026 Michael Keane K1MK. All rights reserved.</p>
 </div>
 </div>
 
+<script>
+(function () {
+  var svg = document.getElementById('cwt-chart');
+  if (!svg) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var series = [
+    {label:'Wednesday 1300Z', dates:['Oct 14','Oct 21','Oct 28','Nov 4','Nov 11'],
+      roster:[1.46,2.25,2.26,2.36,2.39], controls:[0.76,1.29,0.89,1.20,0.60]},
+    {label:'Wednesday 1900Z', dates:['Oct 14','Oct 21','Oct 28','Nov 4','Nov 11'],
+      roster:[1.80,2.07,1.43,2.08,2.59], controls:[1.02,1.02,0.77,1.10,1.34]},
+    {label:'Thursday 0300Z', dates:['Oct 15','Oct 22','Oct 29','Nov 5','Nov 12'],
+      roster:[2.00,1.43,1.02,1.58,2.92], controls:[0.92,0.85,0.67,0.38,0.62]},
+    {label:'Thursday 0700Z', dates:['Oct 15','Oct 22','Oct 29','Nov 5','Nov 12'],
+      roster:[1.53,1.02,0.95,2.42,1.10], controls:[1.26,0.74,0.46,0.29,0.28]}
+  ];
+  svg.setAttribute('viewBox', '0 0 680 576');
+  function add(tag, attrs, text) {
+    var e = document.createElementNS(ns, tag);
+    Object.keys(attrs).forEach(function (k) { e.setAttribute(k, attrs[k]); });
+    if (text !== undefined) e.textContent = text;
+    svg.appendChild(e);
+    return e;
+  }
+  var left = 60, width = 580, height = 88;
+  series.forEach(function (s, panel) {
+    var top = 23 + panel * 140;
+    var x = function (i) { return left + 35 + i * (width - 70) / 4; };
+    var y = function (v) { return top + height - v / 3.5 * height; };
+    add('text', {x:left, y:top - 8, fill:'var(--ink-2)', 'font-size':12,
+      'font-family':'var(--font-body)', 'font-weight':600}, s.label);
+    [0,1,2,3].forEach(function (v) {
+      add('line', {x1:left, x2:left + width, y1:y(v), y2:y(v),
+        stroke:'var(--grid)', 'stroke-width':1});
+      add('text', {x:left - 8, y:y(v) + 4, 'text-anchor':'end', fill:'var(--ink-3)',
+        'font-size':10, 'font-family':'var(--font-data)'}, v + '%');
+    });
+    s.dates.forEach(function (date, i) {
+      add('text', {x:x(i), y:top + height + 18, 'text-anchor':'middle',
+        fill:'var(--ink-3)', 'font-size':10, 'font-family':'var(--font-data)'}, date);
+      [['roster','var(--flag)',-4], ['controls','var(--accent)',4]].forEach(function (g) {
+        var marker = add('circle', {cx:x(i) + g[2], cy:y(s[g[0]][i]), r:4,
+          fill:g[1], stroke:'var(--panel)', 'stroke-width':1});
+        var title = document.createElementNS(ns, 'title');
+        title.textContent = date + ' ' + s.label + ', ' + g[0] + ': ' + s[g[0]][i].toFixed(2) + '%';
+        marker.appendChild(title);
+      });
+    });
+  });
+})();
+</script>
 <script>
 (function(){
   var R = [
