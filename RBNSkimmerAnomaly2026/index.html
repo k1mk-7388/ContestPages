@@ -6,15 +6,15 @@
 <title>Investigation into 2026 Makrothen RBN Anomaly</title>
 <!-- seo:begin -->
 <meta property="og:site_name" content="K1TTT Contest Pages">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Investigation into 2026 Makrothen RBN Anomaly", "description": "Eight RBN skimmers running new software reported callers as runners in the 2026 Makrothen RTTY contest: how the defect was found, measured, and fixed.", "url": "https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "K1TTT Contest Pages", "url": "https://k1mk-7388.github.io/ContestPages/"}, "author": {"@type": "Person", "name": "K1MK"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Investigation into 2026 Makrothen RBN Anomaly", "description": "Eight RBN skimmers on new software reported callers as runners in the 2026 Makrothen RTTY contest: the defect, its fix, and confirmation through WAE DX RTTY.", "url": "https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "K1TTT Contest Pages", "url": "https://k1mk-7388.github.io/ContestPages/"}, "author": {"@type": "Person", "name": "K1MK"}}</script>
 <!-- seo:end -->
-<meta name="description" content="Eight RBN skimmers running new software reported callers as runners in the 2026 Makrothen RTTY contest: how the defect was found, measured, and fixed.">
+<meta name="description" content="Eight RBN skimmers on new software reported callers as runners in the 2026 Makrothen RTTY contest: the defect, its fix, and confirmation through WAE DX RTTY.">
 <meta name="author" content="Michael Keane K1MK">
 <meta name="copyright" content="Copyright 2026 Michael Keane K1MK. All rights reserved.">
 <meta name="keywords" content="Reverse Beacon Network, RBN, RTTY, analysis, skimmer, Makrothen, JARL, CQWW, contest, UberSDR Skimmer, RTTY Skimmer Server, assisted operator, spot quality, calibration, N1MM+">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Investigation into an RBN Anomaly during the 2026 Makrothen RTTY Contest">
-<meta property="og:description" content="Eight RBN skimmers running new software reported callers as runners during the 2026 Makrothen RTTY contest. How the defect was found, measured, and fixed, and what it says about testing on a shared network.">
+<meta property="og:description" content="Eight RBN skimmers running new software reported callers as runners during the 2026 Makrothen RTTY contest. How the defect was found, measured, and fixed, how the fix held through WAE DX RTTY, and what it says about testing on a shared network.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/og-image.png">
 <meta name="twitter:title" content="Investigation into an RBN Anomaly during the 2026 Makrothen RTTY Contest">
-<meta name="twitter:description" content="Eight RBN skimmers running new software reported callers as runners during the 2026 Makrothen RTTY contest: the defect, its fix, and the lessons for testing on a shared network.">
+<meta name="twitter:description" content="Eight RBN skimmers running new software reported callers as runners during the 2026 Makrothen RTTY contest: the defect, its fix through WAE DX RTTY, and the lessons for testing on a shared network.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@700&family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="canonical" href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/">
 <meta property="og:url" content="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/">
@@ -203,6 +203,7 @@ th.n{text-align:center}
   <h1>Investigation into an RBN Anomaly during the 2026 Makrothen RTTY Contest</h1>
   <p class="subtitle">Eight Skimmers That Overreported the Caller,
   Not the Runner</p>
+  <p class="eyebrow">From Makrothen to WAE DX RTTY · 2026 October 10 to November 15</p>
   <p class="eyebrow abstract-h">Abstract</p>
   <p class="standfirst">Over the three periods of the 2026 Makrothen RTTY contest (October 10&ndash;11), eight RBN skimmers
   reported stations <em>answering</em> a <em>running</em> station as if they
@@ -233,8 +234,11 @@ th.n{text-align:center}
   and was clean by October 30, and <code>KW4VA</code>
   stayed off the air (<a href="#s15">&sect;&nbsp;15</a>). The RTTY defect
   appears to have been resolved on every affected skimmer by October 30, with
-  no recurrence in the Russian WW Multimode contest of October 31&ndash;November 1,
-  the Weekly RTTY Tests through November 6, or WAE DX RTTY on November 14&ndash;15.
+  no recurrence in the Russian WW Multimode contest of October 31&ndash;November 1 or
+  the Weekly RTTY Tests through November 6. WAE DX RTTY, November 14&ndash;15, was the largest
+  test, with nearly a million RTTY spots: every skimmer running the program sat inside the
+  network's main cluster, and the network as a whole was off-consensus on fewer of its judged spots
+  than in any benchmark contest of 2023 to 2025 (<a href="#s15-3">&sect;&nbsp;15.3</a>).
   The RTTY discrepancy that began this investigation is fully resolved and has stayed resolved
   through the RTTY contests that followed; the differences that remain are all in CW.</p>
 
@@ -261,8 +265,9 @@ th.n{text-align:center}
   report spots to a central server, and its spots are used by many assisted operators in
   contests. I began looking into the anomaly right after the Makrothen contest, which was five
   days before the JARL WW RTTY contest, and this document details my inquiry into the defect as
-  it progressed through the Makrothen contest and into the JARL follow-up. With the immediate
-  episode over, this retrospective brings together the analysis and its lessons. The RTTY
+  it progressed through the Makrothen contest and into the JARL follow-up, and follows it to WAE DX
+  RTTY five weeks later, the largest RTTY contest of the period. With the episode over, this
+  retrospective brings together the analysis and its lessons. The RTTY
   discrepancy has been fully resolved and stayed resolved through the three RTTY contests after
   Makrothen (<a href="#s15">&sect;&nbsp;15</a>); what remains is on the CW side.</p>
   <p>This document follows the investigation in order: a bandmap that looked wrong (<a
@@ -270,8 +275,8 @@ th.n{text-align:center}
     (<a href="#s2">&sect;&nbsp;2</a>) and what it showed (&sect;&sect;&nbsp;<a
     href="#s3">3</a>–<a href="#s9">9</a>); a common thread, one skimmer
     program (&sect;&sect;&nbsp;<a href="#s10">10</a>–<a href="#s12">12</a>); the
-  developer's acknowledgment and fix (&sect;&sect;&nbsp;<a href="#s13">13</a>&ndash;<a href="#s14">14</a>) and its test
-  at JARL (<a href="#s15">&sect;&nbsp;15</a>);
+  developer's acknowledgment and fix (&sect;&sect;&nbsp;<a href="#s13">13</a>&ndash;<a href="#s14">14</a>), its test
+  at JARL, and its confirmation through WAE DX RTTY (<a href="#s15">&sect;&nbsp;15</a>);
     and what the episode says about testing software on a network other people
     depend on (&sect;&sect;&nbsp;<a href="#s16">16</a>–<a href="#s17">17</a>).
     Four other anomalies, with causes of their own, were identified in the course of this
@@ -282,7 +287,7 @@ th.n{text-align:center}
     <a href="#s11">&sect;&nbsp;11</a>, the network's long-term CW record, and the checks on what a busy CW
     band shows with no defect, are in the separate <a href="https://k1mk-7388.github.io/ContestPages/RBNCWSpotQuality/">CW document</a>.
   </p>
-  <p class="meta">RBN data through 2026 November 17</p>
+  <p class="meta">RBN data through 2026 November 18</p>
   <p class="note-small">Throughout what follows, a skimmer's rate is the share of its judged
   spots that are off-consensus, and a spot is judged when it falls in a 100 Hz frequency bin
     and five-minute time cell that four distinct skimmers attribute to one
@@ -596,25 +601,25 @@ th.n{text-align:center}
 
   <div class="scroll">
     <table id="tab1">
-      <caption><strong>Table 1.</strong> Makrothen RTTY Results by Skimmer, with CQ WW RTTY Comparison.</caption>
+      <caption><strong>Table 1.</strong> Makrothen RTTY Results by Skimmer, with CQ WW RTTY and WAE DX RTTY Comparisons.</caption>
       <tr><th>Skimmer</th><th>Same Operator</th><th class="n">Makrothen Rate</th>
         <th class="n">Off-consensus</th><th class="n">Judged</th>
-        <th class="n">Total Spots</th><th>CQ WW RTTY Comparison</th></tr>
-      <tr class="flagged"><td class="call">KC2DAC</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">50.2%</span></td><td class="n"><span class="nb" style="min-width:4ch">1082</span></td><td class="n"><span class="nb" style="min-width:4ch">2154</span></td><td class="n"><span class="nb" style="min-width:6ch">2750</span></td><td>on air, <strong>0 RTTY</strong> / 3872 CW</td></tr>
-      <tr class="flagged"><td class="call">K1RA</td><td><strong>K1RA</strong></td><td class="n"><span class="nb" style="min-width:5ch">47.8%</span></td><td class="n"><span class="nb" style="min-width:4ch">1482</span></td><td class="n"><span class="nb" style="min-width:4ch">3102</span></td><td class="n"><span class="nb" style="min-width:6ch">5855</span></td><td><strong>5.4%</strong> on 32,180 judged</td></tr>
-      <tr class="flagged"><td class="call">MM9PSY</td><td><strong>M9PSY</strong></td><td class="n"><span class="nb" style="min-width:5ch">46.1%</span></td><td class="n"><span class="nb" style="min-width:4ch">3343</span></td><td class="n"><span class="nb" style="min-width:4ch">7254</span></td><td class="n"><span class="nb" style="min-width:6ch">10,225</span></td><td>on air, <strong>0 RTTY</strong> / 14,034 CW</td></tr>
-      <tr class="flagged"><td class="call">K1RA-4</td><td><strong>K1RA</strong></td><td class="n"><span class="nb" style="min-width:5ch">45.2%</span></td><td class="n"><span class="nb" style="min-width:4ch">2682</span></td><td class="n"><span class="nb" style="min-width:4ch">5932</span></td><td class="n"><span class="nb" style="min-width:6ch">8638</span></td><td><strong>5.4%</strong> on 32,165 judged</td></tr>
-      <tr class="flagged"><td class="call">M9PSY-2</td><td><strong>M9PSY</strong></td><td class="n"><span class="nb" style="min-width:5ch">44.1%</span></td><td class="n"><span class="nb" style="min-width:4ch">2931</span></td><td class="n"><span class="nb" style="min-width:4ch">6651</span></td><td class="n"><span class="nb" style="min-width:6ch">9204</span></td><td>absent, no spots at all</td></tr>
-      <tr class="flagged"><td class="call">K3FEF</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">44.0%</span></td><td class="n"><span class="nb" style="min-width:4ch">4122</span></td><td class="n"><span class="nb" style="min-width:4ch">9374</span></td><td class="n"><span class="nb" style="min-width:6ch">13,166</span></td><td>absent, no spots at all</td></tr>
-      <tr class="flagged"><td class="call">KW4VA</td><td><strong>K1RA</strong></td><td class="n"><span class="nb" style="min-width:5ch">42.8%</span></td><td class="n"><span class="nb" style="min-width:4ch">636</span></td><td class="n"><span class="nb" style="min-width:4ch">1486</span></td><td class="n"><span class="nb" style="min-width:6ch">5068</span></td><td>absent, no spots at all</td></tr>
-      <tr class="flagged"><td class="call">MM0ZBH</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">41.8%</span></td><td class="n"><span class="nb" style="min-width:4ch">3731</span></td><td class="n"><span class="nb" style="min-width:4ch">8927</span></td><td class="n"><span class="nb" style="min-width:6ch">13,649</span></td><td>on air, <strong>0 RTTY</strong> / 18,625 CW</td></tr>
-      <tr><td class="call">SZ1A</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">8.6%</span></td><td class="n"><span class="nb" style="min-width:4ch">75</span></td><td class="n"><span class="nb" style="min-width:4ch">876</span></td><td class="n"><span class="nb" style="min-width:6ch">2202</span></td><td>sample too small</td></tr>
-      <tr><td class="call">RN4WA</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">5.9%</span></td><td class="n"><span class="nb" style="min-width:4ch">158</span></td><td class="n"><span class="nb" style="min-width:4ch">2663</span></td><td class="n"><span class="nb" style="min-width:6ch">4839</span></td><td>7.0%</td></tr>
-      <tr><td class="call">AA4PA</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">5.1%</span></td><td class="n"><span class="nb" style="min-width:4ch">179</span></td><td class="n"><span class="nb" style="min-width:4ch">3518</span></td><td class="n"><span class="nb" style="min-width:6ch">5250</span></td><td>5.6%</td></tr>
-      <tr><td class="call">OE9GHV</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">5.0%</span></td><td class="n"><span class="nb" style="min-width:4ch">344</span></td><td class="n"><span class="nb" style="min-width:4ch">6906</span></td><td class="n"><span class="nb" style="min-width:6ch">9581</span></td><td>5.6%</td></tr>
-      <tr><td class="call">HB9EMP</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">5.0%</span></td><td class="n"><span class="nb" style="min-width:4ch">160</span></td><td class="n"><span class="nb" style="min-width:4ch">3223</span></td><td class="n"><span class="nb" style="min-width:6ch">4568</span></td><td>5.9%</td></tr>
-      <tr><td class="call">S50ARX</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">4.4%</span></td><td class="n"><span class="nb" style="min-width:4ch">254</span></td><td class="n"><span class="nb" style="min-width:4ch">5781</span></td><td class="n"><span class="nb" style="min-width:6ch">7883</span></td><td>6.3%</td></tr>
-      <tr><td class="call">K9LC</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">4.1%</span></td><td class="n"><span class="nb" style="min-width:4ch">154</span></td><td class="n"><span class="nb" style="min-width:4ch">3790</span></td><td class="n"><span class="nb" style="min-width:6ch">4657</span></td><td>4.7%</td></tr>
+        <th class="n">Total Spots</th><th>CQ WW RTTY Comparison</th><th class="n">WAE DX RTTY</th></tr>
+      <tr class="flagged"><td class="call">KC2DAC</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">50.2%</span></td><td class="n"><span class="nb" style="min-width:4ch">1082</span></td><td class="n"><span class="nb" style="min-width:4ch">2154</span></td><td class="n"><span class="nb" style="min-width:6ch">2750</span></td><td>on air, <strong>0 RTTY</strong> / 3872 CW</td><td class="n"><span class="nb" style="min-width:7ch">2.1%</span></td></tr>
+      <tr class="flagged"><td class="call">K1RA</td><td><strong>K1RA</strong></td><td class="n"><span class="nb" style="min-width:5ch">47.8%</span></td><td class="n"><span class="nb" style="min-width:4ch">1482</span></td><td class="n"><span class="nb" style="min-width:4ch">3102</span></td><td class="n"><span class="nb" style="min-width:6ch">5855</span></td><td><strong>5.4%</strong> on 32,180 judged</td><td class="n"><span class="nb" style="min-width:7ch">absent</span></td></tr>
+      <tr class="flagged"><td class="call">MM9PSY</td><td><strong>M9PSY</strong></td><td class="n"><span class="nb" style="min-width:5ch">46.1%</span></td><td class="n"><span class="nb" style="min-width:4ch">3343</span></td><td class="n"><span class="nb" style="min-width:4ch">7254</span></td><td class="n"><span class="nb" style="min-width:6ch">10,225</span></td><td>on air, <strong>0 RTTY</strong> / 14,034 CW</td><td class="n"><span class="nb" style="min-width:7ch">2.5%</span></td></tr>
+      <tr class="flagged"><td class="call">K1RA-4</td><td><strong>K1RA</strong></td><td class="n"><span class="nb" style="min-width:5ch">45.2%</span></td><td class="n"><span class="nb" style="min-width:4ch">2682</span></td><td class="n"><span class="nb" style="min-width:4ch">5932</span></td><td class="n"><span class="nb" style="min-width:6ch">8638</span></td><td><strong>5.4%</strong> on 32,165 judged</td><td class="n"><span class="nb" style="min-width:7ch">3.1%</span></td></tr>
+      <tr class="flagged"><td class="call">M9PSY-2</td><td><strong>M9PSY</strong></td><td class="n"><span class="nb" style="min-width:5ch">44.1%</span></td><td class="n"><span class="nb" style="min-width:4ch">2931</span></td><td class="n"><span class="nb" style="min-width:4ch">6651</span></td><td class="n"><span class="nb" style="min-width:6ch">9204</span></td><td>absent, no spots at all</td><td class="n"><span class="nb" style="min-width:7ch">2.3%</span></td></tr>
+      <tr class="flagged"><td class="call">K3FEF</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">44.0%</span></td><td class="n"><span class="nb" style="min-width:4ch">4122</span></td><td class="n"><span class="nb" style="min-width:4ch">9374</span></td><td class="n"><span class="nb" style="min-width:6ch">13,166</span></td><td>absent, no spots at all</td><td class="n"><span class="nb" style="min-width:7ch">3.3%</span></td></tr>
+      <tr class="flagged"><td class="call">KW4VA</td><td><strong>K1RA</strong></td><td class="n"><span class="nb" style="min-width:5ch">42.8%</span></td><td class="n"><span class="nb" style="min-width:4ch">636</span></td><td class="n"><span class="nb" style="min-width:4ch">1486</span></td><td class="n"><span class="nb" style="min-width:6ch">5068</span></td><td>absent, no spots at all</td><td class="n"><span class="nb" style="min-width:7ch">absent</span></td></tr>
+      <tr class="flagged"><td class="call">MM0ZBH</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">41.8%</span></td><td class="n"><span class="nb" style="min-width:4ch">3731</span></td><td class="n"><span class="nb" style="min-width:4ch">8927</span></td><td class="n"><span class="nb" style="min-width:6ch">13,649</span></td><td>on air, <strong>0 RTTY</strong> / 18,625 CW</td><td class="n"><span class="nb" style="min-width:7ch">2.8%</span></td></tr>
+      <tr><td class="call">SZ1A</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">8.6%</span></td><td class="n"><span class="nb" style="min-width:4ch">75</span></td><td class="n"><span class="nb" style="min-width:4ch">876</span></td><td class="n"><span class="nb" style="min-width:6ch">2202</span></td><td>sample too small</td><td class="n"><span class="nb" style="min-width:7ch">CW only</span></td></tr>
+      <tr><td class="call">RN4WA</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">5.9%</span></td><td class="n"><span class="nb" style="min-width:4ch">158</span></td><td class="n"><span class="nb" style="min-width:4ch">2663</span></td><td class="n"><span class="nb" style="min-width:6ch">4839</span></td><td>7.0%</td><td class="n"><span class="nb" style="min-width:7ch">4.5%</span></td></tr>
+      <tr><td class="call">AA4PA</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">5.1%</span></td><td class="n"><span class="nb" style="min-width:4ch">179</span></td><td class="n"><span class="nb" style="min-width:4ch">3518</span></td><td class="n"><span class="nb" style="min-width:6ch">5250</span></td><td>5.6%</td><td class="n"><span class="nb" style="min-width:7ch">3.4%</span></td></tr>
+      <tr><td class="call">OE9GHV</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">5.0%</span></td><td class="n"><span class="nb" style="min-width:4ch">344</span></td><td class="n"><span class="nb" style="min-width:4ch">6906</span></td><td class="n"><span class="nb" style="min-width:6ch">9581</span></td><td>5.6%</td><td class="n"><span class="nb" style="min-width:7ch">3.8%</span></td></tr>
+      <tr><td class="call">HB9EMP</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">5.0%</span></td><td class="n"><span class="nb" style="min-width:4ch">160</span></td><td class="n"><span class="nb" style="min-width:4ch">3223</span></td><td class="n"><span class="nb" style="min-width:6ch">4568</span></td><td>5.9%</td><td class="n"><span class="nb" style="min-width:7ch">3.6%</span></td></tr>
+      <tr><td class="call">S50ARX</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">4.4%</span></td><td class="n"><span class="nb" style="min-width:4ch">254</span></td><td class="n"><span class="nb" style="min-width:4ch">5781</span></td><td class="n"><span class="nb" style="min-width:6ch">7883</span></td><td>6.3%</td><td class="n"><span class="nb" style="min-width:7ch">4.5%</span></td></tr>
+      <tr><td class="call">K9LC</td><td>…</td><td class="n"><span class="nb" style="min-width:5ch">4.1%</span></td><td class="n"><span class="nb" style="min-width:4ch">154</span></td><td class="n"><span class="nb" style="min-width:4ch">3790</span></td><td class="n"><span class="nb" style="min-width:6ch">4657</span></td><td>4.7%</td><td class="n"><span class="nb" style="min-width:7ch">3.3%</span></td></tr>
     </table>
   </div>
 
@@ -902,61 +907,66 @@ th.n{text-align:center}
   key-rtty">RTTY only</span> (2), or <span class="key-mode key-both">CW and
   RTTY</span> (14). <em>ok</em> means every measured band offset was within 40 Hz of zero, and
   <em>erratic</em> means that no
-  single clock error fits. The table lists 39 skimmers, 10 of them 10 ppm or more off at some point.</p>
+  single clock error fits. The table lists 39 skimmers, 10 of them 10 ppm or more off at some point.
+  Its last column repeats the measurement over WAE DX RTTY, four weeks after JARL. Most of the steady
+  errors were unchanged, and three skimmers had changed again: <code>VU2OY-9</code> read correctly,
+  after the calibration fix of <a href="#s8">&sect;&nbsp;8</a>, <code>DL5RMH</code> too, and
+  <code>LB9KJ-1</code>, corrected after JARL, read +14.3 ppm.</p>
 </div>
 
   <div class="scroll fit">
     <table class="fit" id="tab5">
       <caption><strong>Table 5.</strong> Skimmers 3 ppm or More off Frequency.</caption>
       <tr><th>Skimmer</th><th class="n">Clock Error<br><span class="unit">(ppm)</span></th><th>Measured</th>
-        <th class="n">SM7IUN,<br>Oct 19</th></tr>
-      <tr><th colspan="4" class="grp">Steady across the Weekends: One Figure, Their Mean (18)</th></tr>
-      <tr class="row-cw"><td class="call">OK2RZ</td><td class="n"><span class="nb" style="min-width:5ch">+14.9</span></td><td>Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+14.2</span></td></tr>
-      <tr class="row-cw"><td class="call">OK4YL</td><td class="n"><span class="nb" style="min-width:5ch">+14.5</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+14.3</span></td></tr>
-      <tr class="row-cw"><td class="call">DL5RCN</td><td class="n"><span class="nb" style="min-width:5ch">+13.6</span></td><td>CQ WW, Makrothen</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr class="row-both"><td class="call">VU2OY-9</td><td class="n"><span class="nb" style="min-width:5ch">+12.7</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+13.7</span></td></tr>
-      <tr class="row-cw"><td class="call">WS2C</td><td class="n"><span class="nb" style="min-width:5ch">+8.2</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+8.8</span></td></tr>
-      <tr class="row-cw"><td class="call">SQ5J</td><td class="n"><span class="nb" style="min-width:5ch">+8.2</span></td><td>CQ WW, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+9.1</span></td></tr>
-      <tr class="row-both"><td class="call">PY2KNK</td><td class="n"><span class="nb" style="min-width:5ch">+5.5</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+5.7</span></td></tr>
-      <tr class="row-cw"><td class="call">K5EM</td><td class="n"><span class="nb" style="min-width:5ch">+5.2</span></td><td>CQ WW, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+5.0</span></td></tr>
-      <tr class="row-cw"><td class="call">CX6VM</td><td class="n"><span class="nb" style="min-width:5ch">+4.7</span></td><td>CQ WW, Makrothen</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr class="row-cw"><td class="call">ZS1NN</td><td class="n"><span class="nb" style="min-width:5ch">−4.6</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−3.9</span></td></tr>
-      <tr class="row-cw"><td class="call">OK1HRA</td><td class="n"><span class="nb" style="min-width:5ch">−4.5</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−3.7</span></td></tr>
-      <tr class="row-cw"><td class="call">DR4W</td><td class="n"><span class="nb" style="min-width:5ch">−4.2</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−4.8</span></td></tr>
-      <tr class="row-cw"><td class="call">VE4DRK</td><td class="n"><span class="nb" style="min-width:5ch">+3.8</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+3.9</span></td></tr>
-      <tr class="row-cw"><td class="call">W2NNN</td><td class="n"><span class="nb" style="min-width:5ch">+3.5</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+3.2</span></td></tr>
-      <tr class="row-rtty"><td class="call">7L4IOU</td><td class="n"><span class="nb" style="min-width:5ch">−3.4</span></td><td>CQ WW, JARL</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr class="row-cw"><td class="call">IK3STG</td><td class="n"><span class="nb" style="min-width:5ch">+3.4</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+3.0</span></td></tr>
-      <tr class="row-cw"><td class="call">IK4VET</td><td class="n"><span class="nb" style="min-width:5ch">+3.4</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+2.4</span></td></tr>
-      <tr class="row-cw"><td class="call">F5AHD</td><td class="n"><span class="nb" style="min-width:5ch">+3.2</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+2.4</span></td></tr>
-      <tr><th colspan="4" class="grp">Measured on One Weekend Only (7)</th></tr>
-      <tr class="row-cw"><td class="call">JN1ILK</td><td class="n"><span class="nb" style="min-width:5ch">+13.9</span></td><td>CQ WW</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr class="row-cw"><td class="call">OH2BBT</td><td class="n"><span class="nb" style="min-width:5ch">−12.9</span></td><td>Makrothen</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr class="row-both"><td class="call">CN3A</td><td class="n"><span class="nb" style="min-width:5ch">+12.5</span></td><td>CQ WW</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr class="row-cw"><td class="call">DL3OBQ</td><td class="n"><span class="nb" style="min-width:5ch">−10.1</span></td><td>CQ WW</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr class="row-both flagged"><td class="call">KW4VA</td><td class="n"><span class="nb" style="min-width:5ch">+4.8</span></td><td>Makrothen</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr class="row-cw"><td class="call">K4EVT</td><td class="n"><span class="nb" style="min-width:5ch">+4.3</span></td><td>JARL</td><td class="n"><span class="nb" style="min-width:5ch">+4.6</span></td></tr>
-      <tr class="row-rtty"><td class="call">S53F</td><td class="n"><span class="nb" style="min-width:5ch">+4.2</span></td><td>Makrothen</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr><th colspan="4" class="grp">Changed between Weekends, or Differing between Modes: Each Weekend in Turn (14)</th></tr>
-      <tr class="row-both"><td class="call">OK4ZW<sup>a</sup></td><td class="n"><span class="nb" style="min-width:5ch">CW erratic; RTTY +6.1 (CQ WW)</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr class="row-cw"><td class="call">DL0TRZ<sup>b</sup></td><td class="n"><span class="nb" style="min-width:5ch">−5.6 → −14.9 → −14.3</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−13.8</span></td></tr>
-      <tr class="row-both"><td class="call">KM7W</td><td class="n"><span class="nb" style="min-width:5ch">−4.9 → ok</span></td><td>CQ WW, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−0.5</span></td></tr>
-      <tr class="row-both"><td class="call">ZF1A</td><td class="n"><span class="nb" style="min-width:5ch">−4.7 → ok</span></td><td>CQ WW, JARL</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr class="row-both"><td class="call">HB9EMP</td><td class="n"><span class="nb" style="min-width:5ch">+4.3 → ok → ok</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+3.4</span></td></tr>
-      <tr class="row-cw"><td class="call">LZ2HQ</td><td class="n"><span class="nb" style="min-width:5ch">−4.0 → −0.8 → −6.0</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−4.0</span></td></tr>
-      <tr class="row-both"><td class="call">OK2PMU<sup>c</sup></td><td class="n"><span class="nb" style="min-width:5ch">+3.1 → +8.7</span></td><td>CQ WW, Makrothen</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr class="row-cw"><td class="call">VE6WZ-3<sup>d</sup></td><td class="n"><span class="nb" style="min-width:5ch">ok → ok → +4.3</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+1.0</span></td></tr>
-      <tr class="row-cw"><td class="call">AC0VW<sup>e</sup></td><td class="n"><span class="nb" style="min-width:5ch">ok → −8.1 → −0.9</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−0.5</span></td></tr>
-      <tr class="row-both flagged"><td class="call">K1RA<sup>f</sup></td><td class="n"><span class="nb" style="min-width:5ch">ok → erratic → +19.2</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+17.7</span></td></tr>
-      <tr class="row-both"><td class="call">SZ1A<sup>g</sup></td><td class="n"><span class="nb" style="min-width:5ch">CW ok; RTTY +4.5 (Makrothen)</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+0.1</span></td></tr>
-      <tr class="row-both"><td class="call">DL5RMH</td><td class="n"><span class="nb" style="min-width:5ch">ok → +4.6</span></td><td>CQ WW, JARL</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
-      <tr class="row-both"><td class="call">LB9KJ-1</td><td class="n"><span class="nb" style="min-width:5ch">ok → ok → +4.5</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+5.6</span></td></tr>
-      <tr class="row-both"><td class="call">PI4CC<sup>h</sup></td><td class="n"><span class="nb" style="min-width:5ch">ok → ok → +4.2</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−0.1</span></td></tr>
+        <th class="n">SM7IUN,<br>Oct 19</th><th class="n">WAE DX<br>RTTY</th></tr>
+      <tr><th colspan="5" class="grp">Steady across the Weekends: One Figure, Their Mean (18)</th></tr>
+      <tr class="row-cw"><td class="call">OK2RZ</td><td class="n"><span class="nb" style="min-width:5ch">+14.9</span></td><td>Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+14.2</span></td><td class="n"><span class="nb" style="min-width:5ch">+15.1</span></td></tr>
+      <tr class="row-cw"><td class="call">OK4YL</td><td class="n"><span class="nb" style="min-width:5ch">+14.5</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+14.3</span></td><td class="n"><span class="nb" style="min-width:5ch">+15.0</span></td></tr>
+      <tr class="row-cw"><td class="call">DL5RCN</td><td class="n"><span class="nb" style="min-width:5ch">+13.6</span></td><td>CQ WW, Makrothen</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">+14.8</span></td></tr>
+      <tr class="row-both"><td class="call">VU2OY-9</td><td class="n"><span class="nb" style="min-width:5ch">+12.7</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+13.7</span></td><td class="n"><span class="nb" style="min-width:5ch">ok</span></td></tr>
+      <tr class="row-cw"><td class="call">WS2C</td><td class="n"><span class="nb" style="min-width:5ch">+8.2</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+8.8</span></td><td class="n"><span class="nb" style="min-width:5ch">+8.8</span></td></tr>
+      <tr class="row-cw"><td class="call">SQ5J</td><td class="n"><span class="nb" style="min-width:5ch">+8.2</span></td><td>CQ WW, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+9.1</span></td><td class="n"><span class="nb" style="min-width:5ch">+7.6</span></td></tr>
+      <tr class="row-both"><td class="call">PY2KNK</td><td class="n"><span class="nb" style="min-width:5ch">+5.5</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+5.7</span></td><td class="n"><span class="nb" style="min-width:5ch">+6.1</span></td></tr>
+      <tr class="row-cw"><td class="call">K5EM</td><td class="n"><span class="nb" style="min-width:5ch">+5.2</span></td><td>CQ WW, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+5.0</span></td><td class="n"><span class="nb" style="min-width:5ch">+5.4</span></td></tr>
+      <tr class="row-cw"><td class="call">CX6VM</td><td class="n"><span class="nb" style="min-width:5ch">+4.7</span></td><td>CQ WW, Makrothen</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
+      <tr class="row-cw"><td class="call">ZS1NN</td><td class="n"><span class="nb" style="min-width:5ch">−4.6</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−3.9</span></td><td class="n"><span class="nb" style="min-width:5ch">−4.3</span></td></tr>
+      <tr class="row-cw"><td class="call">OK1HRA</td><td class="n"><span class="nb" style="min-width:5ch">−4.5</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−3.7</span></td><td class="n"><span class="nb" style="min-width:5ch">−4.2</span></td></tr>
+      <tr class="row-cw"><td class="call">DR4W</td><td class="n"><span class="nb" style="min-width:5ch">−4.2</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−4.8</span></td><td class="n"><span class="nb" style="min-width:5ch">−6.1</span></td></tr>
+      <tr class="row-cw"><td class="call">VE4DRK</td><td class="n"><span class="nb" style="min-width:5ch">+3.8</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+3.9</span></td><td class="n"><span class="nb" style="min-width:5ch">+4.7</span></td></tr>
+      <tr class="row-cw"><td class="call">W2NNN</td><td class="n"><span class="nb" style="min-width:5ch">+3.5</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+3.2</span></td><td class="n"><span class="nb" style="min-width:5ch">+3.1</span></td></tr>
+      <tr class="row-rtty"><td class="call">7L4IOU</td><td class="n"><span class="nb" style="min-width:5ch">−3.4</span></td><td>CQ WW, JARL</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">−4.7</span></td></tr>
+      <tr class="row-cw"><td class="call">IK3STG</td><td class="n"><span class="nb" style="min-width:5ch">+3.4</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+3.0</span></td><td class="n"><span class="nb" style="min-width:5ch">+3.8</span></td></tr>
+      <tr class="row-cw"><td class="call">IK4VET</td><td class="n"><span class="nb" style="min-width:5ch">+3.4</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+2.4</span></td><td class="n"><span class="nb" style="min-width:5ch">+1.0</span></td></tr>
+      <tr class="row-cw"><td class="call">F5AHD</td><td class="n"><span class="nb" style="min-width:5ch">+3.2</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+2.4</span></td><td class="n"><span class="nb" style="min-width:5ch">+2.6</span></td></tr>
+      <tr><th colspan="5" class="grp">Measured on One Weekend Only (7)</th></tr>
+      <tr class="row-cw"><td class="call">JN1ILK</td><td class="n"><span class="nb" style="min-width:5ch">+13.9</span></td><td>CQ WW</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">ok</span></td></tr>
+      <tr class="row-cw"><td class="call">OH2BBT</td><td class="n"><span class="nb" style="min-width:5ch">−12.9</span></td><td>Makrothen</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
+      <tr class="row-both"><td class="call">CN3A</td><td class="n"><span class="nb" style="min-width:5ch">+12.5</span></td><td>CQ WW</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
+      <tr class="row-cw"><td class="call">DL3OBQ</td><td class="n"><span class="nb" style="min-width:5ch">−10.1</span></td><td>CQ WW</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">−7.1</span></td></tr>
+      <tr class="row-both flagged"><td class="call">KW4VA</td><td class="n"><span class="nb" style="min-width:5ch">+4.8</span></td><td>Makrothen</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
+      <tr class="row-cw"><td class="call">K4EVT</td><td class="n"><span class="nb" style="min-width:5ch">+4.3</span></td><td>JARL</td><td class="n"><span class="nb" style="min-width:5ch">+4.6</span></td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
+      <tr class="row-rtty"><td class="call">S53F</td><td class="n"><span class="nb" style="min-width:5ch">+4.2</span></td><td>Makrothen</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
+      <tr><th colspan="5" class="grp">Changed between Weekends, or Differing between Modes: Each Weekend in Turn (14)</th></tr>
+      <tr class="row-both"><td class="call">OK4ZW<sup>a</sup></td><td class="n"><span class="nb" style="min-width:5ch">CW erratic; RTTY +6.1 (CQ WW)</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
+      <tr class="row-cw"><td class="call">DL0TRZ<sup>b</sup></td><td class="n"><span class="nb" style="min-width:5ch">−5.6 → −14.9 → −14.3</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−13.8</span></td><td class="n"><span class="nb" style="min-width:5ch">erratic</span></td></tr>
+      <tr class="row-both"><td class="call">KM7W</td><td class="n"><span class="nb" style="min-width:5ch">−4.9 → ok</span></td><td>CQ WW, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−0.5</span></td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
+      <tr class="row-both"><td class="call">ZF1A</td><td class="n"><span class="nb" style="min-width:5ch">−4.7 → ok</span></td><td>CQ WW, JARL</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
+      <tr class="row-both"><td class="call">HB9EMP</td><td class="n"><span class="nb" style="min-width:5ch">+4.3 → ok → ok</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+3.4</span></td><td class="n"><span class="nb" style="min-width:5ch">+4.3</span></td></tr>
+      <tr class="row-cw"><td class="call">LZ2HQ</td><td class="n"><span class="nb" style="min-width:5ch">−4.0 → −0.8 → −6.0</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−4.0</span></td><td class="n"><span class="nb" style="min-width:5ch">−6.5</span></td></tr>
+      <tr class="row-both"><td class="call">OK2PMU<sup>c</sup></td><td class="n"><span class="nb" style="min-width:5ch">+3.1 → +8.7</span></td><td>CQ WW, Makrothen</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">ok</span></td></tr>
+      <tr class="row-cw"><td class="call">VE6WZ-3<sup>d</sup></td><td class="n"><span class="nb" style="min-width:5ch">ok → ok → +4.3</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+1.0</span></td><td class="n"><span class="nb" style="min-width:5ch">+1.3</span></td></tr>
+      <tr class="row-cw"><td class="call">AC0VW<sup>e</sup></td><td class="n"><span class="nb" style="min-width:5ch">ok → −8.1 → −0.9</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−0.5</span></td><td class="n"><span class="nb" style="min-width:5ch">ok</span></td></tr>
+      <tr class="row-both flagged"><td class="call">K1RA<sup>f</sup></td><td class="n"><span class="nb" style="min-width:5ch">ok → erratic → +19.2</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+17.7</span></td><td class="n"><span class="nb" style="min-width:5ch">…</span></td></tr>
+      <tr class="row-both"><td class="call">SZ1A<sup>g</sup></td><td class="n"><span class="nb" style="min-width:5ch">CW ok; RTTY +4.5 (Makrothen)</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+0.1</span></td><td class="n"><span class="nb" style="min-width:5ch">CW +2.7</span></td></tr>
+      <tr class="row-both"><td class="call">DL5RMH</td><td class="n"><span class="nb" style="min-width:5ch">ok → +4.6</span></td><td>CQ WW, JARL</td><td class="n"><span class="nb" style="min-width:5ch">…</span></td><td class="n"><span class="nb" style="min-width:5ch">ok</span></td></tr>
+      <tr class="row-both"><td class="call">LB9KJ-1</td><td class="n"><span class="nb" style="min-width:5ch">ok → ok → +4.5</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">+5.6</span></td><td class="n"><span class="nb" style="min-width:5ch">+14.3</span></td></tr>
+      <tr class="row-both"><td class="call">PI4CC<sup>h</sup></td><td class="n"><span class="nb" style="min-width:5ch">ok → ok → +4.2</span></td><td>CQ WW, Makrothen, JARL</td><td class="n"><span class="nb" style="min-width:5ch">−0.1</span></td><td class="n"><span class="nb" style="min-width:5ch">ok</span></td></tr>
     </table>
   </div>
   <p class="note-small">Receiver clock error in parts per million (ppm), CW and RTTY combined, grouped by how it behaved across the three
-  weekends, with SM7IUN's independent CW figure for October 19 (an ellipsis there: not in his list
-  that day). Rows are shaded by the modes measured (key above); skimmers running
+  weekends from CQ WW to JARL, with SM7IUN's independent CW figure for October 19 (an ellipsis there:
+  not in his list that day) and the same measurement repeated over WAE DX RTTY, November 14&ndash;15
+  (an ellipsis there: too few spots, or not on the air). Rows are shaded by the modes measured (key above); skimmers running
   <code>UberSDR Skimmer</code> have their callsign highlighted.</p>
 
 <div class="col">
@@ -1122,6 +1132,10 @@ th.n{text-align:center}
   reference skimmers alike, so a spot with a blank type cannot be
   distinguished from a runner's; the developer's own description of the defect
   (<a href="#s14">&sect;&nbsp;14</a>) is nevertheless consistent with it.</p>
+  <p>The program was the common factor of the defect, not of the skimmers' quality in RTTY. Five
+  weeks later, over WAE DX RTTY, the 20 skimmers that the RBN node list showed running it were
+  off-consensus on 2.88 percent of their judged spots and reported misattributed callers on 0.48
+  percent, against 3.43 and 0.54 percent for the 38 reporting VE3NEA's program (<a href="#s15-3">&sect;&nbsp;15.3</a>).</p>
 
   <h2 id="s11">11 · A Smaller, Persistent Excess in CW</h2>
   <p>RBN nodes running <code>UberSDR Skimmer</code>, the eight among them, also ran a smaller excess of off-consensus
@@ -1358,7 +1372,12 @@ th.n{text-align:center}
   installed which version, and only the <code>UberSDR Skimmer</code> development team can
     identify which source commit constituted the correction.</p>
 
-  <h2 id="s15">15 · A Week Later: The RTTY Defect Was Fixed on Most Skimmers</h2>
+  <h2 id="s15">15 · The RTTY Defect Was Fixed, and Stayed Fixed through WAE DX RTTY</h2>
+  <p>Three RTTY contests followed Makrothen within five weeks: JARL WW RTTY a week later, the
+  Russian WW Multimode three weeks later, and WAE DX RTTY, the largest of them, five weeks later,
+  with a Weekly RTTY Test every Friday between them. Together they date the fix skimmer by skimmer
+  and show that it held.</p>
+  <h3 id="s15-1">15.1 · A Week Later: JARL WW RTTY</h3>
   <p>JARL WW RTTY took place on October 17 and 18, a week after Makrothen, and
   I measured it by the same method, first day by day as each archive was
   published and then over the entire contest in three-hour blocks, so that any
@@ -1437,6 +1456,7 @@ th.n{text-align:center}
   information available before JARL began, but by the end of the contest only
   that one skimmer required exclusion, together with any inactive skimmer
   that returns.</p>
+  <h3 id="s15-2">15.2 · Between Contests: The Weekly RTTY Tests and the Russian WW Multimode</h3>
   <p>Each skimmer's status changed within hours, yet a filter list is hard to
   compile in the week preceding an RTTY contest, because outside contests
   there is little RTTY to judge a skimmer by: on October 15 and 16 the
@@ -1486,14 +1506,40 @@ th.n{text-align:center}
   for the reference skimmers. <code>K1RA-4</code> was clean for a second week,
   1 caller in 54, and <code>K1HTV-4</code>, too thinly judged since JARL to
   tell, was clean too, 2 in 45.</p>
-  <p>WAE DX RTTY, November 14&ndash;15, was the next contest-sized check, and it was clean. Over
-  its 48 hours, with 999,147 RTTY spots, all 30 roster skimmers sending RTTY ran 1.4 to 5.8
-  percent off-consensus, against 3.4 percent for the reference skimmers, and none ran above 12
-  percent in any three-hour block; the highest, <code>HS0ZGZ</code>, on fewer than 1000 judged
+  <h3 id="s15-3">15.3 · Five Weeks Later: WAE DX RTTY</h3>
+  <p>WAE DX RTTY, November 14&ndash;15, was the largest test of the fix: 999,147 RTTY spots from 82
+  skimmers over 48 hours, five times as many as Makrothen's three periods carried and nearly twice
+  JARL's. It was clean (<a href="#fig-wae">Figure 7</a>). The 78 skimmers with at least 100 judged
+  spots had a median rate of 3.2 percent, and all 29 roster skimmers among them ran 2.1 to 5.8
+  percent, inside the main cluster; the six of the original eight on the air ran 2.1 to 3.3 percent,
+  against 41.8 to 50.2 at Makrothen (<a href="#tab1">Table 1</a>), and none ran above 12 percent in
+  any three-hour block. The highest of the roster, <code>HS0ZGZ</code>, on fewer than 1000 judged
   spots, was clean from 1500Z on the first day, and its operator reports that it ran VE3NEA's program
   until November 15, the second day, when it changed to <code>UberSDR Skimmer</code>
-  (<a href="https://groups.io/g/RBN-OPS/message/9653">RBN-OPS #9653</a>). The same weekend the roster's CW excess was larger
-  than on quiet days (<a href="https://k1mk-7388.github.io/ContestPages/RBNCWSpotQuality/#s11-3">CW document &sect;&nbsp;1.3</a>).</p>
+  (<a href="https://groups.io/g/RBN-OPS/message/9653">RBN-OPS #9653</a>). Measured as the decade of
+  benchmarks is measured, the network ran 3.8 percent off-consensus and reported callers as runners
+  on 0.74 percent of judged spots, below every benchmark contest of 2023 to 2025 on the first measure
+  and near the bottom of their range on the second (<a href="#tab12">Table 9</a>). The same weekend
+  the roster's CW excess was larger than on quiet days
+  (<a href="https://k1mk-7388.github.io/ContestPages/RBNCWSpotQuality/#s11-3">CW document &sect;&nbsp;1.3</a>).</p>
+</div>
+
+  <figure id="fig-wae">
+    <div class="legend">
+      <span class="key"><span class="sw" style="background:var(--flag)"></span>on the <code>UberSDR Skimmer</code> roster (29)</span>
+      <span class="key"><span class="sw" style="background:var(--accent)"></span>all other skimmers</span>
+      <span class="key" style="color:var(--ink-3)">dashed · RTTY median</span>
+    </div>
+    <svg id="h_wae" role="img" aria-label="Histogram of RTTY off-consensus rate over WAE DX RTTY, 78 skimmers: every UberSDR Skimmer skimmer inside the main cluster between 2.1 and 5.8 percent, around a 3.2 percent median; two other skimmers far out at 41 and 45 percent"></svg>
+    <figcaption><strong>Figure 7.</strong> All RTTY skimmers over WAE DX RTTY, November 14&ndash;15: 78
+    skimmers with at least 100 judged spots, median 3.2%. Every skimmer on the roster, highlighted, is
+    inside the main cluster. The two far outliers are not on it: <code>LB9KJ-1</code>, at 40.8%, had a
+    receiver clock error of about +14 ppm (<a href="#tab5">Table 5</a>), and <code>EA1DAV</code>, at
+    45.2%, read about 100 Hz low on every band, a fixed offset rather than a clock error, which puts its
+    spots in the neighboring 100 Hz cell.</figcaption>
+  </figure>
+
+<div class="col">
   <p>A closer look at WAE DX RTTY found <code>UberSDR Skimmer</code> no worse than the rest of the
   network in any respect, and better in several. The 20 skimmers that the RBN node list showed
   running it were off-consensus on 2.88 percent of their 324,611 judged RTTY spots, against 3.43
@@ -1513,8 +1559,8 @@ th.n{text-align:center}
   by nearly a factor of two in CW. The station's newest skimmer, <code>KM3T-6</code>, running
   <code>UberSDR Skimmer</code> and reporting the same antenna as <code>KM3T-3</code>, which runs
   VE3NEA's program, shows the same in CW: from its first spots at 1600Z on November 16 through
-  November 17, 41 callers in 3086 judged spots, 1.33 percent, against 14 in 3718, 0.38 percent,
-  with the controls at 0.70.</p>
+  November 18, 84 callers in 7049 judged spots, 1.19 percent, against 38 in 7731, 0.49 percent,
+  with the controls at 0.69.</p>
   <div class="note" id="qtc-echo">
     <p><strong>How a QTC echo was counted.</strong> The test asks, of each misattributed caller,
     whether anyone else was hearing that station at the time. It uses only the RBN's RTTY spots
@@ -1549,6 +1595,7 @@ th.n{text-align:center}
     echo, but a station that has just called is usually being heard by other skimmers, so such
     spots mostly count as live.</p>
   </div>
+  <h3 id="s15-4">15.4 · The Investigation Closes</h3>
   <p>That effectively closes the investigation of the anomaly found in Makrothen. The RTTY
   discrepancy has been fully resolved: the fix arrived during the first of the three RTTY contests
   that followed Makrothen, JARL WW RTTY, reached the last affected skimmer by October 30, and held
@@ -1735,8 +1782,9 @@ th.n{text-align:center}
   <code>UberSDR Skimmer</code> is aimed squarely at that gap, a wideband
   multimode skimmer for an open-source SDR platform, and the operators behind
   the eight are, before anything else, volunteers putting more RTTY receivers
-  on the air. The lead developer answered the day after the defect was raised
-  and had a first fix on the public mirror within the hour
+  on the air. <code>UberSDR Skimmer</code>'s lead developer is engaged and highly responsive,
+  responding the day after the defect was raised and having a first fix on the public mirror within
+  the hour
   (<a href="#s14">&sect;&nbsp;14</a>). Nothing here is meant as a personal
   criticism of anyone: the criticism is of a practice—sending
   untested output to a shared network—not of people. The hope is that
@@ -1781,7 +1829,9 @@ th.n{text-align:center}
       one still showed the defect, and it too was clean by the Weekly RTTY Test of
       October 30. No skimmer showed the defect again, in the Russian WW
       Multimode contest of October 31&ndash;November 1, in the Weekly RTTY
-      Test of November 6, or in WAE DX RTTY on November 14&ndash;15. The CW excess was unchanged throughout,
+      Test of November 6, or in WAE DX RTTY on November 14&ndash;15, the largest of them, in which
+      every skimmer running the program sat inside the network's main cluster
+      (<a href="#s15-3">&sect;&nbsp;15.3</a>). The CW excess was unchanged throughout,
       suggesting that the RTTY correction did not address its cause. Separate
       causes are plausible, but establishing them would require the source code
       (&sect;&sect;&nbsp;<a href="#s13">13</a>&ndash;<a href="#s15">15</a>). A CW
@@ -1844,7 +1894,8 @@ th.n{text-align:center}
     correction, and the cause of <code>KM3T-5</code>'s latency at CQ WW have
     not been established.</li>
     <li><strong>Sample sizes.</strong> The weekends differ in size (1,427,694
-    RTTY spots in CQ WW, 192,802 in Makrothen's three periods, and 528,626 in JARL WW RTTY), so
+    RTTY spots in CQ WW, 192,802 in Makrothen's three periods, 528,626 in JARL WW RTTY, and
+    999,147 in WAE DX RTTY), so
     only per-skimmer comparisons are meaningful, never the aggregate
     difference between contests. Between contests there is too little RTTY
     to evaluate a skimmer except in the Weekly RTTY Test's Friday window (<a href="#s15">&sect;&nbsp;15</a>).
@@ -2091,7 +2142,7 @@ th.n{text-align:center}
   hours</strong>; during those hours, stale spots were about 7 percent of all
   output from <code>KM3T-5</code>, compared with 0.1 percent during its other
   hours; the share reached 13 percent in one half-hour
-  (<a href="#fig8">Figure 7</a>). That is
+  (<a href="#fig8">Figure 8</a>). That is
   a lower bound: a spot can be recognized as stale only where it lands in a
   cell the consensus decided, and in those hours only 29 percent of its spots
   did, against 82 percent in its other hours. Counted over the spots that
@@ -2100,7 +2151,7 @@ th.n{text-align:center}
 
   <figure id="fig8">
     <svg id="c4" role="img" aria-label="KM3T-5 over CQ WW RTTY 2026 in 30-minute bins: the median delay of its stale spots climbs from about 5 to 60 minutes between 1430Z and 1900Z on 26 September and drains to 10 minutes by 2200Z, then climbs again from 1300Z on 27 September to about 70 minutes and stays there to the end of the contest; stale spots and their share of all its RTTY spots follow the same hours, with peaks of 92 stale spots and approximately 13 percent of all spots sent in a half-hour."></svg>
-    <figcaption><strong>Figure 7.</strong> <code>KM3T-5</code> over CQ WW RTTY, 2026 September 26&ndash;27, in 30-minute bins. Top: the median delay of its stale spots, a lower bound (minutes since another skimmer last spotted the station on that frequency), where a bin has five or more. Middle: stale spots sent. Bottom: stale spots as a share of all the RTTY spots it sent, where a bin has 50 or more; a lower bound, since only a spot in a decided cell can be recognized as stale. The delay builds over two to four hours and drains again, rather than jumping, and the late spots did not come out in bursts, as a flushed buffer's would. Nor does it follow the load: overnight before each episode <code>KM3T-5</code> sent spots as fast and kept pace, and in CQ WPX RTTY 2025 it sent 46,135 RTTY spots, against 53,636 here, with almost none stale. Hover a point or bar for its value.</figcaption>
+    <figcaption><strong>Figure 8.</strong> <code>KM3T-5</code> over CQ WW RTTY, 2026 September 26&ndash;27, in 30-minute bins. Top: the median delay of its stale spots, a lower bound (minutes since another skimmer last spotted the station on that frequency), where a bin has five or more. Middle: stale spots sent. Bottom: stale spots as a share of all the RTTY spots it sent, where a bin has 50 or more; a lower bound, since only a spot in a decided cell can be recognized as stale. The delay builds over two to four hours and drains again, rather than jumping, and the late spots did not come out in bursts, as a flushed buffer's would. Nor does it follow the load: overnight before each episode <code>KM3T-5</code> sent spots as fast and kept pace, and in CQ WPX RTTY 2025 it sent 46,135 RTTY spots, against 53,636 here, with almost none stale. Hover a point or bar for its value.</figcaption>
   </figure>
 
   <p>Across the weekend, its stale spots, 2025 in all, were 3.8 percent of the 53,636
@@ -2224,7 +2275,8 @@ th.n{text-align:center}
   rather than 100 Hz allows the frequency check of
   <a href="#s9">&sect;&nbsp;9</a> to be repeated at 10 times the resolution,
   for the RTTY skimmers that report it: 28 over the CQ WW weekend, 16 over
-  the Makrothen weekend, and 22 at JARL. Nothing here changes the main
+  the Makrothen weekend, 22 at JARL, and 27 of 82 over WAE DX RTTY, with 999,147 RTTY spots the
+  largest sample. Nothing here changes the main
   findings, but the finer view shows two things the 100 Hz check could not.</p>
 
   <h3 id="appC-1">B.1 · Receiver Clocks, Resolved to About 1 ppm</h3>
@@ -2235,16 +2287,19 @@ th.n{text-align:center}
   become visible, and those that SM7IUN's independent CW figures confirm are
   real receiver errors:</p>
   <ul>
-    <li><code>VU2OY-9</code> fits +12.4 to +13.3 ppm on all three weekends with
-    a scatter of only 1 to 4 Hz; SM7IUN has it at +11.9 and +13.6 on the JARL
+    <li><code>VU2OY-9</code> fits +12.4 to +13.3 ppm on the three weekends from CQ WW to JARL,
+    with a scatter of only 1 to 4 Hz; SM7IUN has it at +11.9 and +13.6 on the JARL
     days and near zero from October 22, so the calibration fix of
-    <a href="#s8">&sect;&nbsp;8</a> reached it after JARL.</li>
+    <a href="#s8">&sect;&nbsp;8</a> reached it after JARL, and over WAE DX RTTY it read
+    correctly.</li>
     <li><code>LB9KJ-1</code> drifts: +0.5 ppm over CQ WW, +2.4 over Makrothen,
     and +5.6 at JARL. The 100 Hz check saw it only at JARL
     (<a href="#tab5">Table 5</a>). SM7IUN shows it reaching +6.9 on October
-    22–23 and corrected to +0.2 on October 25.</li>
-    <li><code>HS0ZGZ</code> runs about +1 to +2 ppm, below <a href="#tab5">Table 5</a>'s 3 ppm
-    threshold.</li>
+    22–23 and corrected to +0.2 on October 25. Over WAE DX RTTY it fitted +14.7 ppm, with a
+    scatter of about 15 Hz: whatever was corrected did not stay corrected.</li>
+    <li><code>HS0ZGZ</code> runs about +1 to +2 ppm, and +2.6 over WAE DX RTTY, a weekend in
+    which it changed program (<a href="#s15-3">&sect;&nbsp;15.3</a>), below
+    <a href="#tab5">Table 5</a>'s 3 ppm threshold.</li>
   </ul>
   <p>A fit to RTTY at this resolution is not, however, a clock measurement by
   itself. Two skimmers whose RTTY fits suggested about +2.7 and −2.4 ppm,
@@ -2271,7 +2326,7 @@ th.n{text-align:center}
   band: fitted with each bin weighted by its readings, it is 0.16 to 0.17
   percent on 40, 20, and 15 m, 0.13 percent on 80 m, where activity fills
   mainly the top of the segment, and 0.19 percent on 10 m, where few of these
-  skimmers report (<a href="#fig10">Figure 8</a>). Averaged over each
+  skimmers report (<a href="#fig10">Figure 9</a>). Averaged over each
   band the ramp looks like a band-dependent offset, about +60 Hz on 40 and 30
   m, none on 80 m, and −5 to −20 Hz on 20, 15, and 10 m, only because most
   activity sits low in the 40 m segment and near the middle of the others.</p>
@@ -2298,7 +2353,7 @@ th.n{text-align:center}
   negative-slope group's skimmers do not decode below about 3560 kHz.</p>
   <p>Measured against an independent reference, the 49 skimmers that report
   only to 100 Hz (whose rounding averages out over many spots), both groups
-  ramp, in opposite directions (<a href="#fig10">Figure 8</a>):</p>
+  ramp, in opposite directions (<a href="#fig10">Figure 9</a>):</p>
   <ul>
     <li><strong>Negative-slope group</strong>, about −0.04 to −0.07 percent:
   <code>KM3T-5</code>, <code>LZ4UX</code>,
@@ -2354,7 +2409,7 @@ th.n{text-align:center}
       <span class="key" style="color:var(--ink-3)">dashed · the 100 Hz reference (zero)</span>
     </div>
     <svg id="c10" role="img" aria-label="RTTY frequency error against position in the band for the two groups of 10 Hz skimmers on 80, 40, 20, 15, and 10 m, with weighted least-squares lines. On every band one group slopes down and the other up, a scale difference of 0.13 to 0.19 percent, and the two agree at 3584, 7084, 14080, 21078, and 28076 kHz."></svg>
-    <figcaption><strong>Figure 8.</strong> RTTY frequency error by position in the band, every contest band:
+    <figcaption><strong>Figure 9.</strong> RTTY frequency error by position in the band, every contest band:
     the mean reading of each group's skimmers minus the mean reading of the 100 Hz skimmers that heard the
     same station, band, and five-minute slot, in 10 kHz bins, September 26 to October 26 (reference readings
     more than 300 Hz from their own median, differences over 300 Hz, and sparse bins dropped; bins hold 24 to
@@ -2368,32 +2423,35 @@ th.n{text-align:center}
     yielded fewer than 20 readings that could be checked against the reference.</figcaption>
   </figure>
 
-  <h4 id="appC-2-3">B.2.3 · Stability across Seven Months</h4>
+  <h4 id="appC-2-3">B.2.3 · Stability across Eight Months</h4>
   <p>The pattern has held since the RBN first accepted 10 Hz frequencies.
-  Repeating the analysis separately on each of nine RTTY contest weekends,
+  Repeating the analysis separately on each of ten RTTY contest weekends,
   from YB DX and the North American Sprint on March 14–15 through BARTG HF,
-  EA, IG-RY, SP DX, VOLTA, CQ WW, and Makrothen to JARL on October 17–18,
-  finds the same two groups every time. As few as 7 skimmers reported at
+  EA, IG-RY, SP DX, VOLTA, CQ WW, Makrothen, and JARL to WAE DX RTTY on
+  November 14–15, finds the same two groups every time. As few as 7 skimmers reported at
   10 Hz in March and as many as 28 at CQ WW, but each one that appears on two
   or more weekends keeps its group's sign of slope on every weekend but one
-  (<code>OH8KA</code> on April 4–5). Each group's slope against the 100 Hz
+  (<code>OH8KA</code> on April 4–5), until one station changed sides at WAE (below). Each
+  group's slope against the 100 Hz
   reference does move, by about the same amount in the same direction for both
-  groups, but that reference is a mixture of 15 to 35 skimmers that changes
-  from weekend to weekend, and only four of them qualify on all nine.</p>
+  groups, but that reference is a mixture of 15 to 48 skimmers that changes
+  from weekend to weekend, and only four of them qualify on all nine weekends from March to
+  JARL.</p>
   <p>A test of constancy has to hold the membership fixed and leave the reference out.
   Comparing two skimmers directly, in the slots where both heard the same
   station, does both: the membership is fixed and no reference enters. So does comparing
   three fixed members of each group together. <code>AC0C-1</code>, the one member of the
-  negative-slope group present on all nine weekends, differs from
-  <code>N6TV</code> and <code>WZ7I</code> (all nine) and <code>G4ZFE</code>
-  (eight) by 0.146 to 0.171 percent on every weekend, nearly always within
+  negative-slope group present on all ten weekends, differs from
+  <code>N6TV</code> and <code>WZ7I</code> (all ten) and <code>G4ZFE</code>
+  (nine) by 0.146 to 0.171 percent on every weekend, 0.157 to 0.163 at WAE, nearly always within
   0.01 percentage points of 0.16 percent, or about one part in 620. The frequency where
   <code>AC0C-1</code>, <code>KM3T-5</code>, and <code>OE9GHV</code> agree
   with <code>N6TV</code>, <code>WZ7I</code>, and <code>G4ZFE</code> stays put
   too: 7077 to 7086 kHz on 40 m, 14075 to 14083 kHz on 20 m, and
-  21066 to 21079 kHz on 15 m, on every weekend with enough data. The scale
+  21066 to 21079 kHz on 15 m, on every weekend with enough data from March to JARL; at WAE one of
+  the six changed sides, so that comparison no longer applies there. The scale
   difference and the frequency where it vanishes are therefore fixed properties
-  of the two groups' processing, unchanged across seven months, consistent
+  of the two groups' processing, unchanged across eight months, consistent
   with a fixed setting rather than drift, wear, or an update.</p>
   <p>The one exception is <code>KM3T-5</code>. Against <code>N6TV</code> and
   <code>WZ7I</code> it differed by 0.17 percent on March 14–15, like
@@ -2402,6 +2460,13 @@ th.n{text-align:center}
   than once, so something at that station changed while the others held
   constant; as one of SM7IUN's GPS-referenced anchors, it has no clock error
   to explain it.</p>
+  <p>The second exception came at WAE DX RTTY. <code>OE9GHV</code>, also one of SM7IUN's
+  GPS-referenced anchors and in the negative-slope group from March through JARL, read +0.033
+  percent against the 100 Hz reference on November 14 and +0.088 on November 15, in the
+  positive-slope group; against a fixed reference its slope went from &minus;0.131 percent at CQ WW
+  and &minus;0.091 at JARL to +0.066. Something at that station changed between JARL and the end of
+  WAE. Whatever it was is the setting <a href="#appC-3">B.3</a> looks for, and the station's own
+  record of what it changed could identify it.</p>
   <h4 id="appC-2-4">B.2.4 · The Stations' Frequency Pattern</h4>
   <p>The hundredths digits are not spread evenly, because the stations are
   not. Their signals pile up at a common point a little below a multiple of 100 Hz,
@@ -2438,36 +2503,38 @@ th.n{text-align:center}
   <h4 id="appC-2-5">B.2.5 · An Independent Radio Check</h4>
   <p>Radios independent of the RBN give nearly the same answer without any
   assumption about how stations select their transmitting
-  frequencies. The logs of the seven RTTY contests I have
+  frequencies. The logs of the eight RTTY contests I have
   operated since March record each contact's frequency in the logging
   program's database (the Cabrillo files sent to the sponsors keep only the
-  whole kilohertz). All seven were operated from the same station, K1TTT's,
-  with the same radios and software. Six are mine as a single operator,
+  whole kilohertz). All eight were operated from the same station, K1TTT's,
+  with the same radios and software. Seven are mine as a single operator,
   working the station remotely, so that every change of frequency goes
   through the logging program and moves in its 20 Hz tuning steps: SP DX,
-  VOLTA, SARTG, Russian WW, Makrothen, and JARL. The seventh, CQ WW, is the
+  VOLTA, SARTG, Russian WW, Makrothen, JARL, and WAE DX RTTY. The eighth, CQ WW, is the
   multi-operator log of K1SFA, with a mix of remote and on-site operators,
   I among them (the on-site operators were free to tune the radios directly
   without fixed N1MM tuning steps), and K1SFA used a somewhat
   different N1MM configuration.</p>
-  <p>In the 3429 contacts made searching and pouncing rather than running, the logged
+  <p>In the 5507 contacts made searching and pouncing rather than running, the logged
   frequency is where the operator tuned to the other station. I matched each
   against the same station's spots on the same band within 10 minutes and
   left out every contact whose logged frequency equals some skimmer's spot
   of it, since the operator may have tuned those by clicking on the spot;
-  about 1900 remain with readings from both groups.</p>
+  about 2550 remain with readings from both groups. For WAE, <code>OE9GHV</code> counts in the
+  positive-slope group, where it read that weekend (<a href="#appC-2-3">B.2.3</a>).</p>
   <p>Against these radios the
-  positive-slope group is stretched by (0.138 ± 0.011)% of a signal's
+  positive-slope group is stretched by (0.125 ± 0.009)% of a signal's
   distance from the agreement point (quoted uncertainties are one standard
   error of the fitted regression slope, not confidence intervals), and by
-  0.140 to 0.191 percent in each of the seven contests separately, including
-  (0.140 ± 0.013)% in K1SFA's log, the most precise of them. The negative-slope
-  group reads (0.038 ± 0.011)% short, and the 100 Hz reference 0.05 percent long.</p>
+  0.127 to 0.191 percent in each of the eight contests separately, including
+  (0.140 ± 0.013)% in K1SFA's log, the most precise of them, and (0.127 ± 0.014)% in WAE DX RTTY,
+  the largest. The negative-slope group reads (0.038 ± 0.009)% short, and the 100 Hz reference
+  0.03 percent long.</p>
   <p>A calibration error in the station's radios would scale absolute
   frequency, moving every reading across a band by nearly the same amount,
   and the point of the signal the logging program records adds only a
   constant, here about 60 Hz; neither changes a slope.
-  The stretch is therefore mostly the positive-slope group's, about 0.14 to
+  The stretch is therefore mostly the positive-slope group's, about 0.13 to
   0.16 percent, with a smaller estimated compression of about 0.04 percent
   in the negative-slope group.</p>
   <h4 id="appC-2-6">B.2.6 · Rounding and Mixed Resolution</h4>
@@ -2527,7 +2594,11 @@ th.n{text-align:center}
     21150.0 kHz beacon lies 72 kHz above the 15 m agreement point, where the
     positive-slope group's RTTY scale would put it about 115 Hz high, more
     than a full 100 Hz step; neither group's CW reading moves. The ramp is
-    therefore confined to RTTY.</li>
+    therefore confined to RTTY. WAE DX RTTY showed it directly: on November 15 one station ran
+    both programs side by side, <code>G4ZFE</code> on RTTY Skimmer Server and <code>G4ZFE-1</code>
+    on <code>UberSDR Skimmer</code> (<a href="https://groups.io/g/RBN-OPS/message/9653">RBN-OPS
+    #9653</a>), and the two read +0.096 and &minus;0.020 percent against the 100 Hz reference that
+    day, one in each group.</li>
     <li><strong>Not a sideband convention.</strong> RTTY is lower sideband on
     every band, and 30 m, above 10 MHz, behaves like 40 m: in every slot both
     groups shared there, <code>G4ZFE</code> read 50 to 70 Hz below
@@ -2557,12 +2628,23 @@ th.n{text-align:center}
     of RTTY Skimmer Server dates from February 2018, so no recent update can
     explain it.</li>
   </ul>
+  <p>Other programs read with the negative-slope group. At WAE DX RTTY several
+  <code>UberSDR Skimmer</code> nodes reported RTTY at 10 Hz for the first time (<code>KM3T-2</code>,
+  <code>EA8BFK</code>, <code>EA8/DF4UE</code>, <code>N7OR</code>, <code>YO5LD-U</code>,
+  <code>G4ZFE-1</code>), as did the SparkGap node <code>WF8Z-1</code>. All of them fall in the
+  negative-slope group, at &minus;0.014 to &minus;0.023 percent against the 100 Hz reference, beside
+  <code>AC0C-1</code> at &minus;0.023, while the positive-slope group read +0.09 to +0.15. Only RTTY
+  Skimmer Server produces the stretch, and not every copy of it does.</p>
+  <p class="note-small">Slopes are each skimmer's frequency offset from the 100 Hz reference
+  skimmers' readings of the same stations, per unit of distance from the band's agreement point,
+  pooled over 40, 20, and 15 m, as in <a href="#appC-2">B.2</a>; 48 reference skimmers over WAE,
+  against 35 at JARL.</p>
   <p>The hardware does not sort the two groups cleanly either.
   <code>G4ZFE</code>, <code>N6TV</code>, and <code>NG7M</code>, all in the
   positive-slope group, run the 122.88-16 Red Pitaya, but the negative-slope
   group includes a Hermes-Lite (<code>OH8KA</code>) and a station
-  (<code>OE9GHV</code>, until WAE DX RTTY; <a href="#appC-5">B.5</a>) that runs both Red Pitaya
-  models. What remains is
+  (<code>OE9GHV</code>, until WAE DX RTTY; <a href="#appC-2-3">B.2.3</a>) that runs both Red
+  Pitaya models. What remains is
   RTTY Skimmer Server's own processing: a scale on each tone's offset from the
   receiver's center frequency that differs between the two groups by about
   0.16 percent, carried by the positive-slope group
@@ -2614,49 +2696,6 @@ th.n{text-align:center}
   independent of the RBN showed which of them reads true. Precision is easy;
   accuracy takes a reference.</p>
 
-  <h3 id="appC-5">B.5 · WAE DX RTTY</h3>
-  <p>WAE DX RTTY, November 14&ndash;15, came after this appendix was written, and with 999,147 RTTY
-  spots it gives the largest 10 Hz sample yet: 27 of the 82 RTTY skimmers reported at 10 Hz, against 22
-  of 62 at JARL. Measured by the same scripts, it confirms the ramp and adds evidence on its cause.</p>
-  <p><em>The ramp persists.</em> The direct comparison of fixed members on which
-  <a href="#appC-2">B.2</a> relies gives the same number again: <code>AC0C-1</code> differs from
-  <code>N6TV</code>, <code>WZ7I</code>, and <code>G4ZFE</code> by 0.157 to 0.163 percent, against
-  0.146 to 0.171 on the nine earlier weekends. With the groups as they stood in October, the
-  difference was 0.20 percent on 20 m, 0.18 on 15 m, and 0.19 on 10 m, and the groups' lines crossed
-  at 14087, 21086, and 28087 kHz, a few kilohertz above the ranges of B.2. On 40 and 80 m the
-  difference reads smaller, 0.10 and 0.02 percent, because one negative-slope station changed sides
-  (below) and still counts in its October group. Every other skimmer kept its group's sign of
-  slope.</p>
-  <p><em>Other programs read with the negative-slope group.</em> Several UberSDR Skimmer nodes
-  reported RTTY at 10 Hz for the first time (<code>KM3T-2</code>, <code>EA8BFK</code>,
-  <code>EA8/DF4UE</code>, <code>N7OR</code>, <code>YO5LD-U</code>, <code>G4ZFE-1</code>), as did the
-  SparkGap node <code>WF8Z-1</code>. All of them fall in the negative-slope group, at &minus;0.014 to
-  &minus;0.023 percent against the 100 Hz reference, beside <code>AC0C-1</code> at &minus;0.023, while
-  the positive-slope group read +0.09 to +0.15. These are programs separate from RTTY Skimmer
-  Server. The clearest case is one station running both: <code>G4ZFE</code>, on RTTY Skimmer Server,
-  and <code>G4ZFE-1</code>, on <code>UberSDR Skimmer</code>, which its operator ran side by side on
-  November 15 (<a href="https://groups.io/g/RBN-OPS/message/9653">RBN-OPS #9653</a>), read +0.096 and
-  &minus;0.020 percent that day, one in each group. That is the conclusion of
-  <a href="#appC-3">B.3</a> observed directly: the stretch belongs to the positive-slope group's
-  processing in RTTY Skimmer Server, not to the receivers.</p>
-  <p><em>One station changed sides.</em> <code>OE9GHV</code>, one of SM7IUN's GPS-referenced anchors
-  and in the negative-slope group from March through JARL, read +0.033 percent on November 14 and
-  +0.088 on November 15, in the positive-slope group; against the fixed reference of
-  <a href="#appC-2">B.2</a>, its slope went from &minus;0.131 percent at CQ WW and &minus;0.091 at JARL
-  to +0.066. Something at that station
-  changed between JARL and the end of WAE; whatever it was is the setting
-  <a href="#appC-3">B.3</a> looks for, and the station's own record of what it changed could identify
-  it.</p>
-  <p><em>Clocks.</em> At 10 Hz, <code>LB9KJ-1</code> fitted +14.7 ppm over WAE, with a scatter of
-  about 15 Hz, after the correction to +0.2 ppm that SM7IUN recorded on October 25
-  (<a href="#appC-1">B.1</a>), and <code>HS0ZGZ</code> +2.6 ppm, over a weekend in which it changed
-  program (<a href="#s15">&sect;&nbsp;15</a>).</p>
-  <p class="note-small">Slopes are each skimmer's frequency offset from the 100 Hz reference skimmers'
-  readings of the same stations, per unit of distance from the band's agreement point, pooled over
-  40, 20, and 15 m, as in <a href="#appC-2">B.2</a>; 48 reference skimmers over WAE, against 35 at
-  JARL. The scripts are those of <a href="#appC-1">B.1</a> and <a href="#appC-2">B.2</a>, with WAE DX
-  RTTY added.</p>
-
   <h2 id="appD">Appendix C · A Decade of RTTY Improvement, and the Weekend That Broke It</h2>
   <p>Everything above compares the Makrothen weekend with the weeks around it. That leaves a
   question open: was the network already drifting, so that Makrothen was a bad weekend for a
@@ -2674,7 +2713,7 @@ th.n{text-align:center}
 
   <h3 id="appD-1">C.1 · Ten Years of Steady Improvement</h3>
   <p>Over those 10 years the network got markedly better (<a href="#tab11">Table 8</a> and
-  <a href="#fig11">Figure 9</a>). The
+  <a href="#fig11">Figure 10</a>). The
   median skimmer's off-consensus rate fell by about half, from between 5.9 and 9.6 percent of
   judged spots in 2015 and 2016 (above 6.4 in five of the six contests) to between 3.8 and 5.1
   percent over 2023&ndash;2025. The spread narrowed even more: the upper quartile fell from
@@ -2741,13 +2780,14 @@ th.n{text-align:center}
   and one weekend undid it.</p>
   <figure id="fig11">
     <svg id="c11" role="img" aria-label="Two panels, 2015 to 2026. Top: callers reported as runners, as a share of judged RTTY spots, falling in all three benchmark contests from 2 to 4 percent in 2015 and 2016 to under 1 percent by 2023 to 2025; Makrothen 2026 stands alone at 10.5 percent, and 1.1 percent without the eight UberSDR Skimmer instances. Bottom: all off-consensus spots, falling from 6 to 9 percent to about 4 to 5 percent; Makrothen 2026 at 18.4 percent, 4.6 without the eight."></svg>
-    <figcaption><strong>Figure 9.</strong> A decade of RTTY skimming in three benchmark contests,
+    <figcaption><strong>Figure 10.</strong> A decade of RTTY skimming in three benchmark contests,
     with the Makrothen weekend measured the same way: callers reported as runners (top) and all
     off-consensus spots (bottom), as percent of judged spots across the whole network, clock
     errors removed. Points are the observations, each contest placed at its month (Roundup
     January, WPX February, CQ WW September); the line is one least-squares trend through all
     three contests, 2015&ndash;2026. The hollow point is Makrothen without the eight skimmers of
-    <a href="#tab1">Table 1</a>. Hover a point for its value; <a href="#tab11">Table 8</a> and
+    <a href="#tab1">Table 1</a>. The blue point, after it, is WAE DX RTTY 2026, five weeks later and not a
+    benchmark, measured the same way. Hover a point for its value; <a href="#tab11">Table 8</a> and
     <a href="#tab12">Table 9</a> give the figures.</figcaption>
   </figure>
   <p>The rest of the network was on trend. Without the eight, Makrothen's figures were
@@ -2760,7 +2800,10 @@ th.n{text-align:center}
   4.5&ndash;6.3 for the recent benchmarks. A week later at JARL, with the defect still on several of the
   newer skimmers for part of the contest (<a href="#s15">&sect;&nbsp;15</a>), the network was
   off-consensus on 6.5 percent of judged spots, with callers at 2.6 percent, and by the Russian WW Multimode contest the <code>UberSDR Skimmer</code> roster's
-  callers were back at or below the reference skimmers' (<a href="#s15">&sect;&nbsp;15</a>).</p>
+  callers were back at or below the reference skimmers' (<a href="#s15">&sect;&nbsp;15</a>). By WAE DX RTTY, five weeks after Makrothen, the network
+  was off-consensus on 3.8 percent of judged spots, with callers at 0.74 percent, below every
+  benchmark weekend of 2023 to 2025 on the first measure and near the bottom of their range on the
+  second (<a href="#s15-3">&sect;&nbsp;15.3</a>).</p>
   <p>That is what makes Makrothen more than a bad weekend. A network that had spent 10 years
   steadily learning not to report callers as runners, through more skimmers and better clocks,
   lost all of that ground in one contest, to eight skimmers on new software,
@@ -2778,20 +2821,24 @@ th.n{text-align:center}
       <tr><td>&nbsp;&nbsp;without the eight</td><td class="n"><span class="nb" style="min-width:9ch">124,247</span></td><td class="n"><span class="nb" style="min-width:4ch">4.6</span></td><td class="n"><span class="nb" style="min-width:4ch">4.1</span></td><td class="n"><span class="nb" style="min-width:4ch">5.1</span></td><td class="n"><span class="nb" style="min-width:4ch">1.12</span></td></tr>
       <tr><td>JARL WW RTTY 2026, October 17&ndash;18</td><td class="n"><span class="nb" style="min-width:9ch">528,626</span></td><td class="n"><span class="nb" style="min-width:4ch">6.5</span></td><td class="n"><span class="nb" style="min-width:4ch">3.6</span></td><td class="n"><span class="nb" style="min-width:4ch">5.6</span></td><td class="n"><span class="nb" style="min-width:4ch">2.62</span></td></tr>
       <tr><td>&nbsp;&nbsp;without the eight</td><td class="n"><span class="nb" style="min-width:9ch">433,826</span></td><td class="n"><span class="nb" style="min-width:4ch">5.5</span></td><td class="n"><span class="nb" style="min-width:4ch">3.4</span></td><td class="n"><span class="nb" style="min-width:4ch">5.6</span></td><td class="n"><span class="nb" style="min-width:4ch">2.01</span></td></tr>
+      <tr><td>WAE DX RTTY 2026, November 14&ndash;15</td><td class="n"><span class="nb" style="min-width:9ch">999,147</span></td><td class="n"><span class="nb" style="min-width:4ch">3.8</span></td><td class="n"><span class="nb" style="min-width:4ch">3.1</span></td><td class="n"><span class="nb" style="min-width:4ch">3.6</span></td><td class="n"><span class="nb" style="min-width:4ch">0.74</span></td></tr>
+      <tr><td>&nbsp;&nbsp;without the eight</td><td class="n"><span class="nb" style="min-width:9ch">879,189</span></td><td class="n"><span class="nb" style="min-width:4ch">4.0</span></td><td class="n"><span class="nb" style="min-width:4ch">3.1</span></td><td class="n"><span class="nb" style="min-width:4ch">3.8</span></td><td class="n"><span class="nb" style="min-width:4ch">0.77</span></td></tr>
     </table>
   </div>
   <p class="note-small">Percent of judged RTTY spots, clock-corrected, by the method of
-  <a href="#tab11">Table 8</a>. Makrothen counts its three periods only (§&nbsp;2); JARL its whole
-  48 hours. <em>Without the eight</em> leaves out the eight skimmers of
+  <a href="#tab11">Table 8</a>. Makrothen counts its three periods only (§&nbsp;2); JARL and WAE their whole
+  48 hours, and at WAE only six of the eight were on the air. <em>Without the eight</em> leaves out the eight skimmers of
   <a href="#tab1">Table 1</a>, all running <code>UberSDR Skimmer</code>, and its
   spot count is the other skimmers' alone. The 2026 spot counts are of the five contest
   bands, as in &sect;&nbsp;2; the 22, 5, and 50 RTTY spots on other bands never reached a
-  decided cell, so leaving them out changes no rate. Makrothen is a smaller
+  decided cell, so leaving them out changes no rate. At WAE, clock correction raises the network
+  rate, from 3.35 to 3.84 percent: 27 skimmers reported at 10 Hz that weekend, and the ramp of
+  <a href="#appC-2">Appendix B.2</a> makes a few of them fit as clock errors that are not. Makrothen is a smaller
   contest than the benchmarks, scored by distance, in three eight-hour periods; the rates are per
   judged spot, and the network without the eight falls in line with them.</p>
 
   <p class="foot">Prepared by K1MK (contact: k1mk at alum.mit.edu) · analysis of Reverse Beacon
-  Network archives through 2026 November 17. Document v6.06, final.</p>
+  Network archives through 2026 November 18. Document v7.0, final.</p>
   <p class="foot">Copyright &copy; 2026 Michael Keane K1MK. All rights reserved.</p>
 </div>
 </div>
@@ -3113,7 +3160,7 @@ th.n{text-align:center}
       transform:'rotate(-90 14 '+(H10/2)+')'})), 'Hz from the 100 Hz reference');
   }
 
-  // ---- KM3T-5 lateness over CQ WW RTTY 2026, 30-minute bins (Figure 8, Appendix A.2) ----
+  // ---- KM3T-5 lateness over CQ WW RTTY 2026, 30-minute bins (Figure 9, Appendix A.2) ----
   var K4 = {d:[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 5.7, 19.2, 26.1, 34.0, 46.3, 58.7, 55.6, 59.6, 60.4, 53.5, 45.6, 34.5, 30.8, 25.3, 17.9, 10.0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1.3, 4.3, 11.2, 18.7, 30.1, 39.2, 51.2, 61.9, 68.7, 68.1, 69.4, 69.9, 67.6, 68.6, 55.7, 63.3, 71.0, 40.5, 51.0, 67.8, 27.5, 45.6],
     s:[0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 19, 25, 39, 38, 44, 54, 82, 79, 81, 73, 83, 38, 45, 62, 56, 30, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 2, 1, 6, 13, 27, 32, 47, 42, 40, 56, 56, 69, 92, 63, 72, 64, 57, 42, 54, 64, 70, 61, 70, 63],
     j:[513, 589, 600, 562, 571, 544, 535, 493, 472, 487, 448, 352, 283, 162, 103, 74, 71, 101, 101, 112, 121, 199, 283, 279, 307, 344, 343, 358, 360, 181, 163, 141, 123, 121, 136, 168, 176, 185, 223, 308, 269, 282, 282, 299, 362, 608, 603, 609, 546, 560, 590, 645, 567, 561, 532, 545, 502, 512, 448, 384, 281, 234, 181, 125, 76, 65, 87, 101, 164, 274, 388, 400, 401, 453, 410, 232, 194, 156, 149, 125, 122, 138, 128, 168, 164, 165, 186, 245, 232, 183, 213, 237, 244, 301, 348, 343],
@@ -3196,7 +3243,7 @@ th.n{text-align:center}
 
   // ---- Histograms: whole-field RTTY rate, one per weekend -----------------
   var CWH = {"cqww":{"median":3.9,"v":[["K5KHK",41.2,0],["DL0TRZ",22.2,0],["JE2YCR",21.5,0],["JA1CCA",20.3,0],["LB9KJ-1",20.0,0],["JK1QLQ",17.0,0],["JH7CSU1",16.8,0],["PY2KNK",12.3,0],["LU8XW",11.1,0],["VK2RH",11.0,0],["9M2CNC",9.9,0],["JJ2VLY",9.1,0],["LB9KJ",8.9,0],["BD7JNA",8.5,0],["HS0ZGZ",8.3,0],["VK2GEL",8.3,0],["JN1ILK",8.1,0],["OK2PMU",8.0,0],["VK6ANC",7.7,0],["JH8YOH-1",7.6,0],["IK7YTT",7.4,0],["BG7IEJ",7.3,0],["BH4XDZ",7.2,0],["ZL2KS",7.1,0],["KM3T-5",7.0,0],["CX6VM",6.8,0],["OK4ZW",6.6,0],["VK3RASA",6.5,0],["ZL4YL",6.3,0],["DM5GG",6.2,0],["W6YX",6.1,0],["ZL3X",6.1,0],["BA4OP",6.0,0],["ZS1NN",5.9,0],["V51YJ",5.9,0],["CN3A",5.7,0],["S53A",5.7,0],["K7EK",5.7,0],["BD4UNT",5.7,0],["AK6RI-1",5.6,0],["W5ZN",5.4,0],["N7TUG",5.4,0],["VU2PTT",5.2,0],["AA0O",5.2,0],["G4IRN",5.2,0],["VE6WZ",5.1,0],["ZF1A",5.0,0],["BD8CS",5.0,0],["RU9CZD",5.0,0],["VU2OY",4.9,0],["K1RA",4.9,1],["KD7EFG",4.9,0],["RN4WA",4.9,0],["ND7K",4.8,0],["VE6JY",4.8,0],["UY2RA",4.8,0],["VE6WZ-3",4.8,0],["AA4PA",4.8,0],["KM7W",4.7,0],["NU4F",4.7,0],["LZ4AE",4.7,0],["KH6LC",4.7,0],["TI7W",4.6,0],["BA6KC",4.6,0],["K3PA-1",4.6,0],["K9IMM",4.6,0],["HA8TKS",4.6,0],["WA7LNW",4.6,0],["DR4W",4.6,0],["DF7GB",4.6,0],["UT5R",4.6,0],["N6TV",4.5,0],["KG6NFJ",4.5,0],["N4HAC",4.5,0],["K5TR",4.4,0],["K4PP",4.4,0],["LZ5DI",4.4,0],["K2PO/7",4.4,0],["AC0C-1",4.4,0],["N7VVX",4.3,0],["DL8LAS",4.3,0],["MM0ZBH",4.3,1],["LZ3CB",4.3,0],["W8WWV",4.3,0],["DD5XX",4.3,0],["R4NCU",4.3,0],["WE9V",4.3,0],["K1RA-4",4.2,1],["WZ7I",4.2,0],["SP5GQ",4.2,0],["N9CO",4.2,0],["W2NAF",4.1,0],["WT8P",4.1,0],["KK4FL",4.1,0],["K5EM",4.1,0],["G3AKX",4.0,0],["AC0VW",4.0,0],["YO2KAR",4.0,0],["RK3TD-2",3.9,0],["ES5PC",3.9,0],["ES2RR",3.9,0],["K6FOD",3.9,0],["SE5E",3.9,0],["LZ7AA",3.9,0],["SK6AW",3.9,0],["G3YPP",3.9,0],["NG7M",3.9,0],["HA1VHF",3.8,0],["DL3OBQ",3.8,0],["W1NT-6",3.8,0],["LA6TPA",3.8,0],["WB6BEE",3.8,0],["K9LC",3.8,0],["K3GMQ",3.8,0],["IK4VET",3.8,0],["K7CO",3.8,0],["N8DXE",3.8,0],["W3DAN",3.7,0],["KC4YVA",3.7,0],["S58W",3.7,0],["TF3Y",3.7,0],["W8WTS",3.7,0],["YO2CK",3.7,0],["CT1EYQ",3.7,0],["ON6URE",3.7,0],["N2YCH",3.7,0],["LZ2HQ",3.6,0],["W4KAZ",3.6,0],["RK3TD",3.6,0],["3B8GL",3.6,0],["W2NNN",3.5,0],["EA4RKC",3.5,0],["IK3STG",3.5,0],["DL1HWS-4",3.5,0],["EA5WU",3.5,0],["VE4DRK",3.5,0],["S50U",3.5,0],["KM3T-2",3.5,0],["HB9GVO",3.4,0],["DO4DXA",3.4,0],["YO5LD",3.4,0],["OE9GHV",3.4,0],["OK1HRA",3.4,0],["MM9PSY",3.3,1],["OK4YL",3.3,0],["HB9EMP",3.3,0],["EA1URA",3.3,0],["G7SOZ",3.3,0],["LY2XW",3.3,0],["HB9DCO",3.3,0],["EI4HQ",3.3,0],["EY8ZE",3.3,0],["KC2DAC",3.3,1],["SZ1A",3.3,0],["S50ARX",3.3,0],["OK1FCJ",3.3,0],["SQ5J",3.3,0],["VE6AO",3.2,0],["HA5E",3.2,0],["N2EPE",3.2,0],["S53WW",3.2,0],["HB9BXE",3.2,0],["LZ4UX",3.2,0],["VU2TUM",3.2,0],["G4ZFE",3.2,0],["WS2C",3.2,0],["IW9GDC",3.2,0],["WC2L",3.1,0],["SM1HEV",3.1,0],["DL5RCN",3.1,0],["EA1DAV",3.1,0],["N2CR",3.1,0],["WT9U",3.1,0],["DM6EE",3.1,0],["DL8LAS-1",3.1,0],["F4BPO",3.1,0],["GI4DOH",3.1,0],["KR4IXC",3.1,0],["EA2RCF-4",3.1,0],["DK9IP-1",3.0,0],["OE6ADD",3.0,0],["DE1LON",3.0,0],["HG8A",3.0,0],["PD2RPS",3.0,0],["PE5TT",3.0,0],["G0KTN",3.0,0],["DL8LAS-3",3.0,0],["F4GOU",3.0,0],["DL1HWS-3",3.0,0],["DK0TE",3.0,0],["F5AHD",3.0,0],["G0TMX",3.0,0],["PA2SQ",2.9,0],["DK9IP",2.9,0],["ON6ZQ",2.9,0],["SM7IUN",2.9,0],["SM0TCZ",2.8,0],["DK3UA",2.8,0],["OZ1BZS",2.7,0],["PA5KT-4",2.6,0],["DL1HWS",2.6,0],["GX0FRE",2.6,0],["IZ2CPS",2.4,0],["EA2CW",2.3,0],["F6KGL",2.1,0],["HA5PP",2.0,0],["M9PCX",1.9,0],["W1NT-2",1.9,0],["W2MV",1.8,0],["5Z4GO",1.5,0]]},"mak":{"median":4.1,"v":[["K5KHK",34.1,0],["R4NCU",26.0,0],["LB9KJ-1",23.2,0],["JA4MSM",17.6,0],["VU24DX-1",17.5,0],["VU2OY-9",15.0,0],["JA1CCA",12.4,0],["DL0TRZ",12.2,0],["LU8XW",11.7,0],["JH7CSU1",11.6,0],["PY2KNK",11.6,0],["JH4UTP",10.8,0],["OK2PMU",10.4,0],["PT2FHC",10.1,0],["JI1HFJ",10.1,0],["JK1QLQ",10.1,0],["JJ2VLY",9.9,0],["ON6URE",9.9,0],["ZL2KS",9.4,0],["K3FEF",8.6,1],["VK2RH",8.3,0],["K1RA-4",8.1,1],["KC2DAC",7.9,1],["ZL4YL",7.8,0],["VK3RASA",7.7,0],["W6YX",7.6,0],["BG2TFW",7.6,0],["OK4ZW",7.5,0],["HS0ZGZ",7.3,0],["IK7YTT",7.2,0],["K1RA",7.1,1],["KW4VA",7.1,1],["MM0ZBH",7.0,1],["BH4XDZ",6.6,0],["MM9PSY",6.6,1],["S53A",6.6,0],["CX6VM",6.4,0],["AK6RI-1",6.2,0],["V51YJ",6.2,0],["BA4OP",6.2,0],["VK6ANC",6.2,0],["K7RUT",6.1,0],["DL8TG",6.1,0],["G3YPP",6.0,0],["9M2CNC",6.0,0],["K2PO/7",5.9,0],["RU9CZD",5.7,0],["N6TV",5.7,0],["WA7LNW",5.7,0],["M9PSY-2",5.6,1],["E28AC",5.6,0],["DF7GB",5.4,0],["VE6WZ",5.4,0],["BG7IEJ",5.4,0],["WT8P",5.4,0],["LZ7AA",5.4,0],["UT5R",5.3,0],["BD8CS",5.3,0],["ND7K",5.3,0],["BD4UNT",5.3,0],["K7CO",5.2,0],["RN4WA",5.1,0],["VE6JY",5.0,0],["KW7MM",5.0,0],["VE6WZ-3",5.0,0],["DM5GG",5.0,0],["OH4KA",5.0,0],["KH6LC",4.9,0],["IK4VET",4.8,0],["DL1HWS",4.8,0],["G4IRN",4.8,0],["HA1VHF",4.8,0],["LZ4AE",4.7,0],["RK3TD",4.7,0],["S58W",4.7,0],["W5ZN",4.7,0],["DL5RCN",4.7,0],["TI7W",4.7,0],["YO2KAR",4.6,0],["OE8TED",4.6,0],["LZ3CB",4.6,0],["OH2BBT",4.6,0],["HA8TKS",4.5,0],["F5AHD",4.5,0],["KD7EFG",4.5,0],["DL8LAS",4.5,0],["EA5WU",4.4,0],["DO4DXA",4.4,0],["TF3Y",4.4,0],["ZS1NN",4.4,0],["K5TR",4.3,0],["S54L",4.3,0],["G0KTN",4.3,0],["VE4DRK",4.3,0],["K7EK",4.2,0],["EI4HQ",4.2,0],["EA4RKC",4.2,0],["EA1URA",4.2,0],["JM8SMO",4.2,0],["G3AKX",4.2,0],["WB6BEE",4.2,0],["CT1EYQ",4.2,0],["RK3TD-2",4.2,0],["OK4YL",4.1,0],["DD5XX",4.1,0],["BD7JNA",4.1,0],["ES2RR",4.1,0],["UY2RA",4.1,0],["IW9GDC",4.1,0],["F4GOU",4.1,0],["KG6NFJ",4.1,0],["K9IMM",4.0,0],["NG7M",4.0,0],["IT9GSF",4.0,0],["DB0GIE-11",4.0,0],["IK3STG",4.0,0],["VU2OY",4.0,0],["SE5E",4.0,0],["N4HAC",4.0,0],["YO2CK",4.0,0],["YO5LD",3.9,0],["DL1HWS-3",3.9,0],["EA2RCF-4",3.9,0],["SZ1A",3.9,0],["ES5PC",3.9,0],["OE9GHV",3.9,0],["S50U",3.9,0],["S53WW",3.9,0],["OK1FCJ",3.9,0],["LZ2HQ",3.9,0],["S50ARX",3.8,0],["K4PP",3.8,0],["AC0C-1",3.8,0],["EA1DAV",3.8,0],["K3PA-1",3.8,0],["WZ7I",3.8,0],["SP5GQ",3.8,0],["NU4F",3.8,0],["JH8YOH-1",3.7,0],["N2YCH",3.7,0],["SM0TCZ",3.7,0],["W8WWV",3.7,0],["AA4PA",3.7,0],["SK6AW",3.7,0],["DL0LA",3.7,0],["OZ1AAB",3.7,0],["LZ4UX",3.7,0],["VU2PTT",3.7,0],["OK1HRA",3.7,0],["DC8YZ",3.7,0],["G0TMX",3.7,0],["OE6ADD",3.6,0],["DK9IP",3.6,0],["W4KAZ",3.6,0],["N7TUG",3.6,0],["HB9DCO",3.6,0],["DK0TE",3.6,0],["SM7IUN",3.6,0],["W2NNN",3.6,0],["LB9KJ",3.6,0],["KC4YVA",3.6,0],["N8DXE",3.6,0],["HB9YC",3.6,0],["HB9EMP",3.5,0],["DK9IP-1",3.5,0],["LY2XW",3.5,0],["VK2GEL",3.5,0],["N2EPE",3.5,0],["OK2RZ",3.5,0],["WS2C",3.5,0],["W1NT-6",3.5,0],["HB9BXE",3.5,0],["WT9U",3.4,0],["PD2RPS",3.4,0],["MA3265SWL",3.4,0],["KM3T-3",3.4,0],["DL8LAS-1",3.4,0],["N7VVX",3.4,0],["KK4FL",3.3,0],["WX7V/5",3.3,0],["DM6EE",3.3,0],["HG8A",3.3,0],["EA2CW",3.3,0],["DL9GTB",3.3,0],["ON6ZQ",3.3,0],["SM1HEV",3.3,0],["K3GMQ",3.3,0],["K9LC",3.3,0],["WE9V",3.3,0],["W1NT-2",3.3,0],["EY8ZE",3.2,0],["HB9GVO",3.2,0],["W2NAF",3.2,0],["W3DAN",3.2,0],["PA5KT-4",3.2,0],["LA6TPA",3.2,0],["KM3T-2",3.2,0],["KM3T-5",3.2,0],["VE6AO",3.1,0],["W8WTS",3.1,0],["PE5TT",3.1,0],["DR4W",3.1,0],["KR4IXC",3.1,0],["UR4RXX",3.1,0],["K6FOD",3.0,0],["VU2TUM",3.0,0],["G4ZFE",2.9,0],["WS3W",2.8,0],["F6KGL",2.8,0],["DE1LON",2.8,0],["F4BPO",2.8,0],["WC2L",2.8,0],["KD2OGR",2.8,0],["PI4CC",2.7,0],["N2CR",2.7,0],["5Z4GO",2.7,0],["OZ1BZS",2.7,0],["DL8LAS-3",2.6,0],["AC0VW",2.5,0],["W2MV",2.1,0],["AA0O",2.0,0],["LZ5DI",1.6,0]]}};
-  var HD =  {"cqww":{"median":5.7,"v":[["VU2OY-9",86.3,0],["CN3A",24.2,0],["OK4ZW",21.4,0],["KM3T-5",14.8,0],["7L4IOU",13.9,0],["LB9KJ-1",13.1,0],["PY2KNK",11.9,0],["VU2CPL",11.9,0],["OK2PMU",10.2,0],["PC2A",10.2,0],["ZF1A",9.3,0],["VU24DX-1",8.9,0],["VU2CPL-88",8.4,0],["KM7W",8.4,0],["VU2CPL-1",8.2,0],["G4IRN",8.1,0],["HS0ZGZ",7.4,0],["RN4WA",7.0,0],["LZ4UX",6.9,0],["WZ7I",6.5,0],["KW7MM",6.4,0],["S50ARX",6.3,0],["DL9GTB",6.1,0],["LZ3CB",5.9,0],["GI4DOH",5.9,0],["LY2BGP",5.9,0],["HB9EMP",5.9,0],["PA5KT-4",5.8,0],["YO5LD",5.7,0],["N4HAC",5.7,0],["PI4CC",5.7,0],["OE9GHV",5.6,0],["AA4PA",5.6,0],["LZ7AA",5.6,0],["PA5WT",5.6,0],["OH8KA",5.5,0],["K1RA-4",5.4,1],["NG7M",5.4,0],["K1RA",5.4,1],["G4ZFE",5.2,0],["W6YX",5.0,0],["N2YCH",5.0,0],["IT9GSF",5.0,0],["CT1EYQ",4.9,0],["DL5RMH",4.9,0],["KW7MM-2",4.9,0],["K9LC",4.7,0],["KH6LC",4.7,0],["GX0FRE",4.6,0],["WC2L",4.6,0],["AC0C-1",4.6,0],["K6FOD",4.4,0],["N6TV",4.4,0],["VU2PTT",4.2,0],["DL0LA",4.1,0],["DC8YZ",3.7,0],["S50U",3.2,0],["NN3RP",2.5,0]]},"mak":{"median":4.8,"v":[["KC2DAC",50.2,1],["K1RA",47.8,1],["MM9PSY",46.1,1],["K1RA-4",45.2,1],["M9PSY-2",44.1,1],["K3FEF",44.0,1],["KW4VA",42.8,1],["MM0ZBH",41.8,1],["HA8TKS",21.6,0],["VU24DX-1",19.2,0],["LB9KJ-1",17.9,0],["SZ1A",8.6,0],["S53F",8.0,0],["PY2KNK",6.2,0],["RN4WA",5.9,0],["HS0ZGZ",5.3,0],["AA4PA",5.1,0],["OE9GHV",5.0,0],["HB9EMP",5.0,0],["PA5KT-4",4.6,0],["N4HAC",4.5,0],["LZ7AA",4.5,0],["S50ARX",4.4,0],["K9LC",4.1,0],["WZ7I",4.0,0],["CT1EYQ",4.0,0],["LZ3CB",3.7,0],["WC2L",3.6,0],["NG7M",3.5,0],["AC0C-1",3.5,0],["KM3T-5",3.4,0],["N2YCH",3.3,0],["G4ZFE",3.2,0],["PI4CC",3.2,0],["W6YX",3.0,0],["K6FOD",2.8,0],["KH6LC",2.7,0],["N6TV",2.6,0]]},"jarl":{"median":3.7,"v":[["K1RA-4",41.3,1],["K1HTV-4",38.2,1],["N7OR",29.3,1],["VU2CPL-88",27.9,0],["LB9KJ-1",22.6,0],["VU24DX-1",19.8,0],["SV1CDN",18.2,0],["HA8TKS",18.2,0],["KM3T-2",15.6,1],["7L4IOU",7.5,0],["JH8YOH-1",7.2,0],["HS0ZGZ",6.6,0],["K5TR",6.6,1],["PY2KNK",6.5,0],["JH4UTP",5.9,0],["RN4WA",5.3,0],["MM0ZBH",4.8,1],["YO5LD-U",4.8,1],["PI4CC",4.5,0],["DL9GTB",4.3,0],["PD2RPS",4.2,0],["S50ARX",4.2,0],["PA5WT",4.0,0],["EI4HQ",4.0,1],["K3FEF",4.0,1],["OE9GHV",3.9,0],["PA5KT-4",3.9,0],["MM9PSY",3.8,1],["HB9EMP",3.7,0],["LZ3CB",3.5,0],["M9PSY-2",3.5,1],["WZ7I",3.5,0],["LZ7AA",3.4,0],["GX0FRE",3.2,0],["VE3EID",3.2,0],["GI4DOH",3.1,0],["CT1EYQ",3.1,0],["NG7M",3.0,0],["WC2L",3.0,0],["W6YX",3.0,0],["DL0AO",2.8,0],["G4ZFE",2.7,0],["AA4PA",2.7,0],["K3GMQ",2.7,1],["KM3T-5",2.6,0],["K9LC",2.5,0],["AC0C-1",2.5,0],["KC2DAC",2.4,1],["N6TV",2.3,0],["N2YCH",2.3,0],["N4HAC",2.2,0],["K6FOD",2.2,0],["S50U",1.9,0],["KH6LC",1.7,0],["NN3RP",1.3,0],["ZF1A",0.0,0]]}};
+  var HD =  {"cqww":{"median":5.7,"v":[["VU2OY-9",86.3,0],["CN3A",24.2,0],["OK4ZW",21.4,0],["KM3T-5",14.8,0],["7L4IOU",13.9,0],["LB9KJ-1",13.1,0],["PY2KNK",11.9,0],["VU2CPL",11.9,0],["OK2PMU",10.2,0],["PC2A",10.2,0],["ZF1A",9.3,0],["VU24DX-1",8.9,0],["VU2CPL-88",8.4,0],["KM7W",8.4,0],["VU2CPL-1",8.2,0],["G4IRN",8.1,0],["HS0ZGZ",7.4,0],["RN4WA",7.0,0],["LZ4UX",6.9,0],["WZ7I",6.5,0],["KW7MM",6.4,0],["S50ARX",6.3,0],["DL9GTB",6.1,0],["LZ3CB",5.9,0],["GI4DOH",5.9,0],["LY2BGP",5.9,0],["HB9EMP",5.9,0],["PA5KT-4",5.8,0],["YO5LD",5.7,0],["N4HAC",5.7,0],["PI4CC",5.7,0],["OE9GHV",5.6,0],["AA4PA",5.6,0],["LZ7AA",5.6,0],["PA5WT",5.6,0],["OH8KA",5.5,0],["K1RA-4",5.4,1],["NG7M",5.4,0],["K1RA",5.4,1],["G4ZFE",5.2,0],["W6YX",5.0,0],["N2YCH",5.0,0],["IT9GSF",5.0,0],["CT1EYQ",4.9,0],["DL5RMH",4.9,0],["KW7MM-2",4.9,0],["K9LC",4.7,0],["KH6LC",4.7,0],["GX0FRE",4.6,0],["WC2L",4.6,0],["AC0C-1",4.6,0],["K6FOD",4.4,0],["N6TV",4.4,0],["VU2PTT",4.2,0],["DL0LA",4.1,0],["DC8YZ",3.7,0],["S50U",3.2,0],["NN3RP",2.5,0]]},"mak":{"median":4.8,"v":[["KC2DAC",50.2,1],["K1RA",47.8,1],["MM9PSY",46.1,1],["K1RA-4",45.2,1],["M9PSY-2",44.1,1],["K3FEF",44.0,1],["KW4VA",42.8,1],["MM0ZBH",41.8,1],["HA8TKS",21.6,0],["VU24DX-1",19.2,0],["LB9KJ-1",17.9,0],["SZ1A",8.6,0],["S53F",8.0,0],["PY2KNK",6.2,0],["RN4WA",5.9,0],["HS0ZGZ",5.3,0],["AA4PA",5.1,0],["OE9GHV",5.0,0],["HB9EMP",5.0,0],["PA5KT-4",4.6,0],["N4HAC",4.5,0],["LZ7AA",4.5,0],["S50ARX",4.4,0],["K9LC",4.1,0],["WZ7I",4.0,0],["CT1EYQ",4.0,0],["LZ3CB",3.7,0],["WC2L",3.6,0],["NG7M",3.5,0],["AC0C-1",3.5,0],["KM3T-5",3.4,0],["N2YCH",3.3,0],["G4ZFE",3.2,0],["PI4CC",3.2,0],["W6YX",3.0,0],["K6FOD",2.8,0],["KH6LC",2.7,0],["N6TV",2.6,0]]},"jarl":{"median":3.7,"v":[["K1RA-4",41.3,1],["K1HTV-4",38.2,1],["N7OR",29.3,1],["VU2CPL-88",27.9,0],["LB9KJ-1",22.6,0],["VU24DX-1",19.8,0],["SV1CDN",18.2,0],["HA8TKS",18.2,0],["KM3T-2",15.6,1],["7L4IOU",7.5,0],["JH8YOH-1",7.2,0],["HS0ZGZ",6.6,0],["K5TR",6.6,1],["PY2KNK",6.5,0],["JH4UTP",5.9,0],["RN4WA",5.3,0],["MM0ZBH",4.8,1],["YO5LD-U",4.8,1],["PI4CC",4.5,0],["DL9GTB",4.3,0],["PD2RPS",4.2,0],["S50ARX",4.2,0],["PA5WT",4.0,0],["EI4HQ",4.0,1],["K3FEF",4.0,1],["OE9GHV",3.9,0],["PA5KT-4",3.9,0],["MM9PSY",3.8,1],["HB9EMP",3.7,0],["LZ3CB",3.5,0],["M9PSY-2",3.5,1],["WZ7I",3.5,0],["LZ7AA",3.4,0],["GX0FRE",3.2,0],["VE3EID",3.2,0],["GI4DOH",3.1,0],["CT1EYQ",3.1,0],["NG7M",3.0,0],["WC2L",3.0,0],["W6YX",3.0,0],["DL0AO",2.8,0],["G4ZFE",2.7,0],["AA4PA",2.7,0],["K3GMQ",2.7,1],["KM3T-5",2.6,0],["K9LC",2.5,0],["AC0C-1",2.5,0],["KC2DAC",2.4,1],["N6TV",2.3,0],["N2YCH",2.3,0],["N4HAC",2.2,0],["K6FOD",2.2,0],["S50U",1.9,0],["KH6LC",1.7,0],["NN3RP",1.3,0],["ZF1A",0.0,0]]}, "wae":{"median":3.2,"v":[["EA1DAV",45.2,0],["LB9KJ-1",40.8,0],["VU2CPL-88",15.9,0],["VU24DX-1",14.7,0],["PY2KNK",10.5,0],["HA8TKS",10.0,0],["BH4HKZ",7.6,0],["SV1DPJ",6.7,0],["OK2PMU",6.3,0],["SV1CDN",6.2,0],["HS0ZGZ",5.8,1],["7L4IOU",5.6,0],["RN4WA",4.5,0],["S50ARX",4.5,0],["K5TR-1",4.3,1],["DO4DXA",4.2,0],["GI4DOH",4.2,0],["VK2RH",4.1,0],["PA5KT-4",4.0,0],["NG7M",3.9,0],["NG7M-2",3.8,0],["OE9GHV",3.8,0],["LZ3CB",3.6,0],["HB9EMP",3.6,0],["AC0C-1",3.5,0],["EA8BFK",3.5,1],["ON6URE-1",3.5,1],["LZ7AA",3.4,0],["AA4PA",3.4,0],["EA8/DF4UE",3.3,1],["K9LC",3.3,0],["CT1EYQ",3.3,0],["K3FEF",3.3,1],["N6TR",3.3,1],["G4ZFE-1",3.3,1],["DL0LA",3.2,0],["DL5RMH",3.2,0],["WF8Z-1",3.2,0],["W6YX",3.2,0],["LZ4AE",3.2,0],["IQ9RG",3.1,0],["K1RA-4",3.1,1],["GM0UDL",3.1,1],["K5TR",3.1,1],["WC2L",3.1,0],["N7OR",3.1,1],["ON6URE",3.0,1],["K1HTV-4",3.0,1],["WZ7I",3.0,0],["G4ZFE",3.0,0],["WT8P",3.0,0],["KM3T-2",2.9,1],["PI4CC",2.9,0],["N6TV",2.9,0],["N2YCH",2.9,0],["JH4UTP",2.9,0],["G4IRN",2.9,1],["KM3T-5",2.8,0],["EI4HQ",2.8,1],["MM0ZBH",2.8,1],["KH6LC",2.7,0],["SM0ECF",2.7,1],["NB3A",2.6,1],["K3GMQ",2.6,1],["LZ4UX",2.6,0],["MM9PSY",2.5,1],["N2EPE",2.4,1],["YO5LD-U",2.3,1],["PD2RPS",2.3,1],["M9PSY-2",2.3,1],["N3VLF",2.3,1],["N4HAC",2.3,0],["KM3T-1",2.3,1],["KC2DAC",2.1,1],["ON6URE-2",2.1,0],["NN3RP",1.8,0],["DK0KK",1.7,0],["KM3T-3",1.4,0]]}};
   function hist(id, key, o) {
     o = o || {};
     var old = document.getElementById(id);
@@ -3256,7 +3303,7 @@ th.n{text-align:center}
     txt(sv.appendChild(el('text', {x: xv(d.median) + 5, y: T - 8, fill: 'var(--ink-3)',
       'font-size': 10, 'font-family': 'var(--font-data)'})), 'median ' + d.median + '%');
   }
-  hist('h_mak', 'mak'); hist('h_cqww', 'cqww'); hist('h_jarl', 'jarl');
+  hist('h_mak', 'mak'); hist('h_cqww', 'cqww'); hist('h_jarl', 'jarl'); hist('h_wae', 'wae');
   function cwo(title) {
     return {data: CWH, bw: 0.5, nb: 40, tstep: 2, over: true, h: 210, title: title,
       label: 'CW off-consensus rate over judged spots, clock errors removed'};
@@ -3265,7 +3312,7 @@ th.n{text-align:center}
   hist('h_cw_mak', 'mak', cwo('Makrothen weekend, October 10–11'));
 
   // ---- Long-term benchmarks with the Makrothen weekend flagged (Figures 11 and 12, Appendix D) ----
-  var LT11 = {"series": [{"name": "ARRL RTTY Roundup", "short": "Roundup", "pts": [[2015.0, 3.76, 6.26, 2015], [2016.0, 3.28, 6.5, 2016], [2017.0, 1.49, 4.6, 2017], [2018.0, 1.33, 4.89, 2018], [2019.0, 1.04, 5.08, 2019], [2020.0, 1.13, 4.81, 2020], [2021.0, 1.12, 4.97, 2021], null, [2023.0, 0.66, 4.1, 2023], [2024.0, 0.71, 4.63, 2024], [2025.0, 0.67, 5.24, 2025], [2026.0, 0.55, 4.89, 2026]]}, {"name": "CQ WPX RTTY", "short": "WPX", "pts": [[2015.1, 3.24, 7.36, 2015], [2016.1, 4.04, 8.96, 2016], [2017.1, 2.2, 6.48, 2017], [2018.1, 2.21, 7.38, 2018], [2019.1, 2.0, 6.88, 2019], [2020.1, 1.99, 6.54, 2020], [2021.1, 1.73, 7.22, 2021], [2022.1, 1.13, 5.63, 2022], [2023.1, 0.8, 5.07, 2023], [2024.1, 0.83, 4.88, 2024], [2025.1, 0.84, 4.92, 2025], [2026.1, 0.97, 5.11, 2026]]}, {"name": "CQ WW RTTY", "short": "CQ WW", "pts": [[2015.7, 4.33, 8.92, 2015], [2016.7, 2.23, 5.97, 2016], [2017.7, 2.11, 6.46, 2017], [2018.7, 2.06, 6.69, 2018], [2019.7, 2.5, 6.52, 2019], [2020.7, 2.29, 7.54, 2020], [2021.7, 1.38, 5.59, 2021], [2022.7, 1.18, 5.37, 2022], [2023.7, 2.1, 7.41, 2023], [2024.7, 0.96, 5.13, 2024], [2025.7, 0.71, 5.27, 2025], [2026.7, 1.28, 6.03, 2026]]}], "mak": [2026.79, 10.4508, 18.3718], "mak8": [2026.79, 1.1226, 4.6327]};
+  var LT11 = {"series": [{"name": "ARRL RTTY Roundup", "short": "Roundup", "pts": [[2015.0, 3.76, 6.26, 2015], [2016.0, 3.28, 6.5, 2016], [2017.0, 1.49, 4.6, 2017], [2018.0, 1.33, 4.89, 2018], [2019.0, 1.04, 5.08, 2019], [2020.0, 1.13, 4.81, 2020], [2021.0, 1.12, 4.97, 2021], null, [2023.0, 0.66, 4.1, 2023], [2024.0, 0.71, 4.63, 2024], [2025.0, 0.67, 5.24, 2025], [2026.0, 0.55, 4.89, 2026]]}, {"name": "CQ WPX RTTY", "short": "WPX", "pts": [[2015.1, 3.24, 7.36, 2015], [2016.1, 4.04, 8.96, 2016], [2017.1, 2.2, 6.48, 2017], [2018.1, 2.21, 7.38, 2018], [2019.1, 2.0, 6.88, 2019], [2020.1, 1.99, 6.54, 2020], [2021.1, 1.73, 7.22, 2021], [2022.1, 1.13, 5.63, 2022], [2023.1, 0.8, 5.07, 2023], [2024.1, 0.83, 4.88, 2024], [2025.1, 0.84, 4.92, 2025], [2026.1, 0.97, 5.11, 2026]]}, {"name": "CQ WW RTTY", "short": "CQ WW", "pts": [[2015.7, 4.33, 8.92, 2015], [2016.7, 2.23, 5.97, 2016], [2017.7, 2.11, 6.46, 2017], [2018.7, 2.06, 6.69, 2018], [2019.7, 2.5, 6.52, 2019], [2020.7, 2.29, 7.54, 2020], [2021.7, 1.38, 5.59, 2021], [2022.7, 1.18, 5.37, 2022], [2023.7, 2.1, 7.41, 2023], [2024.7, 0.96, 5.13, 2024], [2025.7, 0.71, 5.27, 2025], [2026.7, 1.28, 6.03, 2026]]}], "mak": [2026.79, 10.4508, 18.3718], "mak8": [2026.79, 1.1226, 4.6327], "wae": [2026.87, 0.7363, 3.8415]};
   var LT12 = {"series": [{"name": "ARRL DX CW", "short": "ARRL DX CW", "pts": [[2011.1, 1.63, 5.893, 2011], [2012.1, 0.754, 3.694, 2012], [2013.1, 0.946, 4.722, 2013], [2014.1, 0.741, 4.685, 2014], [2015.1, 0.863, 5.453, 2015], [2016.1, 0.82, 4.432, 2016], [2017.1, 0.856, 4.461, 2017], [2018.1, 0.787, 4.161, 2018], [2019.1, 0.771, 3.871, 2019], [2020.1, 0.773, 4.328, 2020], [2021.1, 0.896, 4.271, 2021], [2022.1, 0.896, 4.613, 2022], [2023.1, 0.826, 4.373, 2023], [2024.1, 0.845, 4.681, 2024], [2025.1, 0.835, 4.758, 2025], [2026.1, 0.898, 4.554, 2026]]}, {"name": "CQ WPX CW", "short": "CQ WPX CW", "pts": [[2011.4, 2.259, 6.882, 2011], [2012.4, 1.086, 4.925, 2012], [2013.4, 1.146, 5.979, 2013], [2014.4, 0.929, 5.147, 2014], [2015.4, 0.944, 5.718, 2015], [2016.4, 1.009, 5.654, 2016], [2017.4, 1.217, 6.314, 2017], [2018.4, 1.004, 6.005, 2018], [2019.4, 1.068, 6.03, 2019], [2020.4, 1.197, 6.702, 2020], [2021.4, 1.048, 5.462, 2021], [2022.4, 0.894, 5.112, 2022], [2023.4, 0.895, 4.972, 2023], [2024.4, 0.846, 4.679, 2024], [2025.4, 0.898, 4.552, 2025], [2026.4, 1.142, 5.924, 2026]]}, {"name": "CQ WW CW", "short": "CQ WW CW", "pts": [[2011.9, 0.91, 4.011, 2011], [2012.9, 1.552, 5.804, 2012], [2013.9, 0.994, 4.985, 2013], [2014.9, 1.057, 5.382, 2014], [2015.9, 1.116, 5.462, 2015], [2016.9, 1.151, 5.777, 2016], [2017.9, 1.167, 5.33, 2017], [2018.9, 1.044, 5.395, 2018], [2019.9, 1.162, 5.887, 2019], [2020.9, 1.176, 5.564, 2020], [2021.9, 1.056, 4.995, 2021], [2022.9, 0.999, 4.991, 2022], [2023.9, 1.022, 5.172, 2023], [2024.9, 1.06, 5.073, 2024], [2025.9, 1.121, 5.28, 2025], null]}], "mak": [2026.79, 1.3794, 4.85], "mak8": [2026.79, 1.3204, 4.7038]};
   function ltChart(id, D, x0, names, wkLabel){
     var old = document.getElementById(id);
@@ -3339,6 +3386,11 @@ th.n{text-align:center}
       var cm = sv.appendChild(el('circle', {cx: xs_(M[0]), cy: y(M[P.i]), r: 6.5, fill: 'var(--flag)',
         stroke: 'var(--panel)', 'stroke-width': 2}));
       txt(cm.appendChild(el('title', {})), wkLabel + ': ' + M[P.i].toFixed(2) + '% ' + P.unit);
+      if (D.wae) {
+        var cw = sv.appendChild(el('circle', {cx: xs_(D.wae[0]), cy: y(D.wae[P.i]), r: 5, fill: 'var(--accent)',
+          stroke: 'var(--panel)', 'stroke-width': 2}));
+        txt(cw.appendChild(el('title', {})), 'WAE DX RTTY 2026, five weeks later: ' + D.wae[P.i].toFixed(2) + '% ' + P.unit);
+      }
       if (Math.abs(y(M[P.i]) - y(M8[P.i])) > 30) {
         txt(sv.appendChild(el('text', {x: xs_(M[0]) - 12, y: y(M[P.i]) + 4, 'text-anchor': 'end', fill: 'var(--ink)',
           'font-size': 10.5, 'font-weight': 600, 'font-family': 'var(--font-data)'})), wkLabel + ' \u00b7 ' + M[P.i].toFixed(1) + '%');
