@@ -814,9 +814,10 @@ th.n{text-align:center}
   frequent or more. The <code>UberSDR Skimmer</code> nodes' higher bust rate goes with the nodes themselves, their sites and receiving equipment,
   rather than with the program; the misattributed callers
   follow the program onto the same receiver.</p>
-  <p>A fair objection to any bust rate scored against the
+  <p id="busts-reference">A fair objection to any bust rate scored against the
   RBN is that most of the network runs CW Skimmer Server, whose copies can make the same misdecode
-  and confirm one another, so such a rate partly measures agreement with that program. VE3NEA's
+  and confirm one another, so such a rate partly measures agreement with that program: the
+  correlated errors of <a href="#correlated">&sect;&nbsp;3</a>, seen from the other side. VE3NEA's
   CW Skimmer Server is not perfect, nor is it the gold standard. It is the RBN's de facto standard,
   because most nodes run it, and a program that improved on its performance would be welcome. A
   difference from it is therefore not a verdict in itself but a reason to examine carefully where
@@ -875,7 +876,7 @@ th.n{text-align:center}
   So <code>K3FEF</code>, whose misattributed callers ran 2.33 percent of its judged spots, four and a
   half times <code>W1NT-6</code>'s, scores 96.9 percent confirmed, within two points of every skimmer
   in the table.</p>
-  <p>Part of that is correlated errors. A confirmation from another skimmer running the same program
+  <p id="correlated">Part of that is correlated errors. A confirmation from another skimmer running the same program
   is not independent: copies of one program share the same defect, so their agreement is a
   common-mode error, not a check. On November 15, 44 percent of <code>KM3T-2</code>'s confirmed
   misattributed callers and 42 percent of <code>K3FEF</code>'s were confirmed only by other <code>UberSDR Skimmer</code> nodes; none of <code>W1NT-6</code>'s were. As the program spreads, its own copies confirm
@@ -884,7 +885,9 @@ th.n{text-align:center}
   clusters will count their confirmations as validations
   (<a href="https://groups.io/g/RBN-OPS/message/9652">RBN-OPS #9652</a>). If this were
   humans and not computer programs, it would be confirmation bias, or looking for your keys under
-  the streetlamp.</p>
+  the streetlamp. The same holds for whichever program is in the majority: scored against the RBN,
+  a bust rate partly measures agreement with CW Skimmer Server, which most of the network runs
+  (<a href="#busts-reference">&sect;&nbsp;2</a>).</p>
   <p>The cluster's quality flags make the same kind of check. AR-Cluster's CT1BOH
   <code>SKIMVALID</code> flag marks a spot valid when two more spots of the same call appear near
   the same frequency (<a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#s16">Makrothen &sect;&nbsp;16</a>), and copies of one program can supply them
@@ -1877,7 +1880,7 @@ th.n{text-align:center}
   percent of all such spots.</p>
 
   <p class="foot">Prepared by K1MK (contact: k1mk at alum.mit.edu) · analysis of Reverse Beacon
-  Network archives through 2026 November 18. Document v1.29.</p>
+  Network archives through 2026 November 18. Document v1.30.</p>
   <p class="foot">Copyright &copy; 2026 Michael Keane K1MK. All rights reserved.</p>
 </div>
 </div>
