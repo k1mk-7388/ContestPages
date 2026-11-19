@@ -238,6 +238,20 @@ th.n{text-align:center}
   Despite uninformed speculation to the contrary, the misattributed-caller problem has been
   recognized and brought under control in RTTY; it is in CW that a residual problem with
   misattributed callers, also called "ghost CQ" spots, continues to show itself.</p>
+  <p id="false-positive">In the language of classification, a ghost CQ is a <em>false
+  positive</em>. A skimmer does two things with a signal: it decodes the callsign, and it classifies
+  the station as the one calling CQ or as one answering. In a ghost CQ the decoding is right, a real
+  station correctly read, and the classification is wrong: the station is reported as holding a
+  frequency on which it was only calling. A busted call is the opposite kind of error, a decoding
+  that went wrong. In classification, <em>precision</em> is the share of the reports of a class that
+  are correct, here the share of spots naming a station as calling CQ that name a station that was
+  calling CQ, and <em>accuracy</em> is the share of all decisions, CQ or not, that are correct. A
+  false positive lowers both, so each ghost CQ lowers the precision and the accuracy of the
+  classification while the decoding itself was sound. (In measurement, by contrast, precision means
+  repeatability and accuracy closeness to the truth, the sense of
+  <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#appC-4">Makrothen Appendix
+  B.4</a>.) That is why a measure of decoding alone, a count of busted calls or a confirmed rate,
+  cannot see it (<a href="#busts">&sect;&nbsp;2</a>, <a href="#appH">&sect;&nbsp;3</a>).</p>
   <p>The method and definitions are those of the Makrothen document and are not repeated here: spots
   are judged against the consensus of other skimmers as in <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#s2">Makrothen &sect;&nbsp;2</a>; the
   <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#def-roster"><code>UberSDR Skimmer</code> roster</a> and the reference skimmers are defined
@@ -288,11 +302,11 @@ th.n{text-align:center}
 
   <h2 id="s11">1 · A Persistent Excess in CW</h2>
   <p>The eight skimmers of the Makrothen investigation spot CW as well as RTTY, between 3246 and
-  14,298 CW spots each over the Makrothen weekend, so <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#s2">the test that found the RTTY
+  14,298 CW spots each over the weekend of October 10&ndash;11, so <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#s2">the test that found the RTTY
   defect</a> can show whether they
   also behaved differently in CW, and they did: every one of the eight was
-  elevated (<a href="#tab6">Table 1</a>), the excess appearing between the CQ WW and Makrothen
-  weekends as it did in RTTY, while the controls remained unchanged.</p>
+  elevated (<a href="#tab6">Table 1</a>), the excess appearing between the weekends of September
+  26&ndash;27 and October 10&ndash;11, as it did in RTTY, while the controls remained unchanged.</p>
   <p>The CW excess is smaller, and when the RTTY defect was corrected the week
   of October 12 the CW excess stayed where it was (<a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#s15">Makrothen &sect;&nbsp;15</a>).
   The unchanged CW excess suggests that the RTTY correction did not address
@@ -333,10 +347,10 @@ th.n{text-align:center}
       <tr><th>CW Stream, Beacons Excluded</th><th class="n"><code>UberSDR Skimmer</code> Group, Median</th>
         <th class="n">Range</th><th class="n">Controls, Median</th><th class="n">Range</th>
         <th class="n">Ratio</th></tr>
-      <tr><td>CQ WW weekend, Sep 26–27</td><td class="n"><span class="nb" style="min-width:4ch">4.2%</span></td>
+      <tr><td>Weekend of Sep 26–27</td><td class="n"><span class="nb" style="min-width:4ch">4.2%</span></td>
         <td class="n"><span class="nb" style="min-width:8ch">3.2–5.1%</span></td><td class="n"><span class="nb" style="min-width:4ch">3.7%</span></td>
         <td class="n"><span class="nb" style="min-width:8ch">3.3–4.9%</span></td><td class="n"><span class="nb" style="min-width:4ch">1.1×</span></td></tr>
-      <tr><td>Makrothen weekend, Oct 10–11</td><td class="n"><span class="nb" style="min-width:4ch">7.3%</span></td>
+      <tr><td>Weekend of Oct 10–11</td><td class="n"><span class="nb" style="min-width:4ch">7.3%</span></td>
         <td class="n"><span class="nb" style="min-width:8ch">5.6–8.6%</span></td><td class="n"><span class="nb" style="min-width:4ch">3.8%</span></td>
         <td class="n"><span class="nb" style="min-width:8ch">3.3–5.0%</span></td><td class="n"><span class="nb" style="min-width:4ch"><strong>1.9×</strong></span></td></tr>
     </table>
@@ -355,7 +369,7 @@ th.n{text-align:center}
 
   <p>A rate above the median of skimmers reporting to the RBN says little on
   its own, since half of them sit above it. <a href="#fig6">Figure 1</a> places the eight among
-  all CW skimmers instead: 222 skimmers over the Makrothen weekend with at
+  all CW skimmers instead: 222 skimmers over the weekend of October 10&ndash;11 with at
   least 300 judged CW spots, each with its receiver clock error removed
   (<a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#s9">Makrothen &sect;&nbsp;9</a>), so that the errors that put
   <code>OH2BBT</code> and <code>OK2RZ</code> above 50 percent do not stretch
@@ -364,7 +378,7 @@ th.n{text-align:center}
   4.1), while the seven controls fall between the 15th and
   72nd; eight skimmers drawn at random from the 222 reach the eight's median
   percentile, 86, about three times in a thousand. Two weeks earlier, over the
-  CQ WW weekend, the five of them then spotting CW were unremarkable, at a
+  weekend of September 26&ndash;27, the five of them then spotting CW were unremarkable, at a
   median percentile of 58, which a random five match about a third of the
   time. The CW excess is small in points but not in rank.</p>
 
@@ -374,16 +388,16 @@ th.n{text-align:center}
       <span class="key"><span class="sw" style="background:var(--accent)"></span>all other skimmers</span>
       <span class="key" style="color:var(--ink-3)">dashed · CW median</span>
     </div>
-    <svg id="h_cw_cqww" role="img" aria-label="Histogram of CW off-consensus rate, CQ WW RTTY weekend, 210 skimmers, clock errors removed: the 5 of the eight then spotting CW scattered through the main cluster around the 3.9 percent median"></svg>
-    <svg id="h_cw_mak" role="img" aria-label="Histogram of CW off-consensus rate, Makrothen weekend, 222 skimmers, clock errors removed: all eight UberSDR Skimmer skimmers on the upper shoulder of the cluster, between 5.6 and 8.6 percent, against a 4.1 percent median"></svg>
-    <figcaption><strong>Figure 1.</strong> All CW skimmers over the CQ WW
-    weekend (top: 210 skimmers, median 3.9%) and the
-    Makrothen weekend (bottom: 222 skimmers, median 4.1%):
+    <svg id="h_cw_cqww" role="img" aria-label="Histogram of CW off-consensus rate, weekend of September 26 to 27, 210 skimmers, clock errors removed: the 5 of the eight then spotting CW scattered through the main cluster around the 3.9 percent median"></svg>
+    <svg id="h_cw_mak" role="img" aria-label="Histogram of CW off-consensus rate, weekend of October 10 to 11, 222 skimmers, clock errors removed: all eight UberSDR Skimmer skimmers on the upper shoulder of the cluster, between 5.6 and 8.6 percent, against a 4.1 percent median"></svg>
+    <figcaption><strong>Figure 1.</strong> All CW skimmers over the weekend of
+    September 26&ndash;27 (top: 210 skimmers, median 3.9%) and the weekend of
+    October 10&ndash;11 (bottom: 222 skimmers, median 4.1%):
     CW off-consensus rate of every skimmer with at least 300 judged CW spots,
     beacon frequencies excluded and receiver clock errors removed, in
     bins 0.5 percentage points wide; rates of 19.5% and over share the last bin. Highlighted
-    bars are the eight running <code>UberSDR Skimmer</code>: all eight over
-    Makrothen, but at CQ WW only the five then spotting CW. Hover a bar for
+    bars are the eight running <code>UberSDR Skimmer</code>: all eight on October
+    10&ndash;11, but on September 26&ndash;27 only the five then spotting CW. Hover a bar for
     its skimmers.</figcaption>
   </figure>
 
@@ -397,7 +411,7 @@ th.n{text-align:center}
   <ul>
     <li><strong>The software no longer singles out the worst skimmers.</strong>
     In RTTY the eight occupied the entire top of the RTTY ranking and no other
-    skimmer exceeded 21.6 percent, but in CW over the Makrothen weekend they
+    skimmer exceeded 21.6 percent, but in CW over the weekend of October 10&ndash;11 they
     do not lead:
     <code>OH2BBT</code> at 52.1 percent, <code>OK2RZ</code> at 51.2,
     <code>K5KHK</code> at 34.0, and <code>OK4YL</code> at 30.5 are all worse, and
@@ -408,8 +422,8 @@ th.n{text-align:center}
     <code>OK4YL</code> at +14.7. With each error removed, their rates decline
     to 4.6, 3.5, and 4.1 percent, close to the CW median. <code>K5KHK</code> has
     no clock error
-    and stays essentially unchanged, at 34.1 percent; it was also 41.1 percent in CW over the CQ WW
-    RTTY weekend. Even after correction, a small number of skimmers running
+    and stays essentially unchanged, at 34.1 percent; it was also 41.1 percent in CW over the
+    weekend of September 26&ndash;27. Even after correction, a small number of skimmers running
     other software, <code>K5KHK</code> among them, remain above the UberSDR
     group, which is elevated within the general population of skimmers rather than at its upper
     extreme (<a href="#fig6">Figure 1</a>); removing every skimmer's clock error leaves the group's CW median
@@ -442,7 +456,7 @@ th.n{text-align:center}
   The RTTY excess was about 11 times larger, and the eight supplied about
   six times as much of the spot stream. Measured as excess off-consensus spots
   relative to each mode's judged traffic, the RTTY disturbance was about 65
-  times the CW one over the Makrothen weekend:</p>
+  times the CW one over the weekend of October 10&ndash;11:</p>
   <ul>
     <li><strong>Size of the excess.</strong> In RTTY the eight ran 39.7 points above the controls (44.6 against 5.0 percent, 9.0 times; the excess is calculated from unrounded rates); in CW, 3.5 points
     (7.3 against 3.8 percent, 1.9 times).</li>
@@ -599,7 +613,7 @@ th.n{text-align:center}
   <h4 id="cwt">The Weekly CWops Tests</h4>
   <p>The <a href="https://cwops.org/cwops-tests/">CWops Tests</a> offer four one-hour sessions every
   week: Wednesday at 1300Z and 1900Z, and Thursday at 0300Z and 0700Z. I measured the five complete
-  weeks after Makrothen, October 14 to November 12, by the same mechanism split as
+  weeks from October 14 to November 12 by the same mechanism split as
   <a href="#tab7">Table 2</a>. These are all CW spots in each hour, not a selection of CWT
   participants. The <code>UberSDR Skimmer</code> nodes are those listed by November 17, applied to every week; as the introduction notes, it can include a node whose CW spots come
   from another program, and a node listed later may have run other software earlier.</p>
@@ -804,7 +818,7 @@ th.n{text-align:center}
   and offers four validation levels, not the Skimmer Server that RBN nodes run; and his
   <code>UberSDR Skimmer</code> build, from October, may predate the CW caller fix of October 27
   (<a href="#s11-3">&sect;&nbsp;1.3</a>).</p>
-  <p id="busts">Busted calls are not where the two programs differ significantly. In this document's classes a bust
+  <p id="busts">Busted calls are not where the two programs differ significantly. In this document's classification scheme a bust
   appears as a garble or an unconfirmed call (<a href="#tab7">Table 2</a>). Across the <code>UberSDR Skimmer</code> nodes, busts do run
   higher than for other skimmers, a median of 2.21 percent of judged spots from October 10 to
   November 6 against 1.34 for the 185 skimmers not running <code>UberSDR Skimmer</code>, but on the same signal the gap
@@ -813,7 +827,13 @@ th.n{text-align:center}
   the periods of <a href="#tab23">Table 6</a>, while misattributed callers stayed about twice as
   frequent or more. The <code>UberSDR Skimmer</code> nodes' higher bust rate goes with the nodes themselves, their sites and receiving equipment,
   rather than with the program; the misattributed callers
-  follow the program onto the same receiver.</p>
+  follow the program onto the same receiver. After release v2026.11.16-3
+  (<a href="#s11-3">&sect;&nbsp;1.3</a>), on November 18, the nodes that had installed it busted
+  1.59 percent of their judged spots, fewer than the 1.80 percent of nodes running VE3NEA's program,
+  in line with an independent count of busted calls by program for that day
+  (<a href="https://groups.io/g/RBN-OPS/message/9674">RBN-OPS #9674</a>); their misattributed
+  callers, though down to 1.25 percent, were still 1.4 times the 0.87 percent of VE3NEA's
+  program.</p>
   <p id="busts-reference">A fair objection to any bust rate scored against the
   RBN is that most of the network runs CW Skimmer Server, whose copies can make the same misdecode
   and confirm one another, so such a rate partly measures agreement with that program: the
@@ -1157,14 +1177,14 @@ th.n{text-align:center}
   <em>reduces</em> the disparity rather than enlarging it, the
   group-to-control ratio falling from 1.9 to 1.7 to 1.4. There are no
   concealed offset callers to discover, and the narrow bin is the more
-  discriminating measurement; on the CQ WW weekend the ratio is 1.1, 1.0, and
+  discriminating measurement; on the weekend of September 26&ndash;27 the ratio is 1.1, 1.0, and
   0.9 at the three widths, with no excess at any of them.</p>
 
   <h3 id="appB-2">A.2 · Not a Matter of Contest Load</h3>
-  <p>The weekend after Makrothen tested whether the CW excess grows with the
+  <p>The weekend of October 17&ndash;18 tested whether the CW excess grows with the
   traffic. WAG (Worked All Germany), on 80, 40, 20, 15, and 10 m, and the Stew
   Perry Topband Challenge, on 160 m only, both ran from 1500Z on October 17
-  to 1500Z on the 18th, in the middle of JARL WW RTTY. I compared that window
+  to 1500Z on the 18th. I compared that window
   with the same 24 hours, 1500Z to 1500Z, on eight quieter days from October 13 to 21, judging each contest on its own bands and setting the skimmers
   on the <code>UberSDR Skimmer</code> nodes against the seven reference
   skimmers:</p>
@@ -1332,7 +1352,7 @@ th.n{text-align:center}
   Calibration improved even more than in RTTY: the median skimmer's clock error, 1.0 to 2.1 ppm
   from 2011 to 2020, has been 0.4 to 0.7 ppm since 2023, and the clock correction that once
   lowered a contest's network rate by up to 2.5 points now lowers it by at most 1.0.</p>
-  <p>Measured the same way, the Makrothen weekend's CW (both UTC days, as in
+  <p>Measured the same way, the CW of October 10&ndash;11 (both UTC days, as in
   <a href="#s11">&sect;&nbsp;1</a>) was on trend: the network was off-consensus on 4.85 percent of
   judged spots, within the 4.4 to 5.3 percent of the benchmarks of 2022 to 2025. Its caller share,
   1.38 percent, sat a little above the benchmarks' 0.83 to 1.12 percent, but was still 1.32 percent
@@ -1340,7 +1360,7 @@ th.n{text-align:center}
   <p>However large or small the increase in off-consensus spots at the <code>UberSDR Skimmer</code>
   instances, in CW its effect on the network's statistics is diluted to the point of
   invisibility. The CW excess of <a href="#s11">&sect;&nbsp;1</a> is real skimmer by skimmer, but over
-  the Makrothen weekend the eight were 8 of some 245 CW skimmers and sent 5.9 percent of the CW
+  October 10&ndash;11 the eight were 8 of some 245 CW skimmers and sent 5.9 percent of the CW
   spots (<a href="#s11-2">&sect;&nbsp;1.2</a>): leaving them out moves the network's off-consensus rate
   by 0.15 points, from 4.85 to 4.70 percent, and its caller share by 0.06, from 1.38 to 1.32,
   well inside the scatter between one benchmark contest and the next. In RTTY the same eight were
@@ -1380,14 +1400,14 @@ th.n{text-align:center}
   <a href="#s11">&sect;&nbsp;1</a>; caller as in <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#tab11">Makrothen Table 8</a>. …: CQ WW CW 2026 has not
   yet taken place.</p>
   <figure id="fig12">
-    <svg id="c12" role="img" aria-label="Two panels, 2011 to 2026, on the same scales as Figure 11. Top: callers reported as runners in ARRL DX CW, CQ WPX CW and CQ WW CW, flat at about 1 percent of judged CW spots throughout; the Makrothen weekend's CW at 1.4 percent, 1.3 without the eight. Bottom: all CW off-consensus spots, about 4 to 6 percent with a nearly flat trend; the Makrothen weekend at 4.9 percent, 4.7 without the eight."></svg>
+    <svg id="c12" role="img" aria-label="Two panels, 2011 to 2026, on the same scales as Makrothen Figure 10. Top: callers reported as runners in ARRL DX CW, CQ WPX CW and CQ WW CW, flat at about 1 percent of judged CW spots throughout; the CW of October 10 to 11 at 1.4 percent, 1.3 without the eight. Bottom: all CW off-consensus spots, about 4 to 6 percent with a nearly flat trend; October 10 to 11 at 4.9 percent, 4.7 without the eight."></svg>
     <figcaption><strong>Figure 4.</strong> The CW counterpart of <a href="https://k1mk-7388.github.io/ContestPages/RBNSkimmerAnomaly2026/#fig11">Makrothen Figure 10</a>,
     on the same scales: callers reported as runners (top) and all off-consensus spots (bottom) in
     three benchmark CW contests, 2011&ndash;2026, as percent of judged CW spots across the network,
-    clock errors removed and beacon frequencies excluded, with the Makrothen weekend's CW measured
+    clock errors removed and beacon frequencies excluded, with the CW of October 10&ndash;11 measured
     the same way. Points are the observations, each contest placed at its month (ARRL DX February,
-    WPX May, CQ WW November); the line is one least-squares trend through all three. The Makrothen
-    weekend is shown for comparison only: it was an RTTY contest weekend, not a CW one, and its
+    WPX May, CQ WW November); the line is one least-squares trend through all three. The weekend of
+    October 10&ndash;11 is shown for comparison only: it was not a CW contest weekend, and its
     1.15 million CW spots were a sixth to a tenth of the 6.4 to 12.8 million of the benchmark
     contests of 2022 to 2026, with fewer skimmers behind each decided cell (a median of 9, against
     13 to 16), so its point does not compare like for like with the others. Hover a point for its
@@ -1880,7 +1900,7 @@ th.n{text-align:center}
   percent of all such spots.</p>
 
   <p class="foot">Prepared by K1MK (contact: k1mk at alum.mit.edu) · analysis of Reverse Beacon
-  Network archives through 2026 November 18. Document v1.30.</p>
+  Network archives through 2026 November 18. Document v1.36.</p>
   <p class="foot">Copyright &copy; 2026 Michael Keane K1MK. All rights reserved.</p>
 </div>
 </div>
@@ -2400,8 +2420,8 @@ th.n{text-align:center}
     return {data: CWH, bw: 0.5, nb: 40, tstep: 2, over: true, h: 210, title: title,
       label: 'CW off-consensus rate over judged spots, clock errors removed'};
   }
-  hist('h_cw_cqww', 'cqww', cwo('CQ WW RTTY weekend, September 26–27'));
-  hist('h_cw_mak', 'mak', cwo('Makrothen weekend, October 10–11'));
+  hist('h_cw_cqww', 'cqww', cwo('Weekend of September 26–27'));
+  hist('h_cw_mak', 'mak', cwo('Weekend of October 10–11'));
 
   // ---- Long-term benchmarks with the Makrothen weekend flagged (Figures 11 and 12, Appendix D) ----
   var LT11 = {"series": [{"name": "ARRL RTTY Roundup", "short": "Roundup", "pts": [[2015.0, 3.76, 6.26, 2015], [2016.0, 3.28, 6.5, 2016], [2017.0, 1.49, 4.6, 2017], [2018.0, 1.33, 4.89, 2018], [2019.0, 1.04, 5.08, 2019], [2020.0, 1.13, 4.81, 2020], [2021.0, 1.12, 4.97, 2021], null, [2023.0, 0.66, 4.1, 2023], [2024.0, 0.71, 4.63, 2024], [2025.0, 0.67, 5.24, 2025], [2026.0, 0.55, 4.89, 2026]]}, {"name": "CQ WPX RTTY", "short": "WPX", "pts": [[2015.1, 3.24, 7.36, 2015], [2016.1, 4.04, 8.96, 2016], [2017.1, 2.2, 6.48, 2017], [2018.1, 2.21, 7.38, 2018], [2019.1, 2.0, 6.88, 2019], [2020.1, 1.99, 6.54, 2020], [2021.1, 1.73, 7.22, 2021], [2022.1, 1.13, 5.63, 2022], [2023.1, 0.8, 5.07, 2023], [2024.1, 0.83, 4.88, 2024], [2025.1, 0.84, 4.92, 2025], [2026.1, 0.97, 5.11, 2026]]}, {"name": "CQ WW RTTY", "short": "CQ WW", "pts": [[2015.7, 4.33, 8.92, 2015], [2016.7, 2.23, 5.97, 2016], [2017.7, 2.11, 6.46, 2017], [2018.7, 2.06, 6.69, 2018], [2019.7, 2.5, 6.52, 2019], [2020.7, 2.29, 7.54, 2020], [2021.7, 1.38, 5.59, 2021], [2022.7, 1.18, 5.37, 2022], [2023.7, 2.1, 7.41, 2023], [2024.7, 0.96, 5.13, 2024], [2025.7, 0.71, 5.27, 2025], [2026.7, 1.28, 6.03, 2026]]}], "mak": [2026.79, 10.4508, 18.3718], "mak8": [2026.79, 1.1226, 4.6327]};
@@ -2496,7 +2516,7 @@ th.n{text-align:center}
     });
   }
   ltChart('c11', LT11, 2015, ['ARRL RTTY Roundup', 'CQ WPX RTTY', 'CQ WW RTTY'], 'Makrothen 2026');
-  ltChart('c12', LT12, 2011, ['ARRL DX CW', 'CQ WPX CW', 'CQ WW CW'], 'Makrothen weekend, CW');
+  ltChart('c12', LT12, 2011, ['ARRL DX CW', 'CQ WPX CW', 'CQ WW CW'], 'October 10\u201311, CW');
 })();
 </script>
 <script>
