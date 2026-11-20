@@ -612,20 +612,26 @@ th.n{text-align:center}
 
   <h4 id="cwt">The Weekly CWops Tests</h4>
   <p>The <a href="https://cwops.org/cwops-tests/">CWops Tests</a> offer four one-hour sessions every
-  week: Wednesday at 1300Z and 1900Z, and Thursday at 0300Z and 0700Z. I measured the five complete
-  weeks from October 14 to November 12 by the same mechanism split as
+  week: Wednesday at 1300Z and 1900Z, and Thursday at 0300Z and 0700Z. I measured the six complete
+  weeks from October 14 to November 19 by the same mechanism split as
   <a href="#tab7">Table 2</a>. These are all CW spots in each hour, not a selection of CWT
   participants. The <code>UberSDR Skimmer</code> nodes are those listed by November 17, applied to every week; as the introduction notes, it can include a node whose CW spots come
   from another program, and a node listed later may have run other software earlier.</p>
-  <p>In every one of the 20 hours the <code>UberSDR Skimmer</code> nodes' pooled caller share was above the controls':
-  from 0.95 to 2.92 percent of its judged spots, against 0.28 to 1.34 percent for the controls
-  (<a href="#tab-cwt-history">Table 3</a>, <a href="#fig-cwt">Figure 2</a>). The gap is present
+  <p>In 23 of the 24 hours the <code>UberSDR Skimmer</code> nodes' pooled caller share was above the
+  controls': from 0.95 to 2.92 percent of their judged spots, against 0.28 to 1.34 percent for the
+  controls (<a href="#tab-cwt-history">Table 3</a>, <a href="#fig-cwt">Figure 2</a>). The exception
+  is the last, Thursday, November 19, at 0700Z, when they ran 0.32 percent, on 6260 judged spots,
+  against 0.61 for the controls, on 1148. The gap is present
   before and after the October 27 release, but changes in activity, propagation, and which skimmers
   are on the air can move these pooled rates. The series is not a fixed-membership test of the
-  release. The last complete week gives the full split in <a href="#tab-cwt-split">Table 5</a>.</p>
+  release. By the last week, November 18&ndash;19, most <code>UberSDR Skimmer</code> nodes ran
+  release v2026.11.16-3 or later (<a href="#s11-3">&sect;&nbsp;1.3</a>): pooled over its four hours,
+  their caller share was 1.47 percent against 0.83 for the controls, a ratio of 1.8, down from 2.9
+  the week before (2.40 against 0.83). That week gives the full split in
+  <a href="#tab-cwt-split">Table 5</a>.</p>
   <div class="scroll">
     <table id="tab-cwt-history">
-      <caption><strong>Table 3.</strong> CWops Test Hours: Off-consensus Spots and Misattributed Callers, October 14 to November 12.</caption>
+      <caption><strong>Table 3.</strong> CWops Test Hours: Off-consensus Spots and Misattributed Callers, October 14 to November 19.</caption>
       <tr><th>2026 UTC</th><th class="n">All Skimmers<br>Judged Spots</th><th class="n">All Skimmers<br>Off-consensus <span class="unit">(%)</span></th>
         <th class="n"><code>UberSDR Skimmer</code><br>Judged Spots</th><th class="n"><code>UberSDR Skimmer</code><br>Misattributed Callers <span class="unit">(%)</span></th>
         <th class="n">Controls<br>Judged Spots</th><th class="n">Controls<br>Misattributed Callers <span class="unit">(%)</span></th></tr>
@@ -649,6 +655,10 @@ th.n{text-align:center}
       <tr><td>Nov 11 1900</td><td class="n">75,869</td><td class="n">5.51</td><td class="n">17,731</td><td class="n">2.59</td><td class="n">2470</td><td class="n">1.34</td></tr>
       <tr><td>Nov 12 0300</td><td class="n">34,475</td><td class="n">4.88</td><td class="n">8253</td><td class="n">2.92</td><td class="n">1123</td><td class="n">0.62</td></tr>
       <tr><td>Nov 12 0700</td><td class="n">32,061</td><td class="n">3.31</td><td class="n">5654</td><td class="n">1.10</td><td class="n">1077</td><td class="n">0.28</td></tr>
+      <tr><td>Nov 18 1300</td><td class="n">82,320</td><td class="n">5.58</td><td class="n">18,414</td><td class="n">1.88</td><td class="n">2343</td><td class="n">1.20</td></tr>
+      <tr><td>Nov 18 1900</td><td class="n">78,793</td><td class="n">4.27</td><td class="n">19,851</td><td class="n">1.51</td><td class="n">2245</td><td class="n">0.45</td></tr>
+      <tr><td>Nov 19 0300</td><td class="n">45,784</td><td class="n">4.98</td><td class="n">10,725</td><td class="n">1.37</td><td class="n">1282</td><td class="n">1.01</td></tr>
+      <tr><td>Nov 19 0700</td><td class="n">37,662</td><td class="n">4.24</td><td class="n">6260</td><td class="n">0.32</td><td class="n">1148</td><td class="n">0.61</td></tr>
     </table>
   </div>
   <p class="note-small">Percent of judged CW spots, pooled within each group and hour; the
@@ -685,25 +695,26 @@ th.n{text-align:center}
       <span class="key"><span class="sw" style="background:var(--flag)"></span><code>UberSDR Skimmer</code> nodes</span>
       <span class="key"><span class="sw" style="background:var(--accent)"></span>controls</span>
     </div>
-    <svg id="cwt-chart" role="img" aria-label="Four panels show the pooled caller rate in each CWops Test hour from October 14 through November 12. The UberSDR Skimmer rate exceeds the controls in all 20 sessions; the individual rates are listed in Table 3."></svg>
+    <svg id="cwt-chart" role="img" aria-label="Four panels show the pooled caller rate in each CWops Test hour from October 14 through November 19. The UberSDR Skimmer rate exceeds the controls in 23 of 24 sessions, all but November 19 at 0700Z; the individual rates are listed in Table 3."></svg>
     <figcaption><strong>Figure 2.</strong> Misattributed callers as percent of judged spots, by
     CWops Test hour and week. Each marker is one pooled group rate from <a href="#tab-cwt-history">Table 3</a>;
     the four sessions are kept separate because their hours and propagation differ. No line connects
-    the observations. The October 27 release falls between the second and third weeks.</figcaption>
+    the observations. The October 27 release falls between the second and third weeks, and
+    v2026.11.16-3 between the fifth and sixth.</figcaption>
   </figure>
   <div class="scroll">
     <table id="tab-cwt-split">
-      <caption><strong>Table 5.</strong> CWops Test Hours: Off-consensus Spots by Mechanism, November 11&ndash;12.</caption>
+      <caption><strong>Table 5.</strong> CWops Test Hours: Off-consensus Spots by Mechanism, November 18&ndash;19.</caption>
       <tr><th>2026 UTC</th><th>Group</th><th class="n">Judged</th><th class="n">Garble</th>
         <th class="n">Runner Elsewhere</th><th class="n">Caller</th><th class="n">Unconfirmed</th><th class="n">Off-consensus</th></tr>
-      <tr><td>Nov 11 1300</td><td><code>UberSDR Skimmer</code></td><td class="n">13,637</td><td class="n">1.65</td><td class="n">2.86</td><td class="n">2.39</td><td class="n">0.59</td><td class="n">7.49</td></tr>
-      <tr><td>Nov 11 1300</td><td>Controls</td><td class="n">1997</td><td class="n">1.35</td><td class="n">2.05</td><td class="n">0.60</td><td class="n">0.15</td><td class="n">4.16</td></tr>
-      <tr><td>Nov 11 1900</td><td><code>UberSDR Skimmer</code></td><td class="n">17,731</td><td class="n">1.49</td><td class="n">3.16</td><td class="n">2.59</td><td class="n">0.59</td><td class="n">7.84</td></tr>
-      <tr><td>Nov 11 1900</td><td>Controls</td><td class="n">2470</td><td class="n">1.34</td><td class="n">2.27</td><td class="n">1.34</td><td class="n">0.45</td><td class="n">5.38</td></tr>
-      <tr><td>Nov 12 0300</td><td><code>UberSDR Skimmer</code></td><td class="n">8253</td><td class="n">1.82</td><td class="n">2.12</td><td class="n">2.92</td><td class="n">0.55</td><td class="n">7.40</td></tr>
-      <tr><td>Nov 12 0300</td><td>Controls</td><td class="n">1123</td><td class="n">1.34</td><td class="n">1.16</td><td class="n">0.62</td><td class="n">0.00</td><td class="n">3.12</td></tr>
-      <tr><td>Nov 12 0700</td><td><code>UberSDR Skimmer</code></td><td class="n">5654</td><td class="n">1.38</td><td class="n">1.82</td><td class="n">1.10</td><td class="n">0.35</td><td class="n">4.65</td></tr>
-      <tr><td>Nov 12 0700</td><td>Controls</td><td class="n">1077</td><td class="n">0.74</td><td class="n">1.02</td><td class="n">0.28</td><td class="n">0.09</td><td class="n">2.14</td></tr>
+      <tr><td>Nov 18 1300</td><td><code>UberSDR Skimmer</code></td><td class="n">18,414</td><td class="n">0.80</td><td class="n">3.35</td><td class="n">1.88</td><td class="n">0.39</td><td class="n">6.41</td></tr>
+      <tr><td>Nov 18 1300</td><td>Controls</td><td class="n">2343</td><td class="n">1.20</td><td class="n">2.82</td><td class="n">1.20</td><td class="n">0.17</td><td class="n">5.38</td></tr>
+      <tr><td>Nov 18 1900</td><td><code>UberSDR Skimmer</code></td><td class="n">19,851</td><td class="n">1.16</td><td class="n">1.98</td><td class="n">1.51</td><td class="n">0.44</td><td class="n">5.08</td></tr>
+      <tr><td>Nov 18 1900</td><td>Controls</td><td class="n">2245</td><td class="n">1.51</td><td class="n">1.38</td><td class="n">0.45</td><td class="n">0.13</td><td class="n">3.47</td></tr>
+      <tr><td>Nov 19 0300</td><td><code>UberSDR Skimmer</code></td><td class="n">10,725</td><td class="n">1.23</td><td class="n">1.75</td><td class="n">1.37</td><td class="n">0.32</td><td class="n">4.67</td></tr>
+      <tr><td>Nov 19 0300</td><td>Controls</td><td class="n">1282</td><td class="n">2.81</td><td class="n">1.79</td><td class="n">1.01</td><td class="n">0.23</td><td class="n">5.85</td></tr>
+      <tr><td>Nov 19 0700</td><td><code>UberSDR Skimmer</code></td><td class="n">6260</td><td class="n">1.02</td><td class="n">3.04</td><td class="n">0.32</td><td class="n">0.42</td><td class="n">4.79</td></tr>
+      <tr><td>Nov 19 0700</td><td>Controls</td><td class="n">1148</td><td class="n">1.13</td><td class="n">1.74</td><td class="n">0.61</td><td class="n">0.17</td><td class="n">3.66</td></tr>
     </table>
   </div>
   <p class="note-small">As <a href="#tab-cwt-history">Table 3</a>, with the four off-consensus
@@ -712,7 +723,7 @@ th.n{text-align:center}
   <p>These one-hour windows are not a useful fixed test for the frozen signal reports of
   <a href="#appI">&sect;&nbsp;5</a>. Its long-run test needs eight or more spots of the same
   station, usually an hour or more of hearing; cutting each run at the window boundary leaves few
-  long runs. None was frozen in these 20 hours, but that does not establish a fix. The daily
+  long runs. None was frozen in these 24 hours, but that does not establish a fix. The daily
   whole-archive measurement in <a href="#appI-7">&sect;&nbsp;5.7</a> is the stronger check.</p>
 
   <h3 id="s11-4">1.4 · No Other Identifiable Group</h3>
@@ -1900,7 +1911,7 @@ th.n{text-align:center}
   percent of all such spots.</p>
 
   <p class="foot">Prepared by K1MK (contact: k1mk at alum.mit.edu) · analysis of Reverse Beacon
-  Network archives through 2026 November 18. Document v1.36.</p>
+  Network archives through 2026 November 18. Document v1.37.</p>
   <p class="foot">Copyright &copy; 2026 Michael Keane K1MK. All rights reserved.</p>
 </div>
 </div>
@@ -1911,14 +1922,14 @@ th.n{text-align:center}
   if (!svg) return;
   var ns = 'http://www.w3.org/2000/svg';
   var series = [
-    {label:'Wednesday 1300Z', dates:['Oct 14','Oct 21','Oct 28','Nov 4','Nov 11'],
-      roster:[1.46,2.25,2.26,2.36,2.39], controls:[0.76,1.29,0.89,1.20,0.60]},
-    {label:'Wednesday 1900Z', dates:['Oct 14','Oct 21','Oct 28','Nov 4','Nov 11'],
-      roster:[1.80,2.07,1.43,2.08,2.59], controls:[1.02,1.02,0.77,1.10,1.34]},
-    {label:'Thursday 0300Z', dates:['Oct 15','Oct 22','Oct 29','Nov 5','Nov 12'],
-      roster:[2.00,1.43,1.02,1.58,2.92], controls:[0.92,0.85,0.67,0.38,0.62]},
-    {label:'Thursday 0700Z', dates:['Oct 15','Oct 22','Oct 29','Nov 5','Nov 12'],
-      roster:[1.53,1.02,0.95,2.42,1.10], controls:[1.26,0.74,0.46,0.29,0.28]}
+    {label:'Wednesday 1300Z', dates:['Oct 14','Oct 21','Oct 28','Nov 4','Nov 11','Nov 18'],
+      roster:[1.46,2.25,2.26,2.36,2.39,1.88], controls:[0.76,1.29,0.89,1.20,0.60,1.20]},
+    {label:'Wednesday 1900Z', dates:['Oct 14','Oct 21','Oct 28','Nov 4','Nov 11','Nov 18'],
+      roster:[1.80,2.07,1.43,2.08,2.59,1.51], controls:[1.02,1.02,0.77,1.10,1.34,0.45]},
+    {label:'Thursday 0300Z', dates:['Oct 15','Oct 22','Oct 29','Nov 5','Nov 12','Nov 19'],
+      roster:[2.00,1.43,1.02,1.58,2.92,1.37], controls:[0.92,0.85,0.67,0.38,0.62,1.01]},
+    {label:'Thursday 0700Z', dates:['Oct 15','Oct 22','Oct 29','Nov 5','Nov 12','Nov 19'],
+      roster:[1.53,1.02,0.95,2.42,1.10,0.32], controls:[1.26,0.74,0.46,0.29,0.28,0.61]}
   ];
   svg.setAttribute('viewBox', '0 0 680 576');
   function add(tag, attrs, text) {
@@ -1931,7 +1942,7 @@ th.n{text-align:center}
   var left = 60, width = 580, height = 88;
   series.forEach(function (s, panel) {
     var top = 23 + panel * 140;
-    var x = function (i) { return left + 35 + i * (width - 70) / 4; };
+    var x = function (i) { return left + 35 + i * (width - 70) / 5; };
     var y = function (v) { return top + height - v / 3.5 * height; };
     add('text', {x:left, y:top - 8, fill:'var(--ink-2)', 'font-size':12,
       'font-family':'var(--font-body)', 'font-weight':600}, s.label);
